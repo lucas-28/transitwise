@@ -4,7 +4,7 @@
 
 
 <?php
-header("Location: docs/templates/hospital-website-template/");
+echo("Hey World... We's about to save yall mula on yer travels...");
 	
 ?>
 
