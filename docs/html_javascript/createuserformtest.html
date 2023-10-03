@@ -111,32 +111,34 @@ body,td,th {
 </style>
 </head>
 <body>
-<div id="body">
-    <h1>Create User Validation</h1>
-    <!-- Test site.html is just a place holder to go back to the home page-->
-    <button><a href="Test site.html">Home</a></button>
-    <!-- The holder.txt file is a place holder to store data like a .php file.-->
-    <form action="/holder.txt" method="post" id="testform">
-    <fieldset>
-        <label>Email Address *<br><input type="text" name="email"><br><br> </label>
-        <label>First Name *<br><input type="text" name="first name"> <br></label>
-        <label>Middle Name<br><input type="text" name="middle name"> <br></label>
-        <label>Last Name *<br><input type="text" name="last name"><br></label>
-    </fieldset>
-    <fieldset>
-        <label>Address 1 *<br><input type="text" name="street"> <br></label>
-        <label>Address 2<br><input type="text" name="street"> <br></label>
-        <label>City *<br><input type="text" name="city"> <br></label>
-        <label>State *<br><input type="text" name="state"> <br></label>
-        <label>Zip code *<br><input type="text" name="zip"> <br></label>
-    </fieldset>
-    <fieldset>
-        <label>Password *<br><input type="password" name="password"><br></label>
-        <label>Confirm Password *<br><input type="password" name="confirm"></label>
-    </fieldset>
-        <input type="reset" name="reset" value="Clear Form">
-        <input type="submit" name="send" value="Send Off">
-    </form>
-</div>
+    <div id="body">
+        <h1>Create User Validation</h1>
+        <!-- homepage.html is just a place holder to go back to the home page-->
+        <button><a href="../homepage.html">Home</a></button>
+        <!-- The holder.php file is a place holder to store data like a .php file.-->
+        <form action="holder.php" method="post"> 
+        <fieldset>
+            <label>Email Address *<br><input type="text" name="email"><br><br> </label>
+            <label>First Name *<br><input type="text" name="first name"> <br></label>
+            <label>Middle Name<br><input type="text" name="middle name"> <br></label>
+            <label>Last Name *<br><input type="text" name="last name"><br></label>
+        </fieldset>
+        <fieldset>
+            <label>Address 1 *<br><input type="text" name="street"> <br></label>
+            <label>Address 2<br><input type="text" name="street"> <br></label>
+            <label>City *<br><input type="text" name="city"> <br></label>
+            <label>State *<br><input type="text" name="state"> <br></label>
+            <label>Zip code *<br><input type="text" name="zip"> <br></label>
+        </fieldset>
+        <fieldset>
+            <label>Password *<br><input type="password" name="password"><br></label>
+            <label>Confirm Password *<br><input type="password" name="confirm"></label>
+        </fieldset>
+            <input type="reset" name="reset" value="Clear Form">
+            <input type="submit" name="send" value="Send Off">
+        </form>
+
+        <!-- This will need a css file for astheic and organizing the layout.-->
+    </div>
 </body>
 </html>

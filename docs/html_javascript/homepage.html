@@ -1,0 +1,120 @@
+<html>    
+    <head>
+
+        <!-- This could be for index.html as the home page equiped with default flight search.-->
+
+        <title>Create User Validation</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="styles/styles.css">
+        <link rel="stylesheet" type="text/css" href="styles/forms.css">
+        <script type="text/javascript">
+    
+        window.onload=init;
+        var form;
+            function init() {
+                form = document.getElementById('testform');//place holder
+                form.addEventListener("submit", checkSubmit, false);// Submits the data and verifies using checkSubmit() method.
+                form.addEventListener("reset", checkReset, false);// Resets the data on the page.
+    
+    
+                form['name'].focus();
+            }
+            String.prototype.trim=function() {
+                return this.replace(/^\s+1\s+$/g, '');
+            }
+            function whichButton(name) {
+                var buttons=document.getElementsByName(name);
+                for (var i in buttons) {
+                    if(buttons[i].checked) return buttons[i].value
+                }
+                return false;
+            }
+            
+            function checkSubmit() {
+                error = new Array();
+                //Fill the array with the error value
+    
+                form['leavingfrom'].value=form['leavingfrom'].value.trim();
+                form['goingto'].value=form['goingto'].value.trim();
+                form['datebeginning'].value=form['datebeginning'].value.trim();
+                form['dateend'].value=form['dateend'].value.trim();
+                form['travelers'].value=form['travelers'].value.trim();
+    
+                //Check required fields
+                if(!form['leavingfrom'].value)
+                    error.push('Missing location');
+                if(!form['goingto'].value)
+                    error.push('Missing location');
+                if(!form['datebeginning'].value)
+                    error.push('Missing date');
+                if(!form['datebeginning'].value)
+                    error.push('Missing date');
+                if(!form['travelers'].value)
+                    error.push('Missing travelers');
+    
+                //Check that "Other" field is filled
+                
+                if(error.length) { // if there are errors
+                alert(error.join("\n"))
+                return false;
+                }
+                else return true;
+    
+                return confirm("This will submit the form"); //Temporary placeholder
+                                                             //to return data.
+            } 
+            function checkReset() {
+                return confirm("This will clear the form data");
+            }
+        </script>
+    <style type="text/css">
+    body,td,th {
+        font-size: 0.9em;
+    }
+    </style>   
+    
+        <title>Registration Form</title>    
+    </head>    
+    <body> 
+        <h1>Transitwise Compay</h1><br>   
+
+        <!--"Login/Login.html" is a place holder to connect it to the login.html page.-->
+        <button><a href="Login/Login.html">Login</a></button>
+
+        <!-- Other buttons can be added later on, if we add other transportation pages that will link to here.-->
+
+        <!-- registration.css is just the way to color and to show off your design of the website
+             for this case only for now.-->
+
+        <link href = "registration.css" type = "text/css" rel = "stylesheet" />    
+        <h2>Flight search</h2>    
+        <form action="searchflight.php" method = "post" >    
+            <div class = "container">    
+                <div class = "form_group">    
+                    <label>Leaving from:</label>    
+                    <input type = "text" name = "leavingfrom" value = "" required/>    
+                </div>    
+                <div class = "form_group">    
+                    <label>Going to:</label>    
+                    <input type = "text" name = "goingto" value = "" required />    
+                </div>    
+                <div class = "form_group">    
+                    <label>Date beginning:</label>    
+                    <input type = "date" name = "datebeginning" value = "" required/>    
+                </div>
+                <div class = "form_group">    
+                    <label>Date end:</label>    
+                    <input type = "date" name = "dateend" value = "" required/>    
+                </div>
+                <div class = "form_group">    
+                    <label>Travelers:</label>    
+                    <input type = "text" name = "travelers" value = "" required/>    
+                </div>       
+            </div> 
+
+            <input type="reset" name="reset" value="Clear Form">
+            <input type="submit" name="send" value="Send Off">   
+            
+        </form>    
+    </body>    
+</html> 
