@@ -3,14 +3,11 @@
 <head>
     <title>Create User Validation</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">
-    <link rel="stylesheet" type="text/css" href="styles/forms.css">
     <script type="text/javascript">
 
-    window.onload=init;
     var form;
         function init() {
-            form = document.getElementById('testform');//place holder
+            form = document.getElementById('holder.php');//place holder
             form.addEventListener("submit", checkSubmit, false);// Submits the data and verifies using checkSubmit() method.
             form.addEventListener("reset", checkReset, false);// Resets the data on the page.
 
@@ -30,7 +27,7 @@
         
         function checkSubmit() {
             error = new Array();
-            //Fill the array with the error value
+            //Fill the array with the error value.
 
             form['email'].value=form['email'].value.trim();
             form['f_name'].value=form['f_name'].value.trim();
@@ -104,11 +101,14 @@
             return confirm("This will clear the form data");
         }
     </script>
-<style type="text/css">
+
+<style>
+    
 body,td,th {
     font-size: 0.9em;
 }
 </style>
+
 </head>
 <body>
     <div id="body">
@@ -138,7 +138,7 @@ body,td,th {
             <input type="submit" name="send" value="Send Off">
         </form>
 
-        <!-- This will need a css file for astheic and organizing the layout.-->
+        <!-- This will need a css file for aestheic and organizing the layout.-->
     </div>
 </body>
 </html>

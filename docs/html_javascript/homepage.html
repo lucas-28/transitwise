@@ -1,15 +1,12 @@
 <html>    
     <head>
 
-        <!-- This could be for index.html as the home page equiped with default flight search.-->
+        <!-- This could be for homepage.html as the home page equiped with default flight search.-->
 
-        <title>Create User Validation</title>
+        <title>Home page</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="styles/styles.css">
-        <link rel="stylesheet" type="text/css" href="styles/forms.css">
         <script type="text/javascript">
     
-        window.onload=init;
         var form;
             function init() {
                 form = document.getElementById('testform');//place holder
@@ -67,10 +64,42 @@
                 return confirm("This will clear the form data");
             }
         </script>
-    <style type="text/css">
+    <style>
     body,td,th {
         font-size: 0.9em;
     }
+    .container {  
+        max-width: 1350px;  
+        width: 100%;  
+        margin: 50px;  
+        height: auto;  
+        display: block;  
+    }  
+        
+    body {  
+        color: #000000;  
+        font-size: 20px;  
+        font-family: Verdana, Arial, Helvetica, monospace;  
+        background-color: #a0c9f0;  
+     }  
+        
+    h2 {  
+        text-align: center;  
+    }  
+        
+    .form_group {  
+        padding: 10px;  
+        ;    
+        display: block;  
+    }  
+        
+    label {  
+        float: left;  
+        padding-right: 50px;  
+        line-height: 10%;  
+        display: block;  
+        width: 208px;  
+    }  
     </style>   
     
         <title>Registration Form</title>    
@@ -85,30 +114,29 @@
 
         <!-- registration.css is just the way to color and to show off your design of the website
              for this case only for now.-->
-
-        <link href = "registration.css" type = "text/css" rel = "stylesheet" />    
+ 
         <h2>Flight search</h2>    
         <form action="searchflight.php" method = "post" >    
             <div class = "container">    
                 <div class = "form_group">    
                     <label>Leaving from:</label>    
-                    <input type = "text" name = "leavingfrom" value = "" required/>    
+                    <input type = "text" id="leavingfrom" name = "leavingfrom" value = "" required/>    
                 </div>    
                 <div class = "form_group">    
                     <label>Going to:</label>    
-                    <input type = "text" name = "goingto" value = "" required />    
+                    <input type = "text" id="goingto" name = "goingto" value = "" required />    
                 </div>    
                 <div class = "form_group">    
                     <label>Date beginning:</label>    
-                    <input type = "date" name = "datebeginning" value = "" required/>    
+                    <input type = "date" id="datebeginning" name = "datebeginning" value = "" required/>    
                 </div>
                 <div class = "form_group">    
                     <label>Date end:</label>    
-                    <input type = "date" name = "dateend" value = "" required/>    
+                    <input type = "date" id="dateend" name = "dateend" value = "" required/>    
                 </div>
                 <div class = "form_group">    
                     <label>Travelers:</label>    
-                    <input type = "text" name = "travelers" value = "" required/>    
+                    <input type = "text" id="travlers" name = "travelers" value = "" required/>    
                 </div>       
             </div> 
 
