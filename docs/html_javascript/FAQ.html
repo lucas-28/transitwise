@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Help/FAQ page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width", intial-scale="1.0">
+    
+<style>
+    
+    body{
+    font-family: 'Work Sans', sans-serif;
+}
+.company-name{
+    background-color: #e6f3ff ;
+    padding: 10px 60px;
+    height: 10%;
+
+}
+.faq-heading{
+    background-color: #e6f3ff;
+    border-bottom: #000000;
+    padding: 20px 60px;
+}
+.faq-container{
+display: flex;
+justify-content: center;
+flex-direction: column;
+}
+.hr-line{
+  width: 60%;
+  margin: auto;
+  
+}
+/* Style the buttons that are used to open and close the faq-page body */
+.faq-page {
+    background-color: #ffffff; 
+    color: #000000;
+    cursor: pointer;
+    padding: 30px 20px;
+    width: 60%;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin: auto;
+}
+.faq-body{
+    margin: auto;
+    /* text-align: center; */
+   width: 50%; 
+   padding: auto;
+   
+}
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.faq-page:hover {
+    background-color: #dfdfdf;
+}
+/* Style the faq-page panel. Note: hidden by default */
+.faq-body {
+    padding: 0 18px;
+    background-color: rgb(237, 249, 255);
+    display: none;
+    overflow: hidden;
+}
+.faq-page:after {
+    content: '\02795';
+    /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+.active:after {
+    content: "\2796";
+    /* Unicode character for "minus" sign (-) */
+}
+</style>
+
+</head>
+<body>
+    <main>
+
+        <h1 class="company-name">Transitwise</h1>
+        <button><a href="../homepage.html">Home</a></button>
+        
+        <hr class="title-line">
+        <h2 class="faq-heading">Frequently Asked Questions</h2>
+        <section class="faq-container">
+
+            <!-- To add more questions, simply copy below this comment to the hr-line and place it
+                 after the last hr line used and rewrite the faq question and answer.-->
+            <div class="first-question">
+                <!-- FAQ question -->
+                <h2 class="faq-page">What is this FAQ Page is about?</h2>
+                <!-- FAQ answer -->
+                <div class="faq-body">
+                    <p>This page will help fill you in with your basic questions that may occur to you while 
+                        purchasing a ticket to your next flight or any question that you may have.
+                    </p>
+                </div>
+            </div>
+            <hr class="hr-line">
+
+            <div class="faq-two">
+                <!-- FAQ question -->
+                <h2 class="faq-page">Change your booking</h2>
+                <!-- FAQ answer -->
+                <div class="faq-body">
+                    <p>If you want to change your booking or even cancel it, you can head towards 
+                        your profile and check the status of your booking there and you can edit 
+                        it, if you need to. However, you may have limited options for the time being
+                        as in to cancel your flight at the moment. If you need more support, you can email
+                        us at any time for more information about your flight status.
+                    </p>
+                </div>
+            </div>
+            <hr class="hr-line">
+            <div class="faq-three">
+                <!-- FAQ question -->
+                <h2 class="faq-page">Get a refund</h2>
+                <!-- FAQ answer -->
+                <div class="faq-body">
+                    <p>If you decided to cancel your flight, we will email you the status of  your 
+                        flight as well as refunding you back. Note that you will receive your
+                        refund winthin three business days after your cancellation.
+                    </p>
+                </div>
+            </div>
+            <hr class="hr-line">
+            <div class="faq-four">
+                <!-- FAQ question -->
+                <h2 class="faq-page">Checking in before your flight</h2>
+                <!-- FAQ answer -->
+                <div class="faq-body">
+                    <p>We will notify you 72 hours before your flight and send you a confirmation 
+                        whether you are still attending your flight so that we can be sure to move you in
+                        quicker. If you fail to check in before 24 hours to your flight, you will to 
+                        check in your flight at the airport.
+                    </p>
+                </div>
+            </div>
+            <hr class="hr-line">
+            <div class="faq-four">
+                <!-- FAQ question -->
+                <h2 class="faq-page">Changing your account information</h2>
+                <!-- FAQ answer -->
+                <div class="faq-body">
+                    <p>If you want to edit your profile after creating your account, you can do so
+                        by going to your profile where you signed in and edit any information that 
+                        you need to change.
+                    </p>
+                </div>
+            </div>
+            <hr class="hr-line">
+
+        </section>
+    </main>
+
+    <script type="text/javascript">
+    
+        var faq = document.getElementsByClassName("faq-page");
+        var i;
+        for (i = 0; i < faq.length; i++) {
+            faq[i].addEventListener("click", function () {
+                /* Toggle between adding and removing the "active" class,
+                to highlight the button that controls the panel */
+                this.classList.toggle("active");
+                /* Toggle between hiding and showing the active panel */
+                var body = this.nextElementSibling;
+                if (body.style.display === "block") {
+                    body.style.display = "none";
+                } 
+                else {
+                    body.style.display = "block";
+                }
+        });
+        }
+        </script>
+</body>
+</html>
