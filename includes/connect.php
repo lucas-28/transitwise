@@ -5,8 +5,8 @@
 $server = "localhost";
 $dbusername = "root";
 $password = "";
-$db = "starter";
-$debug = "true";
+$db = "transitwise";
+$debug = "false";
 
 $dbconn = mysqli_connect($server, $dbusername, $password, $db);
 

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout Page</title>
+    <style>
+        /* Centers input fields and places them in a box*/
+        body
+        {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        hi
+        {
+            margin-bottom: 20px;
+        }
+        form
+        {
+            display:inline-block;
+            text-align: left;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 0 auto;
+        }
+        label, select{
+            display: block;
+            margin-bottom: 10px;
+        }
+        /*allows the expuration date to have two boxes on the same line*/
+        .expiration-inputs
+        {
+            display: flex;
+            justify-content:space-between
+        }
+    </style>
+</head>
+<body>
+    <h1>Checkout Page</h1>
+
+    <p>sets up input text boxes</p>
+
+    <form action="process_payment.php" method="post">
+        <label for="card_number">Card Number:</label>
+        <input type="text" id="card_number" name="card_number" placeholder="xxxx-xxxx-xxxx-xxxx" maxlength="19" required>
+
+        <div class="expiration-inputs">
+            <div>
+                <label for="expiration_month">Expiration Month:</label>
+                <input type="text" id="expiration_month" name="expiration_month" placeholder="MM" maxlength="2" required>
+            </div>
+            <div>
+                <label for="expiration_year">Expiration Year:</label>
+                <input type="text" id="expiration_year" name="expiration_year" placeholder="YY" maxlength="2" required>
+            </div>
+        </div>
+                
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" placeholder="xxx" maxlength="3" required>
+        
+        <label for="cardholder_name">Cardholder Name:</label>
+        <input type="text" id="cardholder_name" name="cardholder_name" required>
+
+        <input type="submit" value="Submit">
+    </form>
+    <script>
+        document.getElementById('card_number').addEventListener('input', function () {
+            // Only allows user to enter numbers into the card number input box
+            var cardNumber = this.value.replace(/\D/g, '');
+
+            // ads a '-' to users inputted card number after every 4 numbers
+            if (cardNumber.length > 0) {
+                cardNumber = cardNumber.match(/.{1,4}/g).join('-');
+            }
+
+            // returns formatted cardnumber
+            this.value = cardNumber;
+        });   
+    </script>
+</body>
+</html>
