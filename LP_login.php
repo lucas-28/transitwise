@@ -61,7 +61,7 @@
 <body>
     <div class="container">
         <h2>Login</h2>
-        <form action="login_handler.php" method="post">
+        <form action="lp_login_handler.php" method="post">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
