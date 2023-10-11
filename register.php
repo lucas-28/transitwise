@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>Create User Validation</title>
+    <title>Create Account</title>
     <meta charset="utf-8">
     <script type="text/javascript">
 
@@ -106,22 +106,67 @@
     
 body,td,th {
     font-size: 0.9em;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    margin: 1em;
+
 }
+
+form {
+    width: 40em;
+    margin: 0 auto;
+    padding: 1em;
+    border: .2em solid #CCC;
+    border-radius: 1em;
+}
+
+h1 {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    padding: .2em 0;
+}
+
+.btn {
+    margin: 1em;
+    padding: 0.7em;
+    border-radius: 0.5em;
+    background: #eee;
+    border: none;
+    margin: 0 auto;
+    
+    font-weight: bold;
+    cursor: pointer;
+}
+
+label {
+    display: block;
+    margin: 0.5em 0;
+}
+
+.btn:hover {
+    background: #ccc;
+}
+
+.btn-holder {
+    text-align: center;
+    margin: 1em;
+}
+
 </style>
 
 </head>
 <body>
     <div id="body">
-        <h1>Create User Validation</h1>
-        <!-- homepage.html is just a place holder to go back to the home page-->
-        <button><a href="../homepage.html">Home</a></button>
-        <!-- The holder.php file is a place holder to store data like a .php file.-->
+        <h1><a href="index.php">Transitwise</a></h1>
+        <h1>Create Account</h1>
         <form action="holder.php" method="post"> 
         <fieldset>
-            <label>Email Address *<br><input type="text" name="email"><br><br> </label>
+
             <label>First Name *<br><input type="text" name="first name"> <br></label>
             <label>Middle Name<br><input type="text" name="middle name"> <br></label>
             <label>Last Name *<br><input type="text" name="last name"><br></label>
+            <label>Email Address *<br><input type="text" name="email"><br><br> </label>
         </fieldset>
         <fieldset>
             <label>Address 1 *<br><input type="text" name="street"> <br></label>
@@ -134,9 +179,13 @@ body,td,th {
             <label>Password *<br><input type="password" name="password"><br></label>
             <label>Confirm Password *<br><input type="password" name="confirm"></label>
         </fieldset>
-            <input type="reset" name="reset" value="Clear Form">
-            <input type="submit" name="send" value="Send Off">
+        <div class="btn-holder">
+            <input class="btn" type="reset" name="reset" value="Clear Form">
+            <input class="btn" type="submit" name="send" value="Submit">
+            <p>Already have an account? <a href="lp_login.php">Login here</a>.</p>
+        </div>
         </form>
+        
 
         <!-- This will need a css file for aestheic and organizing the layout.-->
     </div>

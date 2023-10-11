@@ -1,0 +1,148 @@
+<html>    
+    <head>
+
+        <!-- This could be for homepage.html as the home page equiped with default flight search.-->
+
+        <title>Home page</title>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+    
+        var form;
+            function init() {
+                form = document.getElementById('testform');//place holder
+                form.addEventListener("submit", checkSubmit, false);// Submits the data and verifies using checkSubmit() method.
+                form.addEventListener("reset", checkReset, false);// Resets the data on the page.
+    
+    
+                form['name'].focus();
+            }
+            String.prototype.trim=function() {
+                return this.replace(/^\s+1\s+$/g, '');
+            }
+            function whichButton(name) {
+                var buttons=document.getElementsByName(name);
+                for (var i in buttons) {
+                    if(buttons[i].checked) return buttons[i].value
+                }
+                return false;
+            }
+            
+            function checkSubmit() {
+                error = new Array();
+                //Fill the array with the error value
+    
+                form['leavingfrom'].value=form['leavingfrom'].value.trim();
+                form['goingto'].value=form['goingto'].value.trim();
+                form['datebeginning'].value=form['datebeginning'].value.trim();
+                form['dateend'].value=form['dateend'].value.trim();
+                form['travelers'].value=form['travelers'].value.trim();
+    
+                //Check required fields
+                if(!form['leavingfrom'].value)
+                    error.push('Missing location');
+                if(!form['goingto'].value)
+                    error.push('Missing location');
+                if(!form['datebeginning'].value)
+                    error.push('Missing date');
+                if(!form['datebeginning'].value)
+                    error.push('Missing date');
+                if(!form['travelers'].value)
+                    error.push('Missing travelers');
+    
+                //Check that "Other" field is filled
+                
+                if(error.length) { // if there are errors
+                alert(error.join("\n"))
+                return false;
+                }
+                else return true;
+    
+                return confirm("This will submit the form"); //Temporary placeholder
+                                                             //to return data.
+            } 
+            function checkReset() {
+                return confirm("This will clear the form data");
+            }
+        </script>
+    <style>
+    body,td,th {
+        font-size: 0.9em;
+    }
+    .container {  
+        max-width: 1350px;  
+        width: 100%;  
+        margin: 50px;  
+        height: auto;  
+        display: block;  
+    }  
+        
+    body {  
+        color: #000000;  
+        font-size: 20px;  
+        font-family: Verdana, Arial, Helvetica, monospace;  
+        background-color: #a0c9f0;  
+     }  
+        
+    h2 {  
+        text-align: center;  
+    }  
+        
+    .form_group {  
+        padding: 10px;  
+        ;    
+        display: block;  
+    }  
+        
+    label {  
+        float: left;  
+        padding-right: 50px;  
+        line-height: 10%;  
+        display: block;  
+        width: 208px;  
+    }  
+    </style>   
+    
+        <title>Registration Form</title>    
+    </head>    
+    <body> 
+        <h1>Transitwise Compay</h1><br>   
+
+        <!--"Login/Login.html" is a place holder to connect it to the login.html page.-->
+        <button><a href="Login/Login.html">Login</a></button>
+
+        <!-- Other buttons can be added later on, if we add other transportation pages that will link to here.-->
+
+        <!-- registration.css is just the way to color and to show off your design of the website
+             for this case only for now.-->
+ 
+        <h2>Flight search</h2>    
+        <form action="searchflight.php" method = "post" >    
+            <div class = "container">    
+                <div class = "form_group">    
+                    <label>Leaving from:</label>    
+                    <input type = "text" id="leavingfrom" name = "leavingfrom" value = "" required/>    
+                </div>    
+                <div class = "form_group">    
+                    <label>Going to:</label>    
+                    <input type = "text" id="goingto" name = "goingto" value = "" required />    
+                </div>    
+                <div class = "form_group">    
+                    <label>Date beginning:</label>    
+                    <input type = "date" id="datebeginning" name = "datebeginning" value = "" required/>    
+                </div>
+                <div class = "form_group">    
+                    <label>Date end:</label>    
+                    <input type = "date" id="dateend" name = "dateend" value = "" required/>    
+                </div>
+                <div class = "form_group">    
+                    <label>Travelers:</label>    
+                    <input type = "text" id="travlers" name = "travelers" value = "" required/>    
+                </div>       
+            </div> 
+
+            <input type="reset" name="reset" value="Clear Form">
+            <input type="submit" name="send" value="Send Off">   
+            
+        </form>    
+    </body>    
+</html> 
