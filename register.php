@@ -1,4 +1,6 @@
 <?php
+    // NEED TO FIX JS TO VALIDATE FORM BEFORE SUBMITTING
+    
     // Initialize the session
     session_start();
     $error = $_SESSION['error'];
@@ -90,7 +92,7 @@ label {
             <label>Middle Name<br><input type="text" name="m_name"> <br></label>
             <label>Last Name *<br><input type="text" name="l_name"><br></label>
             <label>Email Address *<br><input type="text" name="email"><br><br> </label>
-            <label>Phone Number *<br><input type="text" name="phone"><br><br> </label>
+            <label>Phone Number <br><input type="text" name="phone"><br><br> </label>
             <label>Date of Birth *<br><input type="date" name="birth_date"><br><br> </label>
         </fieldset>
         <fieldset>
