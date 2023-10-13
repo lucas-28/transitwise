@@ -7,8 +7,9 @@ employee login (David, Uriel)
 account creation <Front, back> -> JS for input validation
 
 tickets 
-	ticket search (Uriel, +Lucas)
+	ticket search (Uriel)
 	reservations:
+		search results (Lucas)
 		reservation customization (Lucas front and back for 10/13)
 		checkout (Jonathan)
 		receipt
