@@ -1,3 +1,8 @@
+-- Date: 10/13/2023
+-- Path: docs/sql/production.sql
+-- Version: 7.7.1
+
+
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
