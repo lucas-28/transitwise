@@ -6,7 +6,9 @@ index (homepage)							->				index.php
 <about us> 								Lucas				about.php
 <FAQ> 									Uriel				faq.php				
 
-login (David, +Lucas: LP_login.php, LP_login_handler.php)	
+login 									David 
+									+Lucas				LP_login.php, LP_login_handler.php
+
 <account creation> 						        Lucas 				regiser.php, register_handler.php
 									Uriel 				createuserformtest.html	
 	 input validation needed 					->				js/register.js
