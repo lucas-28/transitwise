@@ -37,7 +37,7 @@
     $password = password_hash($password, PASSWORD_DEFAULT);
     var_dump($password);
 
-    /*
+    
     printf("validating credentials...");
     
     $sql = "SELECT email FROM users WHERE email = ?;";
@@ -56,7 +56,7 @@
     else {
         printf("Prepared statement failed.");
     }
-    */
+    
     
     
     $stmt = mysqli_stmt_init($dbconn);
