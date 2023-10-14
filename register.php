@@ -154,6 +154,7 @@ input {
             
             <label>Password *<br><input type="password" name="password" autocomplete="new-password"></label>
             <label>Confirm Password *<br><input type="password" name="confirm"></label>
+            
         </fieldset>
         
 

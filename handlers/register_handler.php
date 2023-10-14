@@ -53,6 +53,8 @@
             }
         }
     }
+
+    
     else {
         printf("Prepared statement failed.");
     }
