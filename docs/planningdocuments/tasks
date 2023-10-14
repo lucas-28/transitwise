@@ -1,0 +1,52 @@
+Task sheet:
+
+*task*									*person*			*file*
+
+index (homepage)							->				index.php
+<about us> 								Lucas				about.php
+<FAQ> 									Uriel				faq.php				
+
+login 									David 
+									+Lucas				LP_login.php, LP_login_handler.php
+
+<account creation> 						        Lucas 				regiser.php, register_handler.php
+									Uriel 				createuserformtest.html	
+	 input validation needed 					->				js/register.js
+
+tickets 						
+	[ticket search] 		    				Uriel				search.php?
+	reservations:
+		[search results and customization] 	    		Lucas for 10/17  		results.php, result_handler.php, results.js				
+		[checkout] 		    				Jonathan      			checkout.php?
+		receipt			    				->
+	<ticket view> 			    				Lucas for 10/3, ext 10/10 	tickets.php
+	ticket change, cancellation, refund				->
+
+employee portal
+	[employee login] 						David and Uriel for 10/17	employee_login.php?
+	employee home:							->
+		[customer service]: 					David and Uriel			service.php?
+			view and modify reservations 
+			in spreadsheet form
+		timecard: 						->
+	
+	
+	admin home: 							->
+		[finance summary Z report] 				Steven for 10/17		
+		transaction logs					->
+		status log 						->
+		employee list: add, remove employees 			->
+
+database
+	employee table							Aidan
+
+
+
+Legend:
++ means secondary work
+<> means largely complete
+[] means in progress
+-> means still needed
+? means undecided
+
+Note: js, includes, css, handlers have their own folders.
