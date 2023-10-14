@@ -42,13 +42,8 @@
         }
     }
 
-
+    
 ?>
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,13 +54,25 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            color: black;
             background-color: #f4f4f4;
         }
 
-        .container {
-            max-width: 400px;
+        .nav-icon-div {
+            width: 12em;
+            height: 2em;
             margin: 0 auto;
-            padding: 80px;
+        }
+        .nav-icon {
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 24em;
+            margin: 2em auto;
+            padding: 2em;
             background-color: #ffffff;
             border: 1px solid #ccc;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -73,10 +80,14 @@
 
         h2 {
             text-align: center;
+            margin: 1em 0;
+            font-size: 1.75em;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            margin: 1em 0;
         }
 
         label {
@@ -86,17 +97,18 @@
 
         input[type="text"],
         input[type="password"] {
-            width: 100%;
+            
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
 
         .btn {
+            justify-content: center;
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #007BFF;
+            background-color: #ee580f;
             color: #fff;
             border: none;
             border-radius: 4px;
@@ -105,18 +117,24 @@
         }
 
         .btn:hover {
-            background-color: #0056b3;
+            background-color: #003366;
         }
 
         #login-error {
             color: red;
         }
+
+        #reset, #register {
+            border-top: 1px solid #ccc;
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
+        <?php include 'includes/nav-icon.php'; ?>
         <h2>Login</h2>
-        <form action="lp_login_handler.php" method="post">
+        <form action="handlers/lp_login_handler.php" method="post">
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="text" id="email" name="email" required>
@@ -129,10 +147,10 @@
             <div class="form-group" id="login-error" >
                 <p><?php echo $login_err; ?></p>
             </div>
-            <div class="form-group">
+            <div class="form-group" id ="reset">
                 <p>Forgot your password? <a href="reset-password.php">Reset it here</a>.</p>
             </div>
-            <div class="form-group">
+            <div class="form-group" id="register">
                 <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
             </div>
 

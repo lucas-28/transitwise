@@ -56,18 +56,18 @@
                             
                             // Redirect user to welcome page
                             printf("redirecting...");
-                            header("Location: welcome.php");
+                            header("Location: /welcome.php");
                         } else{
                             // Password is not valid, return to login page
                             $_SESSION["login_failed"] = true;
-                            header("Location: lp_login.php");
+                            header("Location: /lp_login.php");
                         }
                     }
                 } else{
                     session_start();
                     // email doesn't exist, display a generic error message
                     $_SESSION["login_failed"] = true;
-                    header("Location: lp_login.php");
+                    header("Location: /lp_login.php");
                 }
             } else{
                 echo "We could not complete the request.";

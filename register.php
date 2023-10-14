@@ -7,6 +7,7 @@
     unset($_SESSION['error']);
 ?>
 
+<?php include 'includes/topnav.php'; ?>
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -70,6 +71,13 @@ input {
     width: 20em;
 }
 
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 1em 0;
+    
+}
+
 .flex-box {
     display: flex;
     flex-wrap: wrap;
@@ -122,7 +130,6 @@ input {
 </head>
 <body>
     <div id="body">
-        <h1><a href="index.php">Transitwise</a></h1>
         
 
         <div class="form-group">
