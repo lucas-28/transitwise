@@ -8,7 +8,7 @@
     
     // Check if the user is already logged in, if yes then redirect him to welcome page
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-        header("location: welcome.php");
+        header("location: account.php");
         exit;
     }
     if(isset($_SESSION['error'])) {
@@ -58,16 +58,7 @@
             background-color: #f4f4f4;
         }
 
-        .nav-icon-div {
-            width: 12em;
-            height: 2em;
-            margin: 0 auto;
-        }
-        .nav-icon {
-            max-width: 100%;
-            height: auto;
-            margin: 0 auto;
-        }
+
 
         .container {
             max-width: 24em;
@@ -82,6 +73,10 @@
             text-align: center;
             margin: 1em 0;
             font-size: 1.75em;
+        }
+
+        form {
+            margin-top: 2em;
         }
 
         .form-group {
@@ -113,15 +108,17 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            margin: auto;
+            margin: 2em 0;
         }
 
         .btn:hover {
             background-color: #003366;
         }
 
-        #login-error {
+        #login-error, #login-error p{
             color: red;
+            margin: 0;
+            font-weight: bold;
         }
 
         #reset, #register {
@@ -133,7 +130,7 @@
 <body>
     <div class="container">
         <?php include 'includes/nav-icon.php'; ?>
-        <h2>Login</h2>
+        
         <form action="handlers/lp_login_handler.php" method="post">
             <div class="form-group">
                 <label for="email">Email:</label>
@@ -144,16 +141,16 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <button type="submit" name="send" class="btn">Log In</button>
-            <div class="form-group" id="login-error" >
-                <p><?php echo $login_err; ?></p>
-            </div>
+
             <div class="form-group" id ="reset">
                 <p>Forgot your password? <a href="reset-password.php">Reset it here</a>.</p>
             </div>
             <div class="form-group" id="register">
                 <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
             </div>
-
+            <div class="form-group" id="login-error" >
+                <p><?php echo $login_err; ?></p>
+            </div>
         </form>
     </div>
 </body>

@@ -1,6 +1,6 @@
 <?php
     # Template from https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php  
-    include ("includes/connect.php");
+    include ("../includes/connect.php");
     $debug = "true";
 
 
@@ -51,23 +51,22 @@
                             // Store data in session variables
                             printf("storing session variables...");
                             $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
                             $_SESSION["email"] = $email;                            
                             
                             // Redirect user to welcome page
                             printf("redirecting...");
-                            header("Location: /welcome.php");
+                            header("Location: ../account.php");
                         } else{
                             // Password is not valid, return to login page
                             $_SESSION["login_failed"] = true;
-                            header("Location: /lp_login.php");
+                            header("Location: ../lp_login.php");
                         }
                     }
                 } else{
                     session_start();
                     // email doesn't exist, display a generic error message
                     $_SESSION["login_failed"] = true;
-                    header("Location: /lp_login.php");
+                    header("Location: ../lp_login.php");
                 }
             } else{
                 echo "We could not complete the request.";

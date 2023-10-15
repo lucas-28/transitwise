@@ -1,13 +1,23 @@
 <?php
-    // NEED TO FIX JS TO VALIDATE FORM BEFORE SUBMITTING
+   // HTML written by Uriel, PHP and CSS written by Lucas with GPT-4 and Copilot
+   
+   // NEED TO FIX JS TO VALIDATE FORM BEFORE SUBMITTING
     
     // Initialize the session
     session_start();
     $error = $_SESSION['error'];
     unset($_SESSION['error']);
+    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+        header("location: /transitwise/account.php");
+        exit;
+    }
+    else {
+        
+        include 'includes/topnav.php';
+    }
 ?>
 
-<?php include 'includes/topnav.php'; ?>
+
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -135,18 +145,17 @@ input {
         <div class="form-group">
 
         <form id="register" action="handlers/register_handler.php" method="post"> 
+        
         <h1>Create Account</h1>
         <p id="error" ><?php echo $error; ?></p>
         <p>* required fields</p>
         <fieldset class="flex-box">
-            
-                
-                <label for="f_name" >First Name *<br><input id="f_name" type="text" name="f_name"> <br></label>
-                <label>Middle Name<br><input type="text" name="m_name"> <br></label>
-                <label>Last Name *<br><input type="text" name="l_name"><br></label>
-                <label>Email Address *<br><input type="text" name="email"><br> </label>
-                <label>Phone Number <br><input type="text" name="phone"></label>
-                <label>Date of Birth *<br><input type="date" name="birth_date"> </label>
+            <label for="f_name" >First Name *<br><input id="f_name" type="text" name="f_name"> <br></label>
+            <label>Middle Name<br><input type="text" name="m_name"> <br></label>
+            <label>Last Name *<br><input type="text" name="l_name"><br></label>
+            <label>Email Address *<br><input type="text" name="email"><br> </label>
+            <label>Phone Number <br><input type="text" name="phone"></label>
+            <label>Date of Birth *<br><input type="date" name="birth_date"> </label>
             
         </fieldset>
         <fieldset class="flex-box">

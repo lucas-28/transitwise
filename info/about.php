@@ -1,3 +1,7 @@
+<!--
+This is the about page for the website. It contains information about the company and the team. 
+Made by Lucas with Chat GPT-4 and copilot
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +17,7 @@
             background-color: #f0f0f0;
         }
 
-        header {
+        h1 {
             background-color: #333;
             color: #fff;
             text-align: center;
@@ -29,10 +33,9 @@
         }
     </style>
 </head>
+<?php include '/transitwise/includes/topnav.php'; ?>
 <body>
-    <header>
-        <h1>About Us</h1>
-    </header>
+    <h1>About Us</h1>
     <div class="container">
         <h2>Plan Your Journey</h2>
         <p>Book your flights with ease and convenience. Whether you're traveling for business or leisure, we've got you covered.</p>
@@ -45,7 +48,7 @@
             <li>24/7 customer support</li>
         </ul>
 
-        <a href="#book-now" class="cta-button">Book Now</a>
+        <a href="/transitwise/index.php" class="cta-button">Book Now</a>
     </div>
     <div class="container">
         <h2>Our Story</h2>
