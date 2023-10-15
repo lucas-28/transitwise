@@ -1,0 +1,7 @@
+1. I would also mention that the SQL statements are prepared to prevent SQL injection attacks.
+
+2. The code is available in the lucas-code branch on Github. It should work with transitwiseV7_9.sql
+
+3. Some pages I made in addition to others on my team, so they might present different versions of the same page. 
+    We have not yet come to a final decision about CSS.
+    
