@@ -1,9 +1,10 @@
 <?php
+echo 'old';
 echo '<link rel="stylesheet" href="../reserve/flight_card.css">';
 
 include ('../includes/connect.php');
 include ('../includes/topnav.php');
-
+include ('../includes/flight_card.php');
 
 // Check connection
 if($dbconn->connect_error) {
@@ -19,9 +20,10 @@ if(isset($_GET['from'], $_GET['to'], $_GET['departure-date'])) {
     $from = $_GET['from'];
     $to = $_GET['to'];
     $departureDate = $_GET['departure-date'];
+    $returnDate = $_GET['return-date'];
     echo '<h2>Flights departing on ' . date('F j, Y',strtotime($departureDate)) .  ':</h2>';
-    
-    $returnDate = isset($_GET['return-date']) ? $_GET['return-date'] : null;
+    echo '<h2>Flights returning on ' . date('F j, Y',strtotime($returnDate)) .  ':</h2>';
+
 
     // Prepare SQL statement to search flights
     $stmt = $dbconn->prepare("SELECT * FROM flights 
@@ -40,34 +42,7 @@ if(isset($_GET['from'], $_GET['to'], $_GET['departure-date'])) {
     echo '<ul class="flight-list">';
     // Fetch the data
     while($row = $result->fetch_assoc()) {
-        // Here you can print out the details of each flight or store them in an array
-        //$flights[] = $row;
-        $start_datetime = new DateTime($row['departure_time']); 
-        $end_datetime = new DateTime($row['arrival_time']);
-        $duration = $start_datetime->diff($end_datetime); 
-        
-        
-        
-        //echo '<link rel="stylesheet" href="../reserve/results.css">';
-        
-        echo '<li><div class="flight-card">';
-        echo '    <div class="flight-info">';
-        echo '        <div class="flight-times">';
-        echo '            <span class="display-times">' . date('h:i a',strtotime($row['departure_time'])) . ' - ' . date('h:i a',strtotime($row['arrival_time'])) .  '</span>';
-        echo '        </div>';
-        echo '        <div class="route-box">';
-        echo '        <span class="flight-route">' . $row['APID_D'] . ' -> ' . $row['APID_A'] . '</span>';
-        echo '        </div>';
-        echo '        <span class="airline-name"> ' . $row['AL_name'] . '</span>';
-        echo '        <span class="flight-name"> Flight ' . $row['flight_number'] . '</span>';
-        echo '    </div>';
-        echo '    <div class="duration">';
-        echo '        <span class="flight-duration">' . $duration->h . 'h ' . $duration->i . 'm </span>';
-        echo '    <div class="flight-price">';
-        echo '         <span class="ticket_cost">$' . $row['ticket_cost'] . '</span>';
-        echo '    </div>';
-        echo '</div><li>';
-        
+        $flight_card($row);
     }
     echo '</ul>';
     // Close the statement
