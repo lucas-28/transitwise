@@ -1,9 +1,17 @@
+.reserve-btn {
+    background-color: #036c5e;
+    border: none;
+    border-radius: 0.5em;
+    color: #000;
+    text-decoration: none;
+}
+
 .flight-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1em;
-    margin: 1em 8em 1em 0;
+    padding: 2em;
+    margin: 1em 0em 1em 0;
     border: 1px solid #ddd;
     border-radius: 0.5em;
     background-color: #fff;
@@ -47,24 +55,9 @@
     align-items: center;
 }
 
-
-
-
-.flight-date,
-.flight-return-date {
+.flight-date, .flight-return-date {
     font-size: 1em;
     margin: 0.25em 0;
-}
-
-.book-btn {
-    display: inline-block;
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 0.5em;
-    background-color: #04AA6D;
-    color: #fff;
-    text-decoration: none;
-    text-align: center;
 }
 
 .book-btn:hover {

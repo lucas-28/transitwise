@@ -90,24 +90,15 @@ include 'includes/topnav.php';
     <div class="container">
         <div class="search-box">
             <h2>Search Flights</h2>
-            <form action="handlers/search_handler.php" method="get">
-                <select name="from">
-                    <option value="">From...</option>
-
-                    <option value="JFK">New York - JFK </option>
-                    <option value="los-angeles">Los Angeles</option>
-                    <option value="chicago">Chicago</option>
-                    <!-- Add other cities as needed -->
-                </select>
-                <select name="to">
-                    <option value="">To...</option>
-                    <option value="LAX">Los Angeles - LAX</option>
-                    <option value="paris">Paris</option>
-                    <option value="tokyo">Tokyo</option>
-                    <!-- Add other cities as needed -->
-                </select>
-                <input type="date" name="departure-date" placeholder="Departure Date">
-                <input type="date" name="return-date" placeholder="Return Date (Optional)">
+            <form action="handlers/search_handler_external.php" method="get">
+                <label for="origin">Origin (3 letter code)</label>
+                <input type="text" name="origin" placeholder="Origin">
+                <label for="destination">Destination</label>
+                <input type="text" name="destination" placeholder="Destination">
+                <label for="departure-date">Departure Date (YYYYMMDD)</label>
+                <input type="text" name="departure-date" placeholder="Departure Date">
+                <label for="return-date">Return Date (Optional)</label>
+                <input type="text" name="return-date" placeholder="Return Date (Optional)">
                 <input type="submit" value="Search Flights">
             </form>
         </div>
