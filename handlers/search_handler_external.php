@@ -1,6 +1,7 @@
 <?php
 echo '<link rel="stylesheet" href="/transitwise/css/flight_card.css">';
 
+
 $inputType = "received";
 $statementType = "not prepared";
 $dep = 20220702;
@@ -12,7 +13,6 @@ $des = 'LAX';
 
 include ('../includes/connect.php');
 include ('../includes/topnav.php');
-//require ('../includes/flight_card.php');
 
 
 
@@ -104,7 +104,7 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
 
     
     //echo '<link rel="stylesheet" href="../reserve/results.css">';
-
+    
     echo '<ul class="flight-list">';
     while($row = $result->fetch_assoc()) {
         // Here you can print out the details of each flight or store them in an array
@@ -112,6 +112,11 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
         $minutes = $row['duration'];
         $duration =  intdiv($minutes, 60).' h '. ($minutes % 60) . ' m';
         $price = round($row['distance'] * 0.15);
+
+        $row['dep_time'] = sprintf('%04d', $row['dep_time']);
+        $row['arr_time'] = sprintf('%04d', $row['arr_time']);
+        //$dep_time = DateTime::createFromFormat('Hi', $row['dep_time']);
+        //$arr_time = DateTime::createFromFormat('Hi', $row['arr_time']);
         $card = flight_card($row, $duration, $price);
         foreach($card as $value) {
             echo $value;
@@ -126,6 +131,9 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
     }
 
     $stmt->close();
+}
+else {
+    echo 'No input specified';
 }
 
 
