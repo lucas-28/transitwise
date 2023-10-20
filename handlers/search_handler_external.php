@@ -3,7 +3,7 @@ echo '<link rel="stylesheet" href="/transitwise/css/flight_card.css">';
 
 
 $inputType = "received";
-$statementType = "not prepared";
+$statementType = "prepared";
 $dep = 20220702;
 $ori = 'JFK';
 $des = 'LAX';
@@ -46,7 +46,7 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
     }
 
 
-    echo '<h2>Flights departing on ' . date('l, F jS',strtotime(strval($departureDate))) .  ':</h2>';
+    echo '<h2>Flights departing on ' . date('l, F jS, Y',strtotime(strval($departureDate))) .  ':</h2>';
 
     #Put dep date in format 'YYYYMMDD'
     
@@ -54,8 +54,8 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
 
     // For debugging
     
-    $stmt = $dbconn->prepare("SELECT * FROM `external_flights2` 
-    WHERE `origin` = ? AND `destination` = ? AND `origin` = ? ;");
+    $stmt = $dbconn->prepare("SELECT * FROM `external_flights` 
+    WHERE `origin` = ? AND `destination` = ? AND `date` = ? ;");
 
     if ($statementType == "prepared") {
             // Prepare SQL statement to search flights
@@ -89,9 +89,9 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
             echo nl2br("\n Fetching data...\n");
         }
     }
-    else if ($statementType == "not prepared"){
+    else if ($statementType == "not-prepared"){
         // Insecure query
-        $sql = "SELECT * FROM " . "`external_flights2` 
+        $sql = "SELECT * FROM " . "`external_flights` 
         WHERE `origin` = '" . $origin . "' AND `destination` = '" . $destination .  "' AND `date` = '" . $departureDate . "';";
         if ($debug== "true"){
             printf($sql);

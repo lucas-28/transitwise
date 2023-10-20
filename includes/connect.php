@@ -1,12 +1,12 @@
 <?php
 //$path = '/includes';
 //set_include_path(get_include_path() . PATH_SEPARATOR . $path);
-$server = "127.0.0.1:3306"; // Workbench server
-//$server = "localhost"; // Local server
+//$server = "127.0.0.1:3306"; // Workbench server
+$server = "localhost"; // Local server
 $dbusername = "root";
 $password = "";
 $db = "transitwise";
-$debug = "false";
+$debug = "true";
 
 $dbconn = mysqli_connect($server, $dbusername, $password, $db);
 
