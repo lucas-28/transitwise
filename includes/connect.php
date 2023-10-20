@@ -6,7 +6,7 @@ $server = "localhost"; // Local server
 $dbusername = "root";
 $password = "";
 $db = "transitwise";
-$debug = "true";
+$debug = "false";
 
 $dbconn = mysqli_connect($server, $dbusername, $password, $db);
 

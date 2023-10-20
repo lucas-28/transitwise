@@ -100,6 +100,89 @@ def sample(field, value):
         return random.sample(rows, 10)
 
 
+def prune_aircraft():
+    csvpath = '/Applications/XAMPP/xamppfiles/htdocs/flights2022.csv'
+    with open(csvpath, newline='') as csvfile:
+        flight_reader = csv.reader(csvfile, delimiter=',', quotechar='|')
+        fields = next(flight_reader)
+        print(fields)
+        n_numbers = []
+
+        for row in flight_reader:
+            n_number = row[2]
+            n_numbers.append(n_number[1:])
+        n_numbers = list(set(n_numbers))
+        # print(n_numbers)
+
+    csvpath ='/Users/lucas/Downloads/ReleasableAircraft-2/MASTER.csv'
+    with open(csvpath, newline='') as csvfile:
+        reader = csv.reader(csvfile, delimiter=',', quotechar='|')
+        fields = next(reader)
+        print(fields)
+        model_numbers = {}
+        with open('tail_model_lookup.csv', 'w+') as output:
+            header = ['tail_number', 'model_number']
+            writer = csv.DictWriter(output, fieldnames=header)
+            output.write("tail_number,model_number\n")
+            for row in reader:
+                if str(row[0]) in n_numbers:
+                    model_numbers[row[2]] = "N" + row[0] 
+            for key, value in model_numbers.items():
+                writer.writerow({'tail_number': value, 'model_number': key})
+
+    # csvpath = '/Users/lucas/Downloads/ReleasableAircraft-2/ACFTREF.csv'
+    # with open(csvpath, newline='') as csvfile:
+
+    #     reader = csv.reader(csvfile, delimiter=',', quotechar='|')
+    #     fields = next(reader)
+    #     print(fields)
+    #     models = []
+    #     for row in reader:
+    #         if str(row[0]) in model_numbers:
+    #             line = [row[0], row[1], row[2], row[8]]
+    #             models.append(",".join(i.strip() for i in line))
+    #     models = list(set(models))
+    #     models.sort()
+    #     with open('aircraft.csv', 'w+') as aircraft:
+    #         aircraft.writelines("\n".join(models))
+    #         aircraft.write("\n")
+        
+def get_airlines():
+    csvpath = '/Applications/XAMPP/xamppfiles/htdocs/flights2022.csv'
+    with open(csvpath, newline='') as csvfile:
+        flight_reader = csv.reader(csvfile, delimiter=',', quotechar='|')
+        fields = next(flight_reader)
+        print(fields)
+        airlines = {}
+        for row in flight_reader:
+            if row[1] not in airlines:
+                airlines[row[1]] = ""
+        print(airlines)
+        return airlines
+
+print("Getting airlines")
+airlines = get_airlines()
+print("Done getting airlines")
+
+def write_airlines():
+    with open('airlines.csv', 'w+') as output:
+        csvpath = '/Users/lucas/Downloads/L_CARRIER_HISTORY.csv'
+        with open(csvpath, newline='') as csvfile:
+            reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+            for row in reader:
+                if row[0] in airlines.keys():
+                    airlines[row[0]] = row[1]
+            output.write("ALID,airline_name\n")
+            for ID in airlines.keys():
+                output.write(ID +  "," + airlines[ID] + "\n")
+
+write_airlines()
+
+# prune_aircraft()
+
+
+
+
 
 search_field = ''
 search_value = '2475'
@@ -111,10 +194,10 @@ search_value = '2475'
 # count = count_values(search_field, search_value)
 # print("Number of times " + search_value + " appears in " + search_field + ": " + str(count))
 
-print("Sampling 10 random rows where " + search_field + " = " + search_value)
-rows = sample(search_field, search_value)
-for i in rows:
-    print(i)
+# print("Sampling 10 random rows where " + search_field + " = " + search_value)
+# rows = sample(search_field, search_value)
+# for i in rows:
+#     print(i)
 
 
 # print("Finding max value of all fields")

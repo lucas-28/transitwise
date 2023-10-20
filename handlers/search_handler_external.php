@@ -37,8 +37,8 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
         $departureDate = $dep;
     }
     else if ($inputType == "received"){
-        $origin = $_GET['origin'];
-        $destination = $_GET['destination'];
+        $origin = strtoupper($_GET['origin']);
+        $destination = strtoupper($_GET['destination']);
         $departureDate = intval($_GET['departure-date']);
     }
     else {
