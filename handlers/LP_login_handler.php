@@ -3,16 +3,10 @@
     include ("../includes/connect.php");
     $debug = "true";
 
-
-
-    
-    
     $email = trim($_POST["email"]);
     $password = trim($_POST["password"]);
     
-
-
-
+    
     // Validate credentials
     printf("validating credentials...");
     if(empty($email_err) && empty($password_err)){

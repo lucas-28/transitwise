@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  header {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  
+  section {
+    margin-bottom: 20px;
+  }
+  
+  #search-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  #search-form h2 {
+    margin-bottom: 10px;
+  }
+  
+  #search-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  #search-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  #search-form button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  #search-form button:hover {
+    background-color: #2980b9;
+  }
+  
+  #search-results .flight-info {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  #search-results .flight-info span {
+    margin-right: 10px;
+  }
+  
+  #search-results .book-button {
+    padding: 10px 20px;
+    background-color: #2ecc71;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  #search-results .book-button:hover {
+    background-color: #27ae60;
+  }
+  
+  footer {
+    text-align: center;
+    padding-top: 20px;
+  }
