@@ -1,0 +1,184 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em; /* Equivalent to 16px when base font-size is 16px */
+    overflow: auto;
+
+}
+header {
+    width: 100%;
+    min-width: 100%;
+    min-height: 4em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em; /* Equivalent to 16px when base font-size is 16px */
+    background-color: #003366;
+}
+
+
+#logo {
+    display: block;
+
+}
+#logo-box {
+    display:flex;
+    justify-content: center;
+    background-color: #fff;
+    margin: 2em auto;
+}
+.container {
+    width: 80%;
+    min-width: fit-content;
+    overflow: hidden;
+}
+.search-box {
+    background-color: #fff;
+    margin: 1em;
+    padding: 2em;
+    border-radius: 0.3125em; /* Equivalent to 5px when base font-size is 16px */
+    box-shadow: 0.125em 0.125em 0.75em #aaa;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625em; /* Equivalent to 10px when base font-size is 16px */
+}
+select, input[type="text"], input[type="date"], input[type="submit"] {
+    padding: 0.625em; /* Equivalent to 10px when base font-size is 16px */
+    margin: 0.3125em 0; /* Equivalent to 5px when base font-size is 16px */
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0.3125em;
+    border: 0.0625em solid #ddd; /* Equivalent to 1px when base font-size is 16px */
+}
+select:focus, input[type="text"]:focus, input[type="date"]:focus {
+    outline: 0.0625em solid #aaa; /* Equivalent to 1px when base font-size is 16px */
+}
+option {
+    padding: 0.625em; /* Equivalent to 10px when base font-size is 16px */
+    margin: 0.3125em 0; /* Equivalent to 5px when base font-size is 16px */
+    min-width: 100%;
+    max-width: 100%;
+    background-color: #fff;
+}
+
+#dates, #location {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 0.625em;
+    padding: 0.625em; 
+}
+
+.location-search {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.625em; 
+    width: 100%;
+    min-width: 12em;
+}
+.departure-date, .return-date {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.625em; 
+    width: 100%;
+    min-width: 12em;
+}
+
+input[type="submit"] {
+    padding: 1.25em;
+    margin: 2em 0;
+    background-color: #003366;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #cff5ff;
+    color: #003366;
+}
+input[type="submit"]:active {
+    background-color: #003366;
+}
+
+.airport-list {
+    display: none;
+    flex-direction: column;
+    gap: 0.625em;
+    padding: 0.625em;
+    margin: 0;
+    list-style-type: none;
+    border: 0.0625em solid #ddd; /* Equivalent to 1px when base font-size is 16px */
+    border-radius: 0.3125em;
+    background-color: #fff;
+    position: absolute;
+    top: 4em;
+    z-index: 1;
+    width: 100%;
+    max-width: 90%;
+    max-height: 12em;
+    overflow: scroll;
+}
+.airport-list li {
+    padding: 0.625em;
+    margin: 0;
+    border: none;
+    border-bottom: 0.0625em solid #ddd; /* Equivalent to 1px when base font-size is 16px */
+    border-radius: 0.3125em;
+    cursor: pointer;
+
+}
+.airport-list li:last-child {
+    border-bottom: none;
+}
+.airport-list li:hover {
+    background-color: #ddd;
+}
+.airport-list li:active {
+    background-color: #aaa;
+}
+.airport-list li:focus {
+    background-color: #aaa;
+}
+
+
+
+footer {
+    background-color: #003366;
+    color: white;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.footer-container a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.footer-container a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
