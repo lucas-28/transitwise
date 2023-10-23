@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Daily Financial Summary (Z Report)</title>
+<?php //set up table ?>
+	<title>Daily Financial Summary (Z Report)</title>
     <style>
         h1, table {
             margin: 0 auto;
@@ -10,6 +11,7 @@
     </style>
 </head>
 <body>
+<?php // create table labels ?>
     <h1>Daily Financial Summary (Z Report)</h1>
     <table border="1">
         <tr>
@@ -17,6 +19,7 @@
             <th>Amount($)</th>
         </tr>
         <tr>
+<?php // instantiate all variables. Values are set to 0.0 as a placeholder. Will later communicate with backend for information. ?>
             <td>total sales before tax</td>
             <td><?php $total_sales_before_tax = 0.0; echo $total_sales_before_tax; ?></td>
         </tr>
@@ -55,3 +58,5 @@
     </table>
 </body>
 </html>
+
+
