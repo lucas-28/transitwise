@@ -49,18 +49,18 @@
                             
                             // Redirect user to welcome page
                             printf("redirecting...");
-                            header("Location: ../account.php");
+                            header("Location: /transitwise/home/account/account.php");
                         } else{
                             // Password is not valid, return to login page
                             $_SESSION["login_failed"] = true;
-                            header("Location: ../lp_login.php");
+                            header("Location: /transitwise/home/account/lp_login.php");
                         }
                     }
                 } else{
                     session_start();
                     // email doesn't exist, display a generic error message
                     $_SESSION["login_failed"] = true;
-                    header("Location: ../lp_login.php");
+                    header("Location: /transitwise/home/account/lp_login.php");
                 }
             } else{
                 echo "We could not complete the request.";

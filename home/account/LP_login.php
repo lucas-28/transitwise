@@ -61,7 +61,8 @@
 
 
         .container {
-            max-width: 24em;
+            width: 24em;
+            height: 36em;
             margin: 2em auto;
             padding: 2em;
             background-color: #ffffff;
@@ -127,11 +128,13 @@
 
     </style>
 </head>
+
 <body>
+    <div class="main">
     <div class="container">
-        <?php include 'includes/nav-icon.php'; ?>
+        <?php include '../../includes/nav-icon.php'; ?>
         
-        <form action="handlers/lp_login_handler.php" method="post">
+        <form action="/transitwise/handlers/lp_login_handler.php" method="post">
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="text" id="email" name="email" required>
@@ -152,6 +155,7 @@
                 <p><?php echo $login_err; ?></p>
             </div>
         </form>
+    </div>
     </div>
 </body>
 </html>

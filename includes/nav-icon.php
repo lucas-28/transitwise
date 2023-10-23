@@ -17,7 +17,7 @@ Made by Lucas with Chat GPT-4 and Copilot
 </style>
 
 <div class = "nav-icon-div">
-<a class = "nav-icon" href = index.php>
-    <img src = images/logo3.png alt = "logo" width = 100% height = 100% >
+<a class = "nav-icon" href = "/transitwise/home/index.php">
+    <img src = /transitwise/images/logo3.png alt = "logo" width = 100% height = 100% >
 </a>
 </div>

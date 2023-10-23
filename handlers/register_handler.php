@@ -48,7 +48,9 @@
             mysqli_stmt_store_result($stmt);
             if(mysqli_stmt_num_rows($stmt) >= 1){
                 printf("Email already exists.");
-                $_SESSION["error"] = "An account is already registered with this email.";
+                $_SESSION["error-type"] = "duplicate-email";
+                $_SESSION["error-message"] = "An account with this email already exists.";
+                $_SESSION["duplicate-email"] = $param_email;
                 header("location: /transitwise/register.php");
                 exit;
             }

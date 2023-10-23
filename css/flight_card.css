@@ -5,6 +5,14 @@
     color: #000;
     text-decoration: none;
 }
+.flight-card:hover {
+    box-shadow: 0.125em 0.125em 0.75em #aaa;
+    cursor: pointer;
+}
+.flight-card:active {
+    background-color: #cff5ff;
+    cursor: pointer;
+}
 
 .flight-card {
     display: flex;

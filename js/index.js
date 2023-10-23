@@ -7,9 +7,8 @@ navToggle.addEventListener('click', () => {
     navList.classList.toggle('active');
 });
 
-
-
 class Airport {
+    // class to store airport information
     constructor(code, city, state, name) {
         this.code = code;
         this.city = city;
@@ -18,6 +17,107 @@ class Airport {
     }
 }
 
+const getSearchBoxes = document.getElementsByClassName('airport-input');
+
+for (const input of getSearchBoxes) {
+
+    // create a new list for each input
+    console.log(input.parentElement.id);
+    const list = document.createElement('ul');
+    list.setAttribute('class', 'airport-list');
+    list.setAttribute('id', input.parentElement.id + "-list");
+    list.style.display = "none";
+    input.parentNode.appendChild(list);
+
+    // add event listeners
+    input.addEventListener('focus', displayResultsList);
+    input.addEventListener('keyup', createResultsList);
+    input.addEventListener('blur', hideResultsList);
+}
+
+function displayResultsList(event){
+    // when the input is focused, display the list
+    console.log('displaying');
+    const list = event.target.nextElementSibling;
+    let itemCount = list.getAttribute('data-item-count');
+    if (itemCount > 0) {
+        list.style.display = "flex";
+    }
+}
+
+function hideResultsList(event) {
+    // when the input is unfocused, hide the list
+    console.log('hiding');
+    setTimeout(function() {
+        const list = event.target.nextElementSibling;
+        // list.childNodes.forEach(child => {
+        //     list.removeChild(child);
+        // });
+        list.style.display = "none";
+    }, 500);
+}
+
+function selectListItem(event) {
+    // when a list item is selected, set the input value to the selected item
+    console.log(event.target);
+    const list = event.target.parentElement;
+    const input = document.getElementById(list.id.split("-")[0] + "-input");
+    console.log("The input element is: ");
+    console.log(input);
+    console.log("The previous input value was %s", input.value);
+    
+    input.value = event.target.id;
+    input.focus();
+    list.childNodes.forEach(child => {
+        list.removeChild(child);
+    });
+    list.setAttribute('data-item-count', 0);
+    list.style.display = "none";
+    console.log("The new input value is %s", input.value);
+}
+
+function createResultsList(event) {
+    // when the input is typed in, create a list of matching airports
+    const list = event.target.nextElementSibling;
+    let itemCount = list.getAttribute('data-item-count');
+    const searchQuery = event.target.value.toLowerCase().trim();
+
+    // If the search query is greater than 2 chars, display matches
+    if (searchQuery.length > 0) {
+        airportObjects.forEach(airport => {
+            let element = document.getElementById(airport.code);
+            // checks to see if airport is already added to list
+            if (element)  {
+                if (airport.code.toLowerCase().indexOf(searchQuery) == -1 && airport.name.toLowerCase().indexOf(searchQuery) == -1 && airport.city.toLowerCase().indexOf(searchQuery) == -1) {
+                    //console.log("removing")
+                    element.remove();
+                    list.setAttribute('data-item-count', itemCount - 1);
+                    itemCount--;
+                }
+            }
+            else if (airport.city.toLowerCase().indexOf(searchQuery) > -1) {
+                // Create new element: written by copilot with help of mdn web docs
+                //console.log("adding")
+                const newListItem = document.createElement('li');
+                newListItem.textContent = airport.code + " - " + airport.name + " - " + airport.city + ", " + airport.state;
+                newListItem.setAttribute('class', 'originListItem');
+                newListItem.setAttribute('id', airport.code);
+                //currentAirports.push(airport.code);
+                list.appendChild(newListItem);
+                newListItem.addEventListener('click', selectListItem);
+                list.setAttribute('data-item-count', itemCount + 1);
+                itemCount++;
+            }
+            else{ return;}
+        });
+        console.log(itemCount)
+        if (itemCount > 0) {
+            console.log("displaying")
+            list.style.display = "flex";
+        }
+        return;
+    }
+}
 
 const airports = 
 "ABE,Allentown/Bethlehem/Easton, PA, Lehigh Valley International\n"
@@ -394,6 +494,7 @@ const airports =
 + "YKM,Yakima, WA, Yakima Air Terminal/McAllister Field\n"
 + "YUM,Yuma, AZ, Yuma MCAS/Yuma International\n"
 
+// Split each row into parts and then make an airport object for each row
 const airportArray = airports.split("\n");
 const airportObjects = [];
 for (var i = 0; i < airportArray.length; i++) {
@@ -405,197 +506,3 @@ for (var i = 0; i < airportArray.length; i++) {
     airportObjects.push(new Airport(airport[0], airport[1], airport[2], airport[3]));
     //console.log(airportObjects[i].code);
 }
-
-console.log(airportObjects[0].name);
-
-class searchBox {
-    constructor(input) {
-        
-        this.input = input;
-        console.log(this.input.parentElement.id);
-        this.list = document.createElement('ul');
-        this.list.setAttribute('class', 'airport-list');
-        this.list.setAttribute('id', this.input.parentElement.id + "-list");
-        this.list.style.display = "none";
-        this.input.parentNode.appendChild(this.list);
-        
-        
-
-        const list = this.list;
-        let itemCount = 0;
-        let currentAirports = [];
-
-
-        this.input.addEventListener('focus', displayResultsList);
-        console.log(input);
-        
-        this.input.addEventListener('keyup', createResultsList);
-            
-        
-        this.input.addEventListener('blur', hideResultsList);
-    }
-    get currentAirports() {
-        return this.currentAirports;
-    }
-    get itemCount() {
-        return this.itemCount;
-    }
-}
-
-function displayResultsList(event){
-    console.log('displaying');
-    const list = event.target.nextElementSibling;
-    let itemCount = list.getAttribute('data-item-count');
-    if (itemCount > 0) {
-        list.style.display = "flex";
-    }
-}
-
-function hideResultsList(event) {
-    console.log('hiding');
-    setTimeout(function() {
-        const list = event.target.nextElementSibling;
-        // list.childNodes.forEach(child => {
-        //     list.removeChild(child);
-        // });
-        list.style.display = "none";
-    }, 500);
-}
-
-function selectListItem(event) {
-    console.log(event.target);
-    const list = event.target.parentElement;
-    const input = document.getElementById(list.id.split("-")[0] + "-input");
-    console.log("The input element is: ");
-    console.log(input);
-    console.log("The previous input value was %s", input.value);
-    
-    input.value = event.target.id;
-    input.focus();
-    list.childNodes.forEach(child => {
-        list.removeChild(child);
-    });
-    list.setAttribute('data-item-count', 0);
-    list.style.display = "none";
-    console.log("The new input value is %s", input.value);
-}
-
-function createResultsList(event) {
-    const input = event.target;
-    const list = event.target.nextElementSibling;
-    let itemCount = list.getAttribute('data-item-count');
-
-
-    const searchQuery = event.target.value.toLowerCase().trim();
-    // If the search query is greater than 2 chars, display matches
-    if (searchQuery.length > 0) {
-        airportObjects.forEach(airport => {
-            let element = document.getElementById(airport.code);
-            // checks to see if airport is already added to list
-            if (element)  {
-                if (airport.code.toLowerCase().indexOf(searchQuery) == -1 && airport.name.toLowerCase().indexOf(searchQuery) == -1 && airport.city.toLowerCase().indexOf(searchQuery) == -1) {
-                    //console.log("removing")
-                    element.remove();
-                    list.setAttribute('data-item-count', itemCount - 1);
-                    itemCount--;
-                }
-            }
-            else if (airport.city.toLowerCase().indexOf(searchQuery) > -1) {
-                // Create new element: written by copilot with help of mdn web docs
-                //console.log("adding")
-                const newListItem = document.createElement('li');
-                newListItem.textContent = airport.code + " - " + airport.name + " - " + airport.city + ", " + airport.state;
-                newListItem.setAttribute('class', 'originListItem');
-                newListItem.setAttribute('id', airport.code);
-                //currentAirports.push(airport.code);
-                list.appendChild(newListItem);
-                newListItem.addEventListener('click', selectListItem);
-                list.setAttribute('data-item-count', itemCount + 1);
-                itemCount++;
-                
-                
-            }
-            else{ return;}
-        });
-        console.log(itemCount)
-        if (itemCount > 0) {
-            console.log("displaying")
-            list.style.display = "flex";
-        }
-
-        
-        return;
-    }
-
-        
-}
-
-
-
-
-
-const getSearchBoxes = document.getElementsByClassName('airport-input');
-let searchBoxes = [];
-
-for (const box of getSearchBoxes) {
-    const new_box = new searchBox(box);
-    searchBoxes.push(new_box);
-}
-
-// written by GPT-4 with help of Lucas Pfeifer
-// for (const searchBox of searchBoxes) {
-//     // Add event listener to search box
-//     const airportList = searchBox.nextElementSibling;
-//     let itemCount = 0;
-//     searchBox.addEventListener('focus', function() {
-//         if (itemCount > 0) {
-//             airportList.style.display = "flex";
-//         }
-//         searchBox.addEventListener('keyup', function() {
-//             const searchQuery = searchBox.value.toLowerCase();
-//             console.log(searchQuery);
-//             // If the search query is greater than 2 chars, display matches
-//             if (searchQuery.length > 0) {
-//                 airportObjects.forEach(airport => {
-//                     // checks airport objects for matches
-//                     const element = document.getElementById(airport.code);
-                    
-//                     if ( !element && airport.name.toLowerCase().indexOf(searchQuery) > -1) {
-//                         // Create new element: written by copilot with help of mdn web docs
-//                         console.log("adding")
-//                         const newListItem = document.createElement('li');
-//                         newListItem.textContent = airport.code + " - " + airport.name;
-//                         newListItem.setAttribute('class', 'originListItem');
-//                         newListItem.setAttribute('id', airport.code);
-//                         airportList.appendChild(newListItem);
-//                         itemCount++;
-                        
-                        
-//                     }
-//                     else if (element && airport.toLowerCase().name.indexOf(searchQuery) == -1) {
-//                         console.log("removing")
-//                         airportList.removeChild(element);
-//                         itemCount--;
-//                     }
-//                     else{ return;}
-//                 });
-
-//                 return;
-//             }
-//             console.log(itemCount)
-//             if (itemCount > 0) {
-//                 console.log("displaying")
-//                 airportList.style.display = "flex";
-//             }
-//         });
-//     });
-//     searchBox.addEventListener('blur', function() {
-//         setTimeout(function() {
-//             airportList.childNodes.forEach(child => {
-//                 airportList.removeChild(child);
-//             });
-//             airportList.style.display = "none";
-//         }, 50);
-//     });
-// }
-

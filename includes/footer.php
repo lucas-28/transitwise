@@ -1,5 +1,4 @@
 
-<!-- Other website content here -->
 
 <footer>
     <div class="footer-container">
