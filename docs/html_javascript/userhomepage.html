@@ -1,0 +1,266 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<!--For php editor, 
+  - Keep the user login.
+  - Grab the user's first name from database and display after "Hello,"
+  - Grab the user's email from database and display after "User:"
+
+  - All buttons have href to link to other files, they are labeled
+    as "placeholder" whenever those pages are finsihed. Home may need 
+    to change as well to send user to home page.
+
+  - Script section left empty unless needed.
+    -->
+
+    <title>User Home page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width", intial-scale="1.0">
+    
+    <style>
+        
+        *{
+            /*mainly sets the font style for page*/
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins",sans-serif;
+        }
+        /*background of the main page*/
+        body {
+            background: rgba(157, 162, 187, 0.637);
+        }
+        /*Compnay name title*/
+        .Company-name {
+            font-size: 40px;
+            border-bottom:groove;
+            background: rgb(255, 255, 255);
+            border-bottom-color: rgb(153, 153, 153);
+            height: 10%;
+            padding: 10px 25px;
+        }
+        
+        .container-white-box {
+            background: rgb(255, 255, 255);
+            display: block;
+            border: groove;
+            box-shadow: 0 0px 10px rgba(0, 0, 0, 0.199);
+            width:50%;
+            margin: auto;
+            padding: auto;
+            
+        }
+        
+        .greeting-user {
+            font-size: 36px;
+            text-align: left;
+            padding: 10px 20px 40px;
+        }
+        .sidebar {
+            
+            height: auto; /* Full-height: remove this if you want "auto" height */
+            width: 180px; /* Sets the width of the sidebar */
+            position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+            z-index: 1; /* Stay on top */
+            
+            left: 0;
+            background-color: #0e1b68; /* block color */
+            overflow-x: hidden; /* Disable horizontal scroll */
+            padding-top: 20px;
+            padding-bottom: 20px;
+            }
+
+        /* The navigation menu links */
+        .sidebar a {
+            padding: 10px 10px 10px 10px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            }
+
+        /* When you mouse over the navigation links, change their color */
+        .sidebar a:hover {
+            color: #eeeeee;
+            }
+        /*Modifies the button design on the sidebar.*/
+        .sidebar button{
+            width: 100%;
+            height: 45px;
+            background: rgb(255, 255, 255);
+            border: none;
+            box-shadow: 0 0px 10px rgba(0, 0, 0, .1);
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+            
+        }
+        .sidebar button:hover {
+            background: rgb(218, 218, 218);
+        }
+        /* The navigation menu links */
+        .content a {
+            padding: 6px 8px 6px 6px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #ffffff;
+            display: block;
+            }
+
+        /* When you mouse over the navigation links, change their color */
+        .content a:hover {
+            color: #eeeeee;
+            }
+        /*Modifies the button design on the main page.*/
+        .content button{
+            width: 100%;
+            height: 45px;
+            background: rgb(255, 255, 255);
+            border: none;
+            box-shadow: 0 0px 10px rgba(0, 0, 0, .1);
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+            
+        }
+        .content button:hover {
+            background: rgb(218, 218, 218);
+        }
+        /* gray divider line*/
+        .hr-line {
+            border-top:3px solid grey;
+            width:90%;
+            margin: 20px;
+        }
+        
+        .content{
+            border-bottom:1px solid grey;
+            height:40%;
+            font-size: 16px;
+            padding: 10px 18px;
+            margin: 10px;
+        }
+        .square-title{
+            padding: 20px;
+            font-size:20px;
+        }
+        .square-description{
+            padding:0 0 20px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!--This code is the user homepage.
+        It should display the user's basic info and allows the user to press a button to 
+        edit there account.
+    -->
+    <h1 class="Company-name">Transitwise</h1>
+
+    <!--Creates the navigation side bar of links to edit/view account.-->
+    <div class="sidebar">
+        <nav role="navigation" class="nav">
+            <ul role="list" class="nav-list">
+                <!--placeholder should be replace with the location of the file.-->
+                <li role="list" class="home-page">
+                    <a href="../homepage.html"><button type="button">Home</button></a>
+                </li>
+                <li role="list" class="edit-profile">
+                    <a href="placeholder"><button type="button">Edit profile</button></a>
+                </li>
+                <li role="list" class="edit-password">
+                    <a href="placeholder"><button type="button">Edit password</button></a>
+                </li>
+                <li role="list" class="edit-payment-info">
+                    <a href="placeholder"><button type="button">Edit payment info</button></a>
+                </li>
+                <li role="list" class="view-purchases">
+                    <a href="placeholder"><button type="button">View tickets</button></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container-white-box">
+
+        <div class="profile">
+            <!--Should display the user's first name after the Hello,.-->
+            <h2 class="greeting-user">Hello, </h2><label class="user-firstname"></label>
+
+            <!--Creates the navigation side bar of links to edit/view account.-->
+            <div class="content">
+                <div class="account-info">
+                    <!-- Add the email of the user of the account after user.-->
+                    <div class="square-title"><label class="email">User:</label></div>
+                    <div class="sign-out">
+                        <a href="placeholder"><button class="signout-button" type="button">Sign out</button></a>
+                    </div>
+                </div>
+
+                <div class="hr-line"></div>
+                <div class="edit-profile-square">
+                    <!--Edit profile square.-->
+                    <div class="square-title"><label class="title">Edit profile</label></div>
+                    <div class="square-description">
+                        <p class="description">View and edit your account information here.</p>
+                        <div class="square-action">
+                            <!--placeholder should be replace with the location of the file.-->
+                            <a href="placeholder"><button type="button">EDIT PROFILE</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hr-line"></div>
+                <div class="edit-password-square">
+                    <!--Change your password square.-->
+                    <div class="square-title"><label class="title">Password</label></div>
+                    <div class="square-description">
+                        <p class="description">Change your password here to keep it anonymous but the user.</p>
+                        <div class="square-action">
+                            <!--placeholder should be replace with the location of the file.-->
+                            <a href="placeholder"><button type="button">CHANGE PASSWORD</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hr-line"></div>
+                <div class="edit-paymentinfo-square">
+                    <!--Change your password square.-->
+                    <div class="square-title"><label class="title">Payment info</label></div>
+                    <div class="square-description">
+                        <p class="description">View or change your payment info.</p>
+                        <div class="square-action">
+                            <!--placeholder should be replace with the location of the file.-->
+                            <a href="placeholder"><button type="button">VIEW PAYMENT INFO</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hr-line"></div>
+                <div class="edit-paymentinfo-square">
+                    <!--Change your password square.-->
+                    <div class="square-title"><label class="title">Payment info</label></div>
+                    <div class="square-description">
+                        <p class="description">View or change your payment info.</p>
+                        <div class="square-action">
+                            <!--placeholder should be replace with the location of the file.-->
+                            <a href="placeholder"><button type="button">VIEW PAYMENT INFO</button></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /*
+            Placeholder if we need javascript to pull user first name and email
+            for display, it has a comment if needed.
+         */
+    </script>
+</body>
+</html>
