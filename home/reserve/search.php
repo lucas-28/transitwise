@@ -1,9 +1,72 @@
-<?php
-echo '<head>';
-echo '<link rel="stylesheet" href="/transitwise/css/flight_card.css">';
-echo '<link rel="stylesheet" href="/transitwise/css/style.css">';
-echo '</head>';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transitwise</title>
+    <link rel="stylesheet" href="/transitwise/css/style.css">
+    <link rel="stylesheet" href="/transitwise/css/flight_card.css">
+</head>
 
+<header>
+<?php include ('../../includes/topnav.php'); ?>
+</header>
+<div class="container">
+<h2>Filter Results</h2>
+<div id="filterDiv">
+    
+    <h4>Filter by Airline:</h4>
+    <div class="checkboxDiv">
+        <input type="checkbox" id="jetblueAL-filter" name="airline" value="B6">
+        <label>JetBlue</label>
+
+        <input type="checkbox" id="americanAL-filter" name="airline" value="AA">
+        <label>American</label>
+
+        <input type="checkbox" id="americanAL-filter" name="airline" value="AA">
+        <label>Etc...</label>
+        <!-- You can add more checkboxes similarly -->
+    </div>
+    <h4>Filter by Time:</h4>
+    <div class="checkboxDiv">
+        <input type="checkbox" id="morning-filter" name="time" value="1200">
+        <label>Morning</label>
+
+        <input type="checkbox" id="afternoon-filter" name="time" value="1800">
+        <label>Afternoon</label>
+
+        <input type="checkbox" id="evening-filter" name="time" value="1800">
+        <label>Evening</label>
+
+        <!-- You can add more checkboxes similarly -->
+    </div>
+    <h4>Filter by Price:</h4>
+    <div class="checkboxDiv">
+        <input type="checkbox" id="price1" name="price" value="100">
+        <label for="price1">$100</label>
+
+        <input type="checkbox" id="price2" name="price" value="300">
+        <label for="price2">$200</label>
+        
+        <input type="checkbox" id="price2" name="price" value="300">
+        <label for="price2">$300</label>
+
+        <input type="checkbox" id="price2" name="price" value="300">
+        <label for="price2">$400</label>
+
+        <!-- You can add more checkboxes similarly -->
+    </div>
+
+    
+    <script src="/transitwise/js/filter.js"></script>
+</div>
+<button id="submitBtn">Submit</button>
+</div>
+
+
+
+<?php
 
 $inputType = "received";
 $statementType = "prepared";
@@ -15,7 +78,7 @@ $des = 'LAX';
 //set_include_path(get_include_path() . PATH_SEPARATOR . $path);
 
 include ('../../includes/connect.php');
-include ('../../includes/topnav.php');
+
 
 // Check connection
 if($dbconn->connect_error) {
@@ -48,7 +111,7 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
     }
 
 
-    echo '<h2>Flights departing on ' . date('l, F jS, Y',strtotime(strval($departureDate))) .  ':</h2>';
+    
 
     #Put dep date in format 'YYYYMMDD'
     
@@ -106,6 +169,7 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
     }
     
     echo '<div class="container">';
+    echo '<h2>Flights departing on ' . date('l, F jS, Y',strtotime(strval($departureDate))) .  ':</h2>';
     if ($result->num_rows > 0) {
         $first_result = $result->fetch_assoc();
         // Get airport info from DB
@@ -114,7 +178,7 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
         // reset pointer
         $result->data_seek(0);
 
-        //echo '<h3>Showing flights from ' . $origin_row['AP_name'] . ' to ' . $destination_row['AP_name'] . '</h3>';
+        //echo '<h4>Showing flights from ' . $origin_row['AP_name'] . ' to ' . $destination_row['AP_name'] . '</h4>';
         echo '<ul class="flight-list">';
         while($row = $result->fetch_assoc()) {
             // Loop through result
