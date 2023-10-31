@@ -1,0 +1,284 @@
+<?php
+   
+    // Initialize the session
+    session_start();
+    $error = $_SESSION['error'];
+    unset($_SESSION['error']);
+?>
+
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<!--
+    // Uriel Cruz
+    // Transitwise
+    // HTML and style section(css)
+    // This is the User profile page for the user.
+
+    For php editor, 
+  - Keep the user login.
+  - Grab the user's data and have it loaded in the input box. If it is modified,
+  then it will submit the data to the database and refreshes the page with 
+  new data. If it doesn't meet certain conditions like the year of date or birth
+  is in the future then it should come out as an error.
+
+  - The sidebar buttons have href to link to other files, they are labeled
+    as "placeholder" whenever those pages are finsihed. The home button goes to
+    the user's home page.
+
+  - Script section left empty unless needed.
+
+  - Note, I reused register.php that was in github and modified for this case.
+    -->
+<title>User Profile</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width", intial-scale="1.0">
+
+<style>
+
+*{
+    /*mainly sets the font style for page*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
+}
+body {
+    font-size: 0.9em;
+    color: #333;
+    background: #ddd;
+
+}
+/*This is for the white box of the form.*/
+form {
+    width: 40%;
+    margin: 0 auto;
+    padding: 1em;
+    border: .2em solid black;
+    border-radius: 1em;
+    background-color: rgb(255, 255, 255);
+}
+/*This is the divider between the form.*/
+fieldset {
+    border: none;
+    padding: .8em 0;
+    margin: 0;
+    border-top: .2em solid #CCC;
+}
+/*This is for company name and title of page*/
+h1 {
+    font-size: 40px;
+    color:rgb(0,0,0);
+    border-bottom:groove;
+    background: rgb(255, 255, 255);
+    border-bottom-color: rgb(153, 153, 153);
+    height: 10%;
+    padding: 10px 25px;
+}
+
+/* navigation side bar*/
+.sidebar {
+    
+    height: auto; /* Full-height: remove this if you want "auto" height */
+    width: 22%; /* Sets the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    
+    left: 0%;
+    background-color: #036; /* block color */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    }
+
+/* The navigation menu links */
+.sidebar a {
+    padding: 10px 10px 10px 10px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    }
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+    color: #eeeeee;
+    }
+/*Modifies the button design on the sidebar.*/
+.sidebar button{
+    width: 100%;
+    height: 80%;
+    background: rgb(255, 255, 255);
+    border: none;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    
+    
+}
+/*Whenever you hover over the button, the color changes to notify the user*/
+.sidebar button:hover {
+    background: rgb(218, 218, 218);
+}
+
+/*This modify the text above the input boxes*/
+label {
+    font: 1.1em "Poppins",sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    
+}
+/*Customizes the input boxes*/
+input {
+    flex: 1 1 auto;
+    margin-left: 10%;
+    margin-bottom: 1em;
+    padding: 0.7em;
+    border-radius: 0.5em;
+    background: #eee;
+    border: none;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.flex-box {
+    
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+/* btn modifies the submit button at the bottom of the form.*/
+.btn {
+    flex: 1 1 auto;
+    margin: 0 1em;
+    padding: 0.7em;
+    border-radius: 0.5em;
+    background: #ee580f;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #003366;
+    color: #fff;
+}
+
+.btn:active {
+    background: #ccc;
+    box-shadow: 0 0 0.5em #ccc;
+    transform: scale(0.98);
+}
+
+.btn-holder {
+    display: flex;
+    text-align: center;
+    padding: .6em 0;
+    border-top: .2em solid #CCC;
+}
+/*This is for when an error occur and modifies the text for it.*/
+#error {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+#login {
+    text-align: center;
+    padding: .2em;
+    margin: 0;
+}
+
+</style>
+
+</head>
+<body>
+    <h1><a href="index.php">Transitwise</a></h1>
+    <div id="body">
+        <!--Creates the navigation side bar of links to edit/view account.-->
+        <div class="sidebar">
+            <nav role="navigation" class="nav">
+                <ul role="list" class="nav-list">
+                    <!--Home-page should bring the user back to their homepage not
+                        to the Transitwise homepage.-->
+                    <li role="list" class="home-page">
+                        <!--placeholder should be replace with the location of the file.-->
+                        <a href="../userhomepage.html"><button type="button">Home</button></a>
+                    </li>
+                    <li role="list" class="edit-profile">
+                        <!--placeholder should be replace with the location of the file.-->
+                        <a href="placeholder"><button type="button">Edit profile</button></a>
+                    </li>
+                    <li role="list" class="edit-password">
+                        <!--placeholder should be replace with the location of the file.-->
+                        <a href="placeholder"><button type="button">Edit password</button></a>
+                    </li>
+                    <li role="list" class="edit-payment-info">
+                        <!--placeholder should be replace with the location of the file.-->
+                        <a href="placeholder"><button type="button">Edit payment info</button></a>
+                    </li>
+                    <li role="list" class="view-purchases">
+                        <!--placeholder should be replace with the location of the file.-->
+                        <a href="placeholder"><button type="button">View tickets</button></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="form-group">
+
+            <form id="register" action="handlers/register_handler.php" method="post"> 
+                <h1>User Profile</h1>
+                <p id="error" ><?php echo $error; ?></p>
+                
+                <fieldset class="flex-box">
+                    <!--Each input box should have the original data that the User have when
+                        they created their account. For example, in this case the user's f_name
+                        should be filled with their first name from the database. All inputs,
+                        except for the middle name if not filled in, should have data of the
+                        user.
+                    -->
+                    <label for="f_name" >First Name <br><input id="f_name" type="text" name="f_name"> <br></label>
+                    <label>Middle Name<br><input type="text" name="m_name"> <br></label>
+                    <label>Last Name <br><input type="text" name="l_name"><br></label>
+                    <label>Email Address <br><input type="text" name="email"><br> </label>
+                    <label>Phone Number <br><input type="text" name="phone"></label>
+                    <label>Date of Birth <br><input type="date" name="birth_date"> </label>
+                    
+                </fieldset>
+                <fieldset class="flex-box">
+                    <!--Each input box should have the original data that the User have when
+                        they created their account. For example, in this case the user's address1
+                        should be filled with their first adress from the database. All inputs
+                        should have data of the user.
+                    -->
+                    <label>Address 1 <br><input type="text" name="address1"> <br></label>
+                    <label>Address 2<br><input type="text" name="address2"> <br></label>
+                    <label>City <br><input type="text" name="city"> <br></label>
+                    <label>State <br><input type="text" name="state"> <br></label>
+                    <label>Zip code <br><input type="text" name="zipcode"></label>
+
+                </fieldset>
+                <fieldset class="flex-box">
+                    
+                    <label>Password *<br><input type="password" name="password" autocomplete="new-password"></label>
+                    <label>Confirm Password *<br><input type="password" name="confirm"></label>
+                    
+                </fieldset>
+                
+
+                <div class="btn-holder">
+                    <input class="btn" type="submit" name="send" value="Submit">
+                </div>
+            </form>
+        </div>
+    
+    </div>
+</body>
+</html>

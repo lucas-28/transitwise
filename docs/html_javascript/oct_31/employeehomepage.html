@@ -1,9 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-<!--For php editor, 
-  - Keep the user login.
-  - Grab the user's first name from database and display after "Hello,"
+<!--
+    // Uriel Cruz
+    // Transitwise
+    // HTML and style section(css)
+    // This is the home page for the employee
+    For php editor, 
+  - Keep the employee login.
   - Grab the user's email from database and display after "User:"
 
   - All buttons have href to link to other files, they are labeled
@@ -16,7 +20,7 @@
 
     -->
 
-    <title>User Home page</title>
+    <title>Employee Home page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width", intial-scale="1.0">
     
@@ -31,7 +35,7 @@
         }
         /*background of the main page*/
         body {
-            background: rgba(157, 162, 187, 0.637);
+            background: #ddd;
         }
         /*Compnay name title*/
         .Company-name {
@@ -42,32 +46,33 @@
             height: 10%;
             padding: 10px 25px;
         }
-        
+        /*White box for the background.*/
         .container-white-box {
             background: rgb(255, 255, 255);
             display: block;
             border: groove;
             box-shadow: 0 0px 10px rgba(0, 0, 0, 0.199);
-            width:50%;
+            width:40%;
             margin: auto;
             padding: auto;
             
         }
-        
+        /*Heading of the page*/
         .greeting-user {
-            font-size: 36px;
+            font-size: 210%;
             text-align: left;
             padding: 10px 20px 40px;
         }
+        /* navigation side bar*/
         .sidebar {
             
             height: auto; /* Full-height: remove this if you want "auto" height */
-            width: 180px; /* Sets the width of the sidebar */
+            width: 22%; /* Sets the width of the sidebar */
             position: fixed; /* Fixed Sidebar (stay in place on scroll) */
             z-index: 1; /* Stay on top */
             
             left: 0;
-            background-color: #0e1b68; /* block color */
+            background-color: rgb(0, 102, 29); /* block color */
             overflow-x: hidden; /* Disable horizontal scroll */
             padding-top: 20px;
             padding-bottom: 20px;
@@ -89,7 +94,7 @@
         /*Modifies the button design on the sidebar.*/
         .sidebar button{
             width: 100%;
-            height: 45px;
+            height: 80%;
             background: rgb(255, 255, 255);
             border: none;
             box-shadow: 0 0px 10px rgba(0, 0, 0, .1);
@@ -97,6 +102,9 @@
             font-size: 16px;
             color: #333;
             font-weight: 600;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            
             
         }
         .sidebar button:hover {
@@ -118,13 +126,13 @@
         /*Modifies the button design on the main page.*/
         .content button{
             width: 100%;
-            height: 45px;
-            background: rgb(255, 255, 255);
+            height: 55px;
+            background: rgb(0, 102, 29);
             border: none;
             box-shadow: 0 0px 10px rgba(0, 0, 0, .1);
             cursor: pointer;
             font-size: 16px;
-            color: #333;
+            color: #ffffff;
             font-weight: 600;
             
         }
@@ -187,11 +195,15 @@
             </ul>
         </nav>
     </div>
-    <div class="container-white-box">
 
+    <!--
+        This next part is the middle section of the page that does the same thing
+        as the sidebar section but with some description of what it does.
+    -->
+    <div class="container-white-box">
         <div class="profile">
             <!--Should display the user's first name after the Hello,.-->
-            <h2 class="greeting-user">Hello, </h2><label class="user-firstname"></label>
+            <h2 class="greeting-user">Hello, Employee</h2><label class="user-firstname"></label>
 
             <!--Creates the navigation side bar of links to edit/view account.-->
             <div class="content">
