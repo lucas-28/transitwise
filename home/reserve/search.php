@@ -16,44 +16,60 @@
 <h2>Filter Results</h2>
 <div id="filterDiv">
     
-    <h4>Filter by Airline:</h4>
-    <div class="checkboxDiv">
-        <input type="checkbox" id="jetblueAL-filter" name="airline" value="B6">
+    
+        <div class="checkboxDiv">
+        <div class="checkboxButtonDiv">
+            <button class="selectCheckboxes">Select</button>
+            <button class="resetCheckboxes">Clear</button>
+        </div>
+        <h4>Airline:</h4>
+        <input type="checkbox" id="jetblue-filter" class="airline" value="B6">
         <label>JetBlue</label>
 
-        <input type="checkbox" id="americanAL-filter" name="airline" value="AA">
+        <input type="checkbox" id="american-filter" class="airline" value="AA">
         <label>American</label>
 
-        <input type="checkbox" id="americanAL-filter" name="airline" value="AA">
-        <label>Etc...</label>
-        <!-- You can add more checkboxes similarly -->
+        <input type="checkbox" id="united-filter" class="airline" value="UA">
+        <label>United</label>
+        
     </div>
-    <h4>Filter by Time:</h4>
+    
     <div class="checkboxDiv">
-        <input type="checkbox" id="morning-filter" name="time" value="1200">
+        <div class="checkboxButtonDiv">
+            <button class="selectCheckboxes">Select</button>
+            <button class="resetCheckboxes">Clear</button>
+        </div>
+        <h4>Departure Time:</h4>
+        <input type="checkbox" id="morning-filter" class="dep-time" value="0-12">
         <label>Morning</label>
 
-        <input type="checkbox" id="afternoon-filter" name="time" value="1800">
+        <input type="checkbox" id="afternoon-filter" class="dep-time" value="12-18">
         <label>Afternoon</label>
 
-        <input type="checkbox" id="evening-filter" name="time" value="1800">
-        <label>Evening</label>
+        <input type="checkbox" id="night-filter" class="dep-time" value="18-24">
+        <label>Night</label>
 
-        <!-- You can add more checkboxes similarly -->
+        
     </div>
-    <h4>Filter by Price:</h4>
+    
     <div class="checkboxDiv">
-        <input type="checkbox" id="price1" name="price" value="100">
-        <label for="price1">$100</label>
+        
+        <div class="checkboxButtonDiv">
+            <button class="selectCheckboxes">Select</button>
+            <button class="resetCheckboxes">Clear</button>
+        </div>
+        <h4>Price:</h4>
+        <input type="checkbox" id="price1" class="price" value="0-100">
+        <label for="price1">$100-</label>
 
-        <input type="checkbox" id="price2" name="price" value="300">
+        <input type="checkbox" id="price2" class="price" value="100-300">
         <label for="price2">$200</label>
         
-        <input type="checkbox" id="price2" name="price" value="300">
-        <label for="price2">$300</label>
+        <input type="checkbox" id="price3" class="price" value="300-400">
+        <label for="price3">$300</label>
 
-        <input type="checkbox" id="price2" name="price" value="300">
-        <label for="price2">$400</label>
+        <input type="checkbox" id="price4" class="price" value="400-1000">
+        <label for="price4">$400+</label>
 
         <!-- You can add more checkboxes similarly -->
     </div>
@@ -221,8 +237,8 @@ else {
 function flight_card($row, $duration, $price) {
     // This function returns a flight card
     return [
-        '<a class="reserve-btn" href="reserve.php?flight_number=' . $row['flight_number'] . '&airline=' . $row['airline'] . '&origin=' . $row['origin'] . '&destination=' . $row['destination'] . '&dep_time=' . $row['dep_time'] . '&arr_time=' . $row['arr_time'] . '&duration=' . $duration . '&price=' . $price . '">',
-        '<li><div class="flight-card">',
+        '<a class="reserve-btn" href="reserve.php?flight_ID=' . $row['flightID'] . '">',
+        '<li><div class="flight-card" data-dep-time=' . $row['dep_time'] . ' data-arr-time=' . $row['arr_time']  . ' data-airline=' . $row['airline'] . ' data-price=' . $price . '>',
         '    <div class="flight-info">',
         '        <div class="flight-times">',
         '            <span class="display-times">' . date('h:i a',strtotime($row['dep_time'])) . ' - ' . date('h:i a',strtotime($row['arr_time'])) .  '</span>',

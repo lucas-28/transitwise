@@ -76,12 +76,9 @@ button {
     border-radius: 0.3125em; /* Equivalent to 5px when base font-size is 16px */
     cursor: pointer;
 }
-button:hover {
-    background-color: #cff5ff;
-    color: #003366;
-}
+
 button:active {
-    background-color: #fff;
+    transform: translateY(2px);
 }
 .topnav {
     height: 4em;
@@ -356,29 +353,58 @@ input {
 
 #filterDiv {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 2fr 2fr;
     gap: 1em;
     --line-offset: calc(var(gap) / 2);
     --line-thickness: 2px;
-    border: .325em solid #ccc;
     border-radius: 1em;    
     padding: 10px;
-    background-color: #fff;
+
 }
 
 .checkboxDiv {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 1.5fr;
+    column-gap: 5%;
+    padding: 10px;
+    border-radius: 1em;
+    background-color: #fff;
 }
 
 .checkboxDiv > input{
     margin: auto;
     padding: 0;
+    accent-color: #003366;
 }
 .checkboxDiv > label{
     margin: auto 0;
     padding: 0;
 }
+
+.checkboxButtonDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.checkboxButtonDiv > button{
+    width: 60%;
+    min-width: -webkit-fit-content;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.checkboxButtonDiv > button:hover{
+    background-color: #003366;
+    color: #fff;
+}
+
+.checkboxButtonDiv > button:active{
+    background-color: #003366;
+    color: #fff;
+    transform: translateY(2px);
+}
+
 
 
 

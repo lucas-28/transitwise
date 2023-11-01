@@ -1,33 +1,93 @@
-document.getElementById('submitBtn').addEventListener('click', function() {
-    let selectedAirlines = [];
-    let selectedPrices = [];
-    let selectedTimes = [];
+window.addEventListener('load', function () {
+    // Add event listeners to all buttons
+    for (let resetButton of document.querySelectorAll('.resetCheckboxes')) {
+        addSelectListener(resetButton, false);
+        
+    }
+    for (let selectButton of document.querySelectorAll('.selectCheckboxes')) {
+        addSelectListener(selectButton, true);
+    }
+    addSubmitListener();
+})
 
-    document.querySelectorAll('input[name="airline"]:checked').forEach(function(checkbox) {
-        selectedAirlines.push(checkbox.value);
+function addSelectListener(resetButton, newValue) {
+    // Find the button by its class name and attach a click event listener
+    resetButton.addEventListener('click', function () {
+        // Navigate to the parent div of the reset button
+        const parentDiv = resetButton.parentElement.parentElement;
+
+        // Find all checkbox input elements that are children of the parent div
+        const checkboxes = parentDiv.querySelectorAll('input[type="checkbox"]');
+
+        // Iterate through each checkbox and reset its checked state
+        checkboxes.forEach(function (checkbox) {
+        checkbox.checked = newValue;
+        });
     });
+}
 
-    document.querySelectorAll('input[name="time"]:checked').forEach(function(checkbox) {
-        selectedTimes.push(checkbox.value);
+
+function addSubmitListener() {
+    document.getElementById('submitBtn').addEventListener('click', function () {
+        let selectedAirlines = [];
+        let selectedPrices = [];
+        let selectedDepTimes = [];
+
+        document.querySelectorAll('input[class="airline"]:checked').forEach(function (checkbox) {
+            selectedAirlines.push(checkbox.value);
+            
+        });
+
+        document.querySelectorAll('input[class="dep-time"]:checked').forEach(function (checkbox) {
+            selectedDepTimes.push(checkbox.value.split('-'));
+        });
+        console.log(selectedDepTimes);
+
+        document.querySelectorAll('input[class="price"]:checked').forEach(function (checkbox) {
+            selectedPrices.push(checkbox.value.split('-'));
+        });
+        console.log(selectedPrices);
+
+        // Now filter the results based on the selected filters
+        const flightCards = document.querySelectorAll('.flight-card');
+        flightCards.forEach(function (flightCard) {
+            let airline = flightCard.getAttribute('data-airline');
+            let depTime = parseInt(flightCard.getAttribute('data-dep-time')) / 100;
+            //console.log(airline + time);
+            let price = parseInt(flightCard.getAttribute('data-price'));
+
+            // if (selectedAirlines.includes(airline))
+            //     console.log(airline);
+                
+            // if (Math.min(...selectedPrices) <= price && price <= Math.max(...selectedPrices))
+            //     console.log(price);
+
+            // if (Math.min(...selectedDepTimes) <= depTime && depTime <= Math.max(...selectedDepTimes))
+            //     console.log(depTime);
+            
+            let isAirline = selectedAirlines.includes(airline);
+            let isDepTime = false;
+            let isPrice = false;
+            
+            selectedPrices.forEach(function (priceRange) {
+                if (between(price, priceRange[0], priceRange[1]))
+                    isPrice = true;
+            });
+
+            selectedDepTimes.forEach(function (timeRange) {
+                if (between(depTime, timeRange[0], timeRange[1]))
+                    isDepTime = true;
+            });
+
+            if (isAirline && isPrice && isDepTime) 
+                flightCard.style.display = 'block';
+            else 
+                flightCard.style.display = 'none';
+            
+        });
     });
+}
 
-    document.querySelectorAll('input[name="price"]:checked').forEach(function(checkbox) {
-        selectedPrices.push(checkbox.value);
-    });
-
-    // Now filter the results based on the selected filters
-    document.querySelectorAll('#results > div').forEach(function(resultDiv) {
-        let airline = resultDiv.getAttribute('data-airline');
-        let time = resultDiv.getAttribute('data-time');
-        let price = resultDiv.getAttribute('data-price');
-
-        if (selectedAirlines.includes(airline) 
-        && Math.min(...selectedPrices) < price < Math.max(...selectedPrices) 
-        && Math.min(...selectedTimes) < time < Math.max(...selectedTimes) ) 
-        {
-            resultDiv.style.display = 'block';
-        } else {
-            resultDiv.style.display = 'none';
-        }
-    });
-});
+function between(x, min, max) {
+    return x > min && x < max;
+}
