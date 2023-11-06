@@ -1,4 +1,9 @@
 window.addEventListener('load', function () {
+    // Start with all boxes checked
+    document.querySelectorAll('input[type="checkbox"]').forEach(function (checkbox) {
+        checkbox.checked = true;
+    });
+    
     // Add event listeners to all buttons
     for (let resetButton of document.querySelectorAll('.resetCheckboxes')) {
         addSelectListener(resetButton, false);

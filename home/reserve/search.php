@@ -23,14 +23,32 @@
             <button class="resetCheckboxes">Clear</button>
         </div>
         <h4>Airline:</h4>
-        <input type="checkbox" id="jetblue-filter" class="airline" value="B6">
-        <label>JetBlue</label>
 
-        <input type="checkbox" id="american-filter" class="airline" value="AA">
+        <input type="checkbox" class="airline" value="AS">
+        <label>Alaska</label>
+
+        <input type="checkbox" class="airline" value="AA">
         <label>American</label>
 
-        <input type="checkbox" id="united-filter" class="airline" value="UA">
+        <input type="checkbox" class="airline" value="B6">
+        <label>JetBlue</label>
+
+        <input type="checkbox" class="airline" value="DL">
+        <label>Delta</label>
+
+        <input type="checkbox" class="airline" value="F9">
+        <label>Frontier</label>
+
+        <input type="checkbox" class="airline" value="WN">
+        <label>Southwest</label>
+
+        <input type="checkbox" class="airline" value="NK">
+        <label>Spirit</label>
+
+        <input type="checkbox" class="airline" value="UA">
         <label>United</label>
+
+
         
     </div>
     
@@ -222,7 +240,7 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
                 $depFlightID = $row['flightID'];
                 $retFlightID = null;
             }
-            $card = flight_card($row, $duration, $price, $depFlightID, $retFlightID);
+            $card = flight_card($row, $duration, $price, $depFlightID, $retDate, $retFlightID);
             foreach($card as $value) {
                 echo $value;
             }
