@@ -2,7 +2,7 @@
 <html>
 <head>
 <style>
-    /* Centering the content on the page */
+    /* Center page */
     body {
         display: flex;
         justify-content: center;
@@ -15,7 +15,7 @@
         background-repeat: no-repeat;
     }
 
-    /* Styles for the title container */
+    /* title container */
     .title-container {
         background-color: rgba(80, 80, 80,.7);
         padding: 20px;
@@ -23,7 +23,7 @@
         margin-bottom: 20px;
     }
 
-    /* Styles for the title text */
+    /* title text */
     h1 {
         text-align: center;
         color: lightblue;
@@ -32,7 +32,7 @@
         font-weight: bold;
     }
 
-    /* Styles for the thank you message box */
+    /* thank you message box */
     .thank-you-box {
         text-align: center;
         padding: 30px;
@@ -41,7 +41,7 @@
         color: white;
     }
 
-    /* Styles for the thank you message text */
+    /* thank you message text */
     .thank-you-text {
         font-family: Garamond, serif;
         font-size: 24px;
