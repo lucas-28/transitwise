@@ -4,6 +4,12 @@
 //include_once('footer.php');
 include("../../includes/connect.php");
 
+
+if(isset($_GET['roundtrip']) && $_GET['roundtrip'] == 'true' && !isset($_GET['return-flightID'])) {
+    // Return to search page if 
+    header("location: /transitwise/home/reserve/search.php");
+} 
+
 if(isset($_GET['flightID'])) {
     $flightID = $_GET['flightID'];
 

@@ -130,8 +130,15 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
     
 
     #Put dep date in format 'YYYYMMDD'
+    if(isset($_GET['return-date']) ){
+        $return = true;
+        $returnDate = $_GET['return-date'];
+        
+    } else {
+        $return = false;
+        $returnDate = null;
+    }
     
-    $returnDate = isset($_GET['return-date']) ? $_GET['return-date'] : null;
 
     // For debugging
     if($debug=="true"){
@@ -207,7 +214,15 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
             $row['arr_time'] = sprintf('%04d', $row['arr_time']);
             //$dep_time = DateTime::createFromFormat('Hi', $row['dep_time']);
             //$arr_time = DateTime::createFromFormat('Hi', $row['arr_time']);
-            $card = flight_card($row, $duration, $price);
+            if(isset($_GET['dep-flightID'])) {
+                $depFlightID = $_GET['dep-flightID'];
+                $retFlightID = $row['flightID'];
+            }
+            else {
+                $depFlightID = $row['flightID'];
+                $retFlightID = null;
+            }
+            $card = flight_card($row, $duration, $price, $depFlightID, $retFlightID);
             foreach($card as $value) {
                 echo $value;
             }
@@ -234,10 +249,10 @@ else {
 }
 
 
-function flight_card($row, $duration, $price) {
+function flight_card($row, $duration, $price, $depFlightID, $retDate, $retFlightID,) {
     // This function returns a flight card
     return [
-        '<a class="reserve-btn" href="reserve.php?flight_ID=' . $row['flightID'] . '">',
+        '<a class="reserve-btn" href="reserve.php?dep-flightID=' . $depFlightID . '&return-flightID=' . $retFlightID . '&return-date='. $retDate . '">',
         '<li><div class="flight-card" data-dep-time=' . $row['dep_time'] . ' data-arr-time=' . $row['arr_time']  . ' data-airline=' . $row['airline'] . ' data-price=' . $price . '>',
         '    <div class="flight-info">',
         '        <div class="flight-times">',

@@ -80,7 +80,7 @@ function addSubmitListener() {
             });
 
             if (isAirline && isPrice && isDepTime) 
-                flightCard.style.display = 'block';
+                flightCard.style.display = 'flex';
             else 
                 flightCard.style.display = 'none';
             
@@ -89,5 +89,5 @@ function addSubmitListener() {
 }
 
 function between(x, min, max) {
-    return x > min && x < max;
+    return x >= min && x < max;
 }
