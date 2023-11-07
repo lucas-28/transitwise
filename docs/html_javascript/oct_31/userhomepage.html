@@ -1,7 +1,12 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-<!--For php editor, 
+<!--
+    // Uriel Cruz
+    // Transitwise
+    // HTML and style section(css)
+    // This is the home page for the user.
+    For php editor, 
   - Keep the user login.
   - Grab the user's first name from database and display after "Hello,"
   - Grab the user's email from database and display after "User:"
@@ -31,7 +36,7 @@
         }
         /*background of the main page*/
         body {
-            background: rgba(157, 162, 187, 0.637);
+            background: #ddd;
         }
         /*Compnay name title*/
         .Company-name {
@@ -42,32 +47,33 @@
             height: 10%;
             padding: 10px 25px;
         }
-        
+        /*White box for the background.*/
         .container-white-box {
             background: rgb(255, 255, 255);
             display: block;
             border: groove;
             box-shadow: 0 0px 10px rgba(0, 0, 0, 0.199);
-            width:50%;
+            width:40%;
             margin: auto;
             padding: auto;
             
         }
-        
+        /*Heading of the page*/
         .greeting-user {
-            font-size: 36px;
+            font-size: 210%;
             text-align: left;
             padding: 10px 20px 40px;
         }
+        /* navigation side bar*/
         .sidebar {
             
             height: auto; /* Full-height: remove this if you want "auto" height */
-            width: 180px; /* Sets the width of the sidebar */
+            width: 22%; /* Sets the width of the sidebar */
             position: fixed; /* Fixed Sidebar (stay in place on scroll) */
             z-index: 1; /* Stay on top */
             
             left: 0;
-            background-color: #0e1b68; /* block color */
+            background-color: #036; /* block color */
             overflow-x: hidden; /* Disable horizontal scroll */
             padding-top: 20px;
             padding-bottom: 20px;
@@ -89,7 +95,7 @@
         /*Modifies the button design on the sidebar.*/
         .sidebar button{
             width: 100%;
-            height: 45px;
+            height: 80%;
             background: rgb(255, 255, 255);
             border: none;
             box-shadow: 0 0px 10px rgba(0, 0, 0, .1);
@@ -97,6 +103,9 @@
             font-size: 16px;
             color: #333;
             font-weight: 600;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            
             
         }
         .sidebar button:hover {
@@ -118,13 +127,13 @@
         /*Modifies the button design on the main page.*/
         .content button{
             width: 100%;
-            height: 45px;
-            background: rgb(255, 255, 255);
+            height: 55px;
+            background: #036;
             border: none;
             box-shadow: 0 0px 10px rgba(0, 0, 0, .1);
             cursor: pointer;
             font-size: 16px;
-            color: #333;
+            color: #ffffff;
             font-weight: 600;
             
         }
@@ -170,7 +179,8 @@
             <ul role="list" class="nav-list">
                 <!--placeholder should be replace with the location of the file.-->
                 <li role="list" class="home-page">
-                    <a href="../homepage.html"><button type="button">Home</button></a>
+                    <!--This link should lead to their homepage.-->
+                    <a href="placeholder"><button type="button">Home</button></a>
                 </li>
                 <li role="list" class="edit-profile">
                     <a href="placeholder"><button type="button">Edit profile</button></a>
@@ -187,6 +197,11 @@
             </ul>
         </nav>
     </div>
+
+    <!--
+        This next part is the middle section of the page that does the same thing
+        as the sidebar section but with some description of what it does.
+    -->
     <div class="container-white-box">
 
         <div class="profile">
@@ -243,7 +258,7 @@
                 </div>
 
                 <div class="hr-line"></div>
-                <div class="edit-paymentinfo-square">
+                <div class="view-tickets-square">
                     <!--Change your ticket info square.-->
                     <div class="square-title"><label class="title">Ticket info</label></div>
                     <div class="square-description">
