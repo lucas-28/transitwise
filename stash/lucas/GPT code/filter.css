@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.search-container {
+    width: 300px;
+    margin: 50px auto;
+}
+
+#searchBox {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#resultsList {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+#resultsList li {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 6px;
+}

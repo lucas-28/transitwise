@@ -1,0 +1,9 @@
+#filterDiv {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+#results {
+    margin-left: 220px;
+    padding: 10px;
+}

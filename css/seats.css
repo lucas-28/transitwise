@@ -1,0 +1,46 @@
+
+
+.plane {
+    border-collapse: collapse;
+}
+
+.aisle {
+    padding: 1.5em;
+}
+
+.seat {
+    padding: 10px 20px;
+    border: .1em solid #000;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.seat.aisle {
+    visibility: hidden;
+}
+
+.seat.selected {
+    background-color: green;
+    color: #fff;
+}
+
+.seat:hover {
+    background-color: #979797;
+}
+
+.seat.unavailable {
+    background-color: #ff7171;
+    cursor: not-allowed;
+}
+.seat-map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    padding: 2em;
+    border: .1em solid #000;
+    border-radius: 0.5em;
+    width: 100%;
+    max-width: 800px;
+    margin: 6em auto;
+}

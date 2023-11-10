@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 15, 2023 at 04:15 AM
+-- Generation Time: Oct 15, 2023 at 07:17 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -147,6 +147,45 @@ CREATE TABLE `employees` (
   `phone` varchar(15) NOT NULL,
   `birth_date` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `external_flights`
+--
+
+DROP TABLE IF EXISTS `external_flights`;
+CREATE TABLE `external_flights` (
+  `FDID` int(11) NOT NULL,
+  `YEAR` int(4) NOT NULL,
+  `MONTH` int(2) NOT NULL,
+  `DAY` int(2) NOT NULL,
+  `DAY_OF_WEEK` int(1) NOT NULL,
+  `AIRLINE` char(2) NOT NULL,
+  `FLIGHT_NUMBER` int(4) NOT NULL,
+  `TAIL_NUMBER` char(6) NOT NULL,
+  `ORIGIN_AIRPORT` char(3) NOT NULL,
+  `DESTINATION_AIRPORT` char(3) NOT NULL,
+  `SCHEDULED_DEPARTURE` int(4) NOT NULL,
+  `DEPARTURE_TIME` int(4) NOT NULL,
+  `DEPARTURE_DELAY` int(4) NOT NULL,
+  `TAXI_OUT` int(4) NOT NULL,
+  `WHEELS_OFF` int(4) NOT NULL,
+  `SCHEDULED_TIME` int(4) NOT NULL,
+  `ELAPSED_TIME` int(4) NOT NULL,
+  `AIR_TIME` int(4) NOT NULL,
+  `DISTANCE` int(4) NOT NULL,
+  `WHEELS_ON` int(4) NOT NULL,
+  `TAXI_IN` int(4) NOT NULL,
+  `SCHEDULED_ARRIVAL` int(4) NOT NULL,
+  `ARRIVAL_TIME` int(4) NOT NULL,
+  `ARRIVAL_DELAY` int(4) NOT NULL,
+  `DIVERTED` int(1) NOT NULL,
+  `CANCELLED` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
 
 -- --------------------------------------------------------
 
@@ -356,6 +395,12 @@ ALTER TABLE `employees`
   ADD KEY `UPEID` (`UPEID`);
 
 --
+-- Indexes for table `external_flights`
+--
+ALTER TABLE `external_flights`
+  ADD PRIMARY KEY (`FDID`);
+
+--
 -- Indexes for table `flights`
 --
 ALTER TABLE `flights`
@@ -520,8 +565,18 @@ ALTER TABLE `users`
 --
 ALTER TABLE `user_permission`
   ADD CONSTRAINT `user_permission_ibfk_1` FOREIGN KEY (`ULID`) REFERENCES `user_login` (`ULID`);
-COMMIT;
 
+
+--
+-- External Flight Data
+--
+
+
+
+
+
+
+COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

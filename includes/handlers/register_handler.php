@@ -46,43 +46,38 @@
         $param_email = $email;
         if(mysqli_stmt_execute($stmt)){
             mysqli_stmt_store_result($stmt);
-            if(mysqli_stmt_num_rows($stmt) == 1){
+            if(mysqli_stmt_num_rows($stmt) >= 1){
                 printf("Email already exists.");
-                $_SESSION["error"] = "An account is already registered with this email.";
-                header("location: ../register.php");
+                $_SESSION["error-type"] = "duplicate-email";
+                $_SESSION["error-message"] = "An account with this email already exists.";
+                $_SESSION["duplicate-email"] = $param_email;
+                header("location: /transitwise/register.php");
+                exit;
             }
         }
     }
-
-    
-    else {
-        printf("Prepared statement failed.");
-    }
-    
-    
-    
     $stmt = mysqli_stmt_init($dbconn);
     printf("inserting into database...");
     $sql = "INSERT INTO `users`(`UPEID`,`f_name`,`m_name`,`l_name`,`email`,`phone`,`birth_date`,`address1`,`address2`,`city`,`state`,`zip`,`password`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);";
     
 
-
+    
     printf("preparing statement...");
     if($stmt = mysqli_prepare($dbconn, $sql)){
         printf("statement prepared...");
         printf("binding parameters...");
         mysqli_stmt_bind_param($stmt, "issssssssssss", $UPEID, $f_name, $m_name, $l_name, $email, $phone, $birth_date, $address1, $address2, $city, $state, $zipcode, $password);
+        var_dump($stmt);
         printf("executing statement...");
         if(mysqli_stmt_execute($stmt)){ 
             
             printf("storing session variables...");
             $_SESSION["loggedin"] = true;
-            // $_SESSION["id"] = $id;
             $_SESSION["email"] = $email;                            
             
             // Redirect user to welcome page
             printf("redirecting...");
-            header("location: ../welcome.php");
+            header("location: ../account.php");
         }
         else {
             echo "Something went wrong. Please try again later.";
