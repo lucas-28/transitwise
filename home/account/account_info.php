@@ -1,6 +1,9 @@
-<!-- Some aspects of code written with assistance of ChatGPT -->
-
 <?php
+// Aidan Callan
+// transitwise
+// Account information viewing/editing
+// Some aspects of code written with assistance of ChatGPT
+
 // PERSONAL NOTE - when changing user info  update session
 
 // Implement database connection
