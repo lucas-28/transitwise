@@ -7,6 +7,7 @@ class User
 {
 
     //Encapsulated variables
+    private $UPID;
     private $username;
     private $f_name;
     private $m_name;
@@ -23,9 +24,11 @@ class User
     private $is_admin;
     private $is_employee;
     private $is_customer;
+    private $reservations;
 
     //Constructor supporting userData array argument
-    public function __construct($userData)
+    //No arguments defaults to empty userData array
+    public function __construct($userData = [])
     {
         $this->username = $userData['username'];
         $this->f_name = $userData['f_name'];
@@ -43,6 +46,12 @@ class User
         $this->is_admin = $userData['is_admin'];
         $this->is_employee = $userData['is_employee'];
         $this->is_customer = $userData['is_customer'];
+    }
+
+    //Return user's unique UPID
+    public function get_UPID()
+    {
+        return $this->UPID;
     }
 
     //Return user's username
@@ -141,6 +150,11 @@ class User
         return $this->is_customer;
     }
 
+    public function get_reservations()
+    {
+        return $this->reservations;
+    }
+
     //Update user's username
     public function set_username($u)
     {
@@ -237,6 +251,13 @@ class User
         $this->is_customer = $is_customer;
     }
 
+    //Add reservation to reservations array
+    public function add_reservation($new_reservation)
+    {
+        array_push($this->reservations, $new_reservation);
+        $new_reservation->insert_reservation();
+    }
+
     //Insert user info into database
     public function insert_user()
     {
@@ -253,12 +274,12 @@ class User
         }
 
         //Extract ULID of most recently inserted row of data in 'user_login'
-        $ulid = $stmt->insert_id;
+        $ULID = $stmt->insert_id;
         $stmt->close();
 
         //Insert user's accessibility privileges into 'user_permission' data table
         $stmt = $dbconn->prepare("INSERT INTO user_permission (ULID, is_admin, is_employee, is_customer) VALUES (?,?,?,?)");
-        $stmt->bind_param("iiii", $ulid, $this->is_admin, $this->is_employee, $this->is_customer);
+        $stmt->bind_param("iiii", $ULID, $this->is_admin, $this->is_employee, $this->is_customer);
 
         //Check if data was successfully inserted into 'user_permission'
         if (!$stmt->execute()) {
@@ -266,26 +287,24 @@ class User
         }
 
         //Extract UPEID of most recently inserted row of data in 'user_permission' data table
-        $upeid = $stmt->insert_id;
+        $UPEID = $stmt->insert_id;
         $stmt->close();
 
         //Insert user's profile information into 'users' data table
         $stmt = $dbconn->prepare("INSERT INTO users (UPEID, ULID, f_name, m_name, l_name, email, phone, birth_date, address1, address2, city, state, zip, password) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("iissssssssssss", $upeid, $ulid, $this->f_name, $this->m_name, $this->l_name, $this->email, $this->phone, $this->birth_date, $this->address1, $this->address2, $this->city, $this->state, $this->zipcode, $this->password);
+        $stmt->bind_param("iissssssssssss", $UPEID, $ULID, $this->f_name, $this->m_name, $this->l_name, $this->email, $this->phone, $this->birth_date, $this->address1, $this->address2, $this->city, $this->state, $this->zipcode, $this->password);
 
         //Check if data was successfully inserted into 'users'
         if (!$stmt->execute()) {
             echo nl2br("Error: " . "<br>" . $dbconn->error);
         }
+
+        //Update UPID variable by extracting the primary ID of most recently inserted row of data in 'users' table
+        $this->UPID = $stmt->insert_id;
         $stmt->close();
 
         //Close database connection
         $dbconn->close();
-    }
-
-    //Retrieve an array of reservations created by this user
-    public function reservations()
-    {
     }
 
     //End of class

@@ -6,6 +6,8 @@
 class Flight
 {
     //Encapsulated variables
+    private $FDID;
+    private $airline;
     private $departure_airport;
     private $arrival_airport;
     private $departure_time;
@@ -23,6 +25,7 @@ class Flight
     //A no-arg constructor interprets an empty array by default
     public function __construct($flightData = [])
     {
+        $this->airline = $flightData['airline'];
         $this->departure_airport = $flightData['departure_airport'];
         $this->arrival_airport = $flightData['arrival_airport'];
         $this->departure_time = $flightData['departure_time'];
@@ -35,6 +38,18 @@ class Flight
         $this->flight_num = $flightData['flight_num'];
         $this->ticket_cost = $flightData['ticket_cost'];
         $this->is_available = $flightData['is_available'];
+    }
+
+    //Return flight's airport of departure
+    public function get_FDID()
+    {
+        return $this->FDID;
+    }
+
+    //Return flight's airline
+    public function get_airline()
+    {
+        return $this->airline;
     }
 
     //Return flight's airport of departure
@@ -97,10 +112,16 @@ class Flight
         return $this->is_available;
     }
 
-    //Return an array of Passenger objects representing each passenger on flight
+    //Return an array of Ticket objects representing each passenger on flight
     public function get_passengers()
     {
         return $this->passengers;
+    }
+
+    //Update flight's airline name
+    public function set_airline()
+    {
+        return $this->airline;
     }
 
     //Update flight's airport of departure
@@ -149,5 +170,19 @@ class Flight
                 array_push($this->passengers, $new_passengers[$i]);
             }
         }
+    }
+
+    //Insert this flight into database
+    public function insert_flight()
+    {
+        include('../includes/connect.php');
+        $stmt = $dbconn->prepare("INSERT INTO flights (ALID, APID_D, APID_A, departure_time, arrival_time, capacity, seats_available, plane_model, flight_number, ticket_cost, is_available) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("iiissiissidi", $this->airline->get_ALID(), $this->departure_airport->get_APID(), $this->arrival_airport->get_APID(), $this->departure_time, $this->arrival_time, $this->capacity, $this->seats_available, $this->plane_model, $this->flight_num, $this->ticket_cost, $this->is_available);
+        if (!$stmt->execute()) {
+            echo nl2br("Error" . "<br>" . $dbconn->error);
+        }
+        $this->FDID = $stmt->insert_id;
+        $stmt->close();
+        $dbconn->close();
     }
 }
