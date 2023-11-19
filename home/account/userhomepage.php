@@ -35,7 +35,7 @@
         It should display the user's basic info and allows the user to press a button to 
         edit there account.
     -->
-    <h1 class="Company-name">Transitwise</h1>
+    
 
     <!--Creates the navigation side bar of links to edit/view account.-->
     <?php include ('../../includes/leftnavuser.php'); ?>
@@ -68,7 +68,7 @@
                         <p class="description">View and edit your account information here.</p>
                         <div class="square-action">
                             <!--placeholder should be replace with the location of the file.-->
-                            <a href="placeholder"><button type="button">EDIT PROFILE</button></a>
+                            <a href="../account/usereditprofile.php"><button type="button">EDIT PROFILE</button></a>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                         <p class="description">Change your password here to keep it anonymous but the user.</p>
                         <div class="square-action">
                             <!--placeholder should be replace with the location of the file.-->
-                            <a href="placeholder"><button type="button">CHANGE PASSWORD</button></a>
+                            <a href="../account/userchangepassword.php"><button type="button">CHANGE PASSWORD</button></a>
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                         <p class="description">View or change your payment info.</p>
                         <div class="square-action">
                             <!--placeholder should be replace with the location of the file.-->
-                            <a href="placeholder"><button type="button">VIEW PAYMENT INFO</button></a>
+                            <a href="../account/userbilling.php"><button type="button">VIEW PAYMENT INFO</button></a>
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                         <p class="description">View or change your airline tickets that have been purchased.</p>
                         <div class="square-action">
                             <!--placeholder should be replace with the location of the file.-->
-                            <a href="placeholder"><button type="button">VIEW TICKETS</button></a>
+                            <a href="../account/userviewtickets.php"><button type="button">VIEW TICKETS</button></a>
                         </div>
                     </div>
                 </div>
