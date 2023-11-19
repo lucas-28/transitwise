@@ -1,5 +1,6 @@
 <?php
 //Aidan Callan
+//Assistance of ChatGPT 3.5 where indicated
 //transitwise
 //Flight class
 
@@ -23,7 +24,8 @@ class Flight
 
     //Class constructor supporting flightData array argument
     //A no-arg constructor interprets an empty array by default
-    public function __construct($flightData = [])
+    //Specification of array data type for flightData parameter, suggested by ChatGPT 3.5
+    public function __construct(array $flightData = [])
     {
         $this->airline = $flightData['airline'];
         $this->departure_airport = $flightData['departure_airport'];
@@ -118,6 +120,12 @@ class Flight
         return $this->passengers;
     }
 
+    //Return number of passengers on flight
+    public function get_passengers_num()
+    {
+        return $this->passengers_num;
+    }
+
     //Update flight's airline name
     public function set_airline()
     {
@@ -165,7 +173,7 @@ class Flight
     {
         $count = $new_passengers->count();
         //New passengers will only be added if size of array is less than or equal to the number of seats available
-        if ($count < $this->seats_available) {
+        if ($count <= $this->seats_available) {
             for ($i = 0; $i < $count; $i++) {
                 array_push($this->passengers, $new_passengers[$i]);
             }

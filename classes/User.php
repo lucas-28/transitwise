@@ -46,6 +46,7 @@ class User
         $this->is_admin = $userData['is_admin'];
         $this->is_employee = $userData['is_employee'];
         $this->is_customer = $userData['is_customer'];
+        $this->reservations = $userData['reservations'];
         $this->UPID = $this->locate_UPID();
     }
 
@@ -339,7 +340,7 @@ class User
             echo nl2br("Error: " . "<br>" . $dbconn->error);
         }
 
-        $result = $stmt->get_result;
+        $result = $stmt->get_result();
 
         //Fetch all rows as an associative array
         $logs = $result->fetch_all(MYSQLI_ASSOC);

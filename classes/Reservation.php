@@ -1,5 +1,6 @@
 <?php
 //Aidan Callan
+//Assistance of ChatGPT 3.5 where indicated
 //transitwise
 //Reservation class
 
@@ -11,9 +12,10 @@ class Reservation
     private $flight;
     private $guests;
 
-    //Construct Reservation object with a User object (customer), Flight object, and array of Passenger objects on the reservation
+    //Construct Reservation object with a User object (customer), Flight object, and array of Ticket objects on the reservation
     //Constructing object with no arguments defaults to no-arg User object, no-arg Flight object, and an empty guests array
-    public function __construct($customer = null, $flight = null, $guests = [])
+    //Use of dependency injection suggested by ChatGPT 3.5 to allow for greater flexibility and ability to test/reuse code
+    public function __construct(?User $customer = null, ?Flight $flight = null, $guests = [])
     {
         //If args provided for 'customer' and 'flight' fields are null, instantiate User and Flight objects with no-args
         //Prevents undefined type error
@@ -40,7 +42,7 @@ class Reservation
         return $this->flight;
     }
 
-    //Return array of passengers under reservation
+    //Return array of tickets under reservation
     public function get_guests()
     {
         return $this->guests;
