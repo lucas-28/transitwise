@@ -46,6 +46,7 @@ class User
         $this->is_admin = $userData['is_admin'];
         $this->is_employee = $userData['is_employee'];
         $this->is_customer = $userData['is_customer'];
+        $this->UPID = $this->locate_UPID();
     }
 
     //Return user's unique UPID
@@ -299,12 +300,56 @@ class User
             echo nl2br("Error: " . "<br>" . $dbconn->error);
         }
 
-        //Update UPID variable by extracting the primary ID of most recently inserted row of data in 'users' table
-        $this->UPID = $stmt->insert_id;
+        //Close prepared statement and database connection
         $stmt->close();
-
-        //Close database connection
         $dbconn->close();
+    }
+
+    //Locate the user's UPID in database table upon instantiation
+    private function locate_UPID()
+    {
+        //Include database connection
+        include('../includes/connect.php');
+
+        //Query database to locate unique ID in row in which username is present
+        $result = $dbconn->query("SELECT UPID FROM users WHERE username = '$this->username'");
+
+        //If query was successful, return UPID from data row, else display error message
+        if ($result) {
+            $row = $result->fetch_assoc();
+            $dbconn->close();
+            return $row['UPID'];
+        } else {
+            echo nl2br("Could not locate UPID");
+        }
+    }
+
+    //Get user's login log history
+    public function login_logs()
+    {
+        //Include database connection
+        include('../includes/connect.php');
+
+        //Prepare database connection with query to select all rows from table with ULID
+        $stmt = $dbconn->prepare("SELECT * FROM login_logs WHERE ULID = ? ORDER BY LLID DESC");
+        $stmt->bind_param('i', $ULID);
+
+        //Execute statement; display error message if fails
+        if (!$stmt->execute()) {
+            echo nl2br("Error: " . "<br>" . $dbconn->error);
+        }
+
+        $result = $stmt->get_result;
+
+        //Fetch all rows as an associative array
+        $logs = $result->fetch_all(MYSQLI_ASSOC);
+
+        //Close prepared statement and database connection
+        $stmt->close();
+        $dbconn->close();
+
+        //Return associative array
+        return $logs;
     }
 
     //End of class

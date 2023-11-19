@@ -13,10 +13,12 @@ class Reservation
 
     //Construct Reservation object with a User object (customer), Flight object, and array of Passenger objects on the reservation
     //Constructing object with no arguments defaults to no-arg User object, no-arg Flight object, and an empty guests array
-    public function __construct($customer = new User(), $flight = new Flight(), $guests = [])
+    public function __construct($customer = null, $flight = null, $guests = [])
     {
-        $this->customer = $customer;
-        $this->flight = $flight;
+        //If args provided for 'customer' and 'flight' fields are null, instantiate User and Flight objects with no-args
+        //Prevents undefined type error
+        $this->customer = $customer ?: new User();
+        $this->flight = $flight ?: new Flight();
         $this->guests = $guests;
     }
 
