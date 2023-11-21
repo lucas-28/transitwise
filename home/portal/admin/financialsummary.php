@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<?php //set up table ?>
-	<title>Daily Financial Summary (Z Report)</title>
-    <style>
-        h1, table {
-            margin: 0 auto;
-            text-align: center;
-        }
-    </style>
+<title>Admin Home page</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width", intial-scale="1.0">
+<link rel="stylesheet" href="/transitwise/css/style.css">
+
 </head>
+<header>
+    <?php include ('../../../includes/topnav.php'); ?>
+</header>
+
 <body>
+<!--Creates the navigation side bar of links to edit/view account.-->
+<?php include ('../../../includes/leftnavadmin.php'); ?>
+
 <?php // create table labels ?>
     <h1>Daily Financial Summary (Z Report)</h1>
     <table border="1">
@@ -56,6 +60,14 @@
             <td><?php $profit = 0.0; echo $profit; ?></td>
         </tr>
     </table>
+
+    <footer>
+        <div class="footer-container">
+            <a href="/transitwise/home/portal/login.php">Transitwise Portal</a>
+            <a href="contact.html">Contact</a>
+            <a href="feedback.html">Feedback</a>
+        </div>
+    </footer>
 </body>
 </html>
 
