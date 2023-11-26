@@ -6,6 +6,8 @@ const navList = document.querySelector('.commerce');
 navToggle.addEventListener('click', () => {
     navList.classList.toggle('active');
 });
+// End Topnav
+
 
 class Airport {
     // class to store airport information

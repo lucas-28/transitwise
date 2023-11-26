@@ -81,7 +81,7 @@ button:active {
     transform: translateY(2px);
 }
 .topnav {
-    height: 4em;
+    height: 80px;
     background: #036;
     overflow: hidden;
     box-sizing: border-box;
@@ -241,7 +241,7 @@ display: block;
 }
 select, input[type="text"], input[type="date"], input[type="submit"], input[type="password"] {
     padding: 0.625em; /* Equivalent to 10px when base font-size is 16px */
-    margin-top: 0.625em; /* Equivalent to 5px when base font-size is 16px */
+    margin: 10px auto; /* Equivalent to 5px when base font-size is 16px */
     box-sizing: border-box;
     width: 100%;
     max-width: 100%;
@@ -265,8 +265,8 @@ option {
     padding: 0.625em; 
 }
 
-.location-search {
-    position: relative;
+.location-search-group {
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -308,6 +308,7 @@ input {
     background: #eee;
     border: none;
     margin: 0;
+    max-width: fit-content;
     
 }
 
@@ -443,3 +444,20 @@ footer {
   ::-ms-input-placeholder { /* Edge 12 -18 */
     color: black;
   }
+
+
+.options-search-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+#origin {
+    position: relative;
+}
+
+#destination {
+    position: relative;
+}

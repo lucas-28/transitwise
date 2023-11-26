@@ -165,12 +165,13 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
     if ($inputType == "manual"){
         $origin = $ori;
         $destination = $des;
-        $departureDate = $dep;
+        $date = $dep;
     }
     else if ($inputType == "received"){
         $origin = strtoupper($_GET['origin']);
         $destination = strtoupper($_GET['destination']);
-        $date = intval($_GET['departure-date']);
+        $date = intval(implode("",explode("-", $_GET['departure-date'])));
+        echo $date;
     }
     else {
         echo "Error: inputType not set";
@@ -220,7 +221,7 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
     else if ($statementType == "not-prepared"){
         // Insecure query
         $sql = "SELECT * FROM " . "`external_flights` 
-        WHERE `origin` = '" . $origin . "' AND `destination` = '" . $destination .  "' AND `date` = '" . $departureDate . "';";
+        WHERE `origin` = '" . $origin . "' AND `destination` = '" . $destination .  "' AND `date` = '" . $date . "';";
         if ($debug== "true"){
             printf($sql);
         }
@@ -231,7 +232,7 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
     }
     
     echo '<div class="container">';
-    echo '<h2>Flights departing on ' . date('l, F jS, Y',strtotime(strval($departureDate))) .  ':</h2>';
+    echo '<h2>Flights departing on ' . date('l, F jS, Y',strtotime(strval($date))) .  ':</h2>';
     if ($result->num_rows > 0) {
         $first_result = $result->fetch_assoc();
         // Get airport info from DB

@@ -1,3 +1,22 @@
+<?php
+    session_start();
+    include ('../../includes/connect.php');
+    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+        if(isset($_SESSION['user_data'])){
+            //$user = new User($_SESSION['user_data']);
+            $user = $_SESSION['user_data'];
+            //var_dump($user);
+        }
+        else{
+            echo 'User data not found. Please log out and log back in.';
+        }
+    }
+    else {
+        header("location: /transitwise/home/account/LP_login.php");
+        exit();
+    }
+?> 
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -48,7 +67,7 @@
 
         <div class="profile">
             <!--Should display the user's first name after the Hello,.-->
-            <h2 class="greeting-user">Hello, </h2><label class="user-firstname"></label>
+            <h2 class="greeting-user">Hello, <?php echo $_SESSION["user_data"]["f_name"]; ?>.</h2><label class="user-firstname"></label>
 
             <!--Creates the navigation side bar of links to edit/view account.-->
             <div class="content">

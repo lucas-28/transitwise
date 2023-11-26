@@ -51,7 +51,7 @@
                 $_SESSION["error-type"] = "duplicate-email";
                 $_SESSION["error-message"] = "An account with this email already exists.";
                 $_SESSION["duplicate-email"] = $param_email;
-                header("location: /transitwise/register.php");
+                header("location: /transitwise/home/account/register.php");
                 exit;
             }
         }
@@ -71,13 +71,11 @@
         printf("executing statement...");
         if(mysqli_stmt_execute($stmt)){ 
             
-            printf("storing session variables...");
-            $_SESSION["loggedin"] = true;
-            $_SESSION["email"] = $email;                            
+                   
             
-            // Redirect user to welcome page
+            // Redirect user to login
             printf("redirecting...");
-            header("location: ../account.php");
+            header("location: /transitwise/home/account/LP_login.php");
         }
         else {
             echo "Something went wrong. Please try again later.";

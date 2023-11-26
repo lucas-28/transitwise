@@ -51,7 +51,7 @@ if($stmt = $dbconn->prepare($sql)){
                     $_SESSION["user_data"] = $fields;
                     // Redirect user to welcome page
                     printf("redirecting...");
-                    header("Location: /transitwise/home/account/account.php");
+                    header("Location: /transitwise/home/account/userhomepage.php");
                 } else{
                     // Password is not valid, return to login page
                     $_SESSION["login_failed"] = true;
