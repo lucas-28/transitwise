@@ -30,6 +30,7 @@ class User
     //No arguments defaults to empty userData array
     public function __construct($userData = [])
     {
+        $this->UPID = $userData['UPID'];
         $this->username = $userData['username'];
         $this->f_name = $userData['f_name'];
         $this->m_name = $userData['m_name'];
@@ -47,7 +48,6 @@ class User
         $this->is_employee = $userData['is_employee'];
         $this->is_customer = $userData['is_customer'];
         $this->reservations = $userData['reservations'];
-        $this->UPID = $this->locate_UPID();
     }
 
     //Return user's unique UPID
@@ -304,25 +304,6 @@ class User
         //Close prepared statement and database connection
         $stmt->close();
         $dbconn->close();
-    }
-
-    //Locate the user's UPID in database table upon instantiation
-    private function locate_UPID()
-    {
-        //Include database connection
-        include('../includes/connect.php');
-
-        //Query database to locate unique ID in row in which username is present
-        $result = $dbconn->query("SELECT UPID FROM users WHERE username = '$this->username'");
-
-        //If query was successful, return UPID from data row, else display error message
-        if ($result) {
-            $row = $result->fetch_assoc();
-            $dbconn->close();
-            return $row['UPID'];
-        } else {
-            echo nl2br("Could not locate UPID");
-        }
     }
 
     //Get user's login log history
