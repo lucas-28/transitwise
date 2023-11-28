@@ -1,11 +1,29 @@
 <?php
-    // NEED TO FIX JS TO VALIDATE FORM BEFORE SUBMITTING
+   // HTML written by Uriel, PHP and CSS written by Lucas with GPT-4 and Copilot
+   
+   // NEED TO FIX JS TO VALIDATE FORM BEFORE SUBMITTING
     
     // Initialize the session
     session_start();
-    $error = $_SESSION['error'];
+    if (isset($_SESSION["error"]) && $_SESSION["error"] == true) {
+        $error_message = $_SESSION["error-message"];
+        echo '<style type="text/css">
+         #error-message {
+            display: block;
+        }
+        </style>';
+    }
     unset($_SESSION['error']);
+    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+        header("location: /transitwise/home/account/account.php");
+        exit;
+    }
+    else {
+
+        
+    }
 ?>
+
 
 
 <!DOCTYPE HTML>
@@ -66,26 +84,26 @@ input {
     border-radius: 0.5em;
     background: #eee;
     border: none;
-    margin: 0 auto;
-    width: 20em;
+    margin: 0;
+    
 }
 
-.flex-box {
+.form-group {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
+    margin: 1em 0;
+    
 }
 
-.btn {
-    flex: 1 1 auto;
-    margin: 0 1em;
-    padding: 0.7em;
-    border-radius: 0.5em;
-    background: #ee580f;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
+.input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+    margin: 0;
+    padding: 1em 0;
+
 }
+
 
 .btn:hover {
     background: #003366;
@@ -105,7 +123,8 @@ input {
     border-top: .2em solid #CCC;
 }
 
-#error {
+#error-message {
+    display: none;
     color: red;
     font-weight: bold;
     text-align: center;
@@ -120,29 +139,28 @@ input {
 </style>
 
 </head>
+
 <body>
     <div id="body">
-        <h1><a href="index.php">Transitwise</a></h1>
         
 
         <div class="form-group">
 
-        <form id="register" action="handlers/register_handler.php" method="post"> 
+        <form id="register" action="/transitwise/handlers/register_handler.php" method="post"> 
+        <?php include '../../includes/nav-icon.php'; ?>
         <h1>Create Account</h1>
-        <p id="error" ><?php echo $error; ?></p>
+        <p id="error-message"><?php echo $error_message ?></p>
         <p>* required fields</p>
-        <fieldset class="flex-box">
-            
-                
-                <label for="f_name" >First Name *<br><input id="f_name" type="text" name="f_name"> <br></label>
-                <label>Middle Name<br><input type="text" name="m_name"> <br></label>
-                <label>Last Name *<br><input type="text" name="l_name"><br></label>
-                <label>Email Address *<br><input type="text" name="email"><br> </label>
-                <label>Phone Number <br><input type="text" name="phone"></label>
-                <label>Date of Birth *<br><input type="date" name="birth_date"> </label>
+        <fieldset class="input-group">
+            <label for="f_name" >First Name *<br><input id="f_name" type="text" name="f_name"> <br></label>
+            <label>Middle Name<br><input type="text" name="m_name"> <br></label>
+            <label>Last Name *<br><input type="text" name="l_name"><br></label>
+            <label>Email Address *<br><input type="text" name="email"><br> </label>
+            <label>Phone Number <br><input type="text" name="phone"></label>
+            <label>Date of Birth *<br><input type="date" name="birth_date"> </label>
             
         </fieldset>
-        <fieldset class="flex-box">
+        <fieldset class="input-group">
             
             <label>Address 1 *<br><input type="text" name="address1"> <br></label>
             <label>Address 2<br><input type="text" name="address2"> <br></label>
@@ -150,7 +168,7 @@ input {
             <label>State *<br><input type="text" name="state"> <br></label>
             <label>Zip code *<br><input type="text" name="zipcode"></label>
         </fieldset>
-        <fieldset class="flex-box">
+        <fieldset class="input-group">
             
             <label>Password *<br><input type="password" name="password" autocomplete="new-password"></label>
             <label>Confirm Password *<br><input type="password" name="confirm"></label>
@@ -158,13 +176,13 @@ input {
         </fieldset>
         
 
-        <div class="btn-holder">
+        <div class="input-group">
             <input class="btn" type="reset" name="reset" value="Clear Form">
             <input class="btn" type="submit" name="send" value="Submit">
             
         </div>
         
-        <p id=login>Already have an account? <a href="lp_login.php">Login here</a>.</p>
+            <p id=login>Already have an account? <a href="/transitwise/home/account/lp_login.php">Login here</a>.</p>
 
         </form>
         </div>

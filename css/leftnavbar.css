@@ -1,0 +1,63 @@
+/*// Uriel Cruz
+// Transitwise
+// css style
+// This is for the left nav bar for 
+// users, employees, and admin
+*/
+.openbtn{
+    left:10%;
+    position: absolute;
+    top: 15%;
+    background-color: rgb(215,215,215);
+    padding-left:5px;
+    padding-right:5px;
+    border-radius:0.1em;
+  }
+  .navbaruser {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 80px;
+    left: 0;
+    background-color: #001166;
+    overflow-x: hidden;
+    padding-top: 60px;
+    
+  }
+  
+  .navbaruser a {
+    float: left;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+  }
+  .navbaruser .closebtn{
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  
+  .navbaruser a:hover {
+    background-color: #000;
+  }
+  
+  @media screen and (max-width: 600px) {
+    
+    .navbaruser .closebtn{
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+  }
+    .navbaruser a{
+      font-size:12px
+  }
+  
+  }

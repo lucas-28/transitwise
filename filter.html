@@ -1,0 +1,33 @@
+<div id="filterDiv">
+    <h3>Filter by Category:</h3>
+    <div>
+        <input type="checkbox" id="category1" name="category" value="cat1">
+        <label for="category1">Category 1</label><br>
+
+        <input type="checkbox" id="category2" name="category" value="cat2">
+        <label for="category2">Category 2</label><br>
+
+        <!-- You can add more checkboxes similarly -->
+    </div>
+
+    <h3>Filter by Price:</h3>
+    <div>
+        <input type="checkbox" id="price1" name="price" value="low">
+        <label for="price1">Low</label><br>
+
+        <input type="checkbox" id="price2" name="price" value="medium">
+        <label for="price2">Medium</label><br>
+
+        <!-- You can add more checkboxes similarly -->
+    </div>
+
+    <button id="submitBtn">Submit</button>
+</div>
+
+<div id="results">
+    <!-- Sample Results -->
+    <div data-category="cat1" data-price="low">Result 1</div>
+    <div data-category="cat2" data-price="medium">Result 2</div>
+    <!-- You can add more results similarly -->
+</div>
+

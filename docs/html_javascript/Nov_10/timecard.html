@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>Employee Time card</title>
+     
+    <script>
+        // Time Sheet
+        /*This should grab the data of when they clocked in and clocked out from
+          the database. This should not be edited because it will mess up the total
+          hours and total pay since it will continously monitor the total hours and
+          keep on adding up.
+
+          The employee will be able to view their timecard but they should not
+          be able to edit it.
+        */
+
+var number_of_rows = 5;
+var total_hours = 0;
+var total_cost = 0;
+
+function re_compute()
+{
+    var hour_cost = document.getElementById("pay_rate").value;//wage
+    var extra_cost = document.getElementById("overtime_hour_cost").value;//overtime pay
+    var overtime_hour = 0;
+    if(hour_cost && hour_cost)
+    {
+        // Move across available rows
+        for(i = 1 ; i <= number_of_rows; i++)
+        {
+            if(document.getElementById("start_" + i).value != undefined && document.getElementById("end_" + i).value != undefined)
+                var hour_1 = document.getElementById("start_" + i).value;
+                var hour_2 = document.getElementById("end_" + i).value;
+            
+            
+
+            if(hour_2 < hour_1)
+            {
+                // Only calculate if the times are correct
+                //alert("Hours in row " + i + " are not correct.");
+            }
+            else
+            {
+                
+                // Raw-Basic hour calculation, no minutes involved
+                var hours = hour_2.split(':')[0] - hour_1.split(':')[0];
+                document.getElementById("hours_" + i).value = hours;
+                // Keep the total hours
+                total_hours += hours;
+                document.getElementById("total_hours").innerHTML = total_hours;
+                
+                if(document.getElementById("type_" + i).value == "Normal")
+                {
+                    // Compute normal hours
+                    document.getElementById("cost_" + i).innerHTML = "$" + hour_cost;
+                    document.getElementById("total_" + i).innerHTML = "$" + (hour_cost*hours);
+                    total_cost += hour_cost*hours;
+                    
+                }
+                else if(total_hours>40)
+                {
+                    // Compute extra hours
+
+                    overtime_hours = total_hours - 40; //Use this to subtract total hours to this to  
+                                                        //calculate overtime hours.
+
+                    document.getElementById("cost_" + i).innerHTML = "$" + extra_cost;
+                    document.getElementById("total_" + i).innerHTML = "$" + (extra_cost*overtime_hours);
+                    total_cost += extra_cost*hours;
+                }
+            
+            document.getElementById("total_cost").innerHTML = "$" + total_cost;
+            document.getElementById("total_overtime_hours").innerHTML = overtime_hours;
+                
+            }
+       
+        }
+    }
+    else
+    {
+        alert("Please type the wage and overtime.");
+    }
+}
+    </script>
+</head>
+<body>
+<h1><a href="index.php">Transitwise</a></h1>
+<div id="contnent">
+    <!--Creates the navigation side bar of links to edit/view account.-->
+    <div class="sidebar">
+        <nav role="navigation" class="nav">
+            <ul role="list" class="nav-list">
+                <!--placeholder should be replace with the location of the file.-->
+                <li role="list" class="home-page">
+                    <!--This link should lead to their homepage.-->
+                    <a href="placeholder"><button type="button">Home</button></a>
+                </li>
+                <li role="list" class="edit-profile">
+                    <a href="placeholder"><button type="button">Edit profile</button></a>
+                </li>
+                <li role="list" class="edit-password">
+                    <a href="placeholder"><button type="button">Edit password</button></a>
+                </li>
+                <li role="list" class="Employee-page">
+                    <a href="placeholder"><button type="button">Employee page</button></a>
+                </li>
+                <li role="list" class="Finance-Reports">
+                    <a href="placeholder"><button type="button">View Reports</button></a>
+                </li>
+                <li role="list" class="Employee-Management">
+                    <a href="placeholder"><button type="button">View employees</button></a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+    <form id="timecard" action="holder.php" method="post"> 
+
+        <table border="1">
+            <!--Name, ID, Wage, and Overtime should be filled out with 
+                and cannot be changed by the employee.
+                Overtime should be calculated by 1.5 times the wage and should auto dill.
+            -->
+            <tr>
+                <td colspan="7">
+                    <table>
+                        <tr>
+                            <!--Name of the employee, should grab from database.-->
+                            <td>
+                                Name:
+                            </td>
+                            <td>
+                                <input type="text" id="employee_name">
+                            </td>
+                        </tr>
+                        <tr>
+                            <!--ID of the employee, should grab from database.-->
+                            <td>
+                                Employee ID:
+                            </td>
+                            <td>
+                                <input type="number" id="employee_id">
+                            </td>
+                        </tr>
+                        <tr>
+                            <!--Wage of the employee, should grab from database.-->
+                            <td>
+                                Wage:
+                            </td>
+                            <td>
+                                <input type="number" id="pay_rate">
+                            </td>
+                        </tr>
+                        <tr>
+                            <!--Overtime pay of the employee, should be calculated from wage.-->
+                            <td>
+                                Overtime:
+                            </td>
+                            <td>
+                                <input type="number" id="overtime_hour_cost">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <!--Labels for the cells below.-->
+            <tr>
+                <td>
+                    Date
+                </td>
+                <td>
+                    Start
+                </td>
+                <td>
+                    End
+                </td>
+                <td>
+                    Hours
+                </td>
+                <td>
+                    Hour Type
+                </td>
+                <td>
+                    Wage
+                </td>
+                <td>
+                    Total
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="date" id="date_1">
+                </td>
+                <td>
+                    <input type="time" id="start_1" onchange="re_compute()">
+                </td>
+                <td>
+                    <input type="time" id="end_1" onchange="re_compute()">
+                </td>
+                <td>
+                    <input type="number" id="hours_1" onchange="re_compute()">
+                </td>
+                <td>
+                    <select id="type_1" onchange="re_compute()">
+                        <option value="Normal" selected>Normal</option>
+                        <!--Overtime should not be selected unless it goes pass 40hrs.-->
+                        <option value="Extra">Overtime</option>
+                    </select>
+                </td>
+                <td id="cost_1">
+
+                </td>
+                <td id="total_1">
+
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="date" id="date_2">
+                </td>
+                <td>
+                    <input type="time" id="start_2" onchange="re_compute()">
+                </td>
+                <td>
+                    <input type="time" id="end_2" onchange="re_compute()">
+                </td>
+                <td>
+                    <input type="number" id="hours_2" onchange="re_compute()">
+                </td>
+                <td>
+                    <select id="type_2" onchange="re_compute()">
+                        <option value="Normal" selected>Normal</option>
+                        <!--Overtime should not be selected unless it goes pass 40hrs.-->
+                        <option value="Extra">Overtime</option>
+                    </select>
+                </td>
+                <td id="cost_2">
+
+                </td>
+                <td id="total_2">
+
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="date" id="date_3">
+                </td>
+                <td>
+                    <input type="time" id="start_3" onchange="re_compute()">
+                </td>
+                <td>
+                    <input type="time" id="end_3" onchange="re_compute()">
+                </td>
+                <td>
+                    <input type="number" id="hours_3" onchange="re_compute()">
+                </td>
+                <td>
+                    <select id="type_3" onchange="re_compute()">
+                        <option value="Normal" selected>Normal</option>
+                        <!--Overtime should not be selected unless it goes pass 40hrs.-->
+                        <option value="Extra">Overtime</option>
+                    </select>
+                </td>
+                <td id="cost_3">
+
+                </td>
+                <td id="total_3">
+
+                </td>
+
+            </tr>
+
+        </tr>
+
+        <tr>
+            <td>
+                <input type="date" id="date_4">
+            </td>
+            <td>
+                <input type="time" id="start_4" onchange="re_compute()">
+            </td>
+            <td>
+                <input type="time" id="end_4" onchange="re_compute()">
+            </td>
+            <td>
+                <input type="number" id="hours_4" onchange="re_compute()">
+            </td>
+            <td>
+                <select id="type_4" onchange="re_compute()">
+                    <option value="Normal" selected>Normal</option>
+                    <!--Overtime should not be selected unless it goes pass 40hrs.-->
+                    <option value="Extra">Overtime</option>
+                </select>
+            </td>
+            <td id="cost_4">
+
+            </td>
+            <td id="total_4">
+
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>
+                <input type="date" id="date_5">
+            </td>
+            <td>
+                <input type="time" id="start_1" onchange="re_compute()">
+            </td>
+            <td>
+                <input type="time" id="end_1" onchange="re_compute()">
+            </td>
+            <td>
+                <input type="number" id="hours_5" onchange="re_compute()">
+            </td>
+            <td>
+                <select id="type_5" onchange="re_compute()">
+                    <option value="Normal" selected>Normal</option>
+                    <!--Overtime should not be selected unless it goes pass 40hrs.-->
+                    <option value="Extra">Overtime</option>
+                </select>
+            </td>
+            <td id="cost_5">
+
+            </td>
+            <td id="total_5">
+
+            </td>
+
+        </tr>
+
+            <tr>
+                <td colspan="4">
+                </td>
+                <td>
+                    Total Hours
+                </td>
+                <td>
+                    Total Overtime Hours
+                </td>
+                <td>
+                    Total Cost
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="4">
+                </td>
+                <td id="total_hours">
+
+                </td>
+                <td id="total_overtime_hours">
+                    
+                </td>
+                <td id="total_cost">
+
+                </td>
+            </tr>
+            
+        </table>
+    </form>
+</div>
+
+</body>
+</html>

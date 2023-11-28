@@ -1,89 +1,10 @@
-<!-- Some aspects of code written with assistance of ChatGPT -->
-<!--
-/*
-include('../../includes/connect.php');
-
-session_start();
-$email = "acallan88@gmail.com";
-$_SESSION["loggedin"] = true;
-$_SESSION["email"] = $email;
-
-// Check if user is logged in, if not redirect to login page
-if (!isset($email)) {
-    header('Location: lp_login.php');
-    exit();
-}
-
-// Check debug statement
-if ($debug == "true") {
-    echo nl2br("\nPreparing statement...");
-}
-
-$stmt = $dbconn->prepare("SELECT * FROM `users`
-INNER JOIN user_permission ON users.UPEID = user_permission.UPEID
-WHERE `email` = ?;");
-if ($debug == "true") {
-    echo nl2br("\nBinding parameters...");
-}
-
-$stmt->bind_param("s", $email);
-
-if ($debug == "true") {
-    echo nl2br("\n Executing statement...");
-}
-$stmt->execute();
-
-if ($debug == "true") {
-    echo nl2br("\n Getting results...");
-}
-$result = $stmt->get_result();
-
-if ($debug == "true") {
-    echo nl2br("\n Fetching data...");
-}
-
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    echo nl2br($row['is_customer']);
-}
-
-if (isset($_POST['submit_data'])) {
-    $id = $_POST['id'];
-    $query = "UPDATE `users` SET f_name='$_POST[f_name]',m_name='$_POST[m_name]',l_name='$_POST[l_name]',email='$_POST[email]',phone='$_POST[phone]',birth_date='$_POST[birth_date]',address1='$_POST[address1]',address2='$_POST[address2]',city='$_POST[city]',state='$_POST[state]',zip='$_POST[zip]'";
-    $run_query = mysqli_query($dbconn, $query);
-    if ($run_query) {
-        echo nl2br("\nData updated");
-    } else {
-        echo nl2br("\nUpdate failed");
-    }
-}
-
-
-// session_start() to start session
-// $_SESSION["loggedin"] = true;
-// $_SESSION["email"] = $email;
-// add query beneath this then assign row to session variable
-
-//when the session starts keep all the info in one place
-//set session variable as an array for account info then set it equal to the row
-// write checks (issets) to make sure everything is there before it starts displaying info
-// when changing user info maybe update session
-
-// display first name
-// display last name
-// display
-
-// INSERTING
-// view register_handler.php for reference
-// SQL UPDATE to update sql values to values stored in session array
-
-// create message to show that info was updated successfully
-
-//close statement and dbconn with mysqli_ functions at end of file
-*/
--->
-
 <?php
+// Aidan Callan
+// transitwise
+// Account information viewing/editing
+// Some aspects of code written with assistance of ChatGPT
+
+// PERSONAL NOTE - when changing user info  update session
 
 // Implement database connection
 include('../../includes/connect.php');

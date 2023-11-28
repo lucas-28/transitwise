@@ -1,0 +1,79 @@
+.reserve-btn {
+    background-color: #036c5e;
+    border: none;
+    border-radius: 0.5em;
+    color: #000;
+    text-decoration: none;
+}
+.flight-card:hover {
+    box-shadow: 0.125em 0.125em 0.75em #aaa;
+    cursor: pointer;
+}
+.flight-card:active {
+    background-color: #cff5ff;
+    cursor: pointer;
+}
+
+.flight-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em;
+    margin: 1em 0em 1em 0;
+    border: 1px solid #ddd;
+    border-radius: 0.5em;
+    background-color: #fff;
+}
+
+.flight-info {
+    flex: 3; /* This allows the flight info to take up more space compared to the action button */
+}
+
+.flight-action {
+    flex: 1;
+}
+
+.flight-route {
+    font-size: .8em;
+    margin-bottom: 0.5em;
+}
+
+.flight-times {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+.flight-price {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+.flight-depart {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flight-arrive {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flight-date, .flight-return-date {
+    font-size: 1em;
+    margin: 0.25em 0;
+}
+
+.book-btn:hover {
+    background-color: #036c5e;
+}
+
+.flight-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
