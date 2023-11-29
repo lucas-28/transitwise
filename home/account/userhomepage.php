@@ -1,26 +1,8 @@
-<?php
-    session_start();
-    include ('../../includes/connect.php');
-    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
-        if(isset($_SESSION['user_data'])){
-            //$user = new User($_SESSION['user_data']);
-            $user = $_SESSION['user_data'];
-            //var_dump($user);
-        }
-        else{
-            echo 'User data not found. Please log out and log back in.';
-        }
-    }
-    else {
-        header("location: /transitwise/home/account/LP_login.php");
-        exit();
-    }
-?> 
-
 <!DOCTYPE HTML>
 <html lang="en">
+
 <head>
-<!--
+    <!--
     // Uriel Cruz
     // Transitwise
     // HTML and style section(css)
@@ -42,22 +24,37 @@
 
     <title>User Home page</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width", intial-scale="1.0">
+    <meta name="viewport" content="width=device-width" , intial-scale="1.0">
     <link rel="stylesheet" href="/transitwise/css/style.css">
-    
+
 </head>
 <header>
-    <?php include ('../../includes/topnav.php'); ?>
+    <?php include('../../includes/topnav.php');
+    include('../../includes/connect.php');
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+        if (isset($_SESSION['user_data'])) {
+            //$user = new User($_SESSION['user_data']);
+            $user = $_SESSION['user_data'];
+            //var_dump($user);
+        } else {
+            echo 'User data not found. Please log out and log back in.';
+        }
+    } else {
+        header("location: /transitwise/home/account/LP_login.php");
+        exit();
+    }
+    ?>
 </header>
+
 <body>
     <!--This code is the user homepage.
         It should display the user's basic info and allows the user to press a button to 
         edit there account.
     -->
-    
+
 
     <!--Creates the navigation side bar of links to edit/view account.-->
-    <?php include ('../../includes/leftnavuser.php'); ?>
+    <?php include('../../includes/leftnavuser.php'); ?>
 
     <!--
         This next part is the middle section of the page that does the same thing
@@ -142,4 +139,5 @@
         </div>
     </footer>
 </body>
+
 </html>
