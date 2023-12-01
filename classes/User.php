@@ -31,7 +31,6 @@ class User
     public function __construct($userData = [])
     {
         $this->UPID = $userData['UPID'];
-        $this->username = $userData['username'];
         $this->f_name = $userData['f_name'];
         $this->m_name = $userData['m_name'];
         $this->l_name = $userData['l_name'];
