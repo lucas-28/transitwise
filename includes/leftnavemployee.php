@@ -27,13 +27,13 @@
 
     <a href="../../portal/employee/userchangepassword.php">Change password</a>
 
-    <a href="../../portal/employee/temp.php">View user's info</a>
+    <a href="../../portal/employee/viewuserinfo.php">View user's info</a>
 
-    <a href="../../portal/employee/temp.php">View user's payment info</a>
+    <a href="../../portal/employee/viewuserpaymentinfo.php">View user's payment info</a>
 
-    <a href="../../portal/employee/temp.php">View user's tickets</a>
+    <a href="../../portal/employee/viewusertickets.php">View user's tickets</a>
     
-    <a href="../../portal/employee/temp.php">Manage flights</a>
+    <a href="../../portal/employee/manageflights.php">Manage flights</a>
 </div>
 
 <span style="font-size:30px;cursor:pointer" class= "openbtn" onclick="openNav()">☰</span>

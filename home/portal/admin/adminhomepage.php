@@ -120,7 +120,7 @@
                         <div class="square-action">
                             <!--placeholder should be replace with the location of the file.-->
                             <!--Needs Work: viewemployees.php-->
-                            <a href="temp.php"><button type="button">EMPLOYEE MANAGEMENT</button></a>
+                            <a href="viewemployees.php"><button type="button">EMPLOYEE MANAGEMENT</button></a>
                         </div>
                     </div>
                 </div>

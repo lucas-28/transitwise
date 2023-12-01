@@ -92,7 +92,7 @@
                         <p class="description">View or change user's profile info.</p>
                         <div class="square-action">
                             <!--placeholder should be replace with the location of the file.-->
-                            <a href="temp.php"><button type="button">VIEW USER'S INFO</button></a>
+                            <a href="viewuserinfo.php"><button type="button">VIEW USER'S INFO</button></a>
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                         <p class="description">View or change user's payment info.</p>
                         <div class="square-action">
                             <!--placeholder should be replace with the location of the file.-->
-                            <a href="temp.php"><button type="button">VIEW USER'S PAYMENT INFO</button></a>
+                            <a href="viewuserpaymentinfo.php"><button type="button">VIEW USER'S PAYMENT INFO</button></a>
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                         <p class="description">View or change the user's airline tickets that have been purchased.</p>
                         <div class="square-action">
                             <!--placeholder should be replace with the location of the file.-->
-                            <a href="temp.php"><button type="button">VIEW USER'S TICKETS</button></a>
+                            <a href="viewusertickets.php"><button type="button">VIEW USER'S TICKETS</button></a>
                         </div>
                     </div>
                 </div>
@@ -131,7 +131,7 @@
                         <p class="description">View and manage flights.</p>
                         <div class="square-action">
                             <!--placeholder should be replace with the location of the file.-->
-                            <a href="temp.php"><button type="button">MANAGE FLIGHTS</button></a>
+                            <a href="manageflights.php"><button type="button">MANAGE FLIGHTS</button></a>
                         </div>
                     </div>
                 </div>

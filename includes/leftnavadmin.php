@@ -32,7 +32,7 @@
     <a href="../../portal/admin/financialsummary.php">View Reports</a> <!--Z-reports? --> 
 
     <!--Needs Work: viewemployees.php-->
-    <a href="../../portal/admin/temp.php">View employees</a>  
+    <a href="../../portal/admin/viewemployees.php">View employees</a>  
 </div>
 
 <span style="font-size:30px;cursor:pointer" class= "openbtn" onclick="openNav()">☰</span>

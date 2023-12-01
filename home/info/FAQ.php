@@ -4,87 +4,20 @@
     <title>Help/FAQ page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width", intial-scale="1.0">
-    
-<style>
-    
-    body{
-    font-family: 'Work Sans', sans-serif;
-}
-.company-name{
-    background-color: #e6f3ff ;
-    padding: 10px 60px;
-    height: 10%;
+    <link rel="stylesheet" href="/transitwise/css/style.css">
 
-}
-.faq-heading{
-    background-color: #e6f3ff;
-    border-bottom: #000000;
-    padding: 20px 60px;
-}
-.faq-container{
-display: flex;
-justify-content: center;
-flex-direction: column;
-}
-.hr-line{
-  width: 60%;
-  margin: auto;
-  
-}
-/* Style the buttons that are used to open and close the faq-page body */
-.faq-page {
-    background-color: #ffffff; 
-    color: #000000;
-    cursor: pointer;
-    padding: 30px 20px;
-    width: 60%;
-    border: none;
-    outline: none;
-    transition: 0.4s;
-    margin: auto;
-}
-.faq-body{
-    margin: auto;
-    /* text-align: center; */
-   width: 50%; 
-   padding: auto;
-   
-}
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active,
-.faq-page:hover {
-    background-color: #dfdfdf;
-}
-/* Style the faq-page panel. Note: hidden by default */
-.faq-body {
-    padding: 0 18px;
-    background-color: rgb(237, 249, 255);
-    display: none;
-    overflow: hidden;
-}
-.faq-page:after {
-    content: '\02795';
-    /* Unicode character for "plus" sign (+) */
-    font-size: 13px;
-    color: #777;
-    float: right;
-    margin-left: 5px;
-}
-.active:after {
-    content: "\2796";
-    /* Unicode character for "minus" sign (-) */
-}
-</style>
+</head>
+<header>
+    <?php include ('../../includes/topnav.php'); ?>
+</header>
 
 </head>
 <body>
     <main>
-
-        <h1 class="company-name">Transitwise</h1>
-        <button><a href="/transitwise/home/index.php">Home</a></button>
         
         <hr class="title-line">
         <h2 class="faq-heading">Frequently Asked Questions</h2>
+        <hr class="title-line">
         <section class="faq-container">
 
             <!-- To add more questions, simply copy below this comment to the hr-line and place it
@@ -155,26 +88,13 @@ flex-direction: column;
 
         </section>
     </main>
+    <footer>
+        <div class="footer-container">
+            <a href="/transitwise/home/portal/login.php">Transitwise Portal</a>
+            <a href="contact.html">Contact</a>
+            <a href="feedback.html">Feedback</a>
+        </div>
+    </footer>
 
-    <script type="text/javascript">
-    
-        var faq = document.getElementsByClassName("faq-page");
-        var i;
-        for (i = 0; i < faq.length; i++) {
-            faq[i].addEventListener("click", function () {
-                /* Toggle between adding and removing the "active" class,
-                to highlight the button that controls the panel */
-                this.classList.toggle("active");
-                /* Toggle between hiding and showing the active panel */
-                var body = this.nextElementSibling;
-                if (body.style.display === "block") {
-                    body.style.display = "none";
-                } 
-                else {
-                    body.style.display = "block";
-                }
-        });
-        }
-        </script>
 </body>
 </html>
