@@ -8,7 +8,6 @@ class User
 
     //Encapsulated variables
     private $UPID;
-    private $username;
     private $f_name;
     private $m_name;
     private $l_name;
@@ -53,12 +52,6 @@ class User
     public function get_UPID()
     {
         return $this->UPID;
-    }
-
-    //Return user's username
-    public function get_username()
-    {
-        return $this->username;
     }
 
     //Return user's first name
@@ -154,12 +147,6 @@ class User
     public function get_reservations()
     {
         return $this->reservations;
-    }
-
-    //Update user's username
-    public function set_username($u)
-    {
-        $this->username = $u;
     }
 
     //Update user's first name

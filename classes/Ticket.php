@@ -6,6 +6,7 @@ class Ticket
 {
     //Encapsulated variables
     private $TKID;
+    private $RSID;
     private $f_name;
     private $m_name;
     private $l_name;
@@ -13,18 +14,26 @@ class Ticket
 
     //Construct ticket object with name on ticket and phone number
     //No-arg constructor defaults to blank string arguments
-    public function __construct($f_name = "", $m_name = "", $l_name = "", $phone_number = "")
+    public function __construct($ticketData = [])
     {
-        $this->f_name = $f_name;
-        $this->m_name = $m_name;
-        $this->l_name = $l_name;
-        $this->phone_number = $phone_number;
+        $this->TKID = $ticketData['TKID'];
+        $this->RSID = $ticketData['RSID'];
+        $this->f_name = $ticketData['f_name'];
+        $this->m_name = $ticketData['m_name'];
+        $this->l_name = $ticketData['l_name'];
+        $this->phone_number = $ticketData['phone_number'];
     }
 
-    //Return ticket's unique ID
+    //Return ticket's TKID
     public function get_TKID()
     {
         return $this->TKID;
+    }
+
+    //Return ticket's RSID
+    public function get_RSID()
+    {
+        return $this->RSID;
     }
 
     //Return first name on ticket
