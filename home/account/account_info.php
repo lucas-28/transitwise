@@ -10,7 +10,7 @@
 include('../../includes/connect.php');
 
 // Initialize session
-session_start();
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
 
 $email = "apc@gmail.com";
 

@@ -1,3 +1,22 @@
+<?php
+    session_status() === PHP_SESSION_ACTIVE ?: session_start();
+    include ('../../includes/connect.php');
+    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+        if(isset($_SESSION['user_data'])){
+            //$user = new User($_SESSION['user_data']);
+            $user = $_SESSION['user_data'];
+            //var_dump($user);
+        }
+        else{
+            echo 'User data not found. Please log out and log back in.';
+        }
+    }
+    else {
+        header("location: /transitwise/home/account/LP_login.php");
+        exit();
+    }
+?> 
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>

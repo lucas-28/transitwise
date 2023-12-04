@@ -102,6 +102,8 @@
 
 <?php
 
+session_start();
+
 $inputType = "received";
 $statementType = "prepared";
 $dep = 20220702;
@@ -127,21 +129,24 @@ $flights = array();
 // If both departure and return flight IDs have been set, redirect to reserve.php
 if(isset($_GET['dep-flightID'])) {
     $depFlightID = $_GET['dep-flightID'];
-    if(isset($_GET['return-flightID'])) {
-        $retFlightID = $_GET['return-flightID'];
-        header("location: /transitwise/home/reserve/reserve.php?dep-flightID=" . $depFlightID . " &return-flightID=" . $retFlightID);
+    if(isset($_GET['ret-flightID']) && $_GET['ret-flightID'] != 0) {
+        $retFlightID = $_GET['ret-flightID'];
+        echo 'both flight IDs set. ';
+        
+        header("location: customize.php?dep-flightID=" . $depFlightID . " &ret-flightID=" . $retFlightID);
     }
     // For choosing a return flight
     else if(isset($_GET['return-date'])) {
-        echo 'return date set';
+        echo 'return date set. ';
+        
         if (intval($_GET['return-date'])== 0) {
             echo 'return date is 0. ';
-            header("location: /transitwise/home/reserve/reserve.php");
+            //header("location: /transitwise/home/index.php");
             echo 'redirect failed. ';
         }
             
         else {
-            $date = intval($_GET['return-date']);
+            $date = intval(implode("",explode("-", $_GET['return-date'])));
             $depFlightID = $_GET['dep-flightID'];
         }
         
@@ -150,16 +155,16 @@ if(isset($_GET['dep-flightID'])) {
 
 
 // For departure flight
-if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
-
-    if(isset($_GET['return-date']) ){
-        $return = true;
+if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date']) || isset($_GET['dep-flightID'], $_GET['return-date'])) {
+    if(isset($returnDate)){
         $returnDate = $_GET['return-date'];
-        
-    } else {
-        $return = false;
+    }
+    else {
         $returnDate = 0;
     }
+    
+
+
 
     // For manual debugging
     if ($inputType == "manual"){
@@ -169,15 +174,35 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
     }
     else if ($inputType == "received"){
         $origin = strtoupper($_GET['origin']);
+        $_SESSION['origin'] = $origin;
         $destination = strtoupper($_GET['destination']);
+        $_SESSION['destination'] = $destination;
+
         $date = intval(implode("",explode("-", $_GET['departure-date'])));
         echo $date;
     }
     else {
         echo "Error: inputType not set";
     }
+    
+    if(isset($_GET['dep-flightID'])) {
+        $date = intval(implode("",explode("-", $_GET['return-date'])));
 
-
+        // Get the departure flight info
+        if(isset($_SESSION['departure_row'])){
+            // reverse the airports for roundtrip
+            $depFlight = $_SESSION['departure_row'];
+            $origin = $depFlight['destination'];
+            $destination = $depFlight['origin'];
+        }
+        else {
+            $depFlightID = $_GET['dep-flightID'];
+            $depFlight = $dbconn->query('SELECT * FROM `external_flights` WHERE FDID = ' . $depFlightID . ';')->fetch_assoc();
+            $origin = $depFlight['origin'];
+            $destination = $depFlight['destination'];
+        }
+        
+    }
     
 
     // For debugging
@@ -246,9 +271,7 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
         while($row = $result->fetch_assoc()) {
             // Loop through result
             //
-            $minutes = $row['duration'];
-            $duration =  intdiv($minutes, 60).' h '. ($minutes % 60) . ' m';
-            $price = round($row['distance'] * 0.15);
+            
 
             $row['dep_time'] = sprintf('%04d', $row['dep_time']);
             $row['arr_time'] = sprintf('%04d', $row['arr_time']);
@@ -256,12 +279,16 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date'])) {
             // If departure flight has been chosen, set departure flight ID equal to that ID, stored in the URL, else set it to the current flight ID
             if(isset($_GET['dep-flightID']) ) {
                 $depFlightID = $_GET['dep-flightID'];
-                $retFlightID = $row['flightID'];
+                $retFlightID = $row['FDID'];
+                $_SESSION["return_row"] = $row;
             }
             else {
-                $depFlightID = $row['flightID'];
+                $depFlightID = $row['FDID'];
                 $retFlightID = 0;
+                $_SESSION["departure_row"] = $row;
+
             }
+            
             $card = flight_card($row, $duration, $price, $depFlightID, $retFlightID, $returnDate);
             foreach($card as $value) {
                 echo $value;
@@ -289,10 +316,13 @@ else {
 }
 
 
-function flight_card($row, $duration, $price, $depFlightID, $returnFlightID, $returnDate) {
+function flight_card($row, $depFlightID, $retFlightID, $returnDate) {
     // This function returns a flight card
+    $minutes = $row['duration'];
+    $duration =  intdiv($minutes, 60).' h '. ($minutes % 60) . ' m';
+    $price = round($row['distance'] * 0.15);
     return [
-        '<a class="reserve-btn" href="search.php?dep-flightID=' . $depFlightID . '&return-flightID='. $returnFlightID . '&return-date=' . $returnDate . '">',
+        '<a class="reserve-btn" href="search.php?dep-flightID=' . $depFlightID . '&ret-flightID='. $retFlightID . '&return-date=' . $returnDate . '">',
         '<li><div class="flight-card" data-dep-time=' . $row['dep_time'] . ' data-arr-time=' . $row['arr_time']  . ' data-airline=' . $row['airline'] . ' data-price=' . $price . '>',
         '    <div class="flight-info">',
         '        <div class="flight-times">',

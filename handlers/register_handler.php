@@ -8,7 +8,7 @@
     //require_once "includes/redirect_admin.php";
     //require_once "includes/redirect_user.php";
 
-    session_start();
+    session_status() === PHP_SESSION_ACTIVE ?: session_start();
 
     $debug = "true";
     $UPEID = 1;

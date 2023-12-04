@@ -41,7 +41,7 @@ if($stmt = $dbconn->prepare($sql)){
             if($fields = $result->fetch_assoc()){
                 printf("verifying password...");
                 // Start session
-                session_start();
+                session_status() === PHP_SESSION_ACTIVE ?: session_start();
                 if(password_verify($input_password, $fields["password"])){
                     // Password is correct, so start a new session
                     printf("password verified...");

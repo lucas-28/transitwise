@@ -35,12 +35,13 @@ if($stmt = $dbconn->prepare($sql)){
         // If ID exists, verify password
         printf("getting result...");
         $result = $stmt->get_result();
+        session_status() === PHP_SESSION_ACTIVE ?: session_start();
         if($result->num_rows == 1){                   
             printf("fetching row...");
             if($fields = $result->fetch_assoc()){
                 printf("verifying password...");
                 // Start session
-                session_start();
+                
                 if(password_verify($password, $fields["password"])){
                     // Password is correct, so start a new session
                     printf("password verified...");
@@ -59,7 +60,7 @@ if($stmt = $dbconn->prepare($sql)){
                 }
             }
         } else{
-            session_start();
+            
             // email doesn't exist, display a generic error message
             $_SESSION["login_failed"] = true;
             header("Location: /transitwise/home/account/lp_login.php");
