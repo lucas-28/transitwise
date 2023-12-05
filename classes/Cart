@@ -1,0 +1,48 @@
+<?php
+//Jonathan Farnham
+//Transitwise
+//Cart Class
+
+//imports classes
+include("Flight.php")
+
+class Cart
+{
+    private $cart = [];
+
+    public function addTicket(Ticket $ticket, $quantinty = 1)
+    {
+        //gets ticket properties from the flight class
+        $ticketID = $ticket->get_FDID();
+        $ticketPrice = $ticket->get_ticket_cost();
+
+        //checks if flight id is alreadt in cart
+        if(isset($this->cart[$ticketID]))
+        {
+            $this->items[$ticketID]['quantity'] += $quantinty; //if the flight id is already in the cart it updates the quantitiy
+        }
+        else
+        {
+            //if its not in the cart it will add the flight to the cart with quantity and price data
+            $this->items[$ticketID]=
+            [
+                'ticket' => $ticket,
+                'quantity' => $quantinty,
+                'price' => $ticketPrice;
+            ];
+        }
+
+        public function removeTicket($ticketID)
+        {
+            if(isset($this->items[$ticketID]))
+            {
+                unset($this->items[$ticketID]); 
+            }
+        }
+
+        public function getCart()
+        {
+            return $this->items;
+        }
+    }
+}
