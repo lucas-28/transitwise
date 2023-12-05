@@ -9,9 +9,9 @@ LAWFUL BASES FOR PROCESSING
 
 We will collect personal information from you only when one of the following lawful bases applies:
 
-	- Consent: this means we will process your personal information when you have given your consent to do so
-	- Legal obligation: this means we will process your personal information when we have a legal obligation to 	  collect personal information, including but not limited to using transaction history to complete our 	  	  financial and tax obligations under the law.
-	- Performance of a contract: this means that we will process your personal information where the personal 	 information is necessary to perform a contract with you. Examples include processing payments and 	 	 creating an account at your request.
+- Consent: this means we will process your personal information when you have given your consent to do so
+- Legal obligation: this means we will process your personal information when we have a legal obligation to 	  collect personal information, including but not limited to using transaction history to complete our 	  	  financial and tax obligations under the law.
+- Performance of a contract: this means that we will process your personal information where the personal 	 information is necessary to perform a contract with you. Examples include processing payments and 	 	 creating an account at your request.
 
 CATEGORIES OF PERSONAL INFORMATION WE COLLECT AND USE AND PURPOSES OF COLLECTION AND USAGE
 
