@@ -80,7 +80,7 @@
 
 <!-- Checkout Form-->
 <div class="center">
-    <form id="checkoutForm" action="submit.php" method="post">
+    <form id="checkoutForm" action="../../handlers/checkout_handler.php" method="post">
 
         <!-- Who's Travelling -->
         <fieldset>
