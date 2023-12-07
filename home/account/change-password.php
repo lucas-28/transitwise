@@ -1,27 +1,13 @@
-<?php include "/transitwise/privacy/userCheck.php"; ?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
 <!--
     // Uriel Cruz
     // Transitwise
-    // HTML and style section(css)
-    // This is the User profile page for the user.
+    // This is the Admin change password
 
     For php editor, 
   - Keep the user login.
-  - Grab the user's data and have it loaded in the input box. If it is modified,
-  then it will submit the data to the database and refreshes the page with 
-  new data. If it doesn't meet certain conditions like the year of date or birth
-  is in the future then it should come out as an error.
-
-  - The sidebar buttons have href to link to other files, they are labeled
-    as "placeholder" whenever those pages are finsihed. The home button goes to
-    the user's home page.
-
-  - Script section left empty unless needed.
-
-  - Note, I reused register.php that was in github and modified for this case.
     -->
 <title>User Change password</title>
 <meta charset="utf-8">
@@ -38,22 +24,30 @@
 <body>
     
     <!--Creates the navigation side bar of links to edit/view account.-->
-    <?php include ('../../includes/leftnavuser.php'); ?>
-    <div id="body">
+    <?php include ('../../includes/leftnavadmin.php'); ?>
+    <div class="container">
         
-
-        <form id="register" action="handlers/register_handler.php" method="post"> 
+        <?php include ('../../includes/error-message.php'); ?>
+        <form id="change-password" action="/transitwise/handlers/change_user_pw_handler.php" method="post"> 
             <h1>Change Password</h1>
             
-            <fieldset class="flex-box">
+            <fieldset class="flex-box" style="
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr;
+                ">
                 <p>
-                    <label for="password">Password:</label>
-                    <input type="password" name="password" id="myInput1">
+                    <label for="old-password">Previous Password:</label>
+                    <input type="password" name="oldPassword" id="myInput1">
                     <input type="checkbox" id="showpassword" onclick="myPassword()">Show Password
-                </p><br>
+                </p>
                 <p>
-                    <label for="password">Confirm Password </label>
-                    <input id="myInput2" type="password" name="password" required>
+                    <label for="new-password">New Password:</label>
+                    <input type="password" name="newPassword" id="myInput1">
+                    <input type="checkbox" id="showpassword" onclick="myPassword()">Show Password
+                </p>
+                <p>
+                    <label for="conf-password">Confirm New Password </label>
+                    <input id="myInput2" type="password" name="conf-password" required>
                     <input type="checkbox" id="showpassword"onclick="myConfirmPassword()">Show Password
                 </p>
                 
