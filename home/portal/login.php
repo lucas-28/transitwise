@@ -5,6 +5,11 @@ session_status() === PHP_SESSION_ACTIVE ?: session_start();
 <!DOCTYPE html>
 <html lang="en">
 
+<header>
+    <?php include ('../../includes/topnav.php'); ?>
+</header>
+
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,4 +49,8 @@ session_status() === PHP_SESSION_ACTIVE ?: session_start();
             </div>
         </form>
     </div>
+
+
+    <?php include '../../include/footer.php';?>
 </body>
+</html>
