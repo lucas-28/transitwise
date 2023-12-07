@@ -34,40 +34,86 @@ if(isset($_GET['flightID'])) {
     <title>Transitwise</title>
     <link rel="stylesheet" href="../../css/topnav.css">
     <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="/transitwise/css/flight_card.css">
+    <style>
+        .customize {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+        }
+    </style>
 </head>
 <header>
 <?php include '../../includes/topnav.php'; ?>
 </header>
 <body>
+    <h1>Customize Your Flight</h1>
+    <div class="container">
     <?php
-        $departure_row = $_SESSION["departure_row"];
-        $return_row = $_SESSION["return_row"];
-        echo "<h1>Flight Details</h1>";
-        flight_details($departure_row);
+    
+        if(isset($_GET['dep-flightID'])){
+            $depFlightID = intval($_GET['dep-flightID']);
+            //var_dump($depFlightID); 
+            echo '<h2>Departure Flight:</h2>';
+            if (isset($_SESSION["results"])){
+                echo "results set";
+                foreach ($_SESSION["results"] as $row) {
+                    //var_dump($row['FDID']);
+                    if ($row['FDID'] == $depFlightID){
+                        $departure_row = $row;
+                        $_SESSION["price"] = round($row['distance'] * 0.15);
+                        //echo "found";
+                    }
+                    
+                }
+                
+                //var_dump($departure_row); 
+            }
+        }
+        echo '<ul class="flight-list">';
+        $card = flight_card($departure_row);
+        foreach($card as $line) {
+            echo $line;
+        }
+        echo '</ul>';
+    
 
         if(isset($_GET['roundtrip']) && $_GET['roundtrip'] == 'true') {
             $return_row = $_SESSION["return_row"];
             echo "<h2>Return Flight:</h2>";
-            flight_details($return_row);
+            flight_card($return_row);
 
         }
     
     ?>
+    <div class='customize'>
+        <h4>Choose Your Seat:</h4>
+        <form action="checkout.php" method="get">
+            
+            <input type="hidden" name="dep-flightID" value="<?php echo $depFlightID; ?>">
+            <label for="seatID">Seat Number:</label>
+            <input type="text" name="seatID" value="1">
+            <input type="radio" id="economy" name="class" value="economy" checked>
+            <label for="economy">Economy</label><br>
+            <input type="radio" id="business" name="class" value="business">
+            <label for="business">Business</label><br>
+            <input type="radio" id="first" name="class" value="first">
+            <label for="first">First</label><br>
+            <input type="submit" value="Continue">
+    </div>
+    </div>
 </body>
 
-<?php include '../../includes/footer.php'; ?>
-
-</html>
-
-<?php 
-function flight_details($row) {
+<?php include '../../includes/footer.php'; 
+function flight_card($row) {
     // This function returns a flight card
     $minutes = $row['duration'];
     $duration =  intdiv($minutes, 60).' h '. ($minutes % 60) . ' m';
-    $price = round($row['distance'] * 0.15);
+    
     return [
         
-        '<li><div class="flight-card" data-dep-time=' . $row['dep_time'] . ' data-arr-time=' . $row['arr_time']  . ' data-airline=' . $row['airline'] . ' data-price=' . $price . '>',
+        '<li><div class="flight-card" data-dep-time=' . $row['dep_time'] . ' data-arr-time=' . $row['arr_time']  . ' data-airline=' . $row['airline'] . ' data-price=' . $_SESSION['price'] . '>',
         '    <div class="flight-info">',
         '        <div class="flight-times">',
         '            <span class="display-times">' . date('h:i a',strtotime($row['dep_time'])) . ' - ' . date('h:i a',strtotime($row['arr_time'])) .  '</span>',
@@ -81,9 +127,14 @@ function flight_details($row) {
         '    <div class="duration">',
         '        <span class="flight-duration">' . $duration . '</span>',
         '    <div class="flight-price">',
-        '         <span class="ticket_cost">$' . $price . '</span>',
+        '         <span class="ticket_cost">$' . $_SESSION['price'] . '</span>',
         '    </div>',
         '</div></li>',
         '</a>',
     ];
     }
+?>
+
+</html>
+
+
