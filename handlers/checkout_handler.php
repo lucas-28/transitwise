@@ -10,20 +10,54 @@
 
     session_status() === PHP_SESSION_ACTIVE ?: session_start();
 
-    $debug = "true";
-    $UPEID = 1;
-    $f_name = trim($_POST["f_name"]);
-    $m_name = trim($_POST["m_name"]);
-    $l_name = trim($_POST["l_name"]);
-    $email = trim($_POST["email"]);
-    $phone = trim($_POST["phone"]);
-    $birth_date = trim($_POST["birth_date"]);
-    $address1 = trim($_POST["address1"]);
-    $address2 = trim($_POST["address2"]);
-    $city = trim($_POST["city"]);
-    $state = trim($_POST["state"]);
-    $zipcode = trim($_POST["zipcode"]);
-    $password = trim($_POST["password"]);
+    if (isset($_SESSION["error"]) && $_SESSION["error"] == true) {
+        $error_message = $_SESSION["error-message"];
+        echo '<style type="text/css">
+         #error-message {
+            display: block;
+        }
+        </style>';
+    }
+
+    unset($_SESSION['error']);
+
+    if (isset($_SESSION["user_data"])) {
+        $UPID = $_SESSION["user_data"]["UPID"];
+    } else {
+        $UPID = 0;
+    }
+    echo 'UPID: ' . $UPID;
+    
+    echo 'start';
+    //$amount = $_SESSION["total"];
+    $amount = 100;
+    $time_stamp = date("Y-m-d H:i:s");
+    //$is_refund = $_SESSION["is_refund"];
+    $is_refund = 0;
+    $log = "None";
+    $sql = "INSERT INTO `transactions`(`UPID`,`amount`,`time_stamp`,`is_refund`,`log`) VALUES (?,?,?,?,?);
+            INSERT INTO `reservations`(`UPID`,`transactionID`,`f_name`,`l_name`,`email`,`phone`) VALUES (?,?,?,?,?,?);
+            INSERT INTO `tickets` (`RSID`,`FDID`,`seatID`,`class`,`is_return`) VALUES (?,?,?,?,?,?);
+    ";
+    echo 'preparing statement...';  
+    if($stmt = mysqli_prepare($dbconn, $sql)){
+        echo 'binging parameters...';
+        mysqli_stmt_bind_param($stmt, "idsss", $UPID, $amount, $time_stamp, $is_refund, $log);
+        echo 'executing statement...';
+        if(mysqli_stmt_execute($stmt)){ 
+            echo 'statement executed...';
+            $transactionID = mysqli_insert_id($dbconn);
+            $_SESSION["transactionID"] = $transactionID;
+            printf("redirecting...");
+            header("location: /transitwise/home/reserve/submit.php");
+        }
+        else {
+            echo "Something went wrong. Please try again later.";
+        }
+    }
+    else {
+        printf("Prepared statement failed.");
+    }
 
     var_dump($_POST);
 
@@ -88,8 +122,3 @@
     mysqli_stmt_close($stmt);
     mysqli_close($dbconn);
 ?>
-
-
-
-
-

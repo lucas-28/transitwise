@@ -5,13 +5,16 @@ $debug = "true";
 
 $EMID = intval(trim($_POST["EMID"]));
 $input_password = trim($_POST["password"]);
-
+var_dump($_POST["EMID"]);
+var_dump($_POST["password"]);
+var_dump($EMID);
 
 // Validate credentials
 printf("validating credentials...");
     
     
-
+// start session
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
 
 // Prepare a select statement
 $sql = "SELECT * 
@@ -31,11 +34,14 @@ if($stmt = $dbconn->prepare($sql)){
         // Store result
         // printf("storing result...");
         // $stmt->store_result();
-        
+        var_dump($sql);
         // If ID exists, verify password
         printf("checking if ID exists...");
         printf("getting result...");
         $result = $stmt->get_result();
+
+        printf("checking if num_rows == 1...");
+        var_dump($result);
         if($result->num_rows == 1){                   
             printf("fetching row...");
             if($fields = $result->fetch_assoc()){
@@ -64,24 +70,24 @@ if($stmt = $dbconn->prepare($sql)){
                         exit;
                     } else {
                         printf("redirecting to login page...");
-                        $_SESSION["login_failed"] = true;
-                        $_SESSION["login_error"] = "You are not authorized to access this page.";
+                        $_SESSION["error"] = true;
+                        $_SESSION["error-message"] = "You are not authorized to access this page.";
                         header("Location: /transitwise/home/portal/login.php");
                         exit;
                     }
                     printf("Something wrong happened.");
                 } else{
                     // Password is not valid, return to login page
-                    $_SESSION["login_failed"] = true;
-                    $_SESSION["login_error"] = "Invalid password.";
+                    $_SESSION["error"] = true;
+                    $_SESSION["error-message"] = "Invalid password.";
                     header("Location: /transitwise/home/portal/login.php");
                 }
             }
         } else{
-            session_start();
+            
             // ID doesn't exist or is not unique
-            $_SESSION["login_failed"] = true;
-            $_SESSION["login_error"] = "No account associated with this ID.";
+            $_SESSION["error"] = true;
+            $_SESSION["error-message"] = "No account associated with this ID.";
             //header("Location: /transitwise/home/portal/login.php");
         }
     } else{
