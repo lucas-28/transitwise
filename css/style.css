@@ -9,7 +9,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 1em; /* Equivalent to 16px when base font-size is 16px */
-    justify-content: space-between;
+    
     overflow: auto;
 
 }
@@ -77,6 +77,14 @@ button {
     cursor: pointer;
 }
 
+table {
+    
+}
+
+
+
+
+
 button:active {
     transform: translateY(2px);
 }
@@ -103,7 +111,7 @@ button:active {
     color: black;
     cursor: pointer;
 }
-.topnav a.active {
+.topnav a.active, .dropdown .dropbtn.active {
     background-color: #cff5ff;
     color: black;
 }
@@ -220,11 +228,21 @@ display: block;
     box-sizing: border-box;
     min-width: -webkit-fit-content;
     width: -webkit-fill-available;
-    max-width: 800px;
+    
     margin: 20px auto;
     padding: 20px;
     background-color: #ddd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.625em; /* Equivalent to 10px when base font-size is 16px */
+    width: 100%;
+    min-width: -webkit-fit-content;
+
 }
 .search-box {
     background-color: #fff;
@@ -239,7 +257,8 @@ display: block;
     height: 20em;
     min-width: -webkit-fit-content;
 }
-select, input[type="text"], input[type="date"], input[type="submit"], input[type="password"] {
+select, input[type="text"], input[type="date"], input[type="submit"], input[type="password"], input[type="email"], 
+input[type="tel"], input[type="date"], input[type="number"] {
     padding: 0.625em; /* Equivalent to 10px when base font-size is 16px */
     margin: 10px auto; /* Equivalent to 5px when base font-size is 16px */
     box-sizing: border-box;
@@ -452,6 +471,10 @@ footer {
     align-items: center;
     justify-content: space-evenly;
 
+}
+.editProfile {
+    display: flex;
+    flex-direction: row;
 }
 
 #origin {
