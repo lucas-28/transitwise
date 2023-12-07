@@ -5,6 +5,12 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/transitwise/css/style.css">
     <link rel="icon" href="/transitwise/images/favicon.ico">
+    <style>
+        .main-content {
+            width:800px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 
 <?php include ('../includes/topnav.php'); ?>

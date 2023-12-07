@@ -4,17 +4,17 @@
 //Checkout Page
 
 echo getcwd() . "\n";
-include '\..\..\..\classes\Cart.php';
-include '\..\..\..\classes\Flight.php';
-$cart = new Cart();
+//include '\..\..\..\classes\Cart.php';
+//include '\..\..\..\classes\Flight.php';
+//$cart = new Cart();
 
-$ticket1 = new Flight();
-$ticket2 = new Flight();
+//$ticket1 = new Flight();
+//$ticket2 = new Flight();
 
-$cart-> addticket($ticket1, 2);
-$cart->addTicket($ticket2);
+//$cart-> addticket($ticket1, 2);
+//$cart->addTicket($ticket2);
 
-$cartData = $cart->getCart();
+//$cartData = $cart->getCart();
 
 
 ?>
@@ -26,6 +26,12 @@ $cartData = $cart->getCart();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout Page</title>
     <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .main-content {
+            width:800px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
 
@@ -38,7 +44,7 @@ $cartData = $cart->getCart();
 </header>
 
 
-
+<div class="main-content">
 <div class="container">
     <h2>Checkout</h2>
     <div class="main">
@@ -139,6 +145,7 @@ $cartData = $cart->getCart();
             </div>
         </form>
     </div>
+</div>
 </div>
 
 <footer>

@@ -7,11 +7,15 @@
     <title>Search Flights</title>
     <link rel="stylesheet" href="/transitwise/css/style.css">
     <link rel="stylesheet" href="/transitwise/css/flight_card.css">
+    <style>
+        
+    </style>
 </head>
 
 <header>
 <?php include ('../../includes/topnav.php'); ?>
 </header>
+<div class="main-content">
 <div class="container">
 <h2>Filter Results</h2>
 <div id="filterDiv">
@@ -100,10 +104,11 @@
 
 
 
+
 <?php
 
 session_start();
-
+$debug = "true";
 $inputType = "received";
 $statementType = "prepared";
 $dep = 20220702;
@@ -299,6 +304,7 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date']) || isse
         }
         
         echo '</ul>';
+        echo '</div>';
     }
     else {
         echo '<p>No flights found</p>';
