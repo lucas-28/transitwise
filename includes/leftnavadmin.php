@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Left Nav Bar Admin</title>
 <link rel="stylesheet" href="/transitwise/css/style.css">
-<link rel="stylesheet" href="/transitwise/css/leftnavbar.css">
+<link rel="stylesheet" href="/transitwise/css/leftnavbar2.css">
 </head>
 <body>
 
