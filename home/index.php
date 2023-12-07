@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Register</title>
+    <title>Transitwise</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/transitwise/css/style.css">
+    <link rel="icon" href="/transitwise/images/favicon.ico">
 </head>
 
 <?php include ('../includes/topnav.php'); ?>
