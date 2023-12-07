@@ -1,3 +1,4 @@
+<?php include "/transitwise/privacy/employeeCheck.php"; ?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -25,21 +26,29 @@
     
     <!--Creates the navigation side bar of links to edit/view account.-->
     <?php include ('../../../includes/leftnavadmin.php'); ?>
-    <div id="body">
+    <div class="container">
         
-
-        <form id="register" action="handlers/register_handler.php" method="post"> 
+        <?php include ('../../../includes/error-message.php'); ?>
+        <form id="change-password" action="/transitwise/handlers/change_emp_pw_handler.php" method="post"> 
             <h1>Change Password</h1>
             
-            <fieldset class="flex-box">
+            <fieldset class="flex-box" style="
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr;
+                ">
                 <p>
-                    <label for="password">Password:</label>
-                    <input type="password" name="password" id="myInput1">
+                    <label for="old-password">Previous Password:</label>
+                    <input type="password" name="oldPassword" id="myInput1">
                     <input type="checkbox" id="showpassword" onclick="myPassword()">Show Password
-                </p><br>
+                </p>
                 <p>
-                    <label for="password">Confirm Password </label>
-                    <input id="myInput2" type="password" name="password" required>
+                    <label for="new-password">New Password:</label>
+                    <input type="password" name="newPassword" id="myInput1">
+                    <input type="checkbox" id="showpassword" onclick="myPassword()">Show Password
+                </p>
+                <p>
+                    <label for="conf-password">Confirm New Password </label>
+                    <input id="myInput2" type="password" name="conf-password" required>
                     <input type="checkbox" id="showpassword"onclick="myConfirmPassword()">Show Password
                 </p>
                 

@@ -35,6 +35,7 @@ if(isset($_GET['flightID'])) {
     <link rel="stylesheet" href="../../css/topnav.css">
     <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="/transitwise/css/flight_card.css">
+    <link rel="stylesheet" href="/transitwise/css/style2.css">
     <style>
         .customize {
             display: flex;
@@ -42,22 +43,31 @@ if(isset($_GET['flightID'])) {
             align-items: center;
             background-color: #fff;
         }
+        
+        #main-cust {
+            min-height: 160vh;
+        }
+        
     </style>
 </head>
 <header>
 <?php include '../../includes/topnav.php'; ?>
 </header>
 <body>
+    
+    <div class="main-content" id="main-cust">
     <h1>Customize Your Flight</h1>
     <div class="container">
     <?php
     
         if(isset($_GET['dep-flightID'])){
             $depFlightID = intval($_GET['dep-flightID']);
+            $numPassengers = intval($_GET['num-passengers']);
             //var_dump($depFlightID); 
-            echo '<h2>Departure Flight:</h2>';
+            
+            echo '<p>Click below to select your seat</p>';
             if (isset($_SESSION["results"])){
-                echo "results set";
+                //echo "results set";
                 foreach ($_SESSION["results"] as $row) {
                     //var_dump($row['FDID']);
                     if ($row['FDID'] == $depFlightID){
@@ -88,21 +98,22 @@ if(isset($_GET['flightID'])) {
     
     ?>
     <div class='customize'>
-        <h4>Choose Your Seat:</h4>
+        <h4>Seats chosen: </h4>
+        <div id="seatsChosen"></div>
         <form action="checkout.php" method="get">
-            
+            <input type="hidden" name="num-passengers" id="num-passengers" value="<?php echo $numPassengers; ?>">
             <input type="hidden" name="dep-flightID" value="<?php echo $depFlightID; ?>">
-            <label for="seatID">Seat Number:</label>
-            <input type="text" name="seatID" value="1">
-            <input type="radio" id="economy" name="class" value="economy" checked>
-            <label for="economy">Economy</label><br>
-            <input type="radio" id="business" name="class" value="business">
-            <label for="business">Business</label><br>
-            <input type="radio" id="first" name="class" value="first">
-            <label for="first">First</label><br>
+            <input type="hidden" name=seatID" id="seatID" value="">
+            <label for="bags">Number of checked bags:</label>
+            <input type="number" name="bags" placeholder="">
+            
+            
             <input type="submit" value="Continue">
     </div>
     </div>
+    <?php include 'seats.php'; ?>
+    </div>
+    <script src = "../../js/customize.js"></script>
 </body>
 
 <?php include '../../includes/footer.php'; 

@@ -1,3 +1,6 @@
+<?php include "/transitwise/privacy/adminCheck.php"; ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

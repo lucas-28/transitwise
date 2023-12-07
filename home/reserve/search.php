@@ -182,7 +182,7 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date']) || isse
         $_SESSION['origin'] = $origin;
         $destination = strtoupper($_GET['destination']);
         $_SESSION['destination'] = $destination;
-
+        $numPassengers = $_GET['passengers'];
         $date = intval(implode("",explode("-", $_GET['departure-date'])));
         echo $date;
     }
@@ -325,7 +325,7 @@ else {
 }
 
 
-function flight_card($row, $depFlightID, $retFlightID, $returnDate) {
+function flight_card($row, $depFlightID, $retFlightID, $returnDate, $numPassengers) {
     // This function returns a flight card
     $minutes = $row['duration'];
     $duration =  intdiv($minutes, 60).' h '. ($minutes % 60) . ' m';
@@ -340,7 +340,7 @@ function flight_card($row, $depFlightID, $retFlightID, $returnDate) {
         $link = 'customize.php?dep-flightID=' . $depFlightID . '&ret-flightID=' . $retFlightID . '&return-date=' . $returnDate;
     }
     else {
-        $link = 'customize.php?dep-flightID=' . $depFlightID;
+        $link = 'customize.php?dep-flightID=' . $depFlightID . '&num-passengers=' . $numPassengers;
     }
 
     
