@@ -1,3 +1,4 @@
+<?php include "/transitwise/privacy/userCheck.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
