@@ -6,6 +6,14 @@
 
 session_start(); // Start the session
 $current_page = basename($_SERVER['PHP_SELF']); // Get the current page name
+
+
+$trips = array("reservations.php","previous-trips.php","view-tickets.php", "ticket.php");
+$home = array("index.php");
+
+
+
+
 $absolute_path = realpath($current_page); // Get the absolute path of the current page
 $absolute_path = str_replace($current_page, "", $absolute_path); // Remove the current page name from the absolute path
 $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes with forward slashes
@@ -25,9 +33,9 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
 <header>
 <div class="topnav">
     <div class="commerce">
-        <a href="/transitwise/home/index.php" <?php echo ($current_page == "index.php") ? "class='active'" : ""; ?>>Home</a>
+        <a href="/transitwise/home/index.php" <?php echo (in_array($current_page, $home)) ? "class='active'" : ""; ?>>Home</a>
         <div class="dropdown">
-            <a href="#" class="dropbtn" <?php echo ($current_page == "info.php") ? "class='active'" : ""; ?>>Info</a>
+            <a href="#" class="dropbtn" >Info</a>
             <div class="dropdown-content">
                 <a href="/transitwise/home/info/about.php">About Us</a>
                 <a href="/transitwise/docs/html_javascript/FAQ.php">FAQs</a>
@@ -35,7 +43,7 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
             </div>
         </div>
         <div class="dropdown">
-        <a href="#" class="dropbtn" <?php echo ($current_page == "index.php") ? "class='active'" : ""; ?>s>Deals</a>
+        <a href="#" class="dropbtn" <?php echo ($current_page == "index.php") ? "class='active'" : ""; ?>>Deals</a>
             <div class="dropdown-content">
                 <a href="#">New Deals</a>
                 <a href="#">Classics</a>
@@ -43,9 +51,9 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
             </div>
         </div>
         <div class="dropdown">
-        <a href="#" class="dropbtn" <?php echo ($current_page == "index.php") ? "class='active'" : ""; ?>>Trips</a>
+        <a href="#" class="dropbtn" <?php echo ($current_page == "view-tickets.php") ? "class='active'" : ""; ?>>Trips</a>
             <div class="dropdown-content">
-                <a href="ticket.php">Current Trips</a>
+                <a href="/transitwise/home/account/reservations.php">Current Trips</a>
                 <a href="#">Past Trips</a>
             </div>
         </div>
@@ -62,7 +70,7 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
         if (isset($_SESSION['email'])): 
         ?>
             <a href="/transitwise/home/account/logout.php" style="float:right">Sign out</a>
-            <a href="/transitwise/home/account/account.php" style="float:right">Profile</a>
+            <a href="/transitwise/home/account/userhomepage.php" style="float:right">Profile</a>
         <?php else: ?>
             <a href="/transitwise/home/account/lp_login.php" style="float:right">Sign in</a>
             <a href="/transitwise/home/account/register.php" style="float:right">Register</a>
