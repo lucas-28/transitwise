@@ -67,7 +67,7 @@
         printf("statement prepared...");
         printf("binding parameters...");
         mysqli_stmt_bind_param($stmt, "issssssssssss", $UPEID, $f_name, $m_name, $l_name, $email, $phone, $birth_date, $address1, $address2, $city, $state, $zipcode, $password);
-        var_dump($stmt);
+        //var_dump($stmt);
         printf("executing statement...");
         if(mysqli_stmt_execute($stmt)){ 
             

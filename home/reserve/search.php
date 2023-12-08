@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transitwise</title>
+    <title>Search Flights</title>
     <link rel="stylesheet" href="/transitwise/css/style.css">
     <link rel="stylesheet" href="/transitwise/css/flight_card.css">
+    <style>
+        
+    </style>
 </head>
 
 <header>
 <?php include ('../../includes/topnav.php'); ?>
 </header>
+<div class="main-content">
 <div class="container">
 <h2>Filter Results</h2>
 <div id="filterDiv">
@@ -100,10 +104,11 @@
 
 
 
+
 <?php
 
 session_start();
-
+$debug = "true";
 $inputType = "received";
 $statementType = "prepared";
 $dep = 20220702;
@@ -165,7 +170,8 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date']) || isse
     
 
 
-
+    if(isset($_GET['passengers']))
+        echo intval($_GET['passengers']) . " passengers";
     // For manual debugging
     if ($inputType == "manual"){
         $origin = $ori;
@@ -177,9 +183,10 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date']) || isse
         $_SESSION['origin'] = $origin;
         $destination = strtoupper($_GET['destination']);
         $_SESSION['destination'] = $destination;
-
+        
+        $numPassengers = intval($_GET['passengers']);
         $date = intval(implode("",explode("-", $_GET['departure-date'])));
-        echo $date;
+        
     }
     else {
         echo "Error: inputType not set";
@@ -268,13 +275,16 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date']) || isse
 
         //echo '<h4>Showing flights from ' . $origin_row['AP_name'] . ' to ' . $destination_row['AP_name'] . '</h4>';
         echo '<ul class="flight-list">';
+        $_SESSION['results'] = [];
+        $current = [];
         while($row = $result->fetch_assoc()) {
             // Loop through result
             //
-            
-
             $row['dep_time'] = sprintf('%04d', $row['dep_time']);
             $row['arr_time'] = sprintf('%04d', $row['arr_time']);
+            array_push($_SESSION['results'], $row);
+
+            
             
             // If departure flight has been chosen, set departure flight ID equal to that ID, stored in the URL, else set it to the current flight ID
             if(isset($_GET['dep-flightID']) ) {
@@ -289,13 +299,14 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date']) || isse
 
             }
             
-            $card = flight_card($row, $duration, $price, $depFlightID, $retFlightID, $returnDate);
+            $card = flight_card($row, $depFlightID, $retFlightID, $returnDate, $numPassengers);
             foreach($card as $value) {
                 echo $value;
             }
         }
         
         echo '</ul>';
+        echo '</div>';
     }
     else {
         echo '<p>No flights found</p>';
@@ -316,15 +327,32 @@ else {
 }
 
 
-function flight_card($row, $depFlightID, $retFlightID, $returnDate) {
+function flight_card($row, $depFlightID, $retFlightID, $returnDate, $numPassengers) {
     // This function returns a flight card
     $minutes = $row['duration'];
     $duration =  intdiv($minutes, 60).' h '. ($minutes % 60) . ' m';
     $price = round($row['distance'] * 0.15);
-    return [
-        '<a class="reserve-btn" href="search.php?dep-flightID=' . $depFlightID . '&ret-flightID='. $retFlightID . '&return-date=' . $returnDate . '">',
+    $returning = false;
+    $card =[];
+    $depFlightID = $row['FDID'];
+    if ($retFlightID != 0) {
+        $link = 'customize.php?dep-flightID=' . $depFlightID . '&ret-flightID=' . $retFlightID;
+    }
+    else if ($returning) {
+        $link = 'customize.php?dep-flightID=' . $depFlightID . '&ret-flightID=' . $retFlightID . '&return-date=' . $returnDate;
+    }
+    
+    else {
+        $link = 'customize.php?dep-flightID=' . $depFlightID . '&num-passengers=' . $numPassengers;
+    }
+    
+
+    
+    $card = [
+        '<a class="reserve-btn" href="' . $link . '">',
         '<li><div class="flight-card" data-dep-time=' . $row['dep_time'] . ' data-arr-time=' . $row['arr_time']  . ' data-airline=' . $row['airline'] . ' data-price=' . $price . '>',
         '    <div class="flight-info">',
+        '    <span>' . $depFlightID . '</span>',
         '        <div class="flight-times">',
         '            <span class="display-times">' . date('h:i a',strtotime($row['dep_time'])) . ' - ' . date('h:i a',strtotime($row['arr_time'])) .  '</span>',
         '        </div>',
@@ -342,9 +370,13 @@ function flight_card($row, $depFlightID, $retFlightID, $returnDate) {
         '</div></li>',
         '</a>',
     ];
+    return $card;
     }
 
 // Close the database connection
 $dbconn->close();
+
+
+
 ?>
 

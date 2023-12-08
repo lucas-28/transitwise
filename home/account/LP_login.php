@@ -1,14 +1,13 @@
 <!-- Code written by chatGPT, copilot, and consulted Tutorial Republic -->
 <?php
-
-    
-
         // Initialize the session
-    session_status() === PHP_SESSION_ACTIVE ?: session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     
     // Check if the user is already logged in, if yes then redirect him to welcome page
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-        header("location: account.php");
+        header("location: userhomepage.php");
         exit;
     }
     if(isset($_SESSION['error'])) {

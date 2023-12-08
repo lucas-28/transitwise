@@ -16,11 +16,10 @@
   .navbaruser {
     height: 100%;
     width: 0;
-    position: fixed;
+    position: absolute;
     z-index: 1;
     top: 80px;
-    left: 0;
-    background-color: #001166;
+    background-color: #003366;
     overflow-x: hidden;
     padding-top: 60px;
     
@@ -44,7 +43,9 @@
   
   
   .navbaruser a:hover {
-    background-color: #000;
+    background-color: #ddd;
+    color: black;
+    cursor: pointer;
   }
   
   @media screen and (max-width: 600px) {

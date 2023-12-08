@@ -54,13 +54,13 @@
 
 
     <!--Creates the navigation side bar of links to edit/view account.-->
-    <?php include('../../includes/leftnavuser.php'); ?>
+    <?php include('../../includes/leftnavbaralluser.php'); ?>
 
     <!--
         This next part is the middle section of the page that does the same thing
         as the sidebar section but with some description of what it does.
     -->
-    <div class="container-white-box">
+    <div class="container">
 
         <div class="profile">
             <!--Should display the user's first name after the Hello,.-->
@@ -70,7 +70,7 @@
             <div class="content">
                 <div class="account-info">
                     <!-- Add the email of the user of the account after user.-->
-                    <div class="square-title"><label class="email">User:</label></div>
+                    
                     <div class="sign-out">
                         <a href="placeholder"><button class="signout-button" type="button">Sign out</button></a>
                     </div>
@@ -79,7 +79,7 @@
                 <div class="hr-line"></div>
                 <div class="edit-profile-square">
                     <!--Edit your profile square.-->
-                    <div class="square-title"><label class="title">Edit profile</label></div>
+                    
                     <div class="square-description">
                         <p class="description">View and edit your account information here.</p>
                         <div class="square-action">
@@ -92,12 +92,12 @@
                 <div class="hr-line"></div>
                 <div class="edit-password-square">
                     <!--Change your password square.-->
-                    <div class="square-title"><label class="title">Password</label></div>
+                    
                     <div class="square-description">
-                        <p class="description">Change your password here to keep it anonymous but the user.</p>
+                        <p class="description">Change your password here.</p>
                         <div class="square-action">
                             <!--placeholder should be replace with the location of the file.-->
-                            <a href="../account/userchangepassword.php"><button type="button">CHANGE PASSWORD</button></a>
+                            <a href="../account/change-password.php"><button type="button">CHANGE PASSWORD</button></a>
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                 <div class="hr-line"></div>
                 <div class="edit-paymentinfo-square">
                     <!--Change your payment info square.-->
-                    <div class="square-title"><label class="title">Payment info</label></div>
+                    
                     <div class="square-description">
                         <p class="description">View or change your payment info.</p>
                         <div class="square-action">
@@ -118,7 +118,7 @@
                 <div class="hr-line"></div>
                 <div class="view-tickets-square">
                     <!--Change your ticket info square.-->
-                    <div class="square-title"><label class="title">Ticket info</label></div>
+                    
                     <div class="square-description">
                         <p class="description">View or change your airline tickets that have been purchased.</p>
                         <div class="square-action">
@@ -131,13 +131,7 @@
             </div>
         </div>
     </div>
-    <footer>
-        <div class="footer-container">
-            <a href="/transitwise/home/portal/login.php">Transitwise Portal</a>
-            <a href="contact.html">Contact</a>
-            <a href="feedback.html">Feedback</a>
-        </div>
-    </footer>
+    <?php include('../../includes/footer.php'); ?>
 </body>
 
 </html>

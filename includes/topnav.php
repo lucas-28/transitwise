@@ -6,6 +6,14 @@
 
 session_start(); // Start the session
 $current_page = basename($_SERVER['PHP_SELF']); // Get the current page name
+
+
+$trips = array("reservations.php","previous-trips.php","view-tickets.php", "ticket.php");
+$home = array("index.php");
+
+
+
+
 $absolute_path = realpath($current_page); // Get the absolute path of the current page
 $absolute_path = str_replace($current_page, "", $absolute_path); // Remove the current page name from the absolute path
 $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes with forward slashes
@@ -23,19 +31,22 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
 </head>
 
 <header>
+
 <div class="topnav">
-    <div class="commerce">
-        <a href="/transitwise/home/index.php" <?php echo ($current_page == "index.php") ? "class='active'" : ""; ?>>Home</a>
+    <div class="web">
+    
+        <a href="/transitwise/home/index.php" <?php echo (in_array($current_page, $home)) ? "class='active'" : ""; ?>>Home</a>
         <div class="dropdown">
-            <a href="#" class="dropbtn" <?php echo ($current_page == "info.php") ? "class='active'" : ""; ?>>Info</a>
+            <a href="#" class="dropbtn" >Info</a>
             <div class="dropdown-content">
                 <a href="/transitwise/home/info/about.php">About Us</a>
-                <a href="/transitwise/docs/html_javascript/FAQ.php">FAQs</a>
+                <a href="/transitwise/home/info/FAQ.php">FAQs</a>
                 <a href="#">Careers</a>
+				<a href="/transitwise/home/info/compliance.php">Compliance</a>
             </div>
         </div>
         <div class="dropdown">
-        <a href="#" class="dropbtn" <?php echo ($current_page == "index.php") ? "class='active'" : ""; ?>s>Deals</a>
+        <a href="#" class="dropbtn" <?php echo ($current_page == "index.php") ? "class='active'" : ""; ?>>Deals</a>
             <div class="dropdown-content">
                 <a href="#">New Deals</a>
                 <a href="#">Classics</a>
@@ -43,14 +54,15 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
             </div>
         </div>
         <div class="dropdown">
-        <a href="#" class="dropbtn" <?php echo ($current_page == "index.php") ? "class='active'" : ""; ?>>Trips</a>
+        <a href="#" class="dropbtn" <?php echo ($current_page == "view-tickets.php") ? "class='active'" : ""; ?>>Trips</a>
             <div class="dropdown-content">
-                <a href="ticket.php">Current Trips</a>
+                <a href="/transitwise/home/account/reservations.php">Current Trips</a>
                 <a href="#">Past Trips</a>
             </div>
         </div>
+    
     </div>
-    <button class="nav-toggle">☰</button>
+    
     <!-- logo will go here
     <div id="logo-box">
         <img id="logo" src="/transitwise/images/logo3.png" alt="logo" width="60%" height="60%">
@@ -62,13 +74,38 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
         if (isset($_SESSION['email'])): 
         ?>
             <a href="/transitwise/home/account/logout.php" style="float:right">Sign out</a>
-            <a href="/transitwise/home/account/account.php" style="float:right">Profile</a>
+            <a href="/transitwise/home/account/userhomepage.php" style="float:right">Profile</a>
         <?php else: ?>
             <a href="/transitwise/home/account/lp_login.php" style="float:right">Sign in</a>
             <a href="/transitwise/home/account/register.php" style="float:right">Register</a>
         <?php endif; ?>
     </div>
+    
+
+    <button class="nav-toggle">☰</button>
+    <div class="responsive">
+        
+        <ul class="responsive-nav-list">
+        <li><a href="/transitwise/home/index.php" <?php echo (in_array($current_page, $home)) ? "class='active'" : ""; ?>>Home</a></li>
+        <li><a href="#" class="dropbtn" <?php echo ($current_page == "index.php") ? "class='active'" : ""; ?>>Deals</a></li>
+        <li><a href="#" class="dropbtn" <?php echo ($current_page == "view-tickets.php") ? "class='active'" : ""; ?>>Trips</a></li>
+        <?php
+        // Check if user is logged in
+        if (isset($_SESSION['email'])): 
+        ?>
+            <li><a href="/transitwise/home/account/userhomepage.php" >Profile</a></li>
+            <li><a href="/transitwise/home/account/logout.php" >Sign out</a></li>
+            
+        <?php else: ?>
+            <li><a href="/transitwise/home/account/register.php" >Register</a></li>
+            <li><a href="/transitwise/home/account/lp_login.php" >Sign in</a></li>
+            
+        <?php endif; ?>
+        </ul>
+    </div>
+    <script src="/transitwise/js/topnav.js"></script>
 </div>
+
 
 <!-- The main content of the page will be here -->
 

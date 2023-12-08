@@ -1,22 +1,8 @@
 <?php
-
-$FlightID = 1;
-
-
-$availability = 'available'; // set availability to available by default
-$availability_chart = [
-    '1A' => 'unavailable',
-    '1B' => 'available',
-    '1C' => 'available',
-    '1D' => 'available',
-    '1E'=> 'available',
-    '1F' => 'available',
-    '2A' => 'available',
-    '2B' => 'available',
-    '2C' => 'available',
-    '2D' => 'available',
-    '2E'=> 'available',
-    '2F'=> 'available',];
+// start session
+if(!isset($_SESSION)) {
+    session_start();
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,36 +13,119 @@ $availability_chart = [
     <title>Choose Your Seat</title>
     <link rel="stylesheet" href="/transitwise/css/seats.css">
     <link rel="stylesheet" href="/transitwise/css/style.css">
+    <link rel="stylesheet" href="/transitwise/css/style2.css">
+    <style>
+        .seat-map {
+            position: absolute;
+            top: 120px;
+            width: 100%;
+            max-width: 800px;
+            
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
+
+
+        }
+        .seat-map h1 {
+            text-align: center;
+            margin: 0 0 20px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .seat-map__screen {
+            position: relative;
+            margin-bottom: 20px;
+            padding-top: 30px;
+            height: 60px;
+            background: #333;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            color: #fff;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 10px;
+            cursor: pointer;
+            background: #036;
+            color: #fff;
+        }
+
+        
+
+    </style>
 </head>
 
-    <?php include '../../includes/topnav.php'; ?>
+    
 
 
 <body>
 
-<div class="seat-map">
-    <h1>Choose Your Seat</h1>
-    <div class="seat-map__screen"></div>
+<div class="seat-map hidden">
+    
+    <p class="close-button" >Close</p>
+    <h1>Seats</h1>
+    <p>Click on a seat to select it. Click again to deselect it.</p>
     <div class="seats">
         <table class="plane">
             <?php
-                $rows = 15; // define number of rows
-                $columns = 8;// define number of columns
-                
+                // Create availability chart
+                $Nrows = 15; // define number of rows
+                $Ncolumns = 6;// define number of columns
+
                 $aisles = array(); // define array for storing aisle seats
-                $aisles[0] = 3; // first aisle
-                $aisles[1] = 7; // second aisle
+                $aisles = array(4);
+
+                for($r = 1; $r <= $Nrows; $r++){ // Loop through rows
+                    for($c = 1; $c <= $Ncolumns; $c++){ // Loop through columns
+                        $seat = $r . $alphas[$c-1]; // create a seat number
+                        $availability_chart[$seat] = 'available';
+                        //var_dump($availability_chart);
+                    }
+                }
+            
+                $sql = "SELECT * FROM reservations 
+                INNER JOIN tickets ON reservations.RSID = tickets.RSID
+                WHERE FDID = 1546979;";
+                $result = $dbconn->query($sql);
+                $unavailability = array();
+                while($row = $result->fetch_assoc()){
+                    $seat = $row['seat'];
+                    array_push($unavailability, $seat);
+                }
+
+
+                
+                
+                
                 
                 // Get string of alphabet
                 $alphas = range('A', 'Z'); 
 
-                for($r = 1; $r <= $rows; $r++){ // Loop through rows
+                for($r = 1; $r <= $Nrows; $r++){ // Loop through rows
                     echo "<tr class='row'>"; 
-                    
-                    for($c = 1; $c <= $columns; $c++){ // Loop through columns
-                        $seat_number = $r . $alphas[$c-1]; // create a seat number
-                        if(in_array($c, $aisles)){ echo "<th class='aisle'></th>"; } 
-                        echo "<td class='seat " . $availability . "' data-seat='$seat_number'>$seat_number</td>";
+                    $aisleCount = 0;
+                    $yes = "available";
+                    $no = "unavailable";
+                    for($c = 1; $c <= $Ncolumns; $c++){ // Loop through columns
+                        
+                        $seat = $r . $alphas[$c-1]; // create a seat number
+                        if(in_array($c, $aisles)){ echo "<th class='aisle'></th>"; }
+                        $value = (in_array($seat, $unavailability)) ? $no:$yes;
+                        echo "<td class='seat " . $value . "' data-seat='$seat'>$seat</td>";
                     }
                     echo "</tr>";
                 }
@@ -66,7 +135,7 @@ $availability_chart = [
         </table>
     </div>
 </div>
-<?php include '../../includes/footer.php'; ?>
-<script src="/transitwise/js/seats.js"></script>
+
+
 </body>
 </html>

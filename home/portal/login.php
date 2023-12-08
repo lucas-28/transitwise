@@ -1,42 +1,56 @@
 <?php
-
-session_start();
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    if(isset($_SESSION["user_data"])){
-        $user_data = $_SESSION["user_data"];
-        if($user_data["is_admin"] == 1){
-            header("location: /transitwise/home/portal/admin/dashboard.php");
-            exit;
-        }
-        else if($user_data["is_employee"] == 1){
-            header("location: /transitwise/home/portal/employee/dashboard.php");
-            exit;
-        }
-        else {
-            header("location: /transitwise/home/account/account.php");
-            exit;
-        }
-    } else {
-        // User data missing
-        header("location: /transitwise/home/portal/logout.php");
-        exit;
-    }
-}
-
-if(isset($_SESSION["login_failed"]) && $_SESSION["login_failed"] == true){
-    $error_message = $_SESSION["login_error"];
-    unset($_SESSION["login_failed"]);
-    unset($_SESSION["login_error"]);
-}
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
 ?>
 
 <!DOCTYPE html>
-<p class="error">
-    <?php
-    echo $error_message;
-    ?>
-<form action="/transitwise/handlers/portal_login.php" method="post">
-    <input type="text" name="EMID" placeholder="Employee ID" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="submit" value="Login">
-</form>
+<html lang="en">
+
+<header>
+    <?php include ('../../includes/topnav.php'); ?>
+</header>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>TW - Portal Login </title>
+    <link rel="stylesheet" href="/transitwise/css/style.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="wrapper">
+        <form action="/transitwise/handlers/portal_login.php" method="post">
+            <h1>Employee Login</h1>
+            <?php include("../../includes/error-message.php"); ?>
+            <div class="input-box">
+                <input type="text" name="EMID" placeholder="Employee ID" 
+                required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" placeholder="Password" 
+                required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <div class="remember-forget">
+                <label><input type ="checkbox"> Remeber me</label>
+                <a href="#">Forget password?</a>
+            </div>
+
+            <button type="submit" name="send" class="btn">Login</button>
+
+            <div class="register-link">
+                <p>Don't have an account? <a href="#">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+
+    <?php include '../../include/footer.php';?>
+</body>
+</html>

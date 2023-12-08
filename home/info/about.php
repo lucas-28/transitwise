@@ -49,7 +49,7 @@ Made by Lucas with Chat GPT-4 and copilot
             </table>
         </div>
         <div class="container">
-            <h2>Contact Us</h2>
+            <a id="contact"><h2>Contact Us</h2></a>
             <p>If you have any questions or inquiries, feel free to contact us:</p>
             <address>
                 Email: <a href="mailto:info@example.com">info@example.com</a><br>

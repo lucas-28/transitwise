@@ -35,12 +35,13 @@ if($stmt = $dbconn->prepare($sql)){
         // If ID exists, verify password
         printf("getting result...");
         $result = $stmt->get_result();
+        // Start session
         session_status() === PHP_SESSION_ACTIVE ?: session_start();
         if($result->num_rows == 1){                   
             printf("fetching row...");
             if($fields = $result->fetch_assoc()){
                 printf("verifying password...");
-                // Start session
+                
                 
                 if(password_verify($password, $fields["password"])){
                     // Password is correct, so start a new session
