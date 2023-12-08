@@ -1,27 +1,13 @@
-<?php include "/transitwise/privacy/employeeCheck.php"; ?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
 <!--
     // Uriel Cruz
     // Transitwise
-    // HTML and style section(css)
-    // This is the User profile page for the user.
+    // This is the Admin change password
 
     For php editor, 
   - Keep the user login.
-  - Grab the user's data and have it loaded in the input box. If it is modified,
-  then it will submit the data to the database and refreshes the page with 
-  new data. If it doesn't meet certain conditions like the year of date or birth
-  is in the future then it should come out as an error.
-
-  - The sidebar buttons have href to link to other files, they are labeled
-    as "placeholder" whenever those pages are finsihed. The home button goes to
-    the user's home page.
-
-  - Script section left empty unless needed.
-
-  - Note, I reused register.php that was in github and modified for this case.
     -->
 <title>User Change password</title>
 <meta charset="utf-8">
@@ -38,7 +24,7 @@
 <body>
     
     <!--Creates the navigation side bar of links to edit/view account.-->
-    <?php include ('../../../includes/leftnavemployee.php'); ?>
+    <?php include ('../../../includes/leftnavadmin.php'); ?>
     <div id="body">
         
 
@@ -69,6 +55,6 @@
         <?php include ('../../js/showPassword.js'); ?>
     </script>
     <!-- footer -->
-    <?php include ('../../../includes/footer.php'); ?>
+    <?php include('../../../includes/footer.php'); ?>
 </body>
 </html>

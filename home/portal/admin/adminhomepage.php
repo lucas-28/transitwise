@@ -1,18 +1,5 @@
-
-<?php 
-session_status() === PHP_SESSION_ACTIVE ?: session_start();
-
-// Session start
-if( !isset($_SESSION["user_data"]) || $_SESSION["user_data"]["is_admin"] != 1){
-    printf("You are not authorized to view this page.<br>");
-    header("location: /transitwise/home/portal/login.php");
-    exit;
-}
-$data = $_SESSION["user_data"];
-?>
 <!DOCTYPE HTML>
 <html lang="en">
-
 <head>
 <!--
     // Uriel Cruz
@@ -56,7 +43,7 @@ $data = $_SESSION["user_data"];
 
         <div class="profile">
             <!--Should display, Hello, Admin to know that this is the adimin page.-->
-            <h2 class="greeting-user">Hello, Admin <?php echo $data['f_name']?></h2>
+            <h2 class="greeting-user">Hello, Admin</h2>
 
             <!--Creates the navigation side bar of links to edit/view account.-->
             <div class="content">
@@ -64,7 +51,7 @@ $data = $_SESSION["user_data"];
                     <!-- Add the email of the user of the account after user.-->
                     <div class="square-title"><label class="email">User:</label></div>
                     <div class="sign-out">
-                        <a href="../logout.php"><button class="signout-button" type="button">Sign out</button></a>
+                        <a href="placeholder"><button class="signout-button" type="button">Sign out</button></a>
                     </div>
                 </div>
 
