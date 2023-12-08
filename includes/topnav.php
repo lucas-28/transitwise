@@ -31,8 +31,10 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
 </head>
 
 <header>
+
 <div class="topnav">
-    <div class="commerce">
+    <div class="web">
+    
         <a href="/transitwise/home/index.php" <?php echo (in_array($current_page, $home)) ? "class='active'" : ""; ?>>Home</a>
         <div class="dropdown">
             <a href="#" class="dropbtn" >Info</a>
@@ -58,8 +60,9 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
                 <a href="#">Past Trips</a>
             </div>
         </div>
+    
     </div>
-    <button class="nav-toggle">☰</button>
+    
     <!-- logo will go here
     <div id="logo-box">
         <img id="logo" src="/transitwise/images/logo3.png" alt="logo" width="60%" height="60%">
@@ -77,7 +80,32 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
             <a href="/transitwise/home/account/register.php" style="float:right">Register</a>
         <?php endif; ?>
     </div>
+    
+
+    <button class="nav-toggle">☰</button>
+    <div class="responsive">
+        
+        <ul class="responsive-nav-list">
+        <li><a href="/transitwise/home/index.php" <?php echo (in_array($current_page, $home)) ? "class='active'" : ""; ?>>Home</a></li>
+        <li><a href="#" class="dropbtn" <?php echo ($current_page == "index.php") ? "class='active'" : ""; ?>>Deals</a></li>
+        <li><a href="#" class="dropbtn" <?php echo ($current_page == "view-tickets.php") ? "class='active'" : ""; ?>>Trips</a></li>
+        <?php
+        // Check if user is logged in
+        if (isset($_SESSION['email'])): 
+        ?>
+            <li><a href="/transitwise/home/account/userhomepage.php" >Profile</a></li>
+            <li><a href="/transitwise/home/account/logout.php" >Sign out</a></li>
+            
+        <?php else: ?>
+            <li><a href="/transitwise/home/account/register.php" >Register</a></li>
+            <li><a href="/transitwise/home/account/lp_login.php" >Sign in</a></li>
+            
+        <?php endif; ?>
+        </ul>
+    </div>
+    <script href="/transitwise/js/topnav.js"></script>
 </div>
+
 
 <!-- The main content of the page will be here -->
 

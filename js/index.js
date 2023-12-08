@@ -1,12 +1,4 @@
-//Written by ChatGTP
-// Topnav
-const navToggle = document.querySelector('.nav-toggle');
-const navList = document.querySelector('.commerce');
 
-navToggle.addEventListener('click', () => {
-    navList.classList.toggle('active');
-});
-// End Topnav
 
 
 class Airport {

@@ -5,12 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/transitwise/css/style.css">
     <link rel="icon" href="/transitwise/images/favicon.ico">
-    <style>
-        .main-content {
-            width:800px;
-            margin: 0 auto;
-        }
-    </style>
+    
 </head>
 
 <?php include ('../includes/topnav.php'); ?>
@@ -53,6 +48,7 @@
         </div>
     </div>
     <script src="/transitwise/js/index.js"></script>
+    <script src="/transitwise/js/topnav.js"></script>
     <?php include '../includes/footer.php'; ?>
 </body>
 </html>
