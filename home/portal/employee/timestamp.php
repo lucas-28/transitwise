@@ -52,7 +52,6 @@
                 <?php
                 //Include connection to transitwise database
                 include('../../../includes/connect.php');
-                $_SESSION["user_data"]["EMID"] = 3;
 
                 //Display all rows from database timecard table associated with the logged-in employee via ID
                 $sql = "SELECT * FROM timecard INNER JOIN employees on timecard.EMID = employees.EMID WHERE employees.EMID = ? ORDER BY start_time DESC";
