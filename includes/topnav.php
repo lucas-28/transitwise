@@ -103,7 +103,7 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
         <?php endif; ?>
         </ul>
     </div>
-    <script href="/transitwise/js/topnav.js"></script>
+    <script src="/transitwise/js/topnav.js"></script>
 </div>
 
 
