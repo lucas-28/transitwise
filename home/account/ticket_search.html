@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<header>
+  <?php include ('../../includes/topnav.php'); ?>
+</header>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Ticket Search</title>
+<link rel="stylesheet" href="search_style.css">
+<link rel="stylesheet" href="/transitwise/css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Flight Ticket Search</h1>
+  </header>
+
+  <section id="search-form">
+    <h2>Search for Flights</h2>
+    <form action="#" method="get">
+      <label for="origin">Origin:</label>
+      <input type="text" id="origin" name="origin" placeholder="Enter origin">
+      <label for="destination">Destination:</label>
+      <input type="text" id="destination" name="destination" placeholder="Enter destination">
+      <label for="departure-date">Departure Date:</label>
+      <input type="date" id="departure-date" name="departure-date">
+      <button type="submit">Search</button>
+    </form>
+  </section>
+
+  <section id="search-results">
+    <h2>Search Results</h2>
+    <!-- Flight search results will be displayed here -->
+    <ul id="results-list">
+      <li>
+        <div class="flight-info">
+          <span class="flight-number">Flight Number: ABC123</span>
+          <span class="departure-time">Departure Time: 2023-10-15 10:00 AM</span>
+          <span class="arrival-time">Arrival Time: 2023-10-15 12:00 PM</span>
+          <span class="price">Price: $500</span>
+        </div>
+        <button class="book-button">Book Now</button>
+      </li>
+      <!-- Add more flight search results as needed -->
+    </ul>
+  </section>
+
+  <?php include '../../include/footer.php';?>
+</body>
+
+</html>
