@@ -98,6 +98,6 @@ if($stmt = $dbconn->prepare($sql)){
     mysqli_stmt_close($stmt);
 }
 
-mysqli_close($link);
+mysqli_close($dbconn);
 
 ?>

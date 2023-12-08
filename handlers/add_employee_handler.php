@@ -79,7 +79,7 @@
             $_SESSION["error"] = True;
             $_SESSION["error-type"] = "success";
             $_SESSION["error-message"] = "Employee added successfully.";
-            header("location: /transitwise/home/portal/admin/add-employee.php");
+            header("location: /transitwise/home/portal/admin/viewemployees.php");
         }
         else {
             echo "Something went wrong. Please try again later.";

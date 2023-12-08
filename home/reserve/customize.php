@@ -72,6 +72,7 @@ if(isset($_GET['flightID'])) {
                     //var_dump($row['FDID']);
                     if ($row['FDID'] == $depFlightID){
                         $departure_row = $row;
+                        $_SESSION["flight"] = $row;
                         $_SESSION["price"] = round($row['distance'] * 0.15);
                         //echo "found";
                     }

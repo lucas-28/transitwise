@@ -56,6 +56,16 @@
             <div class="btn-holder">
                 <input class="btn" type="submit" name="send" value="Submit">
             </div>
+            <?php
+            $adminLeftNav = array(
+                "Admin Home" => "/transitwise/home/portal/admin/index.php",
+                "Edit Profile" => "/transitwise/home/portal/admin/edit_profile.php",
+            );
+            
+            foreach ($adminLeftNav as $i => $link) {
+                echo '<li><a href="' . $adminLeftNav[$i] . '">' . $i . '</a></li>';
+            }
+            ?>
         </form>
     </div>
     <script>

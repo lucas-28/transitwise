@@ -170,7 +170,8 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date']) || isse
     
 
 
-
+    if(isset($_GET['passengers']))
+        echo intval($_GET['passengers']) . " passengers";
     // For manual debugging
     if ($inputType == "manual"){
         $origin = $ori;
@@ -182,9 +183,10 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date']) || isse
         $_SESSION['origin'] = $origin;
         $destination = strtoupper($_GET['destination']);
         $_SESSION['destination'] = $destination;
-        $numPassengers = $_GET['passengers'];
+        
+        $numPassengers = intval($_GET['passengers']);
         $date = intval(implode("",explode("-", $_GET['departure-date'])));
-        echo $date;
+        
     }
     else {
         echo "Error: inputType not set";
@@ -297,7 +299,7 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date']) || isse
 
             }
             
-            $card = flight_card($row, $duration, $price, $depFlightID, $retFlightID, $returnDate);
+            $card = flight_card($row, $depFlightID, $retFlightID, $returnDate, $numPassengers);
             foreach($card as $value) {
                 echo $value;
             }
@@ -339,9 +341,11 @@ function flight_card($row, $depFlightID, $retFlightID, $returnDate, $numPassenge
     else if ($returning) {
         $link = 'customize.php?dep-flightID=' . $depFlightID . '&ret-flightID=' . $retFlightID . '&return-date=' . $returnDate;
     }
+    
     else {
         $link = 'customize.php?dep-flightID=' . $depFlightID . '&num-passengers=' . $numPassengers;
     }
+    
 
     
     $card = [
@@ -371,5 +375,8 @@ function flight_card($row, $depFlightID, $retFlightID, $returnDate, $numPassenge
 
 // Close the database connection
 $dbconn->close();
+
+
+
 ?>
 
