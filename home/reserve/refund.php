@@ -5,19 +5,31 @@
     <link rel="stylesheet" href="/transitwise/css/style.css">
 </head>
 <body>
+
+<header>
+    <?php include ('../../includes/topnav.php'); ?>
+</header>
+
     <h1>Refund Ticket</h1>
     
     <form action="refundconfirm.php" method="post">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" pattern="[a-zA-Z0-9]+" required><br><br>
+        <input type="text" id="username" name="username" required><br><br>
 
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" pattern="[a-zA-Z0-9]+" required><br><br>
+        <input type="password" id="password" name="password" required><br><br>
 
         <label for="flight_id">Flight ID:</label>
         <input type="text" id="flight_id" name="flight_id" pattern="[a-zA-Z0-9]+" required><br><br>
 
         <input type="submit" value="Refund">
     </form>
+	<footer>
+    <div class="footer-container">
+        <a href="/transitwise/home/portal/login.php">Transitwise Portal</a>
+        <a href="contact.html">Contact</a>
+        <a href="feedback.html">Feedback</a>
+    </div>
+</footer>
 </body>
 </html>
