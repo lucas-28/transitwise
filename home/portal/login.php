@@ -6,7 +6,7 @@ session_status() === PHP_SESSION_ACTIVE ?: session_start();
 <html lang="en">
 
 <header>
-    <?php include ('../../includes/topnav.php'); ?>
+    <?php include('../../includes/topnav.php'); ?>
 </header>
 
 
@@ -17,7 +17,7 @@ session_status() === PHP_SESSION_ACTIVE ?: session_start();
     <title>TW - Portal Login </title>
     <link rel="stylesheet" href="/transitwise/css/style.css">
     <link rel="stylesheet" href="style.css">
-    
+
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
@@ -27,18 +27,16 @@ session_status() === PHP_SESSION_ACTIVE ?: session_start();
             <h1>Employee Login</h1>
             <?php include("../../includes/error-message.php"); ?>
             <div class="input-box">
-                <input type="text" name="EMID" placeholder="Employee ID" 
-                required>
+                <input type="text" name="EMID" placeholder="Employee ID" required>
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
-                <input type="password" name="password" placeholder="Password" 
-                required>
+                <input type="password" name="password" placeholder="Password" required>
                 <i class='bx bxs-lock-alt'></i>
             </div>
 
             <div class="remember-forget">
-                <label><input type ="checkbox"> Remeber me</label>
+                <label><input type="checkbox"> Remember me</label>
                 <a href="#">Forget password?</a>
             </div>
 
@@ -51,6 +49,7 @@ session_status() === PHP_SESSION_ACTIVE ?: session_start();
     </div>
 
 
-    <?php include '../../include/footer.php';?>
+    <?php include '../../include/footer.php'; ?>
 </body>
+
 </html>
