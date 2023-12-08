@@ -40,6 +40,7 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
                 <a href="/transitwise/home/info/about.php">About Us</a>
                 <a href="/transitwise/home/info/FAQ.php">FAQs</a>
                 <a href="#">Careers</a>
+				<a href="/transitwise/home/info/compliance.php">Compliance</a>
             </div>
         </div>
         <div class="dropdown">

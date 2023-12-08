@@ -1,4 +1,4 @@
-<?php include "/transitwise/privacy/adminCheck.php"; ?>
+<?php include "../../../../transitwise/privacy/adminCheck.php"; ?>
 
 
 <!DOCTYPE html>
