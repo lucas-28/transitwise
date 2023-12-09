@@ -145,7 +145,7 @@
             <button type="submit" name="send" class="btn">Log In</button>
 
             <div class="form-group" id ="reset">
-                <p>Forgot your password? <a href="reset-password.php">Reset it here</a>.</p>
+                <p>Forgot your password? <a href="#">Reset it here</a>.</p>
             </div>
             <div class="form-group" id="register">
                 <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>

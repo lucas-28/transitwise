@@ -36,12 +36,9 @@
                         <label for="passengers">Passengers:</label>
                         <input type="number" id="passengers" name="passengers" value="1" min="1" max="8" step=1 required/>
                     </div>
-                    <div class = roundtrip-search-group>
-                        <label for="roundtrip" class="roundtrip">Roundtrip</label>
-                        <input type="checkbox" id="roundtrip" name="roundtrip" value="roundtrip">
-                    </div>
+                    
                 </div>
-                <div class="search-button-group">
+                <div class="button-group">
                     <input type="submit" value="Search">
                 </div>
             </form>

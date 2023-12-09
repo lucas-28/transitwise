@@ -26,6 +26,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width" , intial-scale="1.0">
     <link rel="stylesheet" href="/transitwise/css/style.css">
+    <style> 
+    .profile {
+        width: 80%;
+    }
+    </style>
 
 </head>
 <header>
@@ -54,13 +59,14 @@
 
 
     <!--Creates the navigation side bar of links to edit/view account.-->
-    <?php include('../../includes/leftnavbaralluser.php'); ?>
+    <?php include('../../includes/leftnav.php'); ?>
 
     <!--
         This next part is the middle section of the page that does the same thing
         as the sidebar section but with some description of what it does.
     -->
-    <div class="container">
+    <div class="main-content">
+    <div class="container profile">
 
         <div class="profile">
             <!--Should display the user's first name after the Hello,.-->
@@ -130,6 +136,7 @@
 
             </div>
         </div>
+    </div>
     </div>
     <?php include('../../includes/footer.php'); ?>
 </body>

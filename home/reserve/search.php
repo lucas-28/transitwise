@@ -170,8 +170,7 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date']) || isse
     
 
 
-    if(isset($_GET['passengers']))
-        echo intval($_GET['passengers']) . " passengers";
+    
     // For manual debugging
     if ($inputType == "manual"){
         $origin = $ori;

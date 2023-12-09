@@ -51,7 +51,7 @@
     
     <div>
         <!--Creates the navigation side bar of links to edit/view account.-->
-        <?php include ('../../includes/leftnavuser.php'); ?>
+        <?php include ('../../includes/leftnav.php'); ?>
         <div class="editProfile">
             <!--This section will display the user's current profile information.-->
             <div class="container" style="display: grid;grid-template-columns: 1fr 1fr;">

@@ -16,7 +16,7 @@
   .navbaruser {
     height: 100%;
     width: 0;
-    position: fixed;
+    position: absolute;
     z-index: 1;
     top: 0;
     left: 0;
@@ -28,10 +28,10 @@
   
   .navbaruser a {
     float: left;
-    padding: 12px;
+    padding: 12px 0;
     color: white;
     text-decoration: none;
-    text-align: center;
+    text-align: left;
     display: block;
   }
   .navbaruser .closebtn{

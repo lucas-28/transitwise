@@ -15,54 +15,7 @@ if(!isset($_SESSION)) {
     <link rel="stylesheet" href="/transitwise/css/style.css">
     <link rel="stylesheet" href="/transitwise/css/style2.css">
     <style>
-        .seat-map {
-            position: absolute;
-            top: 120px;
-            width: 100%;
-            max-width: 800px;
-            
-            margin: 0 auto;
-            padding: 20px;
-            box-sizing: border-box;
-            background: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-
-
-
-        }
-        .seat-map h1 {
-            text-align: center;
-            margin: 0 0 20px;
-            font-size: 24px;
-            font-weight: 600;
-        }
-        .seat-map__screen {
-            position: relative;
-            margin-bottom: 20px;
-            padding-top: 30px;
-            height: 60px;
-            background: #333;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            color: #fff;
-            text-align: center;
-            font-size: 18px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .close-button {
-            position: absolute;
-            top: 0;
-            left: 0;
-            margin: 0;
-            padding: 10px;
-            cursor: pointer;
-            background: #036;
-            color: #fff;
-        }
+        
 
         
 
@@ -77,7 +30,7 @@ if(!isset($_SESSION)) {
 <div class="seat-map hidden">
     
     <p class="close-button" >Close</p>
-    <h1>Seats</h1>
+    <h2>Seats</h2>
     <p>Click on a seat to select it. Click again to deselect it.</p>
     <div class="seats">
         <table class="plane">
@@ -96,10 +49,10 @@ if(!isset($_SESSION)) {
                         //var_dump($availability_chart);
                     }
                 }
-            
+                
                 $sql = "SELECT * FROM reservations 
                 INNER JOIN tickets ON reservations.RSID = tickets.RSID
-                WHERE FDID = 1546979;";
+                WHERE FDID = ". $_SESSION["flight"]["FDID"] .";";
                 $result = $dbconn->query($sql);
                 $unavailability = array();
                 while($row = $result->fetch_assoc()){

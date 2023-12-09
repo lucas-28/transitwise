@@ -29,27 +29,65 @@
     echo 'UPID: ' . $UPID;
     
     echo 'start';
-    //$amount = $_SESSION["total"];
-    $amount = 100;
+
+    
+
+    $FDID = $_SESSION["reservation"]["FDID"];
+    $num_tickets = $_SESSION["reservation"]["num_tickets"];
+    
+    //test values
+    $UPID = 1;
+    $FDID = 1;
+    $num_tickets = 1;
+
+    $sql = "INSERT INTO `reservations`(`UPID`,`FDID`,`num_tickets`) VALUES (?,?,?);";
+    echo 'preparing statement...';
+    if($stmt = mysqli_prepare($dbconn, $sql)){
+        echo 'binging parameters...';
+        mysqli_stmt_bind_param($stmt, "iii", $UPID, $FDID, $num_tickets);
+        echo 'executing statement...';
+        if(mysqli_stmt_execute($stmt)){ 
+            echo 'statement executed...';
+            $reservationID = mysqli_insert_id($dbconn);
+            $_SESSION["reservationID"] = $reservationID;
+            
+        }
+        else {
+            echo "Something went wrong. Please try again later.";
+        }
+    }
+    else {
+        printf("Prepared statement failed.");
+    }
+
+
+    
+
+
+    $amount = $_SESSION["transaction"]["amount"];
+    $is_refund = $_SESSION["transaction"]["is_refund"];
+    $log = $_SESSION["transaction"]["log"];
     $time_stamp = date("Y-m-d H:i:s");
-    //$is_refund = $_SESSION["is_refund"];
+    
+    // test values
+    $UPID = 1;
+    $RSID = 1;
+    $amount = 100; 
     $is_refund = 0;
     $log = "None";
-    $sql = "INSERT INTO `transactions`(`UPID`,`amount`,`time_stamp`,`is_refund`,`log`) VALUES (?,?,?,?,?);
-            INSERT INTO `reservations`(`UPID`,`transactionID`,`f_name`,`l_name`,`email`,`phone`) VALUES (?,?,?,?,?,?);
-            INSERT INTO `tickets` (`RSID`,`FDID`,`seatID`,`class`,`is_return`) VALUES (?,?,?,?,?,?);
-    ";
+    
+    $log = "None";
+    $sql = "INSERT INTO `transactions`(`UPID`,`RSID`,`amount`,`time_stamp`,`is_refund`,`log`) VALUES (?,?,?,?,?,?);";
     echo 'preparing statement...';  
     if($stmt = mysqli_prepare($dbconn, $sql)){
         echo 'binging parameters...';
-        mysqli_stmt_bind_param($stmt, "idsss", $UPID, $amount, $time_stamp, $is_refund, $log);
+        mysqli_stmt_bind_param($stmt, "iidsss", $UPID, $RSID, $amount, $time_stamp, $is_refund, $log);
         echo 'executing statement...';
         if(mysqli_stmt_execute($stmt)){ 
             echo 'statement executed...';
             $transactionID = mysqli_insert_id($dbconn);
             $_SESSION["transactionID"] = $transactionID;
-            printf("redirecting...");
-            header("location: /transitwise/home/reserve/submit.php");
+            
         }
         else {
             echo "Something went wrong. Please try again later.";
@@ -58,58 +96,48 @@
     else {
         printf("Prepared statement failed.");
     }
+    
 
-    var_dump($_POST);
+    $RSID = $_SESSION["reservationID"];
 
-    if($m_name == "") {
-        $m_name = NULL;
-    }
-    if($address2 == "") {
-        $address2 = NULL;
-    }
+    $_SESSION["tickets"] = array();
 
-    $password = password_hash($password, PASSWORD_DEFAULT);
-    var_dump($password);
+
+    //foreach ($_SESSION["tickets"] as $ticket) {
+    // $FFID = $_SESSION[$ticket]["FFID"];
+    // $f_name = $_SESSION[$ticket]["f_name"];
+    // $l_name = $_SESSION[$ticket]["l_name"];
+    // $seat = $_SESSION[$ticket]["seat"];
+    // $email = $_SESSION[$ticket]["email"];
+    
+    // $bags = $_SESSION[$ticket]["bags"];
+    // $class = $_SESSION[$ticket]["class"];
+
+    //test values
+    $FFID = 1;
+    $f_name = "lucas";
+    $l_name = "lucas";
+    $seat = "1A";
+    $email = "test@gmail.com";
+    $phone = "1234567890";
+    $bags = 1;
+    $class = "Economy";
 
     
-    printf("validating credentials...");
-    
-    $sql = "SELECT email FROM users WHERE email = ?;";
+    $sql = "INSERT INTO `tickets`(`RSID`,`FFID`,`f_name`,`l_name`,`seat`,`email`,`bags`,`class`) VALUES (?,?,?,?,?,?,?,?);";
+    echo 'preparing statement...';
+    //var_dump($sql);
+    //var_dump($dbconn);
     if($stmt = mysqli_prepare($dbconn, $sql)){
-        mysqli_stmt_bind_param($stmt, "s", $param_email);
-        $param_email = $email;
-        if(mysqli_stmt_execute($stmt)){
-            mysqli_stmt_store_result($stmt);
-            if(mysqli_stmt_num_rows($stmt) >= 1){
-                printf("Email already exists.");
-                $_SESSION["error-type"] = "duplicate-email";
-                $_SESSION["error-message"] = "An account with this email already exists.";
-                $_SESSION["duplicate-email"] = $param_email;
-                header("location: /transitwise/home/account/register.php");
-                exit;
-            }
-        }
-    }
-    $stmt = mysqli_stmt_init($dbconn);
-    printf("inserting into database...");
-    $sql = "INSERT INTO `users`(`UPEID`,`f_name`,`m_name`,`l_name`,`email`,`phone`,`birth_date`,`address1`,`address2`,`city`,`state`,`zip`,`password`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);";
-    
-
-    
-    printf("preparing statement...");
-    if($stmt = mysqli_prepare($dbconn, $sql)){
-        printf("statement prepared...");
-        printf("binding parameters...");
-        mysqli_stmt_bind_param($stmt, "issssssssssss", $UPEID, $f_name, $m_name, $l_name, $email, $phone, $birth_date, $address1, $address2, $city, $state, $zipcode, $password);
-        //var_dump($stmt);
-        printf("executing statement...");
+        echo 'binging parameters...';
+        mysqli_stmt_bind_param($stmt, "iissssss", $RSID, $FFID, $f_name, $l_name, $seat, $email, $bags, $class);
+        echo 'executing statement...';
         if(mysqli_stmt_execute($stmt)){ 
-            
-                   
-            
-            // Redirect user to login
+            echo 'statement executed...';
+            $ticketID = mysqli_insert_id($dbconn);
+            $_SESSION["ticketID"] = $ticketID;
             printf("redirecting...");
-            header("location: /transitwise/home/account/LP_login.php");
+            //header("location: /transitwise/home/reserve/ticket_confirmation.php");
         }
         else {
             echo "Something went wrong. Please try again later.";
@@ -118,7 +146,11 @@
     else {
         printf("Prepared statement failed.");
     }
+    //}
 
+    
+    
     mysqli_stmt_close($stmt);
     mysqli_close($dbconn);
-?>
+    echo 'end';
+    ?>
