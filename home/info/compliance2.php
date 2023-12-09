@@ -19,12 +19,9 @@
     <a href="terms.php" class="button">Terms</a>
     <a href="privacypolicy.php" class="button">Privacy Policy</a>
     <a href="ada.php" class="button">ADA</a>
-	<footer>
-    <div class="footer-container">
-        <a href="/transitwise/home/portal/login.php">Transitwise Portal</a>
-        <a href="contact.html">Contact</a>
-        <a href="feedback.html">Feedback</a>
-    </div>
-</footer>
+
+	<!-- imports footer -->
+<?php include ("../../includes/footer.php"); ?>
+
 </body>
 </html>

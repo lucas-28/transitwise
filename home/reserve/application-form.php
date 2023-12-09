@@ -6,7 +6,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <!-- Imports style sheet -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +22,7 @@
     <h2>Application</h2>
 
     <form action="process-application.php" method="post">
-        
+
     <label for="position">Applying For:</label>
         <select id="position" name="position" required>
             <option value="" disabled selected>Select a Position</option>
@@ -48,13 +47,8 @@
     </form>
 </div>
 
-<footer>
-    <div class="footer-container">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Sitemap</a>
-    </div>
-</footer>
+<!-- imports footer -->
+<?php include ("../../includes/footer.php"); ?>
 
 
 </body>

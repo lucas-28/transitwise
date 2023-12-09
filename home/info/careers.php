@@ -47,14 +47,8 @@
     </div>
 </div>
 
-<footer>
-    <div class="footer-container">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Sitemap</a>
-    </div>
-</footer>
-
+<!-- imports footer -->
+<?php include ("../../includes/footer.php"); ?>
 
 </body>
 </html>
