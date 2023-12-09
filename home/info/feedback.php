@@ -1,11 +1,12 @@
 <?php
-    //Jonathan Farnham
-    //TransitWise
-    //Feedback Page
+//Jonathan Farnham
+//TransitWise
+//Feedback Page
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,13 +14,13 @@
     <title>Feedback Page</title>
 </head>
 <!--- imports top nav bar -->
-<?php include ('../../includes/topnav.php')?>
+<?php include('../../includes/topnav.php') ?>
 
 <body>
 
     <div class="container">
         <h2>Feedback</h2>
-        <form>
+        <form action="send_feedback.php" method="post">
             <label for="name">Your Name:</label>
             <input type="text" id="name" name="name" placeholder="Name" required>
 
@@ -31,10 +32,17 @@
 
             <button type="submit">Submit Feedback</button>
         </form>
+        <?php
+        if (isset($_SESSION["feedback_status"])) {
+            echo $_SESSION["feedback_status"];
+        }
+        unset($_SESSION["feedback_status"]);
+        ?>
     </div>
 
     <!-- imports footer -->
-<?php include ("../../includes/footer.php"); ?>
+    <?php include("../../includes/footer.php"); ?>
 
 </body>
+
 </html>
