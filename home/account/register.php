@@ -151,7 +151,7 @@ input {
         <form id="register" action="/transitwise/handlers/register_handler.php" method="post"> 
         <?php include '../../includes/nav-icon.php'; ?>
         <h1>Create Account</h1>
-        <?php echo ($error == true) ? '<p id="error-message" style = "display: block; color: red;" >' . $error_message . '</p>': ""; ?> 
+        <?php if (isset($error)) echo ($error == true) ? '<p id="error-message" style = "display: block; color: red;" >' . $error_message . '</p>': ""; ?> 
         <p>* required fields</p>
         <p>Enter your name and contact information.</p>
         <fieldset class="input-group">
