@@ -48,9 +48,9 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
             <div class="dropdown">
                 <a href="#" class="dropbtn" <?php echo ($current_page == "index.php") ? "class='active'" : ""; ?>>Deals</a>
                 <div class="dropdown-content">
-                    <a href="#">New Deals</a>
-                    <a href="#">Classics</a>
-                    <a href="#">Explore</a>
+                    <a href="../../home/info/comingsoon.php">New Deals</a>
+                    <a href="../../home/info/comingsoon.php">Classics</a>
+                    <a href="../../home/info/comingsoon.php">Explore</a>
                 </div>
             </div>
             <div class="dropdown">
