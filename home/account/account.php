@@ -1,7 +1,7 @@
 <?php
 // Initialize the session
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: /transitwise/home/account/lp_login.php");
+    header("location: /transitwise/home/account/login.php");
     exit;
 }
 else {

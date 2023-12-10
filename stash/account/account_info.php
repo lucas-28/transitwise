@@ -16,7 +16,7 @@ $email = "apc@gmail.com";
 
 // Check if user is logged in, if not redirect to login page
 if (!isset($email)) {
-    header('LP_login.php');
+    header('login.php');
 }
 
 // Prepare rows from 'users' database table and corresponding rows in 'user_login' table

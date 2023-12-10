@@ -77,7 +77,7 @@
             
             // Redirect user to login
             printf("redirecting...");
-            header("location: /transitwise/home/account/LP_login.php");
+            header("location: /transitwise/home/account/login.php");
         }
         else {
             echo "Something went wrong. Please try again later.";

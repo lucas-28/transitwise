@@ -66,14 +66,14 @@ if($stmt = $dbconn->prepare($sql)){
                 } else{
                     // Password is not valid, return to login page
                     $_SESSION["login_failed"] = true;
-                    header("Location: /transitwise/home/account/lp_login.php");
+                    header("Location: /transitwise/home/account/login.php");
                 }
             }
         } else{
             
             // email doesn't exist, display a generic error message
             $_SESSION["login_failed"] = true;
-            header("Location: /transitwise/home/account/lp_login.php");
+            header("Location: /transitwise/home/account/login.php");
         }
     } else{
         echo "We could not complete the request.";
