@@ -1,8 +1,11 @@
 <?php
+//Steven Macaluso
+//Transitwise
+//Financial Summary/Z Report Page 
 
 // Start the session
 session_status() === PHP_SESSION_ACTIVE ?: session_start();
-include 'adminCheck.php';
+include 'adminCheck.php'; //checks that user is admin for access to page
 
 // Initialize amounts or retrieve them from sessions
 $categories = array(
@@ -35,13 +38,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Financial Summary (Z Report)</title>
+	<!-- add Transitwise Stylesheet and Icon -->
     <link rel="stylesheet" href="/transitwise/css/style.css">
     <link rel="icon" href="/transitwise/images/favicon.ico">
 </head>
 <body>
+<!-- add Transitwise Header -->
 <?php include ('../../../includes/leftnav.php'); ?>
 <h2>Daily Financial Summary (Z Report)</h2>
-
+<!-- display table and allow user to make changes -->
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <table>
         <tr>
@@ -58,6 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <input type="submit" value="Submit">
 </form>
+<!-- add Transitwise Footer -->
 	<footer>
     <div class="footer-container">
         <a href="/transitwise/home/portal/login.php">Transitwise Portal</a>
