@@ -7,6 +7,7 @@
                     display: block;
                 }
                 </style>';
+        echo '<p id="error-message">' . $error_message . '</p>';
     }
     unset($_SESSION['error']);
     ?>

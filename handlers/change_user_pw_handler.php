@@ -40,6 +40,7 @@
                                 $_SESSION["error"] = True;
                                 $_SESSION["error-type"] = "success";
                                 $_SESSION["error-message"] = "Password changed successfully.";
+                                echo 'password changed successfully...';
                                 header("location: /transitwise/home/account/change-password.php");
                             }
                             else {
@@ -54,6 +55,7 @@
                         $_SESSION["error"] = True;
                         $_SESSION["error-type"] = "incorrect-password";
                         $_SESSION["error-message"] = "Incorrect password.";
+                        echo 'incorrect password...';
                         header("location: /transitwise/home/account/change-password.php");
                     }
                 }

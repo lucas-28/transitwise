@@ -17,6 +17,14 @@
 <link rel="stylesheet" href="/transitwise/css/leftnavbar.css">
 <link rel="icon" href="/transitwise/images/favicon.ico">
 
+<style>
+    #change-password {
+        display: flex;
+        flex-direction: column;
+        max-width: 500px;
+    }
+</style>
+
 </head>
 <header>
     <?php include ('../../includes/topnav.php'); ?>
@@ -27,11 +35,14 @@
     
     <!--Creates the navigation side bar of links to edit/view account.-->
     <?php include ('../../includes/leftnav.php'); ?>
-    <div class="container">
+    <div class="container" id="change-password">
         
         <?php include ('../../includes/error-message.php'); ?>
-        <form id="change-password" method="post"> 
+        <form action="/transitwise/handlers/change_user_pw_handler.php" id="change-password" method="post"> 
             <h1>Change Password</h1>
+            <p>Password must be at least 8 characters long, and contain at least one number, one uppercase letter, one lowercase letter, and one special character.</p>
+            <p></p>
+            
             
             <fieldset class="flex-box" style="
             display: grid;
