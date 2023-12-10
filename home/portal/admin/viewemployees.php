@@ -1,6 +1,7 @@
 <?php
 session_status() === PHP_SESSION_ACTIVE ?: session_start();
 include 'adminCheck.php';
+include '../../../includes/connect.php';
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -34,56 +35,61 @@ include 'adminCheck.php';
 
         <!-- Select an employee from a selection list. -->
         <select name="EmployeeInfo" id="employeeInfo" onchange="addInput()">
-            <option selected="selected" value="default">
-                <label>Default:</label>
-                <label for="last-name">last name</label>
-                <label for="first-name">, first name</label>
-                <label for="employee-id">, ID:</label>
-            </option>
-            <!-- The next option should be the employees data and have it keep going 
-                 for as long as it list all employees
-                -->
-            <option id="employeecard" value="1">
-                <label for="last-name"></label>
-                <label for="first-name">, </label>
-                <label for="employee-id">, ID:</label>
-            </option>
+            <option selected="selected" value="default">Employee</option>
+                <?php 
+                    //This should pull down a list of employees and reveal their information to
+                    //the admin, including their id.
+                    
+                    $sql = "SELECT * FROM employees";
+                    $result = $dbconn->query($sql);
+                    while($row = $result->fetch_assoc()){
+                        $employee_id = $row['EMID'];
+                        $f_name = $row['f_name'];
+                        $l_name = $row['l_name'];
+
+                        echo '<option value="' . $employee_id . '">'. $employee_id . ': ' .$f_name . ' ' . $l_name . '</option>';
+                    }
+                ?>
+
+                
+            
+            
+            
         </select>
 
         <!-- This will send the admin to another page to add an employee. -->
+        <!--
         <div class="btn-holder">
-            <a href="add-employee.php"><button class="add-button" type="button">Add Employee</button></a> 
+            <a href="#"><button class="add-button" type="button">View Employee</button></a> 
         </div>
-        <!--Check to see if this works using this action below for this form. 
-            After selecting an option above,  have the information below all filled out with 
-            the employee's information.
-        -->
+        
+                -->
         
         <form  action="/transitwise/handlers/add_employee_handler.php" method="post"> 
             <div id ="newAdd">
-                <h2>Employee: </h2>
+                <h2>Add Employee: </h2>
                 <!--Their basic information. -->
                 <div class="form-group edit-employee">
                     <fieldset class="flex-box">
-                        <label>Employee ID:<br><input type="number" name="employee_id"><br></label>
-                        <label>First Name: <br><input type="text" name="f_name"> <br></label>
+                        <label>Employee ID:<br><input type="number" name="employee_id" required><br></label>
+                        <label>First Name: <br><input type="text" name="f_name" required> <br></label>
                         <label>Middle Name: <br><input type="text" name="m_name"> <br></label>
-                        <label>Last Name: <br><input type="text" name="l_name"><br></label>
-                        <label>Email Address: <br><input type="email" name="email"><br> </label>
-                        <label>Phone Number: <br><input type="tel" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"></label><br>
-                        <label>Hire Date: <br><input type="date" name="hire_date"></label>
-                        <label>Salary: <br><input type="text" name="salary"></label>
+                        <label>Last Name: <br><input type="text" name="l_name" required><br></label>
+                        <label>Email Address: <br><input type="email" name="email" required><br> </label>
+                        <label>Phone Number: <br><input type="tel" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="xxx-xxx-xxxx " min="1900-01-02" max="2008-01-02" required></label><br>
+                        <label>Hire Date: <br><input type="date" name="hire_date" required></label>
+                        <label>Salary: <br><input type="text" name="salary" required></label>
                         
                     </fieldset>
                     <fieldset class="flex-box">
                         <!--Their Address and password. -->
-                        <label>Address 1: <br><input type="text" name="address1"> <br></label>
+                        <label>Address 1: <br><input type="text" name="address1" required> <br></label>
                         <label>Address 2: <br><input type="text" name="address2"> <br></label>
-                        <label>City: <br><input type="text" name="city"> <br></label>
-                        <label>State: <br><input type="text" name="state"> <br></label>
-                        <label>Zip code: <br><input type="text" name="zip"></label>
-                        <label>Birth Date: <br><input type="date" name="birth_date"></label>
-                        <label>Password: <br><input type="password" name="password"></label>
+                        <label>City: <br><input type="text" name="city" required> <br></label>
+                        <label>State: <br><input type="text" name="state" required> <br></label>
+                        <label>Zip code: <br><input type="text" name="zip" required></label>
+                        <label>Birth Date: <br><input type="date" name="birth_date" pattern="/(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/" required></label>
+                        <label>Password: <br><input type="password" name="password" required></label>
                     </fieldset>
                 </div>
                
