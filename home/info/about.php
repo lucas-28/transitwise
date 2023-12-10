@@ -32,11 +32,11 @@ Author: Lucas with Chat GPT-4 and copilot
     </div>
     <div class="container">
         <h2>Our Story</h2>
-        <p>Our team is based in New Paltz, our goal is to bring the best travel deals to our customers.</p>
+        <p>Our team is based in New Paltz and our goal is to bring the best travel deals to our customers.</p>
     </div>
     <div class="container">
         <h2>Our Team</h2>
-        <p>Our team is made up of 6 members, photos coming soon...</p>
+        <p>Our team is made up of 6 members...</p>
         <table class="team-list-table">
             <tr class="team-list">
                 <td class="team-member">Lucas</td>
