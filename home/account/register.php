@@ -20,7 +20,7 @@
         exit;
     }
     else {
-
+        $error = false;
         
     }
 ?>
