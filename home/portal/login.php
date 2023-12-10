@@ -1,5 +1,16 @@
 <?php
 session_status() === PHP_SESSION_ACTIVE ?: session_start();
+
+if(isset($_SESSION["loggedin"]) && $_SESSION["user_data"]["is_admin"] === "1"){
+    echo "redirecting to admin homepage...";
+    header("location: admin/dashboard.php");
+    exit;
+}
+else if (isset($_SESSION["loggedin"]) && $_SESSION["user_data"]["is_employee"] === "1"){
+    echo "redirecting to employee homepage...";
+    header("location: employee/employeehomepage.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>

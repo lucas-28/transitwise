@@ -22,7 +22,7 @@ include 'employeeCheck.php'; ?>
 
 <body style="justify-content:flex-start;">
     <!--Allow for side nav bar to appear upon opening page-->
-    <?php include('../../../includes/leftnavemployee.php'); ?>
+    <?php include('../../../includes/leftnav.php'); ?>
 
     <!--Submit form button to trigger process of save_timestamp.php in order to create timestamp and save it in database-->
     <div class="container">

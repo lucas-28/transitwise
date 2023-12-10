@@ -32,10 +32,10 @@ include 'adminCheck.php';?>
 </header>
 
 <body>
-    
+<?php include ('../../../includes/leftnav.php'); ?>
     <div id="body">
         <!--Creates the navigation side bar of links to edit/view account.-->
-        <?php include ('../../../includes/leftnavadmin.php'); ?>
+        
 
         <div class="form-group">
             <!--The action for the form below should probably change. -->

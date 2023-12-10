@@ -1,4 +1,4 @@
-<?session_status() === PHP_SESSION_ACTIVE ?: session_start(); php include 'userCheck.php'; ?>
+<?php session_status() === PHP_SESSION_ACTIVE ?: session_start(); include 'userCheck.php'; ?>
 <!DOCTYPE HTML>
 <html lang="en">
 
@@ -68,7 +68,7 @@
     -->
     <div class="main-content">
     <div class="container profile">
-        <?php include('../../includes/leftnav-openbutton.php'); ?>
+        
 
         <div class="profile">
             <!--Should display the user's first name after the Hello,.-->

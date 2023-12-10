@@ -28,7 +28,7 @@ include 'employeeCheck.php'; ?>
 <body>
     
     <!--Creates the navigation side bar of links to edit/view account.-->
-    <?php include ('../../../includes/leftnavadmin.php'); ?>
+    <?php include ('../../../includes/leftnav.php'); ?>
     <div class="container">
         
         <?php include ('../../../includes/error-message.php'); ?>

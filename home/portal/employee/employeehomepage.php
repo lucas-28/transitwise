@@ -56,13 +56,17 @@ include 'employeeCheck.php'; ?>
 
             <!--Creates the navigation side bar of links to edit/view account.-->
             <div class="content">
-                <div class="account-info">
-                    <!-- Add the email of the user of the account after user.-->
-                    <div class="square-title"><label class="email">User:</label></div>
-                    <div class="sign-out">
-                        <a href="placeholder"><button class="signout-button" type="button">Sign out</button></a>
+            <div class="create-timestamp-square">
+                    <!--Save timestamp to clock in/clock out.-->
+                    <div class="square-title"><b><label class="title">Create a Timestamp</label></b></div>
+                    <div class="square-description">
+                        <p class="description">View your timestamp and wage summary or create a timestamp to clock-in/clock-out.</p>
+                        <div class="square-action">
+                            <a href="timestamp.php"><button type="button">TIMESTAMPS & WAGE SUMMARY</button></a>
+                        </div>
                     </div>
-                </div>
+                </div>    
+            
 
                 <br>
 
@@ -134,7 +138,7 @@ include 'employeeCheck.php'; ?>
                         <p class="description">View or change the user's airline tickets that have been purchased.</p>
                         <div class="square-action">
                             <!--placeholder should be replace with the location of the file.-->
-                            <a href="viewusertickets.php"><button type="button">VIEW USER'S TICKETS</button></a>
+                            <a id="VT" href="#VT"><button type="button">VIEW USER'S TICKETS</button></a>
                         </div>
                     </div>
                 </div>
@@ -149,7 +153,7 @@ include 'employeeCheck.php'; ?>
                         <p class="description">View and manage flights.</p>
                         <div class="square-action">
                             <!--placeholder should be replace with the location of the file.-->
-                            <a href="manageflights.php"><button type="button">MANAGE FLIGHTS</button></a>
+                            <a id="MF" href="#MF"><button type="button">MANAGE FLIGHTS</button></a>
                         </div>
                     </div>
                 </div>
@@ -157,18 +161,16 @@ include 'employeeCheck.php'; ?>
                 <br>
 
                 <div class="hr-line"></div>
-                <div class="create-timestamp-square">
-                    <!--Save timestamp to clock in/clock out.-->
-                    <div class="square-title"><b><label class="title">Create a Timestamp</label></b></div>
-                    <div class="square-description">
-                        <p class="description">View your timestamp and wage summary or create a timestamp to clock-in/clock-out.</p>
-                        <div class="square-action">
-                            <a href="timestamp.php"><button type="button">TIMESTAMPS & WAGE SUMMARY</button></a>
-                        </div>
+                
+
+                <div class="account-info">
+                    
+                    <!-- Add the email of the user of the account after user.-->
+                    <div class="square-title"><label class="email">User:</label></div>
+                    <div class="sign-out">
+                        <a href="placeholder"><button class="signout-button" type="button">Sign out</button></a>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>

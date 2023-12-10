@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="icon" href="/transitwise/images/favicon.ico">
 </head>
 <body>
-
+<?php include ('../../../includes/leftnav.php'); ?>
 <h2>Daily Financial Summary (Z Report)</h2>
 
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">

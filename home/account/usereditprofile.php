@@ -49,17 +49,17 @@
 </header>
 
 <body>
-    
+<?php include ('../../includes/leftnav.php'); ?>
     <div>
         <!--Creates the navigation side bar of links to edit/view account.-->
-        <?php include ('../../includes/leftnav.php'); ?>
+        
         <div class="editProfile">
         
             <!--This section will display the user's current profile information.-->
             <div class="container profile-info" >
             <h2>Current Profile Information</h2>
             <div class="two-column-grid">
-            <?php include('../../includes/leftnav-openbutton.php'); ?>
+            
                 <span></span>
                 <?php 
                     $data_names = array(

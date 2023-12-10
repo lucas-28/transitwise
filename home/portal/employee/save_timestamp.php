@@ -18,10 +18,13 @@ include('../../../includes/connect.php');
 $emid = $_SESSION["user_data"]["EMID"];
 $current_date = date('Y-m-d');
 $timestamp = gmdate("H:i:s", time());
+//echo $timestamp;
+echo $emid;
 
 //Prepare statement to prevent SQL injection attacks
 //Select rows with matching EMID and date
 $stmt = $dbconn->prepare("SELECT * FROM timecard WHERE `EMID` = ? AND `date` = ? ORDER BY start_time DESC;");
+echo $stmt;
 $stmt->bind_param("is", $emid, $current_date);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -41,6 +44,7 @@ if ($result->num_rows > 0) {
         } else {
             $_SESSION["timestamp_status"] = "Error creating timestamp.";
         }
+        echo $_SESSION["timestamp_status"];
         $stmt->close();
 
         //Prepare additional select statement so that updated row can be pulled

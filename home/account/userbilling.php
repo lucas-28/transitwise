@@ -76,7 +76,7 @@
     <!--Creates the navigation side bar of links to edit/view account.-->
         <?php include ('../../includes/leftnav.php'); ?>
     <div class="main-content">
-        <?php include('../../includes/leftnav-openbutton.php'); ?>
+        
         <div class="container">
         <div>
         

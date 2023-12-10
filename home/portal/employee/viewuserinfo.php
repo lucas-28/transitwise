@@ -36,7 +36,7 @@ include 'employeeCheck.php'; ?>
 </header>
 <body>
     <!--Creates the navigation side bar of links to edit/view account.-->
-    <?php include ('../../../includes/leftnavemployee.php'); ?>
+    <?php include ('../../../includes/leftnav.php'); ?>
     <div id="body">
        
         <h3>View User's Payment Info</h3>

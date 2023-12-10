@@ -56,7 +56,9 @@ include ('../../includes/topnav.php');
 
 <body>
     <div class="main">
+    <?php include('../../includes/leftnav.php'); ?>
     <div class="container">
+    
         <table>
             <tr>
                 <th>Reservation ID</th>

@@ -23,10 +23,11 @@ include 'employeeCheck.php'; ?>
         <?php include ('../../../includes/topnav.php'); ?>
     </header>       
 <body>
+<?php include ('../../../includes/leftnav.php'); ?>
 <!-- This could be called by a reference link to all user base.-->
 <div id="contnent">
     <!--Creates the navigation side bar of links to edit/view account.-->
-    <?php include ('../../../includes/leftnavemployee.php'); ?>
+    
 
     <form id="timecard" action="holder.php" method="post"> 
 

@@ -6,7 +6,7 @@
     }
     
     // Check if the user is already logged in, if yes then redirect him to welcome page
-    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    if(isset($_SESSION["loggedin"]) && $_SESSION["user_data"]["is_customer"] === "1"){
         header("location: userhomepage.php");
         exit;
     }

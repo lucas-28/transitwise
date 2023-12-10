@@ -42,8 +42,9 @@
 <body>
 
 
-  
+<span class= "leftnav-openbtn" onclick="openNav()">☰</span>
 <div id="mynavbaruser" class="navbaruser"> 
+
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 <?php
     (session_status() == PHP_SESSION_NONE) ? session_start() : "";
@@ -74,7 +75,7 @@
                 "Edit Password" => "/transitwise/home/portal/employee/userchangepassword.php",
                 "View Customers" => "/transitwise/home/portal/employee/viewuserinfo.php",
                 "View User's Payment Info" => "/transitwise/home/portal/employee/viewuserpaymentinfo.php",
-                "View User's Tickets" => "/transitwise/home/portal/employee/viewusertickets.php",
+                "View User's Tickets" => "/transitwise/home/portal/employee/employeehomepage.php",
                 "Manage Flights" => "/transitwise/home/portal/employee/manageflights.php"
             );
             if($_SESSION["user_data"]["is_employee"] == 1){
@@ -91,7 +92,7 @@
     $customerLeftNav = array(
                 "User Home" => "/transitwise/home/account/userhomepage.php",
                 "Edit Profile" => "/transitwise/home/account/usereditprofile.php",
-                "Edit Password" => "/transitwise/home/account/userchangepassword.php",
+                "Edit Password" => "/transitwise/home/account/change-password.php",
                 "Edit Payment Info" => "/transitwise/home/account/userbilling.php",
                 "View Reservations" => "/transitwise/home/account/reservations.php"
             );
