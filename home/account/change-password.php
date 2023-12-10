@@ -40,7 +40,7 @@
         <?php include ('../../includes/error-message.php'); ?>
         <form action="/transitwise/handlers/change_user_pw_handler.php" id="change-password" method="post"> 
             <h1>Change Password</h1>
-            <p>Password must be at least 8 characters long, and contain at least one number, one uppercase letter, one lowercase letter, and one special character.</p>
+            <p>Password must be at least 8 characters long, and contain at least one number, one uppercase letter, and one lowercase letter.</p>
             <p></p>
             
             

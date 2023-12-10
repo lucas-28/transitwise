@@ -415,7 +415,7 @@ option {
 
 input[type="submit"], input[type="reset"] {
     padding: 1.25em;
-    margin: 20px;
+    
     width: 100%;
     background-color: #003366;
     color: #fff;
