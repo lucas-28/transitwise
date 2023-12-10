@@ -2,6 +2,9 @@
 //Jonathan Farnham
 //Transitwise
 //Application form
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,8 +24,15 @@
 
 <div class="container">
     <h2>Application</h2>
+    <?php 
+    if (isset($_SESSION["applicationMessage"])) {
+        echo "<p>" . $_SESSION["applicationMessage"] . "</p>";
+        unset($_SESSION["applicationMessage"]);
+        
+    }
+    ?>
 
-    <form action="process-application.php" method="post">
+    <form action="/transitwise/handlers/process-application.php" method="post" enctype="multipart/form-data">
 
     <label for="position">Applying For:</label>
         <select id="position" name="position" required>

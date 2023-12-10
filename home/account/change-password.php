@@ -1,3 +1,4 @@
+<?php session_status() === PHP_SESSION_ACTIVE ?: session_start(); include 'userCheck.php'; ?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -29,7 +30,7 @@
     <div class="container">
         
         <?php include ('../../includes/error-message.php'); ?>
-        <form id="change-password" action="/transitwise/handlers/change_user_pw_handler.php" method="post"> 
+        <form id="change-password" method="post"> 
             <h1>Change Password</h1>
             
             <fieldset class="flex-box" style="
@@ -39,34 +40,26 @@
                 <p>
                     <label for="old-password">Previous Password:</label>
                     <input type="password" name="oldPassword" id="myInput1">
-                    <input type="checkbox" id="showpassword" onclick="myPassword()">Show Password
+                    <input type="checkbox" id="checkbox1">Show Password
                 </p>
                 <p>
                     <label for="new-password">New Password:</label>
-                    <input type="password" name="newPassword" id="myInput1">
-                    <input type="checkbox" id="showpassword" onclick="myPassword()">Show Password
+                    <input type="password" name="newPassword" id="myInput2">
+                    <input type="checkbox"  id="checkbox2">Show Password
                 </p>
                 <p>
                     <label for="conf-password">Confirm New Password </label>
-                    <input id="myInput2" type="password" name="conf-password" required>
-                    <input type="checkbox" id="showpassword"onclick="myConfirmPassword()">Show Password
+                    <input id="myInput3" type="password" name="conf-password" required>
+                    <input type="checkbox"  id="checkbox3">Show Password
                 </p>
                 
             </fieldset>
         
             <div class="btn-holder">
-                <input class="btn" type="submit" name="send" value="Submit">
+                <input id="submit" class="btn" type="submit" name="send" value="Submit">
             </div>
-            <?php
-            $adminLeftNav = array(
-                "Admin Home" => "/transitwise/home/portal/admin/index.php",
-                "Edit Profile" => "/transitwise/home/portal/admin/edit_profile.php",
-            );
             
-            foreach ($adminLeftNav as $i => $link) {
-                echo '<li><a href="' . $adminLeftNav[$i] . '">' . $i . '</a></li>';
-            }
-            ?>
+            
         </form>
     </div>
     <script>

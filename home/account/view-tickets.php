@@ -1,6 +1,9 @@
 
-<?php include "../../includes/topnav.php";
-include "../../includes/connect.php"  ?>
+<?php 
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
+include "../../includes/topnav.php";
+include "../../includes/connect.php";  
+include 'userCheck.php';?>
 
 
 

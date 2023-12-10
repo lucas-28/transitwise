@@ -7,7 +7,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 // Check if user is logged in
-include ('../../transitwise/privacy/userCheck.php');
+include 'userCheck.php';
 include ('../../includes/connect.php');
 include ('../../includes/topnav.php');
 

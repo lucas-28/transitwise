@@ -1,3 +1,4 @@
+<?session_status() === PHP_SESSION_ACTIVE ?: session_start(); php include 'userCheck.php'; ?>
 <!DOCTYPE HTML>
 <html lang="en">
 
@@ -44,22 +45,14 @@
 <header>
     <?php include('../../includes/topnav.php');
     include('../../includes/connect.php');
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-        if (isset($_SESSION['user_data'])) {
-            //$user = new User($_SESSION['user_data']);
-            $user = $_SESSION['user_data'];
-            //var_dump($user);
-        } else {
-            echo 'User data not found. Please log out and log back in.';
-        }
-    } else {
-        header("location: /transitwise/home/account/LP_login.php");
-        exit();
-    }
+    
+    
     ?>
+    
 </header>
 
 <body>
+
     <!--This code is the user homepage.
         It should display the user's basic info and allows the user to press a button to 
         edit there account.
@@ -136,13 +129,13 @@
                         <p class="description">View or change your airline tickets that have been purchased.</p>
                         <div class="square-action">
                             <!--placeholder should be replace with the location of the file.-->
-                            <a href="../account/userviewtickets.php"><button type="button">VIEW TICKETS</button></a>
+                            <a href="/transitwise/home/account/reservations.php"><button type="button">VIEW RESERVATIONS</button></a>
                         </div>
                     </div>
                 </div>
                 <div class="sign-out">
                     <p class="description">Log out from your account.</p>
-                    <a href="logout.php"><button class="signout-button" type="button">Sign out</button></a>
+                    <a href="logout.php"><button class="signout-button" type="button">SIGN OUT</button></a>
                 </div>
 
             </div>

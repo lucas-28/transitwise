@@ -49,6 +49,7 @@
             mysqli_stmt_store_result($stmt);
             if(mysqli_stmt_num_rows($stmt) >= 1){
                 printf("Email already exists.");
+                $_SESSION["error"] = true;
                 $_SESSION["error-type"] = "duplicate-email";
                 $_SESSION["error-message"] = "An account with this email already exists.";
                 $_SESSION["duplicate-email"] = $param_email;

@@ -1,4 +1,6 @@
-<?php include "/transitwise/privacy/employeeCheck.php"; ?>
+<?php 
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
+include 'employeeCheck.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

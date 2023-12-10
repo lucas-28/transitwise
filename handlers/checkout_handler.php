@@ -12,16 +12,8 @@
 
     session_status() === PHP_SESSION_ACTIVE ?: session_start();
 
-    if (isset($_SESSION["error"]) && $_SESSION["error"] == true) {
-        $error_message = $_SESSION["error-message"];
-        echo '<style type="text/css">
-         #error-message {
-            display: block;
-        }
-        </style>';
-    }
 
-    unset($_SESSION['error']);
+
 
     if (isset($_SESSION["user_data"])) {
         $UPID = $_SESSION["user_data"]["UPID"];
@@ -34,7 +26,20 @@
 
         var_dump($_SESSION["user_data"]);
     } else {
+        var_dump($_POST);
         $UPID = 0;
+        $f_name = $_POST["f_name"];
+        $m_name = $_POST["m_name"];
+        $l_name = $_POST["l_name"];
+        $email = $_POST["email"];
+        $phone = $_POST["phone"];
+        $birth_date = $_POST["birth_date"];
+
+        $_SESSION["user_data"]["UPID"] = $UPID;
+        $_SESSION["user_data"]["f_name"] = $f_name;
+        $_SESSION["user_data"]["l_name"] = $l_name;
+        $_SESSION["user_data"]["email"] = $email;
+
     }
     echo 'UPID: ' . $UPID;
     
@@ -44,6 +49,8 @@
 
     $FDID = $_SESSION["reservation"]["flight"]["FDID"];
     $num_tickets = $_SESSION["reservation"]["num_tickets"];
+    echo 'FDID: ' . $FDID;
+    echo 'num_tickets: ' . $num_tickets;
     
     //test values
     

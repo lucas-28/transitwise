@@ -42,7 +42,7 @@ if($stmt = $dbconn->prepare($sql)){
         $result = $stmt->get_result();
 
         printf("checking if num_rows == 1...");
-        var_dump($result);
+        
         if($result->num_rows == 1){                   
             printf("fetching row...");
             if($fields = $result->fetch_assoc()){
@@ -89,7 +89,7 @@ if($stmt = $dbconn->prepare($sql)){
             // ID doesn't exist or is not unique
             $_SESSION["error"] = true;
             $_SESSION["error-message"] = "No account associated with this ID.";
-            //header("Location: /transitwise/home/portal/login.php");
+            header("Location: /transitwise/home/portal/login.php");
         }
     } else{
         echo "We could not complete the request.";

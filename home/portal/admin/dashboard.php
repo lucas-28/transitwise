@@ -1,14 +1,7 @@
 
 <?php 
 session_status() === PHP_SESSION_ACTIVE ?: session_start();
-
-// Session start
-if( !isset($_SESSION["user_data"]) || $_SESSION["user_data"]["is_admin"] != 1){
-    printf("You are not authorized to view this page.<br>");
-    header("location: /transitwise/home/portal/login.php");
-    exit;
-}
-$data = $_SESSION["user_data"];
+include 'adminCheck.php';
 ?>
 <!DOCTYPE HTML>
 <html lang="en">

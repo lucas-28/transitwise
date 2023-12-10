@@ -1,13 +1,7 @@
 <?php 
 // Author: Lucas Pfeifer
 session_status() === PHP_SESSION_ACTIVE ?: session_start();
-
-// Session start
-if( !isset($_SESSION["user_data"]) || $_SESSION["user_data"]["is_admin"] != 1){
-    printf("You are not authorized to view this page.<br>");
-    header("location: /transitwise/home/portal/login.php");
-    exit;
-}
+include 'adminCheck.php';
 $data = $_SESSION["user_data"];
 ?>
 <!DOCTYPE html>

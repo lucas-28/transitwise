@@ -33,6 +33,10 @@
         text-align: center;
         margin-top: 40px;
     }
+
+    .nav-text {
+        padding: 20px;
+    }
 </style>
 </head>
 <body>
@@ -57,8 +61,8 @@
             if($_SESSION["user_data"]["is_admin"] == 1){
                 $counter = 0;
                 foreach ($adminLeftNav as $i => $link) {
-                    echo ($counter == 0) ?  '<li><a class="nav-group-head nav-text" href="' . $adminLeftNav[$i] . '"><span>' . $i . '</span></a></li>' 
-                    : '<li><a class="nav-text" href="' . $adminLeftNav[$i] . '"><span>' . $i . '</span></a></li>';
+                    echo ($counter == 0) ?  '<li><a class="nav-group-head nav-text" href="' . $adminLeftNav[$i] . '"><span class="nav-text">' . $i . '</span></a></li>' 
+                    : '<li><a href="' . $adminLeftNav[$i] . '"><span class="nav-text">' . $i . '</span></a></li>';
                     $counter++;
                 }
             }
@@ -76,8 +80,8 @@
             if($_SESSION["user_data"]["is_employee"] == 1){
                 $counter = 0;
                 foreach ($employeeLeftNav as $i => $link) {
-                    echo ($counter == 0) ?  '<li><a class="nav-group-head nav-text" href="' . $employeeLeftNav[$i] . '"><span>' . $i . '</span></a></li>' 
-                    : '<li><a class="nav-text" href="' . $employeeLeftNav[$i] . '"><span>' . $i . '</span></a></li>';
+                    echo ($counter == 0) ?  '<li><a class="nav-group-head nav-text" href="' . $employeeLeftNav[$i] . '"><span class="nav-text">' . $i . '</span></a></li>' 
+                    : '<li><a href="' . $employeeLeftNav[$i] . '"><span class="nav-text">' . $i . '</span></a></li>';
                     
                     $counter++;
                 }
@@ -89,13 +93,13 @@
                 "Edit Profile" => "/transitwise/home/account/usereditprofile.php",
                 "Edit Password" => "/transitwise/home/account/userchangepassword.php",
                 "Edit Payment Info" => "/transitwise/home/account/userbilling.php",
-                "View tickets" => "/transitwise/home/account/userviewtickets.php"
+                "View Reservations" => "/transitwise/home/account/reservations.php"
             );
             if($_SESSION["user_data"]["is_customer"] == 1){
             $counter = 0;
             foreach ($customerLeftNav as $i => $link) {
-                echo ($counter == 0) ?  '<li><a class="nav-group-head nav-text" href="' . $customerLeftNav[$i] . '"><span>' . $i . '</span></a></li>' 
-                : '<li><a class="nav-text" href="' . $customerLeftNav[$i] . '"><span>' . $i . '</span></a></li>';
+                echo ($counter == 0) ?  '<li><a class="nav-group-head nav-text" href="' . $customerLeftNav[$i] . '"><span class="nav-text">' . $i . '</span></a></li>' 
+                : '<li><a href="' . $customerLeftNav[$i] . '"><span class="nav-text">' . $i . '</span></a></li>';
                 $counter++;
             }
             echo "</ul>";

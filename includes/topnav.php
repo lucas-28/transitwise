@@ -2,7 +2,7 @@
 // Written by Lucas with the help of the following resources:
 // Chat GPT-4
 
-session_start(); // Start the session
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
 $current_page = basename($_SERVER['PHP_SELF']); // Get the current page name
 
 
@@ -71,12 +71,12 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
         <div class="account">
             <?php
             // Check if user is logged in
-            if (isset($_SESSION['user_data'])) :
+            if (isset($_SESSION['loggedin'])) :
             ?>
                 <a href="/transitwise/home/account/logout.php" style="float:right">Sign out</a>
                 <a href="/transitwise/home/account/userhomepage.php" style="float:right">Profile</a>
             <?php else : ?>
-                <a href="/transitwise/home/account/lp_login.php" style="float:right">Sign in</a>
+                <a href="/transitwise/home/account/login.php" style="float:right">Sign in</a>
                 <a href="/transitwise/home/account/register.php" style="float:right">Register</a>
             <?php endif; ?>
         </div>
@@ -91,15 +91,14 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
                 <li><a href="#" class="dropbtn" <?php echo ($current_page == "view-tickets.php") ? "class='active'" : ""; ?>><span>Trips</span></a></li>
                 <?php
                 // Check if user is logged in
-                if (isset($_SESSION['user_data'])) :
+                if (isset($_SESSION['loggedin'])) :
                 ?>
                     <li><a href="/transitwise/home/account/userhomepage.php">Profile</a></li>
                     <li><a href="/transitwise/home/account/logout.php">Sign out</a></li>
 
                 <?php else : ?>
                     <li><a href="/transitwise/home/account/register.php">Register</a></li>
-                    <li><a href="/transitwise/home/account/lp_login.php">Sign in</a></li>
-
+                    <li><a href="/transitwise/home/account/login.php">Sign in</a></li>
                 <?php endif; ?>
             </ul>
         </div>

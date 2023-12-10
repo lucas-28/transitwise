@@ -1,7 +1,7 @@
 <?php
     session_status() === PHP_SESSION_ACTIVE ?: session_start();
     include ('../../includes/connect.php');
-    include "/transitwise/privacy/userCheck.php";
+    include 'userCheck.php';;
 ?> 
 
 <!DOCTYPE HTML>

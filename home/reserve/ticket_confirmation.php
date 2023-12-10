@@ -28,7 +28,7 @@
         <p><strong>Email: </strong><?php echo $_SESSION["user_data"]["email"] ?><!--user email--></p>
         
         <p><strong>Departure Date: </strong><?php echo date('l, F jS, Y',strtotime($_SESSION["reservation"]["flight"]["date"])) ?></p>
-        <p><strong>Created on: </strong><?php echo date('l, F jS, Y, h:i a',strtotime($_SESSION["transaction"]["time_stamp"])) ?></p>
+        <p><strong>Booking Time: </strong><?php echo date('l, F jS, Y, h:i a',strtotime($_SESSION["transaction"]["time_stamp"])) ?></p>
         <p><strong>Booking ID: </strong><?php echo $_SESSION["reservationID"]; ?></p>
     </div>
     

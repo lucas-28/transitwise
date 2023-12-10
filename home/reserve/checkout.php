@@ -56,7 +56,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
     <div class="white container">
         
-        <form action="/transitwise/handlers/checkout_handler.php" action="post">
+        <form action="/transitwise/handlers/checkout_handler.php" method="post">
         <?php if (isset($_SESSION['email'])) :
                 ?>
                     
@@ -94,7 +94,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </div>
             <div class="location-search-group">
                 <label for="passenger-email">Email:</label>
-                <input type="tel" id="passenger-phone" name="phone" required>
+                <input type="tel" id="passenger-phone" name="email" required>
             </div>
 
                 <?php endif; ?>
@@ -124,18 +124,19 @@ if (session_status() === PHP_SESSION_NONE) {
 
             <div class="location-search-group">
                 <label for="card-holder-name">Name on Card:</label>
-                <input type="text" id="card-holder-name" name="cardholder-name" required>
+                
+                <input type="text" id="card-holder-name" name="cardholder-name"  required>
             </div>
 
             <div class="location-search-group">
                 <label for="card-number">Card Number:</label>
-                <input type="text" id="card-number" name="card-number" required>
+                <input type="text" id="card-number" name="card-number" placeholder="xxxx-xxxx-xxxx-xxxx" maxlength="19" required>
             </div>
 
             <div id="dates" class="options-search-group">
                 <div class="departure-date">
                     <label for="exp-date">Expiration Date (mm/yy):</label>
-                    <input type="text" id="exp-date" name="exp-date" pattern="(0[1-9]|1[0-2])\/\d{2}" placeholder="MM/YY" required>
+                    <input type="text" id="exp-date" name="exp-date" pattern="(0[1-9]|1[0-2])\/\d{2}" placeholder="MM/YY" maxlength="5" required>
                 </div>
 
                 <div class="return-date">

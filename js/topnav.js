@@ -1,4 +1,4 @@
-//Written by ChatGTP
+// Written by ChatGTP
 // Topnav
 const navToggle = document.querySelector('.nav-toggle');
 const navList = document.querySelector('.responsive-nav-list');

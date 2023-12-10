@@ -1,4 +1,4 @@
-<?php include "/transitwise/privacy/userCheck.php"; ?>
+<?php session_status() === PHP_SESSION_ACTIVE ?: session_start(); include 'userCheck.php'; ?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -74,9 +74,12 @@
 </header>
 <body>
     <!--Creates the navigation side bar of links to edit/view account.-->
-        <?php include ('../../includes/leftnavuser.php'); ?>
+        <?php include ('../../includes/leftnav.php'); ?>
     <div class="main-content">
+        <?php include('../../includes/leftnav-openbutton.php'); ?>
+        <div class="container">
         <div>
+        
         <h3>Choose Card</h3>
         <!--This section allows the user to pick a credit card if they added one before
             It should display a list of cards with the last 4 digits of their credit card.
@@ -147,7 +150,7 @@
         </form>
         </div>
     
-    
+        </div>
     </div>
     <script>
         <?php include ('../../js/registercreditcard.js'); ?>

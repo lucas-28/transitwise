@@ -1,5 +1,8 @@
 <?php
 
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
+include 'employeeCheck.php';
+
 // Aidan Callan
 // Transitwise
 // Timestamp database connection

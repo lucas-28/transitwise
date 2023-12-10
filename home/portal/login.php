@@ -29,11 +29,11 @@ session_status() === PHP_SESSION_ACTIVE ?: session_start();
             <h1>Employee Login</h1>
             <?php include("../../includes/error-message.php"); ?>
             <div class="input-box">
-                <input type="text" name="EMID" placeholder="Employee ID" required>
+                <input type="text" name="EMID" placeholder="Employee ID" id="EMID" required>
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="password" placeholder="Password" id="password" required>
                 <i class='bx bxs-lock-alt'></i>
             </div>
             <!--
@@ -43,7 +43,7 @@ session_status() === PHP_SESSION_ACTIVE ?: session_start();
             </div>
             -->
 
-            <button type="submit" name="send" class="btn">Login</button>
+            <button type="submit" name="send" class="btn" id="submit">Login</button>
             <!-- 
             <div class="register-link">
                 <p>Don't have an account? <a href="#">Register</a></p>
@@ -53,7 +53,7 @@ session_status() === PHP_SESSION_ACTIVE ?: session_start();
     </div>
 
 
-    
+    <script src="/transitwise/js/portal_login.js"></script>
 </body>
 
 </html>

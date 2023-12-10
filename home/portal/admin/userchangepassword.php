@@ -1,3 +1,7 @@
+<?php 
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
+include 'adminCheck.php';
+?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>

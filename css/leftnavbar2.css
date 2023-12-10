@@ -20,7 +20,8 @@
   }
   .navbaruser {
     height: 100%;
-    width: 0;
+    width: fit-content;
+    display: none;
     position: absolute;
     z-index: 1;
     top: 0;
@@ -30,10 +31,15 @@
     padding-top: 60px;
     
   }
+
+  .nav-text {
+    padding: 20px;
+  }
   
   .navbaruser a {
     float: left;
     padding: 12px 0;
+    width: 100%;
     color: white;
     text-decoration: none;
     text-align: left;
@@ -41,14 +47,17 @@
     cursor: pointer;
   }
   .navbaruser .closebtn{
-    position: absolute;
-    top: 0;
-    right: 25px;
+    text-align: center;
+    
     font-size: 36px;
-    margin-left: 50px;
-    padding: 20px;
+    
   }
   
+  .nav-text{
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+  }
   
   .navbaruser a:hover {
     background-color: #ddd;

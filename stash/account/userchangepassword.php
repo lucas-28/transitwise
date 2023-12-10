@@ -39,9 +39,9 @@
 <body>
     
     <!--Creates the navigation side bar of links to edit/view account.-->
-    <?php include ('../../includes/leftnavuser.php'); ?>
-    <div id="body">
-        
+    <?php include ('../../includes/leftnav.php'); ?>
+    <div id="container">
+    <?php include('../../includes/leftnav-openbutton.php'); ?>
 
         <form id="register" action="handlers/register_handler.php" method="post"> 
             <h1>Change Password</h1>

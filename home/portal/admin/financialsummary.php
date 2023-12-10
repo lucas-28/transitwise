@@ -1,7 +1,8 @@
 <?php
-include "../../../stash/privacy/adminCheck.php";
+
 // Start the session
-session_start();
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
+include 'adminCheck.php';
 
 // Initialize amounts or retrieve them from sessions
 $categories = array(
