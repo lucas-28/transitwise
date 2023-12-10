@@ -31,6 +31,7 @@
 <head>
     <title>Create Account</title>
     <meta charset="utf-8">
+    <link rel="icon" href="/transitwise/images/favicon.ico">
     
 
 <style>

@@ -35,6 +35,7 @@ if(isset($_GET['flightID'])) {
     <link rel="stylesheet" href="../../css/topnav.css">
     <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="/transitwise/css/flight_card.css">
+    <link rel="icon" href="/transitwise/images/favicon.ico">
     
     <style>
         .customize {

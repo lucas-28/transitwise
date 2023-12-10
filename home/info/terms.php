@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transitwise Terms</title>
 	<link rel="stylesheet" href="/transitwise/css/style.css">
+    <link rel="icon" href="/transitwise/images/favicon.ico">
 </head>
 <body>
 

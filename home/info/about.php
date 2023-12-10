@@ -11,6 +11,7 @@ Author: Lucas with Chat GPT-4 and copilot
     <title>About Us</title>
     <link href="/transitwise/css/style.css" rel="stylesheet" type="text/css">
     <link href="/transitwise/css/about_us.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="/transitwise/images/favicon.ico">
 </head>
 <?php include '../../includes/topnav.php'; ?>
 <div class="main-content">

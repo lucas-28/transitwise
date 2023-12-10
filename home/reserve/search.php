@@ -1,4 +1,5 @@
 <?php
+// Author: Lucas Pfeifer
 // start session
 (session_status() === PHP_SESSION_ACTIVE) ?: session_start();
 ?>

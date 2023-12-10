@@ -51,6 +51,7 @@ $stmt->close();
 
 <head>
     <title>View/Edit Account Info</title>
+    <link rel="icon" href="/transitwise/images/favicon.ico">
 </head>
 
 <body>

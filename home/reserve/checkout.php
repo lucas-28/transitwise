@@ -29,6 +29,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout Page</title>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" href="/transitwise/images/favicon.ico">
     <style>
         .main-content {
             

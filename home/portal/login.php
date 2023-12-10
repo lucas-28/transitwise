@@ -15,7 +15,7 @@ session_status() === PHP_SESSION_ACTIVE ?: session_start();
     <title>TW - Portal Login </title>
     <link rel="stylesheet" href="/transitwise/css/style.css">
     <link rel="stylesheet" href="/transitwise/css/portal_login.css">
-
+    <link rel="icon" href="/transitwise/images/favicon.ico">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
         

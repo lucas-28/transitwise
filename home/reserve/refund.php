@@ -3,6 +3,7 @@
 <head>
     <title>Refund Ticket</title>
     <link rel="stylesheet" href="/transitwise/css/style.css">
+    <link rel="icon" href="/transitwise/images/favicon.ico">
 </head>
 <body>
 

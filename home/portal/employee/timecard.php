@@ -15,7 +15,7 @@
           The employee will be able to view their timecard but they should not
           be able to edit it.
         -->
-    
+    <link rel="icon" href="/transitwise/images/favicon.ico">
     </head>
     <header>
         <?php include ('../../../includes/topnav.php'); ?>
