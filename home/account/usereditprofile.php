@@ -60,7 +60,7 @@
             <h2>Current Profile Information</h2>
             <div class="two-column-grid">
             
-                <span></span>
+                
                 <?php 
                     $data_names = array(
                         "f_name" => "First Name",
