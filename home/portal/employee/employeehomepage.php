@@ -38,7 +38,7 @@
     -->
 
     <!--Creates the navigation side bar of links to edit/view account.-->
-    <?php include('../../../includes/leftnavbaralluser.php'); ?>
+    <?php include('../../../includes/leftnav.php'); ?>
 
 
     <!--

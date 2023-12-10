@@ -33,6 +33,7 @@
 <meta name="viewport" content="width=device-width", intial-scale="1.0">
 
 <link rel="stylesheet" href="/transitwise/css/style.css">
+<link rel="icon" href="/transitwise/images/favicon.ico">
 
 <style>
 .editProfile {
@@ -53,9 +54,12 @@
         <!--Creates the navigation side bar of links to edit/view account.-->
         <?php include ('../../includes/leftnav.php'); ?>
         <div class="editProfile">
+        
             <!--This section will display the user's current profile information.-->
-            <div class="container" style="display: grid;grid-template-columns: 1fr 1fr;">
-                <p>Current Profile Information</p>
+            <div class="container profile-info" >
+            <h2>Current Profile Information</h2>
+            <div class="two-column-grid">
+            <?php include('../../includes/leftnav-openbutton.php'); ?>
                 <span></span>
                 <?php 
                     $data_names = array(
@@ -84,17 +88,18 @@
                         
                     }
                 ?>
-
+            </div>
             </div>
 
             <div class="container">
                 <!--The action for the form below should probably change. -->
-                <form action="/transitwise/handlers/edit_user_handler.php" method="post"> 
-                    <h1>Edit Profile</h1>
+                <h1>Edit Profile</h1>
                     <p>Please fill in any fields you wish to change. Empty fields will not be changed.</p>
                     <?php include ('../../includes/error-message.php'); ?>
+                <form class="flex-row" action="/transitwise/handlers/edit_user_handler.php" method="post"> 
                     
-                    <fieldset class="flex-box">
+                    
+                    <fieldset class="flex-row">
                         <!--Each input box should have the original data that the User have when
                             they created their account. For example, in this case the user's f_name
                             should be filled with their first name from the database. All inputs,
@@ -120,12 +125,12 @@
                         <label>City <br><input type="text" name="city"> <br></label>
                         <label>State <br><input type="text" name="state"> <br></label>
                         <label>Zip code <br><input type="text" name="zip"></label>
-
-                    </fieldset>
-                
-                    <div class="btn-holder">
+                        <div class="btn-holder">
                         <input class="btn" type="submit" name="send" value="Submit">
                     </div>
+                    </fieldset>
+                
+                    
                 </form>
             </div>
         </div>

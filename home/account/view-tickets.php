@@ -111,7 +111,7 @@ include "../../includes/connect.php"  ?>
                         echo "<td class='topmost'>" . $row['TKID'] . "</td>";
                         echo "<td>" . $row['f_name'] . " " . $row["l_name"] . "</td>";
                         echo "<td>" . $row['class'] . "</td>";
-                        echo "<td>" . $row['seatID'] . "</td>";
+                        echo "<td>" . $row['seat'] . "</td>";
                         echo "<td>" . $row['bags'] . "</td>";
                         echo "<td>" . date('l, F jS, Y',strtotime(strval($row['date']))) . "</td>";
                         echo "<td>" . date('h:i a',strtotime($row['dep_time'])) . "</td>";
@@ -133,4 +133,5 @@ include "../../includes/connect.php"  ?>
             ?>
         </table>
     </div>
+    <?php include "../../includes/footer.php" ?>
 </body>

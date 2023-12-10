@@ -26,14 +26,13 @@
                     </div>
                 </div>
                 <div class="date-search-group">
-                    <label for="departure-date">Departure Date</label>
+                    <label for="departure-date">Departure Date (of the year 2022)</label>
                     <input type="date" id="departure-date" name="departure-date" value="" type="hidden" required/>
-                    <label for="return-date">Return Date (optional)</label>
-                    <input type="date" id="return-date" name="return-date" value="" type="hidden" />
+                    
                 </div>
                 <div class="options-search-group">
                     <div class="passengers-search-group">
-                        <label for="passengers">Passengers:</label>
+                        <label for="passengers">Number of Passengers</label>
                         <input type="number" id="passengers" name="passengers" value="1" min="1" max="8" step=1 required/>
                     </div>
                     

@@ -54,6 +54,7 @@ include ('../../includes/topnav.php');
 </head>
 
 <body>
+    <div class="main">
     <div class="container">
         <table>
             <tr>
@@ -108,6 +109,8 @@ include ('../../includes/topnav.php');
             ?>
         </table>
     </div>
+    </div>
+    <?php include "../../includes/footer.php" ?>
 </body>
 
 

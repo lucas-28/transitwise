@@ -17,7 +17,7 @@
     .navbaruser {
         top: 78px;
         padding-top: 0;
-        height: 100vh;
+        max-height: 90vh;
     }
     .nav-text {
         text-align: center;
@@ -50,7 +50,7 @@
                 "Admin Home" => "/transitwise/home/portal/admin/adminhomepage.php",
                 "Edit Profile" => "/transitwise/home/portal/admin/usereditprofile.php",
                 "Edit Password" => "/transitwise/home/portal/admin/userchangepassword.php",
-                "Employee Page" => "/transitwise/home/portal/employee/employeehomepage.php",
+                
                 "View Reports" => "/transitwise/home/portal/admin/financialsummary.php",
                 "View Employees" => "/transitwise/home/portal/admin/viewemployees.php"
             );
@@ -104,24 +104,9 @@
   ?>
 </div>
 
-<span style="font-size:30px;cursor:pointer" class= "openbtn" onclick="openNav()">☰</span>
-<script>
-    /* Set the width of the side navigation to 20% */
-    function openNav() {
-      document.getElementById("mynavbaruser").style.width = "10%";
-      document.getElementById("mynavbaruser").style.paddingRight = "4%";
-      document.getElementById("mynavbaruser").style.paddingLeft = "4%";
-      //document.body.style.marginLeft = "18%";
 
-    }
+<script src=/transitwise/js/leftnavbar.js>
 
-    /* Set the width of the side navigation to 0 */
-    function closeNav() {
-      document.getElementById("mynavbaruser").style.width = "0";
-      document.getElementById("mynavbaruser").style.paddingRight = "0";
-      document.getElementById("mynavbaruser").style.paddingLeft = "0";
-      //document.body.style.marginLeft = "0%";
-    }
   </script>
 </body>
 </html> 

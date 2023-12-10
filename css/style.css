@@ -46,6 +46,7 @@ h1{
 .main {
     width: 100%;
     min-width: 100%;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,6 +68,9 @@ h1{
     
     max-width: 1000px;
 }
+.flex-row{
+    flex-direction: row;
+}
 
 form {
     display: flex;
@@ -75,6 +79,11 @@ form {
     gap: 0.625em; /* Equivalent to 10px when base font-size is 16px */
     min-width: -webkit-fit-content;
 }
+
+fieldset{
+    height: 95%;
+}
+
 button {
     padding: 0.625em; /* Equivalent to 10px when base font-size is 16px */
     margin-top: 0.625em; /* Equivalent to 5px when base font-size is 16px */
@@ -206,6 +215,9 @@ button:active {
 
 .nav-toggle {
     display: none;
+    position: fixed;
+    left: 0;
+    
 
 }
 
@@ -229,6 +241,8 @@ button:active {
 .topnav {
     justify-content: center;
     align-items: flex-end;
+    position: fixed;
+    z-index: 10;
 }
 
 
@@ -244,7 +258,7 @@ button:active {
 .responsive.active{
     display: flex;
     align-items: center;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 70vh;
@@ -262,11 +276,20 @@ button:active {
 }
 
 .responsive.active ul{
+    gap: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     list-style-type: none;
+}
+.responsive.active li {
+    width: 50%;
+}
+
+.responsive.active li > a {
+    justify-content: center;
+    padding: 8% 0;
 }
 
 .nav-toggle {
@@ -459,6 +482,10 @@ input {
 .airport-list li:focus {
     background-color: #aaa;
 }
+#feedback {
+    width: 99%;
+}
+
 
 #filterDiv {
     display: grid;
@@ -469,6 +496,18 @@ input {
     border-radius: 1em;    
     padding: 10px;
 
+}
+
+.nav-icon-div {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+.nav-icon {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
 }
 
 .checkboxDiv {
@@ -566,7 +605,14 @@ footer {
     flex-direction: row;
 }
 
-
+.two-column-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.profile-info {
+    justify-content: flex-start;
+}
 
 #origin {
     position: relative;

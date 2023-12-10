@@ -1,4 +1,5 @@
 <?php
+// Author: Lucas Pfeifer
 include ('../includes/connect.php');
 session_start();
 
@@ -23,6 +24,7 @@ if($stmt = $dbconn->prepare($sql)){
     if($stmt->execute()){
         // Redirect to login page
         $_SESSION["card_selected"] = true;
+        $_SESSION["user_data"]["card"]["last_four"] = $param_four;
         echo "card selected";
         //header("location: ../home/account/userbilling.php");
         

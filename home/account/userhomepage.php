@@ -30,6 +30,13 @@
     .profile {
         width: 80%;
     }
+    .description {
+        font-size: 1.2rem;
+        
+        margin-top: 30px;
+        margin-bottom: 0px;
+        
+    }
     </style>
 
 </head>
@@ -67,6 +74,7 @@
     -->
     <div class="main-content">
     <div class="container profile">
+        <?php include('../../includes/leftnav-openbutton.php'); ?>
 
         <div class="profile">
             <!--Should display the user's first name after the Hello,.-->
@@ -77,9 +85,7 @@
                 <div class="account-info">
                     <!-- Add the email of the user of the account after user.-->
                     
-                    <div class="sign-out">
-                        <a href="placeholder"><button class="signout-button" type="button">Sign out</button></a>
-                    </div>
+                    
                 </div>
 
                 <div class="hr-line"></div>
@@ -132,6 +138,10 @@
                             <a href="../account/userviewtickets.php"><button type="button">VIEW TICKETS</button></a>
                         </div>
                     </div>
+                </div>
+                <div class="sign-out">
+                    <p class="description">Log out from your account.</p>
+                    <a href="logout.php"><button class="signout-button" type="button">Sign out</button></a>
                 </div>
 
             </div>

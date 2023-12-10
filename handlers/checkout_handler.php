@@ -1,5 +1,7 @@
 <?php
+// Author: Lucas Pfeifer
     require_once("../includes/connect.php");
+    date_default_timezone_set('America/New_York');
     //require_once "includes/session.php";
     //require_once "includes/functions.php";
     //require_once "includes/header.php";
@@ -23,6 +25,14 @@
 
     if (isset($_SESSION["user_data"])) {
         $UPID = $_SESSION["user_data"]["UPID"];
+        $f_name = $_SESSION["user_data"]["f_name"];
+        $m_name = $_SESSION["user_data"]["m_name"];
+        $l_name = $_SESSION["user_data"]["l_name"];
+        $email = $_SESSION["user_data"]["email"];
+        $phone = $_SESSION["user_data"]["phone"];
+        $birth_date = $_SESSION["user_data"]["birth_date"];
+
+        var_dump($_SESSION["user_data"]);
     } else {
         $UPID = 0;
     }
@@ -32,14 +42,13 @@
 
     
 
-    $FDID = $_SESSION["reservation"]["FDID"];
+    $FDID = $_SESSION["reservation"]["flight"]["FDID"];
     $num_tickets = $_SESSION["reservation"]["num_tickets"];
     
     //test values
-    $UPID = 1;
-    $FDID = 1;
-    $num_tickets = 1;
+    
 
+    //f_name,m_name,l_name,birth_date,phone,email,
     $sql = "INSERT INTO `reservations`(`UPID`,`FDID`,`num_tickets`) VALUES (?,?,?);";
     echo 'preparing statement...';
     if($stmt = mysqli_prepare($dbconn, $sql)){
@@ -48,8 +57,8 @@
         echo 'executing statement...';
         if(mysqli_stmt_execute($stmt)){ 
             echo 'statement executed...';
-            $reservationID = mysqli_insert_id($dbconn);
-            $_SESSION["reservationID"] = $reservationID;
+            $RSID = mysqli_insert_id($dbconn);
+            $_SESSION["reservationID"] = $RSID;
             
         }
         else {
@@ -61,18 +70,20 @@
     }
 
 
+    $tax_rate = 1.13;
+    $sql = "SELECT * FROM `external_flights` WHERE FDID = " . $_SESSION["reservation"]["flight"]["FDID"] . ";";
+    $result = $dbconn->query($sql);
+    $row = $result->fetch_assoc();
+    $amount = round(($row["price"] * $_SESSION["reservation"]["num_tickets"] + $_SESSION["reservation"]["bags"] * 25) * $tax_rate, 2);
+
     
-
-
-    $amount = $_SESSION["transaction"]["amount"];
     $is_refund = $_SESSION["transaction"]["is_refund"];
     $log = $_SESSION["transaction"]["log"];
     $time_stamp = date("Y-m-d H:i:s");
     
     // test values
-    $UPID = 1;
-    $RSID = 1;
-    $amount = 100; 
+    
+    
     $is_refund = 0;
     $log = "None";
     
@@ -98,32 +109,31 @@
     }
     
 
-    $RSID = $_SESSION["reservationID"];
-
-    $_SESSION["tickets"] = array();
-
-
-    //foreach ($_SESSION["tickets"] as $ticket) {
-    // $FFID = $_SESSION[$ticket]["FFID"];
-    // $f_name = $_SESSION[$ticket]["f_name"];
-    // $l_name = $_SESSION[$ticket]["l_name"];
-    // $seat = $_SESSION[$ticket]["seat"];
-    // $email = $_SESSION[$ticket]["email"];
     
-    // $bags = $_SESSION[$ticket]["bags"];
-    // $class = $_SESSION[$ticket]["class"];
 
-    //test values
-    $FFID = 1;
-    $f_name = "lucas";
-    $l_name = "lucas";
-    $seat = "1A";
-    $email = "test@gmail.com";
-    $phone = "1234567890";
-    $bags = 1;
-    $class = "Economy";
+
+
+
+    foreach ($_SESSION["tickets"] as $ticket) {
+    var_dump($ticket);
+    
+    $FFID = $ticket["FFID"];
+    echo 'FFID: ' . $FFID;
+    $f_name = $ticket["f_name"];
+    
+    $l_name = $ticket["l_name"];
+    $seat = $ticket["seat"];
+    $email = $ticket["email"];
+    
+    $bags = $ticket["bags"];
+    $class = $ticket["class"];
+    $class = 'First';
+    
 
     
+
+
+    var_dump($RSID);
     $sql = "INSERT INTO `tickets`(`RSID`,`FFID`,`f_name`,`l_name`,`seat`,`email`,`bags`,`class`) VALUES (?,?,?,?,?,?,?,?);";
     echo 'preparing statement...';
     //var_dump($sql);
@@ -135,9 +145,10 @@
         if(mysqli_stmt_execute($stmt)){ 
             echo 'statement executed...';
             $ticketID = mysqli_insert_id($dbconn);
+            $_SESSION["transaction"]["time_stamp"] = $time_stamp;
             $_SESSION["ticketID"] = $ticketID;
             printf("redirecting...");
-            //header("location: /transitwise/home/reserve/ticket_confirmation.php");
+            header("location: /transitwise/home/reserve/ticket_confirmation.php");
         }
         else {
             echo "Something went wrong. Please try again later.";
@@ -146,7 +157,7 @@
     else {
         printf("Prepared statement failed.");
     }
-    //}
+    }
 
     
     

@@ -1,6 +1,7 @@
 "UPEID","f_name","m_name","l_name","email","phone","position","hire_date","salary","address1","address2","city","state","zip","birth_date","password"
 
 <?php
+    // Author: Lucas Pfeifer
     require_once("../includes/connect.php");
     //require_once "includes/session.php";
     //require_once "includes/functions.php";

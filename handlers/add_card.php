@@ -1,4 +1,5 @@
 <?php
+// Author: Lucas Pfeifer
 //handler to add credit card to user account
 session_start();
 include ('../includes/connect.php');

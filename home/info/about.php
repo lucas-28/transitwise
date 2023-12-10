@@ -1,6 +1,6 @@
 <!--
 This is the about page for the website. It contains information about the company and the team. 
-Made by Lucas with Chat GPT-4 and copilot
+Author: Lucas with Chat GPT-4 and copilot
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +43,7 @@ Made by Lucas with Chat GPT-4 and copilot
                 <td class="team-member">Jonathan</td>
             </tr>
             <tr class="team-list">
-                <td class="team-member">Stephen</td>
+                <td class="team-member">Steven</td>
                 <td class="team-member">David</td>
                 <td class="team-member">Uriel</td>
             </tr>

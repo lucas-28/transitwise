@@ -1,14 +1,21 @@
-<?php
-// written by chatGPT
+<?php 
+// Author: Lucas Pfeifer
 session_status() === PHP_SESSION_ACTIVE ?: session_start();
 
+// Session start
+if( !isset($_SESSION["user_data"]) || $_SESSION["user_data"]["is_admin"] != 1){
+    printf("You are not authorized to view this page.<br>");
+    header("location: /transitwise/home/portal/login.php");
+    exit;
+}
+$data = $_SESSION["user_data"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Employee Form</title>
-    <link rel="stylesheet" href="add-employee.css">
+    <link rel="stylesheet" href="/transitwise/css/add-employee.css">
     <link rel="stylesheet" href="/transitwise/css/style.css">
 </head>
 <body>

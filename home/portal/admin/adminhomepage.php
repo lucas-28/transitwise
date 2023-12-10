@@ -1,3 +1,15 @@
+<?php 
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
+
+
+if( !isset($_SESSION["user_data"]) || $_SESSION["user_data"]["is_admin"] != 1){
+    printf("You are not authorized to view this page.<br>");
+    header("location: /transitwise/home/portal/login.php");
+    exit;
+}
+$data = $_SESSION["user_data"];
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -82,21 +94,7 @@
                 </div>
 
                 <div class="hr-line"></div>
-                <div class="View-employee-page-square">
-                    <!--Edit your profile square.-->
-                    <div class="square-title"><label class="title">View employee page</label></div>
-                    <div class="square-description">
-                        <p class="description">View and access all employee functions.</p>
-                        <div class="square-action">
-                            <!--placeholder should be replace to go to an employee page.
-                                Don't know if this is fine to do so they can use that homepage?
-                                The issue would be to go back to the admin homepage besides clicking
-                                the back arrow.
-                            -->
-                            <a href="../../portal/employee/employeehomepage.php"><button type="button">EMPLOYEE PAGE</button></a>
-                        </div>
-                    </div>
-                </div>
+                
 
                 <div class="hr-line"></div>
                 <div class="view-financialreports-square">

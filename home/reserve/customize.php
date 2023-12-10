@@ -1,5 +1,5 @@
 <?php
-
+// Author: Lucas Pfeifer
 //include_once('functions.php');
 //include_once('footer.php');
 include("../../includes/connect.php");
@@ -112,6 +112,7 @@ if(isset($_GET['flightID'])) {
         if(isset($_GET['dep-flightID'])){
             $depFlightID = intval($_GET['dep-flightID']);
             $numPassengers = intval($_GET['num-passengers']);
+            $_SESSION["reservation"]["num_tickets"] = $numPassengers;
             //var_dump($depFlightID); 
             
             
@@ -120,9 +121,10 @@ if(isset($_GET['flightID'])) {
                 foreach ($_SESSION["results"] as $row) {
                     //var_dump($row['FDID']);
                     if ($row['FDID'] == $depFlightID){
-                        $departure_row = $row;
-                        $_SESSION["flight"] = $row;
-                        $_SESSION["price"] = round($row['distance'] * 0.15);
+                        $departureRow = $row;
+                        $_SESSION["reservation"]["flight"] = $row;
+                        $_SESSION["reservation"]["basePrice"] = round($row['distance'] * 0.15);
+                        $_SESSION['reservation']['bagPrice'] = 25;
                         //echo "found";
                     }
                     
@@ -132,7 +134,7 @@ if(isset($_GET['flightID'])) {
             }
         }
         echo '<ul class="flight-list">';
-        $card = flight_card($departure_row);
+        $card = flight_card($departureRow);
         foreach($card as $line) {
             echo $line;
         }
@@ -176,15 +178,15 @@ function customize($i) {
     return [
          '<div class="passenger">',
             '<h3>Passenger ' . $i . ':</h3>',
-            '<input type="text" name="f_name' . $i . '" id="passenger1' . $i . '" placeholder="First Name">',
-            '<input type="text" name="l_name' . $i . '" id="passenger2' . $i . '" placeholder="Last Name">',
-            '<input type="text" name="email' . $i . '" id="passenger3' . $i . '" placeholder="Email">',
-            '<input type="text" name="FFID' . $i . '" id="FFID' . $i . '" placeholder="Frequent Flyer Number">',
+            '<input type="text" name="f_name' . $i . '" id="passenger1' . $i . '" placeholder="First Name" required>',
+            '<input type="text" name="l_name' . $i . '" id="passenger2' . $i . '" placeholder="Last Name" required>',
+            '<input type="text" name="email' . $i . '" id="passenger3' . $i . '" placeholder="Email" required>',
+            '<input type="text" name="FFID' . $i . '" id="FFID' . $i . '" placeholder="Frequent Flyer Number" required>',
             
-            '<input type="number" name="bags" placeholder="Number of checked bags">',
+            '<input type="number" name="bags' . $i . '" min=0 max=3 step=1 placeholder="Number of checked bags">',
             '<div class="seat-info">',
             '<h4>Seat chosen: <span id="display-seat-choice-'.$i.'">None Selected</span> </h4>',
-            '<input type="hidden" name=seatID" id="input-seat-choice-'.$i.'" value="">',
+            '<input type="hidden" name="seat' . $i . '" id="input-seat-choice-'.$i.'" value="">',
             '<div class="choose-seat">Choose Seat</div>',
             
             '</div>',
@@ -214,7 +216,7 @@ function flight_card($row) {
         '    <div class="duration">',
         '        <span class="flight-duration">' . $duration . '</span>',
         '    <div class="flight-price">',
-        '         <span class="ticket_cost">$' . $_SESSION['price'] . '</span>',
+        '         <span class="ticket_cost">$' . $_SESSION['reservation']['basePrice'] . '</span>',
         '    </div>',
         '</div></li>',
         '</a>',

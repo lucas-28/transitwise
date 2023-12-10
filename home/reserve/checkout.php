@@ -3,7 +3,7 @@
 //Transitwise
 //Checkout Page
 
-echo getcwd() . "\n";
+//echo getcwd() . "\n";
 //include '\..\..\..\classes\Cart.php';
 //include '\..\..\..\classes\Flight.php';
 //$cart = new Cart();
@@ -16,7 +16,10 @@ echo getcwd() . "\n";
 
 //$cartData = $cart->getCart();
 
-
+// start session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,72 +31,99 @@ echo getcwd() . "\n";
     <link rel="stylesheet" href="../../css/style.css">
     <style>
         .main-content {
-            width:800px;
+            
             margin: 0 auto;
         }
+        
     </style>
 </head>
 <body>
 
 <header>
-    <div class="topnav">
-        <div class="commerce"> <!-- Include your commerce links here --></div>
-        <div class="account"> <!-- Include your account links here --></div>
-        <button class="nav-toggle">&#9776; Menu</button>
-    </div>
+    <?php include("../../includes/topnav.php"); ?>
 </header>
 
 
 <div class="main-content">
+    
 <div class="container">
-    <h2>Checkout</h2>
-    <div class="main">
+    <h1>Checkout</h1>
+    <?php include("checkout_info.php"); ?>
+    
         <!-- Cart Summary Container -->
-        <div class="cart-summary-container">
-            <h3>Cart Summary</h3>
-                <ul>
-                    <?php foreach ($cartData as $ticketID => $item): ?>
-                        <li><?php echo $item['ticket']->get_ticket_name() . ' - Quantity: ' . $item['quantity'] . ' - $' . $item['price']; ?></li>
-                  <?php endforeach; ?>
-             </ul>
-        </div>
 
-    </div>
 
-        <form>
-            <!-- Passenger Information -->
-            <h3>Who's Travelling</h3>
-            <div class="options-search-group">
+    <div class="white container">
+        
+        <form action="/transitwise/handlers/checkout_handler.php" action="post">
+        <?php if (isset($_SESSION['email'])) :
+                ?>
+                    
+                    <h3>Profile Information Found for <?php
+                    echo  $_SESSION['user_data']['f_name'] . ' ' . $_SESSION['user_data']['l_name']?></h3>
+                    
+                    
+                    
+                <?php else : ?>
+                    <h3>Who's Travelling</h3>
+                    <div class="options-search-group">
                 <div class="location-search-group">
                     <label for="passenger-first-name">First Name:</label>
-                    <input type="text" id="passenger-first-name" name="passenger-first-name" required>
+                    <input type="text" id="passenger-first-name" name="f_name" required>
                 </div>
                 <div class="location-search-group">
                     <label for="passenger-middle-name">Middle Name:</label>
-                    <input type="text" id="passenger-middle-name" name="passenger-middle-name">
+                    <input type="text" id="passenger-middle-name" name="m_name">
                 </div>
                 <div class="location-search-group">
                     <label for="passenger-last-name">Last Name:</label>
-                    <input type="text" id="passenger-last-name" name="passenger-last-name" required>
+                    <input type="text" id="passenger-last-name" name="l_name" required>
                 </div>
             </div>
+            
 
             <div class="location-search-group">
                 <label for="passenger-dob">Date of Birth:</label>
-                <input type="date" id="passenger-dob" name="passenger-dob" required>
+                <input type="date" id="passenger-dob" name="birth_date" required>
             </div>
 
             <div class="location-search-group">
                 <label for="passenger-phone">Phone Number:</label>
-                <input type="tel" id="passenger-phone" name="passenger-phone" required>
+                <input type="tel" id="passenger-phone" name="phone" required>
+            </div>
+            <div class="location-search-group">
+                <label for="passenger-email">Email:</label>
+                <input type="tel" id="passenger-phone" name="phone" required>
             </div>
 
-            <!-- Payment Information -->
-            <h3>Payment Information</h3>
+                <?php endif; ?>
+            <?php
+                // Check if user is logged in
+                if (isset($_SESSION['email'])) :
+                ?>
+            <!-- Passenger Information -->
+            
+            <?php else : ?>
+            
+
+
+            <?php endif; ?>
+            
+            
+            <?php
+                // Check if user is logged in
+                if (isset($_SESSION['user_data']['card'])) :
+                ?>
+                    
+                    <?php echo '<h3>Selected card... ' . $_SESSION['user_data']['card']['last_four'] . '</h3>'; ?>
+                    
+
+                <?php else : ?>
+                    <h3>Payment Information</h3>
 
             <div class="location-search-group">
                 <label for="card-holder-name">Name on Card:</label>
-                <input type="text" id="card-holder-name" name="card-holder-name" required>
+                <input type="text" id="card-holder-name" name="cardholder-name" required>
             </div>
 
             <div class="location-search-group">
@@ -139,6 +169,10 @@ echo getcwd() . "\n";
                     <input type="text" id="billing-zip" name="billing-zip" required>
                 </div>
             </div>
+
+                <?php endif; ?>
+            <!-- Payment Information -->
+            
 
             <div class="checkboxButtonDiv">
                 <button type="submit">Checkout</button>

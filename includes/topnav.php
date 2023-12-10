@@ -27,6 +27,7 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POS System</title>
     <link rel="stylesheet" href="/transitwise/css/style.css">
+    <link rel="icon" href="/transitwise/images/favicon.ico">
 </head>
 
 <header>
@@ -70,7 +71,7 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
         <div class="account">
             <?php
             // Check if user is logged in
-            if (isset($_SESSION['email'])) :
+            if (isset($_SESSION['user_data'])) :
             ?>
                 <a href="/transitwise/home/account/logout.php" style="float:right">Sign out</a>
                 <a href="/transitwise/home/account/userhomepage.php" style="float:right">Profile</a>
@@ -85,12 +86,12 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
         <div class="responsive">
 
             <ul class="responsive-nav-list">
-                <li><a href="/transitwise/home/index.php" <?php echo (in_array($current_page, $home)) ? "class='active'" : ""; ?>>Home</a></li>
-                <li><a href="#" class="dropbtn" <?php echo ($current_page == "index.php") ? "class='active'" : ""; ?>>Deals</a></li>
-                <li><a href="#" class="dropbtn" <?php echo ($current_page == "view-tickets.php") ? "class='active'" : ""; ?>>Trips</a></li>
+                <li><a href="/transitwise/home/index.php" <?php echo (in_array($current_page, $home)) ? "class='active'" : ""; ?>><span>Home</span></a></li>
+                <li><a href="#" class="dropbtn" <?php echo ($current_page == "index.php") ? "class='active'" : ""; ?>><span>Deals</span></a></li>
+                <li><a href="#" class="dropbtn" <?php echo ($current_page == "view-tickets.php") ? "class='active'" : ""; ?>><span>Trips</span></a></li>
                 <?php
                 // Check if user is logged in
-                if (isset($_SESSION['email'])) :
+                if (isset($_SESSION['user_data'])) :
                 ?>
                     <li><a href="/transitwise/home/account/userhomepage.php">Profile</a></li>
                     <li><a href="/transitwise/home/account/logout.php">Sign out</a></li>

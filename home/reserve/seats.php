@@ -1,5 +1,6 @@
 <?php
 // start session
+// Author: Lucas Pfeifer
 if(!isset($_SESSION)) {
     session_start();
 }
@@ -52,7 +53,7 @@ if(!isset($_SESSION)) {
                 
                 $sql = "SELECT * FROM reservations 
                 INNER JOIN tickets ON reservations.RSID = tickets.RSID
-                WHERE FDID = ". $_SESSION["flight"]["FDID"] .";";
+                WHERE FDID = ". $_SESSION["reservation"]["flight"]["FDID"] .";";
                 $result = $dbconn->query($sql);
                 $unavailability = array();
                 while($row = $result->fetch_assoc()){

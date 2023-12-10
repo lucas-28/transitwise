@@ -1,3 +1,7 @@
+<?php
+// start session
+(session_status() === PHP_SESSION_ACTIVE) ?: session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,7 +111,7 @@
 
 <?php
 
-session_start();
+
 $debug = "true";
 $inputType = "received";
 $statementType = "prepared";
@@ -124,6 +128,7 @@ include ('../../includes/connect.php');
 // Check connection
 if($dbconn->connect_error) {
     die('Connection failed: ' . $dbconn->connect_error);
+    echo 'Connection failed';
 }
 
 
@@ -330,7 +335,7 @@ function flight_card($row, $depFlightID, $retFlightID, $returnDate, $numPassenge
     // This function returns a flight card
     $minutes = $row['duration'];
     $duration =  intdiv($minutes, 60).' h '. ($minutes % 60) . ' m';
-    $price = round($row['distance'] * 0.15);
+    $price = $row['price'];
     $returning = false;
     $card =[];
     $depFlightID = $row['FDID'];

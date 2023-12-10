@@ -53,10 +53,10 @@
     
     border: .1em solid #000;
     border-radius: 0.5em;
-    top: 5vh;
-    width: 100%;
+    top: 100px;
+    width: 90%;
     max-width: 800px;
-    max-height: 90vh;
+    max-height: 80vh;
     overflow: scroll;
     
     

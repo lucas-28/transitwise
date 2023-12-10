@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Login Form in HTML and CSS | Codenhal </title>
+    <link rel="stylesheet" href="/transitwise/css/style.css">
+</head>
+
+<header>
+    <?php include ('../../includes/topnav.php');
+        
+     ?>
+</header>
+<body>
+<!--Creates the navigation side bar of links to edit/view account.-->
+
+<div class="container">
+<div class="row-fluid">
+    <h2 class="page-header">Booking confirmed.</h2>
+    
+</div>
+<div class="row-fluid">
+    <div class="span5 well">
+        <h4 class="page-header">Checkout information</h4>
+        <p><strong>Name: </strong><?php echo $_SESSION["user_data"]["f_name"] . ' ' . $_SESSION["user_data"]["l_name"] ?><!--user name--></p>
+        <p><strong>Email: </strong><?php echo $_SESSION["user_data"]["email"] ?><!--user email--></p>
+        
+        <p><strong>Departure Date: </strong><?php echo date('l, F jS, Y',strtotime($_SESSION["reservation"]["flight"]["date"])) ?></p>
+        <p><strong>Created on: </strong><?php echo date('l, F jS, Y, h:i a',strtotime($_SESSION["transaction"]["time_stamp"])) ?></p>
+        <p><strong>Booking ID: </strong><?php echo $_SESSION["reservationID"]; ?></p>
+    </div>
+    
+</div>
+<div class="row-fluid">
+    <div class="reservations-button">
+        <a href="/transitwise/home/account/reservations.php" class="btn btn-primary">View Reservations</a>
+        
+    </div>
+</div>
+</div>
+
+<?php include ('../../includes/footer.php'); ?>
+</body>
+</html>

@@ -1,4 +1,5 @@
 <?php
+// Author: Lucas Pfeifer
 # Template from https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php  
 include ("../includes/connect.php");
 $debug = "true";

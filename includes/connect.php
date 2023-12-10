@@ -8,9 +8,16 @@ $password = "";
 $db = "transitwise";
 $debug = "false";
 
-$dbconn = mysqli_connect($server, $dbusername, $password, $db);
+if ($dbconn = mysqli_connect($server, $dbusername, $password, $db)){
+	//echo "connected";
+}
+else {
+	echo "not connected";
+}
 
 if ($dbconn->connect_error) {
+	echo nl2br("\n");
+	echo nl2br("ERROR: could not connect to database. \n");
 	die('Could not connect: ' . $dbconn->connect_error);
 } elseif ($debug == "true") {
 	echo nl2br("\nDEBUG:\n");

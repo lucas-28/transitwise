@@ -1,4 +1,5 @@
 <?php
+    // Author: Lucas Pfeifer
     require_once("../includes/connect.php");
     //require_once "includes/session.php";
     //require_once "includes/functions.php";
