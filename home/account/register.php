@@ -16,7 +16,7 @@
     }
     unset($_SESSION['error']);
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-        header("location: /transitwise/home/account/account.php");
+        header("location: /transitwise/home/account/userhomepage.php");
         exit;
     }
     else {

@@ -84,7 +84,7 @@ include 'userCheck.php';;
                         if ($key == "birth_date") {
                             $value = date("m/d/Y", strtotime($value));
                         }
-                        if ($data_names[$key] != NULL) {
+                        if (isset($data_names[$key]) && $data_names[$key] != NULL) {
                             echo '<span class="data-name">' . $data_names[$key] . ': </span><span>' . $value . '</span>';
                         }
                     }
