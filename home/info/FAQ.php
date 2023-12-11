@@ -14,7 +14,7 @@
 
 </head>
 <body>
-    <main>
+    <main class="main-content">
         
         <hr class="title-line">
         <h2 class="faq-heading">Frequently Asked Questions</h2>

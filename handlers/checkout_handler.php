@@ -1,19 +1,18 @@
 <?php
-// Author: Lucas Pfeifer
+    // Constants
+    $IS_REFUND = 0;
+    $LOG = "Transaction successful.";
+    $SEAT = "NA";
+    $CLASS = "First";
+    session_status() === PHP_SESSION_ACTIVE ?: session_start();
+    // Author: Lucas Pfeifer
+    // Date: 2021-09-30
     require_once("../includes/connect.php");
     date_default_timezone_set('America/New_York');
-    //require_once "includes/session.php";
-    //require_once "includes/functions.php";
-    //require_once "includes/header.php";
-    //require_once "includes/footer.php";
-    //require_once "includes/redirect.php";
-    //require_once "includes/redirect_admin.php";
-    //require_once "includes/redirect_user.php";
 
-    session_status() === PHP_SESSION_ACTIVE ?: session_start();
-
-
-
+    if(!isset($_SESSION["reservation"])) {
+        header("location: /transitwise/home");
+    }
 
     if (isset($_SESSION["user_data"])) {
         $UPID = $_SESSION["user_data"]["UPID"];
@@ -41,21 +40,12 @@
         $_SESSION["user_data"]["email"] = $email;
 
     }
-    echo 'UPID: ' . $UPID;
-    
-    echo 'start';
 
     
-
     $FDID = $_SESSION["reservation"]["flight"]["FDID"];
     $num_tickets = $_SESSION["reservation"]["num_tickets"];
-    echo 'FDID: ' . $FDID;
-    echo 'num_tickets: ' . $num_tickets;
-    
-    //test values
-    
 
-    //f_name,m_name,l_name,birth_date,phone,email,
+    // will need f_name,m_name,l_name,birth_date,phone,email,
     $sql = "INSERT INTO `reservations`(`UPID`,`FDID`,`num_tickets`) VALUES (?,?,?);";
     echo 'preparing statement...';
     if($stmt = mysqli_prepare($dbconn, $sql)){
@@ -88,13 +78,9 @@
     $log = $_SESSION["transaction"]["log"];
     $time_stamp = date("Y-m-d H:i:s");
     
-    // test values
+    $is_refund = $IS_REFUND;
+    $log = $LOG;
     
-    
-    $is_refund = 0;
-    $log = "None";
-    
-    $log = "None";
     $sql = "INSERT INTO `transactions`(`UPID`,`RSID`,`amount`,`time_stamp`,`is_refund`,`log`) VALUES (?,?,?,?,?,?);";
     echo 'preparing statement...';  
     if($stmt = mysqli_prepare($dbconn, $sql)){
@@ -114,60 +100,62 @@
     else {
         printf("Prepared statement failed.");
     }
-    
 
-    
-
-
-
-
+    // Insert ticket into database
     foreach ($_SESSION["tickets"] as $ticket) {
-    var_dump($ticket);
     
-    $FFID = $ticket["FFID"];
-    echo 'FFID: ' . $FFID;
-    $f_name = $ticket["f_name"];
-    
-    $l_name = $ticket["l_name"];
-    $seat = $ticket["seat"];
-    $email = $ticket["email"];
-    
-    $bags = $ticket["bags"];
-    $class = $ticket["class"];
-    $class = 'First';
-    
-
-    
-
-
-    var_dump($RSID);
-    $sql = "INSERT INTO `tickets`(`RSID`,`FFID`,`f_name`,`l_name`,`seat`,`email`,`bags`,`class`) VALUES (?,?,?,?,?,?,?,?);";
-    echo 'preparing statement...';
-    //var_dump($sql);
-    //var_dump($dbconn);
-    if($stmt = mysqli_prepare($dbconn, $sql)){
-        echo 'binging parameters...';
-        mysqli_stmt_bind_param($stmt, "iissssss", $RSID, $FFID, $f_name, $l_name, $seat, $email, $bags, $class);
-        echo 'executing statement...';
-        if(mysqli_stmt_execute($stmt)){ 
-            echo 'statement executed...';
-            $ticketID = mysqli_insert_id($dbconn);
-            $_SESSION["transaction"]["time_stamp"] = $time_stamp;
-            $_SESSION["ticketID"] = $ticketID;
-            printf("redirecting...");
-            header("location: /transitwise/home/reserve/ticket_confirmation.php");
+        var_dump($ticket);
+        if(isset($ticket["FFID"])){
+            $FFID = $ticket["FFID"];
         }
         else {
-            echo "Something went wrong. Please try again later.";
+            $FFID = 0;
+        }
+
+        if(isset($ticket["seat"])){
+            $seat = $ticket["seat"];
+        }
+        else {
+            $seat = "NA";
+        }
+        $FFID = $ticket["FFID"];
+        echo 'FFID: ' . $FFID;
+        $f_name = $ticket["f_name"];
+
+        $l_name = $ticket["l_name"];
+
+        $email = $ticket["email"];
+
+        $bags = $ticket["bags"];
+        $class = $ticket["class"];
+        $class = $CLASS;
+
+        var_dump($RSID);
+        $sql = "INSERT INTO `tickets`(`RSID`,`FFID`,`f_name`,`l_name`,`seat`,`email`,`bags`,`class`) VALUES (?,?,?,?,?,?,?,?);";
+        echo 'preparing statement...';
+        //var_dump($sql);
+        //var_dump($dbconn);
+        if($stmt = mysqli_prepare($dbconn, $sql)){
+            echo 'binging parameters...';
+            mysqli_stmt_bind_param($stmt, "iissssss", $RSID, $FFID, $f_name, $l_name, $seat, $email, $bags, $class);
+            echo 'executing statement...';
+            if(mysqli_stmt_execute($stmt)){ 
+                echo 'statement executed...';
+                $ticketID = mysqli_insert_id($dbconn);
+                $_SESSION["transaction"]["time_stamp"] = $time_stamp;
+                $_SESSION["ticketID"] = $ticketID;
+                printf("redirecting...");
+                header("location: /transitwise/home/reserve/ticket_confirmation.php");
+            }
+            else {
+                echo "Something went wrong. Please try again later.";
+            }
+        }
+        else {
+            printf("Prepared statement failed.");
         }
     }
-    else {
-        printf("Prepared statement failed.");
-    }
-    }
 
-    
-    
     mysqli_stmt_close($stmt);
     mysqli_close($dbconn);
     echo 'end';

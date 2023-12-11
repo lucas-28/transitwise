@@ -116,7 +116,6 @@ if(isset($_GET['flightID'])) {
             $_SESSION["reservation"]["num_tickets"] = $numPassengers;
             //var_dump($depFlightID); 
             
-            
             if (isset($_SESSION["results"])){
                 //echo "results set";
                 foreach ($_SESSION["results"] as $row) {
@@ -132,6 +131,10 @@ if(isset($_GET['flightID'])) {
                 }
                 
                 //var_dump($departure_row); 
+            }
+            else {
+                echo "no results found";
+
             }
         }
         echo '<ul class="flight-list">';

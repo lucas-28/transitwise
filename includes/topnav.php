@@ -88,7 +88,7 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
             <ul class="responsive-nav-list">
                 <li><a href="/transitwise/home/index.php" <?php echo (in_array($current_page, $home)) ? "class='active'" : ""; ?>><span>Home</span></a></li>
                 <li><a href="#" class="dropbtn" <?php echo ($current_page == "index.php") ? "class='active'" : ""; ?>><span>Deals</span></a></li>
-                <li><a href="#" class="dropbtn" <?php echo ($current_page == "view-tickets.php") ? "class='active'" : ""; ?>><span>Trips</span></a></li>
+                <li><a href="/transitwise/home/account/reservations.php" class="dropbtn" <?php echo ($current_page == "view-tickets.php") ? "class='active'" : ""; ?>><span>Trips</span></a></li>
                 <?php
                 // Check if user is logged in
                 if (isset($_SESSION['loggedin'])) :

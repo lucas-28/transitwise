@@ -89,7 +89,7 @@ function createResultsList(event) {
                     itemCount--;
                 }
             }
-            else if (airport.city.toLowerCase().indexOf(searchQuery) > -1) {
+            else if (airport.city.toLowerCase().indexOf(searchQuery) > -1 || airport.name.toLowerCase().indexOf(searchQuery) > -1 || airport.code.toLowerCase().indexOf(searchQuery) > -1) {
                 // Create new element: written by copilot with help of mdn web docs
                 //console.log("adding")
                 const newListItem = document.createElement('li');

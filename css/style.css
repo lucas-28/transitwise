@@ -51,7 +51,6 @@ h1{
     flex-direction: column;
     align-items: center;
     gap: 1em; /* Equivalent to 16px when base font-size is 16px */
-    justify-content: space-between;
     overflow: auto;
     margin: 0;
     padding: 0;
@@ -59,13 +58,14 @@ h1{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1em; /* Equivalent to 16px when base font-size is 16px */
-    justify-content: space-between;
+    
     overflow: auto;
 }
 
 .main-content {
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     max-width: 1000px;
 }
 .flex-row{
@@ -597,7 +597,7 @@ footer {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-end;
 
 }
 .editProfile {
@@ -612,6 +612,16 @@ footer {
 }
 .profile-info {
     justify-content: flex-start;
+}
+.date-passenger {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.date-passenger > div {
+    width: 45%
 }
 
 #origin {
@@ -628,6 +638,15 @@ footer {
 // This is for the left nav bar for 
 // users, employees, and admin
 */
+.white {
+    background-color: white;
+    
+}
+
+.full {
+    min-width: 100%;
+}
+
 .leftnav-openbtn{
     left:0;
     position: relative;

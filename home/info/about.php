@@ -16,9 +16,9 @@ Author: Lucas with Chat GPT-4 and copilot
 <?php include '../../includes/topnav.php'; ?>
 <div class="main-content">
     <h1>About Us</h1>
-    <div class="container">
+    <div class="container white full">
         <h2>Plan Your Journey</h2>
-        <p>Book your flights with ease and convenience. Whether you're traveling for business or leisure, we've got you covered.</p>
+        <p>Book your flights with ease and convenience. Whether you're traveling for business or leisure, we've got you covered. (All flights from 2022).</p>
 
         <h2>Why Choose Us?</h2>
         <ul>
@@ -30,13 +30,13 @@ Author: Lucas with Chat GPT-4 and copilot
 
         <a href="/transitwise/home/index.php" class="cta-button">Book Now</a>
     </div>
-    <div class="container">
+    <div class="container white full">
         <h2>Our Story</h2>
         <p>Our team is based in New Paltz and our goal is to bring the best travel deals to our customers.</p>
     </div>
-    <div class="container">
+    <div class="container white full">
         <h2>Our Team</h2>
-        <p>Our team is made up of 6 members...</p>
+        <p>Our team is made up of 6 members</p>
         <table class="team-list-table">
             <tr class="team-list">
                 <td class="team-member">Lucas</td>
@@ -50,7 +50,7 @@ Author: Lucas with Chat GPT-4 and copilot
             </tr>
         </table>
     </div>
-    <div class="container">
+    <div class="container white full">
         <a id="contact">
             <h2>Contact Us</h2>
         </a>

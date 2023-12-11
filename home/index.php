@@ -13,7 +13,7 @@
 <body>
     <div class="main-content">
         <h1 class="center">Transitwise</h1>
-        <div class="container">
+        <div class="container search">
             <form action="reserve/search.php" method="get">
                 <div class="location-search-group">
                     <div id="origin">
@@ -25,17 +25,19 @@
                         <input placeholder="3 Letter Code" class= 'airport-input' type="text" id="destination-input" name="destination" value="" type="hidden" autocomplete="off" required/>
                     </div>
                 </div>
+                <div class="date-passenger">
                 <div class="date-search-group">
-                    <label for="departure-date">Departure Date (of the year 2022)</label>
-                    <input type="date" id="departure-date" name="departure-date" value="" type="hidden" required/>
+                    <label for="departure-date">Departure Date</label>
+                    <input style="margin-right: 10px;" type="text" id="departure-date" name="departure-date" value="" type="hidden" min="5" max="5" pattern="^(0?[1-9]|1[0-2])/(0?[1-9]|[12][0-9]|3[01])$" placeholder="MM/DD" autocomplete="off" required/>
                     
                 </div>
                 <div class="options-search-group">
                     <div class="passengers-search-group">
-                        <label for="passengers">Number of Passengers</label>
-                        <input type="number" id="passengers" name="passengers" value="1" min="1" max="8" step=1 required/>
+                        <label for="passengers">Passengers</label>
+                        <input type="number" id="passengers" name="passengers" value="1" min="1" max="8" step=1 autocomplete="off" required/>
                     </div>
                     
+                </div>
                 </div>
                 <div class="button-group">
                     <input type="submit" value="Search">

@@ -16,6 +16,10 @@
 
 //$cartData = $cart->getCart();
 
+// redirect if cart is empty
+// if(!isset($_SESSION["reservation"])) {
+//     header("location: /transitwise/home");
+// }
 // start session
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

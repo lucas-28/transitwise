@@ -58,10 +58,11 @@ include ('../../includes/topnav.php');
     <div class="main">
     <?php include('../../includes/leftnav.php'); ?>
     <div class="container">
-    
+    <div class="container white">
         <table>
             <tr>
                 <th>Reservation ID</th>
+                <th>Airline</th>
                 <th>Tickets</th>
                 <th>Date</th>
                 <th>Departure Time</th>
@@ -74,14 +75,14 @@ include ('../../includes/topnav.php');
             <?php
             // SQL query to select data from a table
             $UPID = $_SESSION['user_data']['UPID'];
+            
             $sql = "SELECT * FROM 
                 reservations 
                 INNER JOIN external_flights ON reservations.FDID = external_flights.FDID 
+                INNER JOIN airlines ON external_flights.airline = airlines.AL_code
                 WHERE reservations.UPID =" .  $UPID ."
                 ;";
-            //echo $sql;
             if($result = mysqli_query($dbconn, $sql)){
-                //echo 'found results';
                 if(mysqli_num_rows($result) > 0){
                     echo '<h2>Reservations</h2>';
                     $_SESSION['reservations'] = array();
@@ -91,8 +92,10 @@ include ('../../includes/topnav.php');
                         $row['arr_time'] = sprintf('%04d', $row['arr_time']);
                         echo "<tr>";
                         echo "<td>" . $row['RSID'] . "</td>";
+                        echo "<td>" . $row['AL_name']. "</td>";
                         echo "<td>" . $row['num_tickets'] . "</td>";
-                        echo "<td>" . date('l, F jS, Y',strtotime(strval($row['date']))) . "</td>";
+                        echo "<td>" . date('F jS, Y',strtotime(strval($row['date']))) . "</td>";
+
                         echo "<td>" . date('h:i a',strtotime($row['dep_time'])) . "</td>";
                         echo "<td>" . date('h:i a',strtotime($row['arr_time'])) . "</td>";
                         echo "<td>" . intdiv($row['duration'], 60).' h '. ($row['duration'] % 60) . ' m' . "</td>";
@@ -111,6 +114,7 @@ include ('../../includes/topnav.php');
             }
             ?>
         </table>
+    </div>
     </div>
     </div>
     <?php include "../../includes/footer.php" ?>

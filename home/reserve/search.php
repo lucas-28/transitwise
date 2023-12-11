@@ -2,6 +2,9 @@
 // Author: Lucas Pfeifer
 // start session
 (session_status() === PHP_SESSION_ACTIVE) ?: session_start();
+
+// flights from 2022
+$dataYear = 2022;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -157,7 +160,7 @@ if(isset($_GET['dep-flightID'])) {
         }
             
         else {
-            $date = intval(implode("",explode("-", $_GET['return-date'])));
+            $date = intval($dataYear . implode("",explode("/", $_GET['return-date'])));
             $depFlightID = $_GET['dep-flightID'];
         }
         
@@ -184,13 +187,15 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date']) || isse
         $date = $dep;
     }
     else if ($inputType == "received"){
+        // normal input
         $origin = strtoupper($_GET['origin']);
         $_SESSION['origin'] = $origin;
         $destination = strtoupper($_GET['destination']);
         $_SESSION['destination'] = $destination;
         
         $numPassengers = intval($_GET['passengers']);
-        $date = intval(implode("",explode("-", $_GET['departure-date'])));
+        $date = intval($dataYear . implode("",explode("/", $_GET['departure-date'])));
+
         
     }
     else {
@@ -198,7 +203,7 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date']) || isse
     }
     
     if(isset($_GET['dep-flightID'])) {
-        $date = intval(implode("",explode("-", $_GET['return-date'])));
+        $date = intval($dataYear . implode("",explode("/", $_GET['return-date'])));
 
         // Get the departure flight info
         if(isset($_SESSION['departure_row'])){
@@ -316,6 +321,7 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date']) || isse
     else {
         echo '<p>No flights found</p>';
     }
+    echo '</div>';
     echo '</div>';
     include '../../includes/footer.php';
 

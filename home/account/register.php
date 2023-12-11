@@ -160,7 +160,7 @@ input {
             <label>Last Name *<br><input type="text" name="l_name" required><br></label>
             <label>Email Address *<br><input type="text" name="email" required><br> </label>
             <label>Phone Number <br><input type="text" name="phone"></label>
-            <label>Date of Birth *<br><input type="date" name="birth_date" required> </label>
+            <label>Date of Birth *<br><input type="date" name="birth_date" min="1900-01-01" max="2005-12-10" required> </label>
             
         </fieldset>
         <p>Enter your address.</p>
