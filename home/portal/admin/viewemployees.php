@@ -31,7 +31,7 @@ include '../../../includes/connect.php';
     <?php include ('../../../includes/leftnav.php'); ?>
     <div id="body">
        
-        <h3>View Employee's info</h3>
+        <h2>View Employees</h2>
 
         <!-- Select an employee from a selection list. -->
         <select name="EmployeeInfo" id="employeeInfo" onchange="addInput()">
