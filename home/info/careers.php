@@ -43,7 +43,7 @@
         
         <div class="checkboxButtonDiv">
             <!-- links to application form -->
-            <a href="../reserve/application-form.php"><button>Apply Now</button></a>
+            <a href="../info/application-form.php"><button>Apply Now</button></a>
         </div>
     </div>
 </div>
