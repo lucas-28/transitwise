@@ -57,7 +57,7 @@ include 'adminCheck.php';
                     <!-- Add the email of the user of the account after user.-->
                     <div class="square-title"><label class="email">User:</label></div>
                     <div class="sign-out">
-                        <a href="placeholder"><button class="signout-button" type="button">Sign out</button></a>
+                        <a href="../logout.php"><button class="signout-button" type="button">Sign out</button></a>
                     </div>
                 </div>
 

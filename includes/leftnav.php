@@ -71,6 +71,7 @@
     echo "<ul class='leftnav-list'>";
     $employeeLeftNav = array(
                 "Employee Home" => "/transitwise/home/portal/employee/employeehomepage.php",
+                "Timestamps" => "/transitwise/home/portal/employee/timestamp.php",
                 "Timecard" => "/transitwise/home/portal/employee/timecard.php",
                 "Edit Password" => "/transitwise/home/portal/employee/userchangepassword.php",
                 "View Customers" => "/transitwise/home/portal/employee/viewuserinfo.php",
