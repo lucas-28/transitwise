@@ -31,11 +31,11 @@ This includes contacting you for marketing purposes, analyzing information such 
 
 (4) Security and Compliance Purposes
 
-This includes promoting security, verifying identity of our customers, preventing and investigating fraud and unauthorized activites, defend against claims and other liabilities, manage other risks, comply with applicable laws, protect the rights of ourselves and our user's, defend ourselves, respond to law enforcement, other legal authorities, requests that are part of a legal process, comply with applicable security and anti-terrorism, anti-bribery, customs and immigration, and other such due diligence laws and requriements.
+This includes promoting security, verifying identity of our customers, preventing and investigating fraud and unauthorized activities, defend against claims and other liabilities, manage other risks, comply with applicable laws, protect the rights of ourselves and our user's, defend ourselves, respond to law enforcement, other legal authorities, requests that are part of a legal process, comply with applicable security and anti-terrorism, anti-bribery, customs and immigration, and other such due diligence laws and requirements.
 
 SHARING OF PERSONAL INFORMATION
 
-We share your personal information with Transitwise employees, third-party service providers, travel suppliers, business bartners and offers, recipients in relation to our legal rights and obligations, receipients in relations to corporate transactions, advertising partners.
+We share your personal information with Transitwise employees, third-party service providers, travel suppliers, business partners and offers, recipients in relation to our legal rights and obligations, recipientsAC in relations to corporate transactions, advertising partners.
 
 JOINT USE OF YOUR PERSONAL INFORMATION
 
@@ -43,33 +43,30 @@ We are joint controllers and jointly use your personal information processed fro
 
 YOUR RIGHTS AND CHOICES
 
-You have certain rights and choices with respect to your personal information. If we are processing your personal information on the basis of consent, you may contact us to withdrawl consent at any time. Withdrawing your consent will not affect the lawfulness of processing that occured prior to the withdrawl of consent. Also, it will not affect processing of your personal information that is conducted in reliance on a legal basis other than consent.
+You have certain rights and choices with respect to your personal information. If we are processing your personal information on the basis of consent, you may contact us to withdraw consent at any time. Withdrawing your consent will not affect the lawfulness of processing that occurred prior to the withdraw of consent. Also, it will not affect processing of your personal information that is conducted in reliance on a legal basis other than consent.
 
-Certain contries and regions provide their residents with additional rights relating to personal information. Any additional right applicable for you will be abided by. Please contact us with any requests or concerns regarding additional rights.
+Certain countries and regions provide their residents with additional rights relating to personal information. Any additional right applicable for you will be abided by. Please contact us with any requests or concerns regarding additional rights.
 
-For any questions about privacy, your rights and choices, and in order for oyu to update or amend personal information, or inquire about the deletion of information, please contact us.
+For any questions about privacy, your rights and choices, and in order for you to update or amend personal information, or inquire about the deletion of information, please contact us.
 
 You have the right to complain to a data protection authority about our collection and use of your personal information. We encourage you to contact us first so we can attempt to resolve your concern ourselves.
 
 SECURITY
 
-Transitwise is committed to taking appropriate steps to protect the information we collect. While no company can guarantee absolute security, we enact appropritate precautions to protect the personal information we collect and use. We have proper cybersecurity precautions to protect personal information stored in our databases, as well as precautions in the coding of our website in order to protect against any form of hacking.
+Transitwise is committed to taking appropriate steps to protect the information we collect. While no company can guarantee absolute security, we enact appropriate precautions to protect the personal information we collect and use. We have proper cybersecurity precautions to protect personal information stored in our databases, as well as precautions in the coding of our website in order to protect against any form of hacking.
 
-In the event of a data security breach tha may affect you, you will be notified in accordance with applicable data protection laws and regulations. If required by applicable laws and regulations, we will report the incident to the proper authorities.
+In the event of a data security breach that may affect you, you will be notified in accordance with applicable data protection laws and regulations. If required by applicable laws and regulations, we will report the incident to the proper authorities.
 
 INFORMATION REGARDING USAGE OF THE SITE BY MINORS
 
-Our website is not directed at minors. We cannot distinguish the age of persons who access and use the site. If a minor has provided us with personal information with parental or guardian consent, the parent or guardian should contact us. If we become aware of personal information being collected from a minor without he consent of a guardian, we will terminate the minor's account.
+Our website is not directed at minors. We cannot distinguish the age of persons who access and use the site. If a minor has provided us with personal information with parental or guardian consent, the parent or guardian should contact us. If we become aware of personal information being collected from a minor without the consent of a guardian, we will terminate the minor's account.
 
 The circumstances in which we may need to collect information of minors includes: as part of a reservation and purchase of services.
 
 RETAINING RECORD
 
-We will retain your personal information in accordance with applicable laws, for as long as we deem relevant to fulfill purposes set forth by this Privacy Statement (unless a longer retention period is requred by law). Retention of information will continue as long as you have an open account with us or recent transactions made on our platform, when we have a legal obligation related to your personal information, when your information is needed for secure backups of our systems.
+We will retain your personal information in accordance with applicable laws, for as long as we deem relevant to fulfill purposes set forth by this Privacy Statement (unless a longer retention period is required by law). Retention of information will continue as long as you have an open account with us or recent transactions made on our platform, when we have a legal obligation related to your personal information, when your information is needed for secure backups of our systems.
 
 UPDATES TO STATEMENT
 
 We may need to update this Privacy Statement in response to changing laws or developments in the Transitwise business or website. You can see when this Privacy Statement was last updated by checking the "last updated" date shown at the top of the Privacy Statement.
-
-
-

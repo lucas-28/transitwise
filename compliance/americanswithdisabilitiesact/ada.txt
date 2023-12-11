@@ -1,2 +1,36 @@
 Transitwise Americans With Disabilities Act Compliance Notice
 Written By: Steven Macaluso
+
+At Transitwise, we strive to make sure our website and content is accessible to the widest audience possible, regardless of ability. We've taken the following precautions to ensure our site is accessible to all. If there are any issues with our guidelines or the accessibility of our website, please do not hesitate to contact us via our Feedback Page.
+
+1. COLOR
+
+To make use of color for those with low vision and color-blind issues, we ensure our colors have a high contrast and text stands out in comparison to the background. We also make sure we use color in a way that no information is lost in situations where a viewer may not be able to perceive color.
+
+2. CONTROLS
+
+We ensure the controls on our pages make sense to those who rely on assistive technologies to navigate these controls. We make sure buttons and labels stand out and are meaningful and that our controls read their proper role.
+
+3. FORMS
+
+In order to assist users who struggle with forms, we make our forms as clear and easy to understand as possible. We make sure every form element has a label, we provide autocomplete attribute when we are able to, and we take preventative measures to ensure there are no errors including making sure all mandatory fields are filled out before submission.
+
+4. CONTENT STRUCTURE
+
+When designing our webpages, we remember that not everyone will be using the same tools to navigate our pages. Our page structure should be maintained no matter how our users interact with our pages. Pages should be responsive to all screen sizes and types, text should never overlap, pages have titles, header and footer content is always available and iFrames, tables, and graphics are always accessible.
+
+5. READING AND NAVIGATION ORDER
+
+When pages are made, content is meant to be discovered in a specific order. No matter what tools are being used by the user, this order should be maintained.
+
+6. CONSISTENCY
+
+To better assist our users of all kinds, it is important we maintain consistency on our pages. This ensures navigation is as simple as possible. We make sure our UI is consistent throughout all of our pages, links in the header and footer and always in the same order, labeling is consistent throughout the site, and header and footer structure is consistent.
+
+7. MOTION
+
+Motion can make navigating our site and reading content difficult. We avoid flickering and flashing content to make our content more accessible to users who struggle with motion.
+
+8. CODE
+
+There are many assistive devices and technology we will not be able to test our website with. The best measure we can take to ensure our website is as accessible as possible is to make sure our code follows traditional guidelines and is valid.

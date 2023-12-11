@@ -1,6 +1,7 @@
 
 
 <?php
+// Author: Lucas Pfeifer
 // This page will handle the edit user form submission
 session_start();
 include '../includes/connect.php';

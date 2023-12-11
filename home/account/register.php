@@ -7,19 +7,20 @@
     session_start();
     if (isset($_SESSION["error"]) && $_SESSION["error"] == true) {
         $error_message = $_SESSION["error-message"];
+        $error = true;
         echo '<style type="text/css">
          #error-message {
-            display: block;
+            
         }
         </style>';
     }
     unset($_SESSION['error']);
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-        header("location: /transitwise/home/account/account.php");
+        header("location: /transitwise/home/account/userhomepage.php");
         exit;
     }
     else {
-
+        $error = false;
         
     }
 ?>
@@ -31,6 +32,7 @@
 <head>
     <title>Create Account</title>
     <meta charset="utf-8">
+    <link rel="icon" href="/transitwise/images/favicon.ico">
     
 
 <style>
@@ -55,7 +57,7 @@ fieldset {
     border: none;
     padding: .8em 0;
     margin: 0;
-    border-top: .2em solid #CCC;
+    border-bottom: .2em solid #CCC;
 }
 
 h1 {
@@ -149,40 +151,44 @@ input {
         <form id="register" action="/transitwise/handlers/register_handler.php" method="post"> 
         <?php include '../../includes/nav-icon.php'; ?>
         <h1>Create Account</h1>
-        <p id="error-message"><?php echo $error_message ?></p>
+        <?php if (isset($error)) echo ($error == true) ? '<p id="error-message" style = "display: block; color: red;" >' . $error_message . '</p>': ""; ?> 
         <p>* required fields</p>
+        <p>Enter your name and contact information.</p>
         <fieldset class="input-group">
-            <label for="f_name" >First Name *<br><input id="f_name" type="text" name="f_name"> <br></label>
+            <label for="f_name" >First Name *<br><input id="f_name" type="text" name="f_name" required> <br></label>
             <label>Middle Name<br><input type="text" name="m_name"> <br></label>
-            <label>Last Name *<br><input type="text" name="l_name"><br></label>
-            <label>Email Address *<br><input type="text" name="email"><br> </label>
+            <label>Last Name *<br><input type="text" name="l_name" required><br></label>
+            <label>Email Address *<br><input type="text" name="email" required><br> </label>
             <label>Phone Number <br><input type="text" name="phone"></label>
-            <label>Date of Birth *<br><input type="date" name="birth_date"> </label>
+            <label>Date of Birth *<br><input type="date" name="birth_date" required> </label>
             
         </fieldset>
+        <p>Enter your address.</p>
         <fieldset class="input-group">
             
-            <label>Address 1 *<br><input type="text" name="address1"> <br></label>
+            <label>Address 1 *<br><input type="text" name="address1" required> <br></label>
             <label>Address 2<br><input type="text" name="address2"> <br></label>
-            <label>City *<br><input type="text" name="city"> <br></label>
-            <label>State *<br><input type="text" name="state"> <br></label>
-            <label>Zip code *<br><input type="text" name="zipcode"></label>
+            <label>City *<br><input type="text" name="city" required> <br></label>
+            <label>State *<br><input type="text" name="state" required> <br></label>
+            <label>Zip code *<br><input type="text" name="zipcode" required></label>
         </fieldset>
+        <p>Enter a password for your account. Passwords must be at least 8 characters long and contain at least one number, one uppercase letter, and one lowercase letter.</p>
         <fieldset class="input-group">
             
-            <label>Password *<br><input type="password" name="password" autocomplete="new-password"></label>
-            <label>Confirm Password *<br><input type="password" name="confirm"></label>
+            
+            <label>Password *<br><input id="pw1" type="password" name="password" autocomplete="new-password"></label>
+            <label>Confirm Password *<br><input id="pw2" type="password" name="confirm"></label>
             
         </fieldset>
         
 
         <div class="input-group">
             <input class="btn" type="reset" name="reset" value="Clear Form">
-            <input class="btn" type="submit" name="send" value="Submit">
+            <input id="submit" class="btn" type="submit" name="send" value="Submit">
             
         </div>
         
-            <p id=login>Already have an account? <a href="/transitwise/home/account/lp_login.php">Login here</a>.</p>
+            <p id=login>Already have an account? <a href="/transitwise/home/account/login.php">Login here</a>.</p>
 
         </form>
         </div>
@@ -190,5 +196,6 @@ input {
 
         <!-- This will need a css file for aestheic and organizing the layout.-->
     </div>
+    <script src="/transitwise/js/validate.js"></script>
 </body>
 </html>

@@ -1,14 +1,7 @@
 
 <?php 
 session_status() === PHP_SESSION_ACTIVE ?: session_start();
-
-// Session start
-if( !isset($_SESSION["user_data"]) || $_SESSION["user_data"]["is_admin"] != 1){
-    printf("You are not authorized to view this page.<br>");
-    header("location: /transitwise/home/portal/login.php");
-    exit;
-}
-$data = $_SESSION["user_data"];
+include 'adminCheck.php';
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -42,6 +35,7 @@ $data = $_SESSION["user_data"];
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width", intial-scale="1.0">
 <link rel="stylesheet" href="/transitwise/css/style.css">
+<link rel="icon" href="/transitwise/images/favicon.ico">
 
 </head>
 <header>
@@ -50,7 +44,7 @@ $data = $_SESSION["user_data"];
 <body>    
     
     <!--Creates the navigation side bar of links to edit/view account.-->
-    <?php include ('../../../includes/leftnavadmin.php'); ?>
+    <?php include ('../../../includes/leftnav.php'); ?>
 
     <div class="container-white-box">
 
@@ -142,12 +136,7 @@ $data = $_SESSION["user_data"];
         </div>
     </div>
 
-    <footer>
-        <div class="footer-container">
-            <a href="/transitwise/home/portal/login.php">Transitwise Portal</a>
-            <a href="contact.html">Contact</a>
-            <a href="feedback.html">Feedback</a>
-        </div>
-    </footer>
+    <!-- footer -->
+    <?php include('../../../includes/footer.php'); ?>
 </body>
 </html>

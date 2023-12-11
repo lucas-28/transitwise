@@ -1,4 +1,6 @@
-<?php include "/transitwise/privacy/employeeCheck.php"; ?>
+<?php 
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
+include 'employeeCheck.php'; ?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -12,14 +14,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width", intial-scale="1.0">
 <link rel="stylesheet" href="/transitwise/css/style.css">
-
+<link rel="icon" href="/transitwise/images/favicon.ico">
 </head>
 <header>
     <?php include ('../../../includes/topnav.php'); ?>
 </header>
 <body>
     <!--Creates the navigation side bar of links to edit/view account.-->
-        <?php include ('../../../includes/leftnavuser.php'); ?>
+        <?php include ('../../../includes/leftnav.php'); ?>
     <div id="body">
        
         <h3>View User's payment info</h3>
@@ -74,13 +76,8 @@
         <?php include ('../../js/registercreditcard.js'); ?>
     </script>
 
-<footer>
-    <div class="footer-container">
-        <a href="/transitwise/home/portal/login.php">Transitwise Portal</a>
-        <a href="contact.html">Contact</a>
-        <a href="feedback.html">Feedback</a>
-    </div>
-</footer>
+<!-- footer -->
+<?php include ('../../../includes/footer.php'); ?>
 
 </body>
 </html>

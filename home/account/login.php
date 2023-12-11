@@ -6,8 +6,8 @@
     }
     
     // Check if the user is already logged in, if yes then redirect him to welcome page
-    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-        header("location: account.php");
+    if(isset($_SESSION["loggedin"]) && $_SESSION["user_data"]["is_customer"] === "1"){
+        header("location: userhomepage.php");
         exit;
     }
     if(isset($_SESSION['error'])) {
@@ -50,6 +50,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <link rel="icon" href="/transitwise/images/favicon.ico">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -145,7 +146,7 @@
             <button type="submit" name="send" class="btn">Log In</button>
 
             <div class="form-group" id ="reset">
-                <p>Forgot your password? <a href="reset-password.php">Reset it here</a>.</p>
+                <p>Forgot your password? <a href="#">Reset it here</a>.</p>
             </div>
             <div class="form-group" id="register">
                 <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>

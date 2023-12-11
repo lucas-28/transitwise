@@ -1,13 +1,14 @@
 <?php
-    session_status() === PHP_SESSION_ACTIVE ?: session_start();
-    include ('../../includes/connect.php');
-    include "/transitwise/privacy/userCheck.php";
-?> 
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
+include('../../includes/connect.php');
+include 'userCheck.php';;
+?>
 
 <!DOCTYPE HTML>
 <html lang="en">
+
 <head>
-<!--
+    <!--
     // Uriel Cruz
     // Transitwise
     // HTML
@@ -28,36 +29,40 @@
 
   - Note, I reused register.php that was in github and modified for this case.
     -->
-<title>User Profile</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width", intial-scale="1.0">
+    <title>User Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" , intial-scale="1.0">
 
-<link rel="stylesheet" href="/transitwise/css/style.css">
+    <link rel="stylesheet" href="/transitwise/css/style.css">
+    <link rel="icon" href="/transitwise/images/favicon.ico">
 
-<style>
-.editProfile {
-    display: flex;
-    flex-direction: row;
-}
-</style>
+    <style>
+        .editProfile {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
 
-    
+
 </head>
 <header>
-    <?php include ('../../includes/topnav.php'); ?>
+    <?php include('../../includes/topnav.php'); ?>
 </header>
 
 <body>
-    
+    <?php include('../../includes/leftnav.php'); ?>
     <div>
         <!--Creates the navigation side bar of links to edit/view account.-->
-        <?php include ('../../includes/leftnavuser.php'); ?>
+
         <div class="editProfile">
+
             <!--This section will display the user's current profile information.-->
-            <div class="container" style="display: grid;grid-template-columns: 1fr 1fr;">
-                <p>Current Profile Information</p>
-                <span></span>
-                <?php 
+            <div class="container profile-info">
+                <h2>Current Profile Information</h2>
+                <div class="two-column-grid">
+
+                    
+                    <?php
                     $data_names = array(
                         "f_name" => "First Name",
                         "m_name" => "Middle Name",
@@ -71,43 +76,44 @@
                         "state" => "State",
                         "zip" => "Zip Code"
                     );
-                    
-                    foreach($_SESSION['user_data'] as $key => $value){
-                        if($key == "password"){
+
+                    foreach ($_SESSION['user_data'] as $key => $value) {
+                        if ($key == "password") {
                             continue;
                         }
-                        if($key == "birth_date"){
+                        if ($key == "birth_date") {
                             $value = date("m/d/Y", strtotime($value));
                         }
-                        if($data_names[$key] != NULL)
-                            {echo '<span class="data-name">' . $data_names[$key] . ': </span><span>' . $value . '</span>';}
-                        
+                        if (isset($data_names[$key]) && $data_names[$key] != NULL) {
+                            echo '<span class="data-name">' . $data_names[$key] . ': </span><span>' . $value . '</span>';
+                        }
                     }
-                ?>
-
+                    ?>
+                </div>
             </div>
 
             <div class="container">
                 <!--The action for the form below should probably change. -->
-                <form action="/transitwise/handlers/edit_user_handler.php" method="post"> 
-                    <h1>Edit Profile</h1>
-                    <p>Please fill in any fields you wish to change. Empty fields will not be changed.</p>
-                    <?php include ('../../includes/error-message.php'); ?>
-                    
-                    <fieldset class="flex-box">
+                <h1>Edit Profile</h1>
+                <p>Please fill in any fields you wish to change. Empty fields will not be changed.</p>
+                <?php include('../../includes/error-message.php'); ?>
+                <form class="flex-row" action="/transitwise/handlers/edit_user_handler.php" method="post">
+
+
+                    <fieldset class="flex-row">
                         <!--Each input box should have the original data that the User have when
                             they created their account. For example, in this case the user's f_name
                             should be filled with their first name from the database. All inputs,
                             except for the middle name if not filled in, should have data of the
                             user.
                         -->
-                        <label for="f_name" >First Name <br><input id="f_name" type="text" name="f_name"> <br></label>
+                        <label for="f_name">First Name <br><input id="f_name" type="text" name="f_name"> <br></label>
                         <label>Middle Name<br><input type="text" name="m_name"> <br></label>
                         <label>Last Name <br><input type="text" name="l_name"><br></label>
                         <label>Email Address <br><input type="text" name="email"><br> </label>
                         <label>Phone Number <br><input type="text" name="phone"></label>
                         <label>Date of Birth <br><input type="date" name="birth_date"> </label>
-                        
+
                     </fieldset>
                     <fieldset class="flex-box">
                         <!--Each input box should have the original data that the User have when
@@ -120,23 +126,18 @@
                         <label>City <br><input type="text" name="city"> <br></label>
                         <label>State <br><input type="text" name="state"> <br></label>
                         <label>Zip code <br><input type="text" name="zip"></label>
-
+                        <div class="btn-holder">
+                            <input class="btn" type="submit" name="send" value="Submit">
+                        </div>
                     </fieldset>
-                
-                    <div class="btn-holder">
-                        <input class="btn" type="submit" name="send" value="Submit">
-                    </div>
+
+
                 </form>
             </div>
         </div>
-    
+
     </div>
-    <footer>
-        <div class="footer-container">
-            <a href="/transitwise/home/portal/login.php">Transitwise Portal</a>
-            <a href="contact.html">Contact</a>
-            <a href="feedback.html">Feedback</a>
-        </div>
-    </footer>
+    <?php include "../../includes/footer.php" ?>
 </body>
+
 </html>

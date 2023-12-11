@@ -1,4 +1,6 @@
-<?php include "/transitwise/privacy/adminCheck.php"; ?>
+<?php 
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
+include 'adminCheck.php';?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -22,6 +24,7 @@
 <meta name="viewport" content="width=device-width", intial-scale="1.0">
 
 <link rel="stylesheet" href="/transitwise/css/style.css">
+<link rel="icon" href="/transitwise/images/favicon.ico">
     
 </head>
 <header>
@@ -29,10 +32,10 @@
 </header>
 
 <body>
-    
+<?php include ('../../../includes/leftnav.php'); ?>
     <div id="body">
         <!--Creates the navigation side bar of links to edit/view account.-->
-        <?php include ('../../../includes/leftnavadmin.php'); ?>
+        
 
         <div class="form-group">
             <!--The action for the form below should probably change. -->
@@ -76,12 +79,7 @@
         </div>
     
     </div>
-    <footer>
-        <div class="footer-container">
-            <a href="/transitwise/home/portal/login.php">Transitwise Portal</a>
-            <a href="contact.html">Contact</a>
-            <a href="feedback.html">Feedback</a>
-        </div>
-    </footer>
+    <!-- footer -->
+    <?php include('../../../includes/footer.php'); ?>
 </body>
 </html>

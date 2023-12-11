@@ -8,6 +8,7 @@
     <title>Login Form in HTML and CSS | Codenhal </title>
     <link rel="stylesheet" href="/transitwise/css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="/transitwise/images/favicon.ico">
 </head>
 
 <header>

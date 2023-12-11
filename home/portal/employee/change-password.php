@@ -1,4 +1,6 @@
-<?php include "/transitwise/privacy/employeeCheck.php"; ?>
+<?php 
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
+include 'employeeCheck.php'; ?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -15,6 +17,7 @@
 <meta name="viewport" content="width=device-width", intial-scale="1.0">
 <link rel="stylesheet" href="/transitwise/css/style.css">
 <link rel="stylesheet" href="/transitwise/css/leftnavbar.css">
+<link rel="icon" href="/transitwise/images/favicon.ico">
 
 </head>
 <header>
@@ -25,7 +28,7 @@
 <body>
     
     <!--Creates the navigation side bar of links to edit/view account.-->
-    <?php include ('../../../includes/leftnavadmin.php'); ?>
+    <?php include ('../../../includes/leftnav.php'); ?>
     <div class="container">
         
         <?php include ('../../../includes/error-message.php'); ?>

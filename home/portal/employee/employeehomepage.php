@@ -1,3 +1,6 @@
+<?php 
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
+include 'employeeCheck.php'; ?>
 <!DOCTYPE HTML>
 <html lang="en">
 
@@ -25,6 +28,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width" , intial-scale="1.0">
     <link rel="stylesheet" href="/transitwise/css/style.css">
+    <link rel="icon" href="/transitwise/images/favicon.ico">
 
 </head>
 <header>
@@ -38,7 +42,7 @@
     -->
 
     <!--Creates the navigation side bar of links to edit/view account.-->
-    <?php include('../../../includes/leftnavemployee.php'); ?>
+    <?php include('../../../includes/leftnav.php'); ?>
 
 
     <!--
@@ -52,13 +56,17 @@
 
             <!--Creates the navigation side bar of links to edit/view account.-->
             <div class="content">
-                <div class="account-info">
-                    <!-- Add the email of the user of the account after user.-->
-                    <div class="square-title"><label class="email">User:</label></div>
-                    <div class="sign-out">
-                        <a href="placeholder"><button class="signout-button" type="button">Sign out</button></a>
+            <div class="create-timestamp-square">
+                    <!--Save timestamp to clock in/clock out.-->
+                    <div class="square-title"><b><label class="title">Create a Timestamp</label></b></div>
+                    <div class="square-description">
+                        <p class="description">View your timestamp and wage summary or create a timestamp to clock-in/clock-out.</p>
+                        <div class="square-action">
+                            <a href="timestamp.php"><button type="button">TIMESTAMPS & WAGE SUMMARY</button></a>
+                        </div>
                     </div>
-                </div>
+                </div>    
+            
 
                 <br>
 
@@ -130,7 +138,7 @@
                         <p class="description">View or change the user's airline tickets that have been purchased.</p>
                         <div class="square-action">
                             <!--placeholder should be replace with the location of the file.-->
-                            <a href="viewusertickets.php"><button type="button">VIEW USER'S TICKETS</button></a>
+                            <a id="VT" href="#VT"><button type="button">VIEW USER'S TICKETS</button></a>
                         </div>
                     </div>
                 </div>
@@ -145,7 +153,7 @@
                         <p class="description">View and manage flights.</p>
                         <div class="square-action">
                             <!--placeholder should be replace with the location of the file.-->
-                            <a href="manageflights.php"><button type="button">MANAGE FLIGHTS</button></a>
+                            <a id="MF" href="#MF"><button type="button">MANAGE FLIGHTS</button></a>
                         </div>
                     </div>
                 </div>
@@ -153,29 +161,21 @@
                 <br>
 
                 <div class="hr-line"></div>
-                <div class="create-timestamp-square">
-                    <!--Save timestamp to clock in/clock out.-->
-                    <div class="square-title"><b><label class="title">Create a Timestamp</label></b></div>
-                    <div class="square-description">
-                        <p class="description">View your timestamp and wage summary or create a timestamp to clock-in/clock-out.</p>
-                        <div class="square-action">
-                            <a href="timestamp.php"><button type="button">TIMESTAMPS & WAGE SUMMARY</button></a>
-                        </div>
+                
+
+                <div class="account-info">
+                    
+                    <!-- Add the email of the user of the account after user.-->
+                    <div class="square-title"><label class="email">User:</label></div>
+                    <div class="sign-out">
+                        <a href="placeholder"><button class="signout-button" type="button">Sign out</button></a>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
 
-    <footer>
-        <div class="footer-container">
-            <a href="/transitwise/home/portal/login.php">Transitwise Portal</a>
-            <a href="contact.html">Contact</a>
-            <a href="feedback.html">Feedback</a>
-        </div>
-    </footer>
+    <?php include('../../../includes/footer.php'); ?>
 </body>
 
 </html>

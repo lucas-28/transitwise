@@ -1,3 +1,8 @@
+<?php
+// Author: Lucas Pfeifer
+// start session
+(session_status() === PHP_SESSION_ACTIVE) ?: session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,7 +112,7 @@
 
 <?php
 
-session_start();
+
 $debug = "true";
 $inputType = "received";
 $statementType = "prepared";
@@ -124,6 +129,7 @@ include ('../../includes/connect.php');
 // Check connection
 if($dbconn->connect_error) {
     die('Connection failed: ' . $dbconn->connect_error);
+    echo 'Connection failed';
 }
 
 
@@ -170,7 +176,7 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date']) || isse
     
 
 
-
+    
     // For manual debugging
     if ($inputType == "manual"){
         $origin = $ori;
@@ -182,9 +188,10 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date']) || isse
         $_SESSION['origin'] = $origin;
         $destination = strtoupper($_GET['destination']);
         $_SESSION['destination'] = $destination;
-        $numPassengers = $_GET['passengers'];
+        
+        $numPassengers = intval($_GET['passengers']);
         $date = intval(implode("",explode("-", $_GET['departure-date'])));
-        echo $date;
+        
     }
     else {
         echo "Error: inputType not set";
@@ -297,7 +304,7 @@ if(isset($_GET['origin'], $_GET['destination'], $_GET['departure-date']) || isse
 
             }
             
-            $card = flight_card($row, $duration, $price, $depFlightID, $retFlightID, $returnDate);
+            $card = flight_card($row, $depFlightID, $retFlightID, $returnDate, $numPassengers);
             foreach($card as $value) {
                 echo $value;
             }
@@ -329,7 +336,7 @@ function flight_card($row, $depFlightID, $retFlightID, $returnDate, $numPassenge
     // This function returns a flight card
     $minutes = $row['duration'];
     $duration =  intdiv($minutes, 60).' h '. ($minutes % 60) . ' m';
-    $price = round($row['distance'] * 0.15);
+    $price = $row['price'];
     $returning = false;
     $card =[];
     $depFlightID = $row['FDID'];
@@ -339,9 +346,11 @@ function flight_card($row, $depFlightID, $retFlightID, $returnDate, $numPassenge
     else if ($returning) {
         $link = 'customize.php?dep-flightID=' . $depFlightID . '&ret-flightID=' . $retFlightID . '&return-date=' . $returnDate;
     }
+    
     else {
         $link = 'customize.php?dep-flightID=' . $depFlightID . '&num-passengers=' . $numPassengers;
     }
+    
 
     
     $card = [
@@ -371,5 +380,8 @@ function flight_card($row, $depFlightID, $retFlightID, $returnDate, $numPassenge
 
 // Close the database connection
 $dbconn->close();
+
+
+
 ?>
 

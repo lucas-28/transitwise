@@ -1,4 +1,5 @@
 <?php
+    // Author: Lucas Pfeifer
     require_once("../includes/connect.php");
     session_status() === PHP_SESSION_ACTIVE ?: session_start();
     $debug = "true";

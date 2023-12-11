@@ -1,6 +1,9 @@
 
-<?php include "../../includes/topnav.php";
-include "../../includes/connect.php"  ?>
+<?php 
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
+include "../../includes/topnav.php";
+include "../../includes/connect.php";  
+include 'userCheck.php';?>
 
 
 
@@ -15,6 +18,7 @@ include "../../includes/connect.php"  ?>
     </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width", intial-scale="1.0">
+    <link rel="icon" href="/transitwise/images/favicon.ico">
     <style>
         table {
             border-collapse: collapse;
@@ -111,7 +115,7 @@ include "../../includes/connect.php"  ?>
                         echo "<td class='topmost'>" . $row['TKID'] . "</td>";
                         echo "<td>" . $row['f_name'] . " " . $row["l_name"] . "</td>";
                         echo "<td>" . $row['class'] . "</td>";
-                        echo "<td>" . $row['seatID'] . "</td>";
+                        echo "<td>" . $row['seat'] . "</td>";
                         echo "<td>" . $row['bags'] . "</td>";
                         echo "<td>" . date('l, F jS, Y',strtotime(strval($row['date']))) . "</td>";
                         echo "<td>" . date('h:i a',strtotime($row['dep_time'])) . "</td>";
@@ -133,4 +137,5 @@ include "../../includes/connect.php"  ?>
             ?>
         </table>
     </div>
+    <?php include "../../includes/footer.php" ?>
 </body>

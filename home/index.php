@@ -5,12 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/transitwise/css/style.css">
     <link rel="icon" href="/transitwise/images/favicon.ico">
-    <style>
-        .main-content {
-            width:800px;
-            margin: 0 auto;
-        }
-    </style>
+    
 </head>
 
 <?php include ('../includes/topnav.php'); ?>
@@ -31,28 +26,25 @@
                     </div>
                 </div>
                 <div class="date-search-group">
-                    <label for="departure-date">Departure Date</label>
+                    <label for="departure-date">Departure Date (of the year 2022)</label>
                     <input type="date" id="departure-date" name="departure-date" value="" type="hidden" required/>
-                    <label for="return-date">Return Date (optional)</label>
-                    <input type="date" id="return-date" name="return-date" value="" type="hidden" />
+                    
                 </div>
                 <div class="options-search-group">
                     <div class="passengers-search-group">
-                        <label for="passengers">Passengers:</label>
+                        <label for="passengers">Number of Passengers</label>
                         <input type="number" id="passengers" name="passengers" value="1" min="1" max="8" step=1 required/>
                     </div>
-                    <div class = roundtrip-search-group>
-                        <label for="roundtrip" class="roundtrip">Roundtrip</label>
-                        <input type="checkbox" id="roundtrip" name="roundtrip" value="roundtrip">
-                    </div>
+                    
                 </div>
-                <div class="search-button-group">
+                <div class="button-group">
                     <input type="submit" value="Search">
                 </div>
             </form>
         </div>
     </div>
     <script src="/transitwise/js/index.js"></script>
+    <script src="/transitwise/js/topnav.js"></script>
     <?php include '../includes/footer.php'; ?>
 </body>
 </html>

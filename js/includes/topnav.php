@@ -64,7 +64,7 @@ $absolute_path = str_replace("\\", "/", $absolute_path); // Replace backslashes 
             <a href="/transitwise/home/account/logout.php" style="float:right">Sign out</a>
             <a href="/transitwise/home/account/account.php" style="float:right">Profile</a>
         <?php else: ?>
-            <a href="/transitwise/home/account/lp_login.php" style="float:right">Sign in</a>
+            <a href="/transitwise/home/account/login.php" style="float:right">Sign in</a>
             <a href="/transitwise/home/account/register.php" style="float:right">Register</a>
         <?php endif; ?>
     </div>

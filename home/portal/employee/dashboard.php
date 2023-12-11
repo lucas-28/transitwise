@@ -34,6 +34,7 @@ $data = $_SESSION["user_data"];
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width", intial-scale="1.0">
     <link rel="stylesheet" href="/transitwise/css/style.css">
+    <link rel="icon" href="/transitwise/images/favicon.ico">
     
 </head>
 <header>
@@ -46,7 +47,7 @@ $data = $_SESSION["user_data"];
     -->
 
     <!--Creates the navigation side bar of links to edit/view account.-->
-    <?php include ('../../../includes/leftnavemployee.php'); ?>
+    <?php include ('../../../includes/leftnav.php'); ?>
 
 
     <!--

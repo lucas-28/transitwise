@@ -1,8 +1,16 @@
+<?php 
+//Steven Macaluso
+//Transitwise
+//Compliance Page 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- add Transitwise Icon -->
+    <link rel="icon" href="/transitwise/images/favicon.ico">
     <title>Compliance Documents</title>
     <style>
         body {
@@ -24,7 +32,7 @@
             font-size: 18px;
             text-decoration: none;
             color: #fff;
-            background-color: #007bff;
+            background-color: #036;
             border: 0.0625em solid #ddd;
             border-radius: 5px;
 			box-sizing: border-box;
@@ -60,22 +68,19 @@
     </style>
 </head>
 <body>
-
+<!-- add Transitwise Header -->
 <header>
     <?php include ('../../includes/topnav.php'); ?>
 </header>
-
+<!-- displays title and buttons that link to pages that display compliance docs -->
     <div id="title">Compliance Documents</div>
 
     <a href="terms.php" class="button">Terms</a>
     <a href="privacypolicy.php" class="button">Privacy Policy</a>
     <a href="ada.php" class="button">ADA</a>
-	<footer>
-    <div class="footer-container">
-        <a href="/transitwise/home/portal/login.php">Transitwise Portal</a>
-        <a href="contact.html">Contact</a>
-        <a href="feedback.html">Feedback</a>
-    </div>
-</footer>
+	
+    <!-- Add Transitwise Footer -->
+<?php include ("../../includes/footer.php"); ?>
+
 </body>
 </html>

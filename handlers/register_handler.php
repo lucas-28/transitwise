@@ -1,4 +1,5 @@
 <?php
+    // Author: Lucas Pfeifer
     require_once("../includes/connect.php");
     //require_once "includes/session.php";
     //require_once "includes/functions.php";
@@ -11,7 +12,7 @@
     session_status() === PHP_SESSION_ACTIVE ?: session_start();
 
     $debug = "true";
-    $UPEID = 1;
+    $UPEID = 4;
     $f_name = trim($_POST["f_name"]);
     $m_name = trim($_POST["m_name"]);
     $l_name = trim($_POST["l_name"]);
@@ -48,6 +49,7 @@
             mysqli_stmt_store_result($stmt);
             if(mysqli_stmt_num_rows($stmt) >= 1){
                 printf("Email already exists.");
+                $_SESSION["error"] = true;
                 $_SESSION["error-type"] = "duplicate-email";
                 $_SESSION["error-message"] = "An account with this email already exists.";
                 $_SESSION["duplicate-email"] = $param_email;
@@ -75,7 +77,7 @@
             
             // Redirect user to login
             printf("redirecting...");
-            header("location: /transitwise/home/account/LP_login.php");
+            header("location: /transitwise/home/account/login.php");
         }
         else {
             echo "Something went wrong. Please try again later.";

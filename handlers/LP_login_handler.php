@@ -1,4 +1,5 @@
 <?php
+// Author: Lucas Pfeifer
 # Template from https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php  
 include ("../includes/connect.php");
 $debug = "true";
@@ -51,20 +52,28 @@ if($stmt = $dbconn->prepare($sql)){
                     $_SESSION["loggedin"] = true;
                     $_SESSION["email"] = $email;                            
                     $_SESSION["user_data"] = $fields;
+                    $sql = "SELECT * FROM credit_cards WHERE UPID = " . $_SESSION["user_data"]["UPID"] . ";";
+                    $result = $dbconn->query($sql);
+                    $credit_cards = array();
+                    while($row = $result->fetch_assoc()){
+                        if ($row["is_active"] == 1) {
+                            $_SESSION["user_data"]["card"] = $row;
+                        }
+                    }
                     // Redirect user to welcome page
                     printf("redirecting...");
                     header("Location: /transitwise/home/account/userhomepage.php");
                 } else{
                     // Password is not valid, return to login page
                     $_SESSION["login_failed"] = true;
-                    header("Location: /transitwise/home/account/lp_login.php");
+                    header("Location: /transitwise/home/account/login.php");
                 }
             }
         } else{
             
             // email doesn't exist, display a generic error message
             $_SESSION["login_failed"] = true;
-            header("Location: /transitwise/home/account/lp_login.php");
+            header("Location: /transitwise/home/account/login.php");
         }
     } else{
         echo "We could not complete the request.";

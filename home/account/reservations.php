@@ -7,7 +7,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 // Check if user is logged in
-include ('../../transitwise/privacy/userCheck.php');
+include 'userCheck.php';
 include ('../../includes/connect.php');
 include ('../../includes/topnav.php');
 
@@ -23,6 +23,7 @@ include ('../../includes/topnav.php');
     </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width", intial-scale="1.0">
+    <link rel="icon" href="/transitwise/images/favicon.ico">
     <style>
         table {
             border-collapse: collapse;
@@ -54,7 +55,10 @@ include ('../../includes/topnav.php');
 </head>
 
 <body>
+    <div class="main">
+    <?php include('../../includes/leftnav.php'); ?>
     <div class="container">
+    
         <table>
             <tr>
                 <th>Reservation ID</th>
@@ -108,6 +112,8 @@ include ('../../includes/topnav.php');
             ?>
         </table>
     </div>
+    </div>
+    <?php include "../../includes/footer.php" ?>
 </body>
 
 

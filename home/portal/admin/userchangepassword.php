@@ -1,44 +1,35 @@
-<?php include "/transitwise/privacy/userCheck.php"; ?>
+<?php 
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
+include 'adminCheck.php';
+?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
 <!--
     // Uriel Cruz
     // Transitwise
-    // HTML and style section(css)
-    // This is the User profile page for the user.
+    // This is the Admin change password
 
     For php editor, 
   - Keep the user login.
-  - Grab the user's data and have it loaded in the input box. If it is modified,
-  then it will submit the data to the database and refreshes the page with 
-  new data. If it doesn't meet certain conditions like the year of date or birth
-  is in the future then it should come out as an error.
-
-  - The sidebar buttons have href to link to other files, they are labeled
-    as "placeholder" whenever those pages are finsihed. The home button goes to
-    the user's home page.
-
-  - Script section left empty unless needed.
-
-  - Note, I reused register.php that was in github and modified for this case.
     -->
 <title>User Change password</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width", intial-scale="1.0">
 <link rel="stylesheet" href="/transitwise/css/style.css">
 <link rel="stylesheet" href="/transitwise/css/leftnavbar.css">
+<link rel="icon" href="/transitwise/images/favicon.ico">
 
 </head>
 <header>
-    <?php include ('../../includes/topnav.php'); ?>
+    <?php include ('../../../includes/topnav.php'); ?>
 </header>
 
 </head>
 <body>
     
     <!--Creates the navigation side bar of links to edit/view account.-->
-    <?php include ('../../includes/leftnavuser.php'); ?>
+    <?php include ('../../../includes/leftnav.php'); ?>
     <div id="body">
         
 
@@ -68,12 +59,7 @@
         <?php include ('../../js/leftnavbar.js'); ?>
         <?php include ('../../js/showPassword.js'); ?>
     </script>
-    <footer>
-    <div class="footer-container">
-        <a href="/transitwise/home/portal/login.php">Transitwise Portal</a>
-        <a href="contact.html">Contact</a>
-        <a href="feedback.html">Feedback</a>
-    </div>
-</footer>
+    <!-- footer -->
+    <?php include('../../../includes/footer.php'); ?>
 </body>
 </html>

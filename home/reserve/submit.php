@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="/transitwise/images/favicon.ico">
 <style>
     /* Center page */
     body {

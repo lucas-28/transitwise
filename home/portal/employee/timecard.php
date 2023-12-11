@@ -1,4 +1,6 @@
-<?php include "/transitwise/privacy/employeeCheck.php"; ?>
+<?php 
+session_status() === PHP_SESSION_ACTIVE ?: session_start();
+include 'employeeCheck.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,16 +17,17 @@
           The employee will be able to view their timecard but they should not
           be able to edit it.
         -->
-    
+    <link rel="icon" href="/transitwise/images/favicon.ico">
     </head>
     <header>
         <?php include ('../../../includes/topnav.php'); ?>
     </header>       
 <body>
+<?php include ('../../../includes/leftnav.php'); ?>
 <!-- This could be called by a reference link to all user base.-->
 <div id="contnent">
     <!--Creates the navigation side bar of links to edit/view account.-->
-    <?php include ('../../../includes/leftnavemployee.php'); ?>
+    
 
     <form id="timecard" action="holder.php" method="post"> 
 
@@ -278,12 +281,7 @@
         </table>
     </form>
 </div>
-<footer>
-        <div class="footer-container">
-            <a href="/transitwise/home/portal/login.php">Transitwise Portal</a>
-            <a href="contact.html">Contact</a>
-            <a href="feedback.html">Feedback</a>
-        </div>
-    </footer>
+    <!-- footer -->
+    <?php include ('../../../includes/footer.php'); ?>
 </body>
 </html>
