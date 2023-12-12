@@ -21,7 +21,8 @@
 <body>
 
 <div class="container">
-    <h2>Careers</h2>
+<div class="container white">
+    <h1>Careers</h1>
     
     <div class="main">
         <ul class="job-list">
@@ -46,6 +47,7 @@
             <a href="../info/application-form.php"><button>Apply Now</button></a>
         </div>
     </div>
+</div>
 </div>
 
 <!-- imports footer -->

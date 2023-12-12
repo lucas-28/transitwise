@@ -20,7 +20,6 @@
 
         #title {
             margin-top: 30px;
-            font-size: 50px;
             font-weight: bold;
         }
 
@@ -73,12 +72,16 @@
     <?php include ('../../includes/topnav.php'); ?>
 </header>
 <!-- displays title and buttons that link to pages that display compliance docs -->
-    <div id="title">Compliance Documents</div>
+<div class="container">
+    <div class="container white">
+        <h1 id="title">Compliance Documents</h1>
 
-    <a href="terms.php" class="button">Terms</a>
-    <a href="privacypolicy.php" class="button">Privacy Policy</a>
-    <a href="ada.php" class="button">ADA</a>
+        <a href="terms.php" class="button">Terms</a>
+        <a href="privacypolicy.php" class="button">Privacy Policy</a>
+        <a href="ada.php" class="button">ADA</a>
 	
+    </div>
+</div>
     <!-- Add Transitwise Footer -->
 <?php include ("../../includes/footer.php"); ?>
 

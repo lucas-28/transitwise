@@ -77,7 +77,7 @@
                 "View Customers" => "/transitwise/home/portal/employee/viewuserinfo.php",
                 "View User's Payment Info" => "/transitwise/home/portal/employee/viewuserpaymentinfo.php",
                 "View User's Tickets" => "/transitwise/home/portal/employee/employeehomepage.php",
-                "Manage Flights" => "/transitwise/home/portal/employee/manageflights.php"
+                "Manage Flights" => "#"
             );
             if($_SESSION["user_data"]["is_employee"] == 1){
                 $counter = 0;

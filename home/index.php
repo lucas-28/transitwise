@@ -12,7 +12,8 @@
 
 <body>
     <div class="main-content">
-        <h1 class="center">Transitwise</h1>
+        <img class="logo" src="/transitwise/images/logo3.png" alt="logo" width="60%" height="60%">
+        
         <div class="container search">
             <form action="reserve/search.php" method="get">
                 <div class="location-search-group">

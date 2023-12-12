@@ -34,8 +34,14 @@ header {
 
 }
 
-h1{
+h1 {
+    background-color: #cff5ff;
+    color: #000;
     text-align: center;
+    padding: 20px;
+    width: 80%;
+    border-radius: 5px;
+
 }
 
 .container > h2 {
@@ -305,8 +311,9 @@ display: block;
 }
 /*  end of responsive topnav */
 
-#logo {
+.logo {
     display: block;
+    margin: 30px auto;
 
 }
 #logo-box {
@@ -318,7 +325,7 @@ display: block;
 .container {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
     gap: 1em; /* Equivalent to 16px when base font-size is 16px */
     justify-content: space-between;
     overflow: auto;
@@ -644,7 +651,7 @@ footer {
 }
 
 .full {
-    min-width: 100%;
+    width: 100%;
 }
 
 .leftnav-openbtn{

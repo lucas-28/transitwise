@@ -14,7 +14,7 @@ Author: Lucas with Chat GPT-4 and copilot
     <link rel="icon" href="/transitwise/images/favicon.ico">
 </head>
 <?php include '../../includes/topnav.php'; ?>
-<div class="main-content">
+<div class="container">
     <h1>About Us</h1>
     <div class="container white full">
         <h2>Plan Your Journey</h2>
