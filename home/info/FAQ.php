@@ -15,11 +15,14 @@
 </head>
 <body>
     <main class="main-content">
-        <div class="container">
-            <div class="container white">
+        <div class="container info">
+        <div class="container skyblue full">
+        <h1 class="faq-heading">Frequently Asked Questions</h2>
+        </div>
+            <div class="container white full">
 
                 <hr class="title-line">
-                <h1 class="faq-heading">Frequently Asked Questions</h2>
+                
                 <hr class="title-line">
                 <section class="faq-container">
 

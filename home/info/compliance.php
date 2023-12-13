@@ -73,9 +73,10 @@
 </header>
 <!-- displays title and buttons that link to pages that display compliance docs -->
 <div class="container">
-    <div class="container white">
-        <h1 id="title">Compliance Documents</h1>
-
+    <div class="container skyblue full">
+        <h1 class="faq-heading">Compliance Documents</h2>
+    </div>
+    <div class="container white full">
         <a href="terms.php" class="button">Terms</a>
         <a href="privacypolicy.php" class="button">Privacy Policy</a>
         <a href="ada.php" class="button">ADA</a>

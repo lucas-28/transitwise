@@ -35,9 +35,13 @@ header {
 }
 
 h1 {
-    background-color: #cff5ff;
+    text-align: center;
+}
+
+.info > h1 {
     color: #000;
     text-align: center;
+    background-color: #cff5ff;
     padding: 20px;
     width: 80%;
     border-radius: 5px;
@@ -72,7 +76,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 1000px;
+    
 }
 .flex-row{
     flex-direction: row;
@@ -334,7 +338,7 @@ display: block;
     min-width: -webkit-fit-content;
     
     
-    margin: 20px;
+    margin: 20px 10vw;
     padding: 20px;
     background-color: #ddd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -649,9 +653,13 @@ footer {
     background-color: white;
     
 }
+.skyblue{
+    background-color: #cff5ff;
+    
+}
 
 .full {
-    width: 100%;
+    width: 80%;
 }
 
 .leftnav-openbtn{

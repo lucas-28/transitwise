@@ -21,8 +21,11 @@
 <body>
 
 <div class="container">
-<div class="container white">
-    <h1>Careers</h1>
+    <div class="container skyblue full">
+        <h1 class="faq-heading">Careers</h2>
+    </div>
+<div class="container white full">
+    
     
     <div class="main">
         <ul class="job-list">

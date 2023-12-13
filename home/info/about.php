@@ -14,8 +14,11 @@ Author: Lucas with Chat GPT-4 and copilot
     <link rel="icon" href="/transitwise/images/favicon.ico">
 </head>
 <?php include '../../includes/topnav.php'; ?>
+
 <div class="container">
+<div class="container skyblue info full">
     <h1>About Us</h1>
+</div>
     <div class="container white full">
         <h2>Plan Your Journey</h2>
         <p>Book your flights with ease and convenience. Whether you're traveling for business or leisure, we've got you covered. (All flights from 2022).</p>
